@@ -1,2 +1,2 @@
-# Create your first data schema
+# Your first schema
 
