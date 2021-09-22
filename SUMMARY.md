@@ -14,6 +14,8 @@
   * [ExtraHorizon SDK](for-developers/tools/extrahorizon-sdk.md)
 * [Services](for-developers/services/README.md)
   * [Data Service](for-developers/services/data-service.md)
+  * [File Service](for-developers/services/file-service.md)
+  * [Task Service](for-developers/services/task-service.md)
 
 ## Security
 
