@@ -1,9 +1,12 @@
 # Table of contents
 
-* [Getting Started](README.md)
-* [Create your first data schema](create-your-first-data-schema.md)
-* [Create your first task](create-your-first-task.md)
-* [Create your first Template](create-your-first-template.md)
+* [Welcome](README.md)
+
+## Getting started
+
+* [Create your first data schema](getting-started/create-your-first-data-schema.md)
+* [Create your first task](getting-started/create-your-first-task.md)
+* [Create your first Template](getting-started/create-your-first-template.md)
 
 ## For Developers
 
