@@ -2,12 +2,6 @@
 
 * [Welcome](README.md)
 
-## Getting started
-
-* [Your first schema](getting-started/create-your-first-data-schema.md)
-* [Create your first task](getting-started/create-your-first-task.md)
-* [Create your first Template](getting-started/create-your-first-template.md)
-
 ## For Developers
 
 * [Tools](for-developers/tools/README.md)
@@ -16,6 +10,11 @@
   * [Data Service](for-developers/services/data-service.md)
   * [File Service](for-developers/services/file-service.md)
   * [Task Service](for-developers/services/task-service.md)
+  * [Mail service](for-developers/services/mail-service.md)
+  * [Localization Service](for-developers/services/localization-service.md)
+  * [Template Service](for-developers/services/template-service.md)
+  * [Dispatcher Service](for-developers/services/dispatcher-service.md)
+  * [Notification Service](for-developers/services/notification-service.md)
 
 ## Security
 
