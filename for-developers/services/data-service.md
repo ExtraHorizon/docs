@@ -14,13 +14,7 @@ Data is managed using structured documents, written in JSON. These documents rel
 1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
 2. **Define Behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
 
-qsdfqsdfqsdfqsdfqsdf
 
-qsd
-
-f
-
-qsdf
 
 
 

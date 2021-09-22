@@ -90,7 +90,21 @@ AWS Lambda functions can perform many types of actions, among which the creation
 
 This section provides an overview of the available Task Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API reference documentation.
 
-### Managing Tasks
+### List all Tasks
+
+{% tabs %}
+{% tab title="curl" %}
+```text
+
+```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```text
+const tasks = await sdk.tasks.find();
+```
+{% endtab %}
+{% endtabs %}
 
 The following actions are available to set up Tasks:
 
