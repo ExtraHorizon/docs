@@ -33,9 +33,9 @@ The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2
 
 ## Storage
 
-### Document Service
+### Data Service
 
-The document service previously known as the data service. Is a service that provides storage and query capabilities.
+The data service is a service that provides storage and query capabilities.
 
 The service allows you to: define you own queryable data models by utilizing JSON Schema’s, define workflows that can trigger other services or automation rules in the network. The data service like all other services support an extremely flexible querying language in the form of querying parameters.
 
