@@ -1,160 +1,129 @@
-# Initial page
+---
+description: >-
+  Extra Horizon is a medical Backend As A Service product to deliver an easy and
+  fast roadmap towards fully certified and compliant cloud connected medical
+  devices.
+---
 
-{% api-method method="get" host="https://api.cakes.com" path="/v1/cakes/:id" %}
-{% api-method-summary %}
-Get Cakess
-{% endapi-method-summary %}
+# ExtraHorizon
 
-{% api-method-description %}
-This endpoint allows you to get free cakes.
-{% endapi-method-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
 
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+ExtraHorizon exists of a set of web services that the customer can use to compose a custom backend specific to their needs.
 
-{% api-method-headers %}
-{% api-method-parameter name="Authentication" type="string" required=true %}
-Authentication token to track down who is emptying our stocks.
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
 
-{% api-method-query-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
 
-{% endapi-method-parameter %}
+## Whats included
 
-{% api-method-parameter name="recipe" type="string" %}
-The API will do its best to find a cake matching the provided recipe.
-{% endapi-method-parameter %}
+Each customer can have one or more dedicated clusters. Each cluster has a basic ExtraHorizon infrastructure layer where additional services can be installed.
 
-{% api-method-parameter name="gluten" type="boolean" %}
-Whether the cake should be gluten-free or not.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+### Identity & Access Management
 
-{% api-method-form-data-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
+IAM or identity and access management is at the center of each ExtraHorzion setup. This is the place where you can manage and create users, groups, define roles and allocate permissions, manage security settings such as 2FA and much more…
 
-{% endapi-method-parameter %}
-{% endapi-method-form-data-parameters %}
+#### User Service
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
+The user service is responsible for managing identities in an ExtraHorizon Cluster. Each action you take always occurs in the context of such an identity.
 
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+The service has functionality ranging from registering new identities, managing roles, permissions, password management, etc…
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Cake successfully retrieved.
-{% endapi-method-response-example-description %}
+[https://qompium.atlassian.net/wiki/spaces/US](https://qompium.atlassian.net/wiki/spaces/US)
 
-```
-{    "name": "Cake's name",    "recipe": "Cake's recipe name",    "cake": "Binary cake"}
-```
-{% endapi-method-response-example %}
+#### Authentication Service
 
-{% api-method-response-example httpCode=302 %}
-{% api-method-response-example-description %}
+The authentication service main responsibility is authenticating each incoming request and attaching an identity to that request.
 
-{% endapi-method-response-example-description %}
+The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2.0, SSO, MFA,… You can register frontend applications and determine it's accessible functionality.
 
-```
+[https://qompium.atlassian.net/wiki/spaces/AS](https://qompium.atlassian.net/wiki/spaces/AS)
 
-```
-{% endapi-method-response-example %}
+### Storage
 
-{% api-method-response-example httpCode=304 %}
-{% api-method-response-example-description %}
+#### Document Service
 
-{% endapi-method-response-example-description %}
+The document service previously known as the data service. Is a service that provides storage and query capabilities.
 
-```
+The service allows you to: define you own queryable data models by utilizing JSON Schema’s, define workflows that can trigger other services or automation rules in the network. The data service like all other services support an extremely flexible querying language in the form of querying parameters.
 
-```
-{% endapi-method-response-example %}
+[https://qompium.atlassian.net/wiki/spaces/DS](https://qompium.atlassian.net/wiki/spaces/DS)
 
-{% api-method-response-example httpCode=400 %}
-{% api-method-response-example-description %}
+#### File Service
 
-{% endapi-method-response-example-description %}
+The file service provides storage for non queryable data such as images, video, raw ECG signals, etc. And in combination with the document service the combination can be made to accommodate for any storage need a customer might have.
 
-```
+[https://qompium.atlassian.net/wiki/spaces/FS](https://qompium.atlassian.net/wiki/spaces/FS)
 
-```
-{% endapi-method-response-example %}
+### Automation
 
-{% api-method-response-example httpCode=401 %}
-{% api-method-response-example-description %}
+#### Task Service
 
-{% endapi-method-response-example-description %}
+The task service is the glue between al our services. Every client as specific business logic that needs to be implemented. Whether it ranges from sending an email when a person registers or sending a Text message when you have ordered a new product.
 
-```
+By using the ExtraHorizon SDK you can write very small and simple scripts in a range of languages \(Node. **js**, **Python**, **Java**, **Ruby**, C\#, Go and **PowerShell**\)
 
-```
-{% endapi-method-response-example %}
+[https://qompium.atlassian.net/wiki/spaces/TS](https://qompium.atlassian.net/wiki/spaces/TS)
 
-{% api-method-response-example httpCode=403 %}
-{% api-method-response-example-description %}
+#### Webhook Service
 
-{% endapi-method-response-example-description %}
+Planned for end of 2021
 
-```
+The web hook service allows you to take action when a web hook is trigger from the outside or when you want to create a web hook that can be consumed by another application.
 
-```
-{% endapi-method-response-example %}
+This service is planned for development towards the end of 2021
 
-{% api-method-response-example httpCode=404 %}
-{% api-method-response-example-description %}
-Could not find a cake matching this query.
-{% endapi-method-response-example-description %}
+#### Event Service
 
-```
-{    "message": "Ain't no cake like that."}
-```
-{% endapi-method-response-example %}
+The event service is the backbone of an ExtraHorizon cluster. Each action you take in a service will also trigger an event. This service services acts as the central message broker throughout the system.
 
-{% api-method-response-example httpCode=411 %}
-{% api-method-response-example-description %}
+You link events to other services or use e.g. a task to execute a small piece of code to take care of some specific business logic.
 
-{% endapi-method-response-example-description %}
+[https://qompium.atlassian.net/wiki/spaces/ES](https://qompium.atlassian.net/wiki/spaces/ES)
 
-```
+### Communication
 
-```
-{% endapi-method-response-example %}
+#### SMS Service
 
-{% api-method-response-example httpCode=500 %}
-{% api-method-response-example-description %}
+Planned for Q4 of 2021
 
-{% endapi-method-response-example-description %}
+Want to keep your customers or clients up to date about their latest diagnostic report or send them an invite over Text Message? This service allows you to send any kind Text message to your registered users.
 
-```
+#### Mail Service
 
-```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+The mail service allows you to send mails to your registered identities
 
-{% tabs %}
-{% tab title="First Tab" %}
+[https://qompium.atlassian.net/wiki/spaces/MS](https://qompium.atlassian.net/wiki/spaces/MS)
 
-{% endtab %}
+#### Notification Service
 
-{% tab title="" %}
+Send push notifications to android and iOS.
 
-{% endtab %}
+[https://qompium.atlassian.net/wiki/spaces/NS](https://qompium.atlassian.net/wiki/spaces/NS)
 
-{% tab title="Second Tab" %}
+#### Localization Service
 
-{% endtab %}
-{% endtabs %}
+Translations of documents in you cloud or of email and notifications can be handled by the localization service.
+
+[https://qompium.atlassian.net/wiki/spaces/LS](https://qompium.atlassian.net/wiki/spaces/LS)
+
+### Other Services
+
+#### Payment Service
+
+Make an easy process of integration any payment system. Apple IAP, Google Pay, Stripe.
+
+[https://qompium.atlassian.net/wiki/spaces/PS](https://qompium.atlassian.net/wiki/spaces/PS)
+
+#### Template Service
+
+Make good looking html templates for Emails or make detailed pdf reports for medical user.
+
+[https://qompium.atlassian.net/wiki/spaces/TMPS](https://qompium.atlassian.net/wiki/spaces/TMPS)
+
+### Infrastructure
+
+#### Infrastructure
+
+Each ExtraHorizon cluster is build on top of an ExtraHorizon Infrastructure setup.
+
+[https://qompium.atlassian.net/wiki/spaces/EHI](https://qompium.atlassian.net/wiki/spaces/EHI)
 
