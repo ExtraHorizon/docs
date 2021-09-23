@@ -53,7 +53,7 @@ createMode defines the permissions needed to create a document in a schema colle
 | Mode | Description |
 | :--- | :--- |
 | `DEFAULT` | The default mode allows every logged-in user to create a new document in the collection. If you don't specify the createMode during schema creation it will by default end up in this mode. |
-| `PERMISSIONREQUIRED` | Only people with the`CREATE_DOCUMENTS`will have the permission to create a document. |
+| `PERMISSIONREQUIRED` | Only users with the`CREATE_DOCUMENTS`permission will have the ability create a document. |
 
 #### readMode
 
@@ -67,16 +67,38 @@ readMode defines the permissions need to read a document in a schema collection
 
 #### updateMode
 
+updateMode defines the permissions need to update a document in a schema collection
+
+| Mode | Description |
+| :--- | :--- |
+| `DEFAULT` | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
+| `CREATORONLY` | Only the user that created the document is able to update the document |
+| `DISABLED` | Nobody can update the document |
+| `LINKEDGROUPSSTAFFONLY` | All users that have a staff enlistment in a group that is in the list of groupIds of the document. |
+
 #### deleteMode
 
-Additionally, the Data Service stores the following attributes when a new Schema is added:
+deleteMode defines the permissions needed to remove a document permanently from a schema collection.
 
-* The synchronization options \(groupSyncMode\):
-  * disabled: no synchronization,
-  * creatorPatientEnlistments: …
-  * linkedUsersPatientEnlistments: all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.
-* Limits for returning items \(defaultLimit and MaximumLimit\),
-* The time of creation and of the latest update of the Schema object \(timestamps\).
+| Mode | Description |
+| :--- | :--- |
+| `PERMISSIONREQUIRED` | Only users with the`DELETE_DOCUMENTS`permission will be able to remove a document. |
+| `LINKEDUSERSONLY` | All users where their userId is in the list of userIds attached to the document. |
+
+#### Creating a schema with permissions
+
+You can provide the permissions parameters upon creation of you new schema:
+
+```text
+const myNewSchema = await sdk.data.schemas.create({
+    name: 'myNewSchema',
+    description: 'This is my new schema',
+    createMode: 'default',
+    readMode: 'allUsers',
+    updateMode: 'disabled',
+    deleteMode: 'permissionRequired'
+});
+```
 
 ### Properties
 
@@ -213,6 +235,17 @@ The Index object is identified by an id and a name. An index is set on a specifi
 * A boolean value to determine whether the index must be … \(system\).
 
 ![](https://lh3.googleusercontent.com/6HdFlAycO47FP893W7yNt4h7-oh0nMvCGsqXonvRw1pX2viBY15VIqOtUu2v89S5v2nQriwx6Qenqw9xW1tZSdXGv5nhsOaAVsrSNRTLQNQ4-eCG8E7xwchX6zBy22YtNEsbg6s=s0)
+
+### Other schema settings
+
+Additionally, the Data Service stores the following attributes when a new Schema is added:
+
+* The synchronization options \(groupSyncMode\):
+  * disabled: no synchronization,
+  * creatorPatientEnlistments: …
+  * linkedUsersPatientEnlistments: all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.
+* Limits for returning items \(defaultLimit and MaximumLimit\),
+* The time of creation and of the latest update of the Schema object \(timestamps\).
 
 ## Endpoints
 
