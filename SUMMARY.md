@@ -15,15 +15,3 @@
   * [Dispatcher Service](for-developers/services/dispatcher-service.md)
   * [Notification Service](for-developers/services/notification-service.md)
 
-## Security
-
-* [Untitled](security/untitled.md)
-
-## Regulatory Compliance
-
-* [Untitled](regulatory-compliance/untitled.md)
-
-## Support
-
-* [FAQ](support/untitled.md)
-
