@@ -137,23 +137,52 @@ await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
 {% endtab %}
 {% endtabs %}
 
-The following example illustrates the use of type configurations:
+#### Some examplex 
 
+you can also make more complex objects and array's of objects.
+
+{% tabs %}
+{% tab title="Object example" %}
 ```text
-"address": {
-  type: 'object',
-  properties: {
-    street: {type: 'string', minLength: 1, pattern: '^[a-z]+$'},
-    number: {type: 'number', minimum: 1, maximum: 300},
-    inhabited: {type: 'boolean', enum: [true, false]},
-    residents: {type: 'array', items: {type: 'string'}, minItems: 1, maxItems: 10}
-  },
-  additionalProperties: false,
-  required: ['street', 'number']
-}
+await sdk.data.properties.create(newSchema.id, 
+  {
+    name: 'address',
+    configuration: {
+      type: 'object',
+      properties: {
+        street: {type: 'string', minLength: 1, pattern: '^[a-z]+$'},
+        number: {type: 'number', minimum: 1, maximum: 300},
+        inhabited: {type: 'boolean', enum: [true, false]},
+        residents: {type: 'array', items: {type: 'string'}, minItems: 1, maxItems: 10}
+      }
+    }
+  }
+});
 ```
+{% endtab %}
 
- All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON webpage.
+{% tab title="Array example" %}
+```text
+await sdk.data.properties.create(newSchema.id, 
+  {
+    name: 'relatives',
+    configuration: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          name: {type: 'string', minLength: 1, maxLength: 50},
+          relation: {type: 'string', enum:['relative','family','friend']}
+        }
+      }
+    }
+  }
+});
+```
+{% endtab %}
+{% endtabs %}
+
+ All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
 
 ### Statuses and transitions
 
