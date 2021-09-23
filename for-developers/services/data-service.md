@@ -14,10 +14,6 @@ Data is managed using structured documents, written in JSON. These documents rel
 1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
 2. **Define Behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
 
-
-
-
-
 ## Schema's
 
 A schema defines both the data contained and the behavior \(in the form of a state machine\) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier \(id\) and contains a name and description. A Schema is based on:
@@ -26,6 +22,23 @@ A schema defines both the data contained and the behavior \(in the form of a sta
 * Statuses which define the state of the document,
 * Properties which define the structure of the document,
 * Transitions which can trigger actions
+
+#### Create a new schema
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```text
+const myNewSchema = await sdk.data.schemas.create({
+    name: 'myNewSchema',
+    description: 'This is my new schema',
+});
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ### Permissions
 
