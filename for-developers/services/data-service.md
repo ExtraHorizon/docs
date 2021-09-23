@@ -35,8 +35,10 @@ const myNewSchema = await sdk.data.schemas.create({
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="curl" %}
+```text
+TODO
+```
 {% endtab %}
 {% endtabs %}
 
