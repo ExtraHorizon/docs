@@ -27,7 +27,7 @@ A schema defines both the data contained and the behavior \(in the form of a sta
 
 {% tabs %}
 {% tab title="JavaScript" %}
-```text
+```javascript
 const myNewSchema = await sdk.data.schemas.create({
     name: 'myNewSchema',
     description: 'This is my new schema',
@@ -83,7 +83,7 @@ deleteMode defines the permissions needed to remove a document permanently from 
 
 You can provide the permissions parameters upon creation of you new schema:
 
-```text
+```javascript
 const myNewSchema = await sdk.data.schemas.create({
     name: 'myNewSchema',
     description: 'This is my new schema',
@@ -114,7 +114,7 @@ The Data Service supports five kinds of configurations \(type attribute\):
 
 {% tabs %}
 {% tab title="Javascript" %}
-```text
+```javascript
 await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
     configuration: {
       type: 'string',
@@ -131,7 +131,7 @@ you can also make more complex objects and array's of objects.
 
 {% tabs %}
 {% tab title="Object example" %}
-```text
+```javascript
 await sdk.data.properties.create(newSchema.id, 
   {
     name: 'address',
@@ -150,7 +150,7 @@ await sdk.data.properties.create(newSchema.id,
 {% endtab %}
 
 {% tab title="Array example" %}
-```text
+```javascript
 await sdk.data.properties.create(newSchema.id, 
   {
     name: 'relatives',
@@ -178,7 +178,7 @@ A document can be perceived as a finite-state machine, which remains in a state/
 
 {% tabs %}
 {% tab title="Javascript" %}
-```text
+```javascript
 await sdk.data.statuses.create(newSchema.id, {
     name: 'initialStatus',
 });
@@ -196,7 +196,7 @@ When you create new schema, by default the data service will include a **NEW** s
 
 {% tabs %}
 {% tab title="Javascript" %}
-```text
+```javascript
 sdk.data.transitions.updateCreation(newSchema.id,{
     type: 'manual',
     toStatus: 'initialStatus',
@@ -218,7 +218,7 @@ A Transition occurs from one Status to another. The Statuses a Transition starts
 
 {% tabs %}
 {% tab title="Javascript" %}
-```text
+```javascript
 sdk.data.transitions.updateCreation(newSchema.id,{
     name: 'firsTransition'
     type: 'manual',
@@ -268,21 +268,53 @@ A Transition object is identified by its name \(name\) and has a specific type a
 
 #### Conditions
 
-Conditions need to be met before a transition can occur \(both for automatic and manual transitions\). There are three types of conditions which apply on the Creation Transition and manual Transitions: 
+Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions: 
 
 | Type | Description |
 | :--- | :--- |
 | `inputCondition` | The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\) |
 | `initiatorHasRelationToUserInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data  |
 | `initiatorHasRelationToGroupInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data  |
-|  |  |
-| d | d |
 
 There is an additional condition which applies to all Transitions:
 
-* The content of a document must match a desired form, as specified by the type configurations in the configuration attribute \(documentCondition\),
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>documentCondition</code>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <ul>
+          <li>The content of a document must match a desired form, as specified by the
+            type configurations in the configuration attribute</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-All attributes required to compose the transition conditions, can be found in the API reference documentation.
+#### **Examples**
+
+{% tabs %}
+{% tab title="inputCondition" %}
+
+
+```javascript
+
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 #### Transition actions
 
