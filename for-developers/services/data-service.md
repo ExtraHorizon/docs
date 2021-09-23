@@ -34,12 +34,6 @@ const myNewSchema = await sdk.data.schemas.create({
 });
 ```
 {% endtab %}
-
-{% tab title="curl" %}
-```text
-TODO
-```
-{% endtab %}
 {% endtabs %}
 
 ### Permissions
@@ -129,12 +123,6 @@ await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
 });
 ```
 {% endtab %}
-
-{% tab title="curl" %}
-```text
-
-```
-{% endtab %}
 {% endtabs %}
 
 #### Some examples
@@ -196,12 +184,6 @@ await sdk.data.statuses.create(newSchema.id, {
 });
 ```
 {% endtab %}
-
-{% tab title="curl" %}
-```text
-TODO
-```
-{% endtab %}
 {% endtabs %}
 
 ### CreationTransition
@@ -224,39 +206,77 @@ sdk.data.transitions.updateCreation(newSchema.id,{
 });
 ```
 {% endtab %}
+{% endtabs %}
 
-{% tab title="curl" %}
+For a creationTransition the type will always be set to `manual`
+
+### Transitions
+
+When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`. 
+
+A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute. 
+
+{% tabs %}
+{% tab title="Javascript" %}
 ```text
-
+sdk.data.transitions.updateCreation(newSchema.id,{
+    name: 'firsTransition'
+    type: 'manual',
+    fromStatuses: ['initialStatus'],
+    toStatus: 'secondStatus',
+    conditions: {...},
+    actions: {...},
+    afterActions: {...}
+});
 ```
 {% endtab %}
 {% endtabs %}
 
-While you are able to 
+A Transition object is identified by its name \(name\) and has a specific type assigned:
 
-### Transitions
+#### Types
 
-A document can be perceived as a finite-state machine, which remains in a state/status until a transition occurs. The Data Service distinguishes two types of Transition objects:
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><b>Manual</b>
+      </td>
+      <td style="text-align:left">A manual transition will be triggered when the transition execution endpoint
+        is called on the document.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Automatic</b>
+      </td>
+      <td style="text-align:left">
+        <p>An automatic transition will trigger when its conditions are met. E.g.
+          when a document is transitioned to status <b>A</b> the data service will
+          look for any automatic transitions that have status <b>A </b>mentioned as
+          a fromStatus. If the conditions of that transition are met it will execute.
+          If not the data service will go to the next automatic transition in line.</p>
+        <p>
+          <br />The sequence of the transitions will depend on the sequence of configuration.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-| Transition type | Description |
+#### Conditions
+
+Conditions need to be met before a transition can occur \(both for automatic and manual transitions\). There are three types of conditions which apply on the Creation Transition and manual Transitions: 
+
+| Type | Description |
 | :--- | :--- |
-| **Creation Transition** | A specialized form of the default transition object which determines to which status the document should transition after creation. |
-| **Transition** | The default transition object |
-
-![](https://lh5.googleusercontent.com/NxkZDy4_TPSP0EpaVcBdo45xrA85Y2YfH1iF3LxuVwz70Fk7pNWYjXTckhOLxdFo1pXXkA19M9mjVL4H82CabJvwm9tPnQKjKE00RFBlTmWjXIN1sR8J2p74edUE1D21xix7PlU=s0)A Transition object is identified by its name \(name\) and has a specific type assigned:
-
-* manual:
-* automatic: 
-
-A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute. Creation Transitions have no fromStatuses object, as they start from nothing, and no name, as they …. Transitions only occur when conditions are met and subsequently perform actions. 
-
-#### Transition conditions
-
-Conditions need to be met before a transition can occur. There are three types of conditions which apply on the Creation Transition and manual Transitions: 
-
-* The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\),
-* The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data \(initiatorHasRelationToUserInDataCondition\),
-* The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data \(initiatorHasRelationToGroupInDataCondition\).
+| `inputCondition` | The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\) |
+| `initiatorHasRelationToUserInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data  |
+| `initiatorHasRelationToGroupInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data  |
+|  |  |
+| d | d |
 
 There is an additional condition which applies to all Transitions:
 
