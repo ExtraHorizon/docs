@@ -9,7 +9,7 @@ description: >-
 
 ## **Intro**
 
-Data is managed using structured documents, written in JSON. These documents rely on data Schemas which determine the structure, behavior, and logic of the document. The purpose of a data schema is twofold:
+Data is managed using structured documents, written in JSON. These documents rely on data Schemas which determine the structure, behavior, and logic of the documents in a schema collection. The purpose of a data schema is twofold:
 
 1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
 2. **Define Behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
@@ -18,21 +18,26 @@ Data is managed using structured documents, written in JSON. These documents rel
 
 
 
-## Getting Started
-
-### Defining your first Schema Collection
-
-
-
 ## Schema's
 
 A schema defines both the data contained and the behavior \(in the form of a state machine\) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier \(id\) and contains a name and description. A Schema is based on:
 
+* Permissions that determine who can access what documents,
 * Statuses which define the state of the document,
 * Properties which define the structure of the document,
-* Transitions which can trigger actions 
+* Transitions which can trigger actions
+
+### Permissions
 
 A schema contains some specific attributes which define the conditions which must be met to create \(createMode\), view \(readMode\), update \(updateMode\) or delete \(deleteMode\) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation. 
+
+#### createMode
+
+#### readMode
+
+#### updateMode
+
+#### deleteMode
 
 Additionally, the Data Service stores the following attributes when a new Schema is added:
 
@@ -160,7 +165,15 @@ Comments can be linked to documents. A Comment object is identified by an id, co
 
 ![](https://lh5.googleusercontent.com/WptW1_9Jhl2kesLY46a8R_1FrRjpbNJqgPI9DJ4W6g-EG4F7D7p663Yw8oeKh_LX-HKHKilFVTRrx3xER9RppsXZkTSSVmD64O3wFSMMoEc3snHkBU3GPLJ5vPL8anOK4-B2THU=s0)
 
-#### Indexes
+
+
+
+
+### Conditions
+
+### Actions
+
+### Indexes
 
 The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
 
@@ -171,7 +184,7 @@ The Index object is identified by an id and a name. An index is set on a specifi
 
 ![](https://lh3.googleusercontent.com/6HdFlAycO47FP893W7yNt4h7-oh0nMvCGsqXonvRw1pX2viBY15VIqOtUu2v89S5v2nQriwx6Qenqw9xW1tZSdXGv5nhsOaAVsrSNRTLQNQ4-eCG8E7xwchX6zBy22YtNEsbg6s=s0)
 
-### Actions
+## Endpoints
 
 This section gives an overview of the available Data Service endpoints. The full descriptions, including the required conditions, permissions and/or scopes, can be found in the API reference documentation.
 
