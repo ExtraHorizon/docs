@@ -108,13 +108,13 @@ A Schema defines the structure of a document through properties. The Properties 
 
 The Data Service supports five kinds of configurations \(type attribute\): 
 
-* object: A container object to define multiple objects, in which each object must meet the schema defined in the properties attribute,
-* array: An array object in which each value must meet the schema defined by the items attribute,
-* string: A string object of which each value must meet the schema defined by the pattern, format, enum and/or const attributes,
-* number: A number object of which each value must meet the schema defined by the enum or const attribute,
-* boolean: A boolean object of which each value must meet the schema defined by the enum or const attribute.
-
-Each object also contains a queryable attribute, which …. . 
+| Type | Description |
+| :--- | :--- |
+| `object` | A container object to define multiple objects, in which each object must meet the schema defined in the properties attribute |
+| `array` | An array object in which each value must meet the schema defined by the items attribute |
+| `string` | A string object of which each value must meet the schema defined by the pattern, format, enum and/or const attributes, |
+| `number` | A number object of which each value must meet the schema defined by the enum or const attribute, |
+| `boolean` | A boolean object of which each value must meet the schema defined by the enum or const attribute. |
 
 The following example illustrates the use of type configurations:
 
