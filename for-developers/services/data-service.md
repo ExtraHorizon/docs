@@ -137,7 +137,7 @@ await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
 {% endtab %}
 {% endtabs %}
 
-#### Some examplex 
+#### Some examples
 
 you can also make more complex objects and array's of objects.
 
@@ -184,12 +184,38 @@ await sdk.data.properties.create(newSchema.id,
 
  All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
 
-### Statuses and transitions
+### Statuses
+
+A document can be perceived as a finite-state machine, which remains in a state/status until a transition occurs. You can define a set of statuses for you document based on the expected workflow you want to build.
+
+{% tabs %}
+{% tab title="Javascript" %}
+```text
+await sdk.data.statuses.create(newSchema.id, {
+    name: 'firstStatus',
+});
+```
+{% endtab %}
+
+{% tab title="curl" %}
+```text
+TODO
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+### CreationTransition
+
+### Transitions
 
 A document can be perceived as a finite-state machine, which remains in a state/status until a transition occurs. The Data Service distinguishes two types of Transition objects:
 
-* Transition: the default transition object,
-* Creation Transition: a specialized form of the default transition object which determines to which status the document should transition after creation.
+| Transition type | Description |
+| :--- | :--- |
+| **Creation Transition** | A specialized form of the default transition object which determines to which status the document should transition after creation. |
+| **Transition** | The default transition object |
 
 ![](https://lh5.googleusercontent.com/NxkZDy4_TPSP0EpaVcBdo45xrA85Y2YfH1iF3LxuVwz70Fk7pNWYjXTckhOLxdFo1pXXkA19M9mjVL4H82CabJvwm9tPnQKjKE00RFBlTmWjXIN1sR8J2p74edUE1D21xix7PlU=s0)A Transition object is identified by its name \(name\) and has a specific type assigned:
 
@@ -271,9 +297,9 @@ Comments can be linked to documents. A Comment object is identified by an id, co
 
 
 
-### Conditions
+#### Conditions
 
-### Actions
+#### Actions
 
 ### Indexes
 
