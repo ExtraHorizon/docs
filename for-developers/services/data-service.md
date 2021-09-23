@@ -48,7 +48,22 @@ A schema contains some specific attributes which define the conditions which mus
 
 #### createMode
 
+createMode defines the permissions needed to create a document in a schema collection.
+
+| Mode | Description |
+| :--- | :--- |
+| `DEFAULT` | The default mode allows every logged-in user to create a new document in the collection. If you don't specify the createMode during schema creation it will by default end up in this mode. |
+| `PERMISSIONREQUIRED` | Only people with the`CREATE_DOCUMENTS`will have the permission to create a document. |
+
 #### readMode
+
+readMode defines the permissions need to read a document in a schema collection
+
+| Mode | Description |
+| :--- | :--- |
+| `DEFAULT` | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
+| `ALLUSERS` | All users will have the permission to read the documents in the schema collection. |
+| `ENLISTEDINLINKEDGROUPS` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document. |
 
 #### updateMode
 
