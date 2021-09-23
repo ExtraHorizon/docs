@@ -12,7 +12,7 @@ description: >-
 Data is managed using structured documents, written in JSON. These documents rely on data Schemas which determine the structure, behavior, and logic of the documents in a schema collection. The purpose of a data schema is twofold:
 
 1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
-2. **Define Behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
+2. **Define behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
 
 ## Schema's
 
@@ -205,6 +205,34 @@ TODO
 {% endtabs %}
 
 ### CreationTransition
+
+The creation transition is the transition that is executed when you create a document. It is the only type of transition that doesn't have a `fromStatus` as there is no status to start from.
+
+{% hint style="warning" %}
+When you create new schema, by default the data service will include a **NEW** status and a creation transition towards that status. This is the reason why you wont find a create creationTransition or delete creationTransition function and only an updateCreationTransition function.
+{% endhint %}
+
+{% tabs %}
+{% tab title="Javascript" %}
+```text
+sdk.data.transitions.updateCreation(newSchema.id,{
+    type: 'manual',
+    toStatus: 'initialStatus',
+    conditions: {...},
+    actions: {...},
+    afterActions: {...}
+});
+```
+{% endtab %}
+
+{% tab title="curl" %}
+```text
+
+```
+{% endtab %}
+{% endtabs %}
+
+While you are able to 
 
 ### Transitions
 
