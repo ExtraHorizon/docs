@@ -272,38 +272,51 @@ Conditions need to be met before a transition can occur. There are three types o
 
 | Type | Description |
 | :--- | :--- |
-| `inputCondition` | The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\) |
-| `initiatorHasRelationToUserInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data  |
-| `initiatorHasRelationToGroupInDataCondition` | The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data  |
+| `input` | The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\) |
+| `initiatorHasRelationToUserInData` | The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data  |
+| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data  |
 
 There is an additional condition which applies to all Transitions:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>documentCondition</code>
-      </td>
-      <td style="text-align:left">
-        <p></p>
-        <ul>
-          <li>The content of a document must match a desired form, as specified by the
-            type configurations in the configuration attribute</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Type | Description |
+| :--- | :--- |
+| `document` | The content of a document must match a desired form, as specified by the type configurations in the configuration attribute |
 
 #### **Examples**
 
 {% tabs %}
 {% tab title="inputCondition" %}
+When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them 
+
+```javascript
+  await sdk.data.transitions.create(newSchema.id, {
+    type: 'manual',
+    toStatus: 'secondStatus',
+    fromStatuses: ['initialStatus'],
+    name: 'firstTransition',
+    conditions: [
+      {
+        type: 'input',
+        configuration: {
+          type: 'object',
+          properties: {
+            address: {
+              type: 'object',
+              properties: {
+                inhabited: { type: 'boolean' },
+              },
+              required: ['inhabited'],
+            },
+          },
+          required: ['address'],
+        },
+      },
+    ],
+  });
+```
+{% endtab %}
+
+{% tab title="document" %}
 
 
 ```javascript
@@ -311,8 +324,20 @@ There is an additional condition which applies to all Transitions:
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="initiatorHasRelationToUserInData" %}
 
+
+```javascript
+
+```
+{% endtab %}
+
+{% tab title="initiatorHasRelationToGroupInData" %}
+
+
+```javascript
+
+```
 {% endtab %}
 {% endtabs %}
 
