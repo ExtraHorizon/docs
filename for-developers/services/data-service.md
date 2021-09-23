@@ -116,6 +116,27 @@ The Data Service supports five kinds of configurations \(type attribute\):
 | `number` | A number object of which each value must meet the schema defined by the enum or const attribute, |
 | `boolean` | A boolean object of which each value must meet the schema defined by the enum or const attribute. |
 
+#### Adding properties to your schema
+
+{% tabs %}
+{% tab title="Javascript" %}
+```text
+await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
+    configuration: {
+      type: 'string',
+      enum: ['firstValue', 'secondValue'],
+    }
+});
+```
+{% endtab %}
+
+{% tab title="curl" %}
+```text
+
+```
+{% endtab %}
+{% endtabs %}
+
 The following example illustrates the use of type configurations:
 
 ```text
