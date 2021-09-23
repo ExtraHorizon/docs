@@ -266,7 +266,7 @@ A Transition object is identified by its name \(name\) and has a specific type a
   </tbody>
 </table>
 
-#### Conditions
+### Transition conditions
 
 Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions: 
 
@@ -341,7 +341,7 @@ When executing a transition on a document you can require the API client to prov
 {% endtab %}
 {% endtabs %}
 
-#### Transition actions
+### Transition actions
 
 An action will trigger operations \(such as calling endpoints in other Services\). In case of a Creation Transition, the action will be executed during the creation of the document. 
 
