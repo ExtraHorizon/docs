@@ -192,7 +192,7 @@ A document can be perceived as a finite-state machine, which remains in a state/
 {% tab title="Javascript" %}
 ```text
 await sdk.data.statuses.create(newSchema.id, {
-    name: 'firstStatus',
+    name: 'initialStatus',
 });
 ```
 {% endtab %}
@@ -203,8 +203,6 @@ TODO
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 ### CreationTransition
 
