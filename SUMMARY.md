@@ -4,8 +4,7 @@
 
 ## For Developers
 
-* [Tools](for-developers/tools/README.md)
-  * [ExtraHorizon SDK](for-developers/tools/extrahorizon-sdk.md)
+* [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Services](for-developers/services/README.md)
   * [Data Service](for-developers/services/data-service.md)
   * [File Service](for-developers/services/file-service.md)
