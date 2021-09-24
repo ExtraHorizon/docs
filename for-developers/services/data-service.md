@@ -472,9 +472,38 @@ TODO
 
 After the creation of a Schema, a document can be created which adheres to the Schema. A document is identified by an id and contains data as defined by the properties field in the Schema. Furthermore, the object contains the following attributes:
 
+{% tabs %}
+{% tab title="List" %}
+| Attribute | Description |
+| :--- | :--- |
+| id | The id of the document |
+| userIds | The ids of the users linked to this document \(e.g. when the readMode is set to default and you userId is in this list you will have access to the document\) |
+| groupIds | The groups the document is linked to. \(e.g. when the readMode is set to default and you have a staff enlistment in one of the groups you have access to the document\) |
+| status | The status the Document resides in \(all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to\) |
+| data | The data stored in the document compliant with the properties defined in the schema. |
+| transitionLock |  |
+| updateTimestamp | The time when the document was last updated \(including when a transition was executed\). |
+| creationTimestamp | The time the document was created. |
+{% endtab %}
+
+{% tab title="Json" %}
+```javascript
+{
+    id: 'abcdef012345678901bacdef',
+    userIds: ['abcdef012345678901bacdef', 'bcdef012345678901bacdef0'],
+    groupIds: ['cdef012345678901bacdef01'],
+    status: 'new',
+    data: {...},
+    transitionLock: {...}
+    updateTimestamp: '2021-09-24T09:11:40+0000',
+    creationTimestamp: '2021-09-24T09:11:37+0000',
+}
+```
+{% endtab %}
+{% endtabs %}
+
 * The status the Document resides in \(all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to\),
 * The ids of the user currently authenticated \(userId\) and the groups the document is linked to \(groupIds\),
-* The number of comments linked to the document \(commentCount\), 
 * The time of creation, of transition and of the latest update of the Document object \(timestamps and transitionLock\).
 
 ![](https://lh5.googleusercontent.com/XyPnDmjLZd-6Cr3Dvfi3vIot6qYGHdKOGSv-WFDVICqfEmG39Kn_cJGBVSTEgW6j9Y93UZ3hS6mrMOu2OvUtVsrGJXEDEYBOZiIK0Cc4WuL8YTR1buAOe1BItcZHdxYdNSFWwTM=s0)
