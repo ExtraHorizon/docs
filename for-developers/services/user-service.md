@@ -1,8 +1,7 @@
 ---
 description: >-
-  The Extra Horizon User Service handles user management and common user
-  actions. This guide provides a conceptional overview and is a complement to
-  the API Reference documentation.
+  The User Service handles user management and general role base access control
+  functionality.
 ---
 
 # Users
