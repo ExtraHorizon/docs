@@ -617,14 +617,5 @@ With the correct permissions or the correct enlistment, users can view \(a selec
 
 * Request a list of schemas: GET/ 
 * Request a list of documents: GET/{schemaId}/documents
-* Request a list of comments: GET/{schemaId}/documents/{documentId}/comments
-
-#### II. Back-end Actions
-
-The following actions allow back-end communication between the Extra Horizon Services.
-
-Health Check 
-
-See xxx. &lt; Op centrale pagina bespreken; geldt voor alle services.&gt;  
-
+* Request a list of comments: GET/{schemaId}/documents/{documentId}/comments 
 
