@@ -56,7 +56,7 @@ Staff members can be in charge of a range of actions in a group, such as managin
 
 In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relationship.
 
-## Global Roles
+## System Roles
 
 Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
 
