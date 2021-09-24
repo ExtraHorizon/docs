@@ -343,40 +343,132 @@ When executing a transition on a document you can require the API client to prov
 
 ### Transition actions
 
-An action will trigger operations \(such as calling endpoints in other Services\). In case of a Creation Transition, the action will be executed during the creation of the document. 
+You can attach actions to transitions. This way when a transition is executed and its conditions are met it will also trigger the action. In case of a Creation Transition, the action will be executed during the creation of the document. 
 
-![](https://lh3.googleusercontent.com/s_PR6dyeDHvYNWQh65hIgxtnK18qVffFs4CNofNCJPcK4wpFiatk9Ht9o9Zc0ijAo62pVJrPLbKHs6jfO7Q7sWXYSQ6Ixknul2hXAyhq3zhRVJ-SpqeLG5wVbVlzD9c6eR_sMVI=s0)
+#### **Modifying the document**
 
-The transition actions include changing the data of the document:
+| Action Type | Description |
+| :--- | :--- |
+| `Set` | Change the value of a specific field |
+| `Unset` | Remove one or multiple fields |
+| `AddItems` | Add values to an array field |
+| `RemoveItems` | Removes values from an array field |
 
-* Change the value of a specific field with the Set action,
-* Remove one or multiple fields with the Unset action,
-* Add values to a field with the AddItems action,
-* Removes values from a field with the RemoveItems action.
+{% hint style="info" %}
+To access an element in an array or embedded documents, use the dot notation.
+{% endhint %}
 
-Tip: To access an element in an array or embedded documents, use the dot notation.
+#### code examples
 
-Not only data, but also root elements \(user ids and group ids\) are changeable with the transition actions:
+{% tabs %}
+{% tab title="Set" %}
 
-* Add the creatorId to the userIds of the document with the LinkCreator action,
-* Add a user id found in data of the document to the userIds of the document with the LinkUserFromData action, 
-* Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document with the LinkEnlistedGroups action,
-* Add a group id found in data of the document to the groupIds field of the document with the LinkGroupFromData action.
+{% endtab %}
 
-Note: An enlistment is an object that connects a User to a specific group by means of the group\_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
+{% tab title="Unset" %}
 
-The delay action is used to delay a transition by a specified amount of time. This action is usually used as a test to validate the correct handling of the lock on documents while transitions are executing. 
+{% endtab %}
 
-Transition actions can also trigger the creation of a Task in the Task Service by using the task action. Specify the functionName \(which references the AWS Lambda function\) and optionally extra data as key-value pairs in the data variable. For more information see the Task Service.
+{% tab title="AddItems" %}
 
-Lastly, the Data Service supports some FibriCheck specific actions:
+{% endtab %}
 
-* Create a measurement\_reviewed notification in which the reviewer is the creator of the document with the measurementReviewedNotification action, 
-* Trigger the Algo Planner Service to check for new measurements to run the algorithm on with the notifyAlgoQueueManager action.
+{% tab title="RemoveItems" %}
 
-For more information on these services, see the Notification Service and Algo Planner Service. All attributes required to compose the transition actions, can be found in the API reference documentation.
+{% endtab %}
+{% endtabs %}
 
-#### Documents 
+#### **Modifying document access**
+
+Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
+
+| Action Type | Description |
+| :--- | :--- |
+| `LinkCreator` | Add the creatorId to the userIds of the document  |
+| `LinkUserFromData` | Add a user id found in data of the document to the userIds of the document |
+| `LinkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document  |
+| `LinkGroupFromData` | Add a group id found in data of the document to the groupIds field of the document |
+
+{% hint style="info" %}
+An enlistment is an object that connects a User to a specific group by means of the group\_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
+{% endhint %}
+
+**code examples**
+
+{% tabs %}
+{% tab title="FirstCreator" %}
+
+{% endtab %}
+
+{% tab title="LinkUserFromData" %}
+
+{% endtab %}
+
+{% tab title="LinkEnlistedGroups" %}
+
+{% endtab %}
+
+{% tab title="LinkGroupFromData" %}
+
+{% endtab %}
+{% endtabs %}
+
+#### Other actions
+
+| **Action Type** | Description |
+| :--- | :--- |
+| `Task` | trigger the creation of a Task in the Task Service by using the task action. Specify the functionName \(which references the AWS Lambda function\) and optionally extra data as key-value pairs in the data variable. |
+
+#### **code** examples
+
+{% tabs %}
+{% tab title="Task" %}
+
+{% endtab %}
+{% endtabs %}
+
+### Indexes
+
+The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
+
+| Attribute | Description |
+| :--- | :--- |
+| background | A boolean value to determine whether the index must be |
+| unique | A boolean value to determine whether the index must be unique |
+| sparse | A boolean value to determine whether the index must be sparse |
+| system | A boolean value to determine whether the index must be |
+
+### Other settings
+
+Additionally, the Data Service stores the following attributes when a new Schema is added:
+
+#### groupSyncMode
+
+TODO more explanation
+
+| Value | Description |
+| :--- | :--- |
+| `disabled` | no synchronization |
+| `creatorPatientEnlistments` | TODO |
+| `linkedUsersPatientEnlistments` | all the groups where the specified user is enlisted as patient will also be added or removed to or from the document. |
+
+**code example**
+
+{% tabs %}
+{% tab title="Javascript" %}
+```javascript
+TODO
+```
+{% endtab %}
+{% endtabs %}
+
+#### **defaultLimit & maximumLimit**
+
+TODO
+
+**example**
+
+## Documents 
 
 After the creation of a Schema, a document can be created which adheres to the Schema. A document is identified by an id and contains data as defined by the properties field in the Schema. Furthermore, the object contains the following attributes:
 
@@ -403,28 +495,6 @@ Comments can be linked to documents. A Comment object is identified by an id, co
 #### Conditions
 
 #### Actions
-
-### Indexes
-
-The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
-
-* A boolean value to determine whether the index must be … \(background\),
-* A boolean value to determine whether the index must be unique \(unique\),
-* A boolean value to determine whether the index must be sparse \(sparse\), 
-* A boolean value to determine whether the index must be … \(system\).
-
-![](https://lh3.googleusercontent.com/6HdFlAycO47FP893W7yNt4h7-oh0nMvCGsqXonvRw1pX2viBY15VIqOtUu2v89S5v2nQriwx6Qenqw9xW1tZSdXGv5nhsOaAVsrSNRTLQNQ4-eCG8E7xwchX6zBy22YtNEsbg6s=s0)
-
-### Other schema settings
-
-Additionally, the Data Service stores the following attributes when a new Schema is added:
-
-* The synchronization options \(groupSyncMode\):
-  * disabled: no synchronization,
-  * creatorPatientEnlistments: …
-  * linkedUsersPatientEnlistments: all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.
-* Limits for returning items \(defaultLimit and MaximumLimit\),
-* The time of creation and of the latest update of the Schema object \(timestamps\).
 
 ## Endpoints
 
