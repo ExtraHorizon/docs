@@ -42,5 +42,23 @@ Could not find a cake matching this query.
 {% endapi-method-spec %}
 {% endapi-method %}
 
+[https://api.{environment}.{customer}.extrahorizon.io](https://api.{environment}.{customer}.extrahorizon.io)
 
+{% tabs %}
+{% tab title="Request" %}
+|  |  |
+| :--- | :--- |
+|  |  |
+{% endtab %}
+
+{% tab title="Response" %}
+ ⚪ **200: OK**
+
+received
+
+```text
+
+```
+{% endtab %}
+{% endtabs %}
 
