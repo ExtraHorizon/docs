@@ -481,7 +481,7 @@ After the creation of a Schema, a document can be created which adheres to the S
 | groupIds | The groups the document is linked to. \(e.g. when the readMode is set to default and you have a staff enlistment in one of the groups you have access to the document\) |
 | status | The status the Document resides in \(all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to\) |
 | data | The data stored in the document compliant with the properties defined in the schema. |
-| transitionLock |  |
+| transitionLock | When a transition is complex it might take some time to execute. During that time the document is in a locked state and no updates are permitted. the transitionLock is an object containing a timestamp when the initial transition was initiated. |
 | updateTimestamp | The time when the document was last updated \(including when a transition was executed\). |
 | creationTimestamp | The time the document was created. |
 {% endtab %}
