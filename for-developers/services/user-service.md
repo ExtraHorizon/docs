@@ -6,13 +6,9 @@ description: >-
 
 # Users
 
-### Intro
+## Intro
 
 There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
-
-| Example: An application allows patients to daily register a home-performed health measurement which can be accessed by the staff members of the medical center of the patient’s choice. Whereas the center’s physician can consult all available data, the lab researcher can only append new results to the file of a patient. |
-| :--- |
-
 
 In addition to the **user management** features, this Service also handles **common user actions**, such as account registration and password control.
 
@@ -60,7 +56,7 @@ Staff members can be in charge of a range of actions in a group, such as managin
 
 In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relationship.
 
-#### Roles
+## Global Roles
 
 Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
 
