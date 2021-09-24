@@ -13,9 +13,9 @@
     * [Untitled](for-developers/services/data-service/untitled.md)
   * [Files](for-developers/services/file-service.md)
   * [Tasks](for-developers/services/task-service.md)
+  * [Dispatchers](for-developers/services/dispatcher-service.md)
   * [Mails](for-developers/services/mail-service.md)
+  * [Notifications](for-developers/services/notification-service.md)
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
-  * [Notifications](for-developers/services/notification-service.md)
-  * [Dispatchers](for-developers/services/dispatcher-service.md)
 
