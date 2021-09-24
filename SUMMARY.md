@@ -17,5 +17,5 @@
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
   * [Notifications](for-developers/services/notification-service.md)
-  * [Dispatcher](for-developers/services/dispatcher-service.md)
+  * [Dispatchers](for-developers/services/dispatcher-service.md)
 
