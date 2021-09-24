@@ -314,13 +314,38 @@ When executing a transition on a document you can require the API client to prov
     ],
   });
 ```
+
+the example above would require the API client to provide the address.inhabited property. otherwise the transition will not trigger.
 {% endtab %}
 
 {% tab title="document" %}
 
 
 ```javascript
-
+  await sdk.data.transitions.create(newSchema.id, {
+    type: 'manual',
+    toStatus: 'secondStatus',
+    fromStatuses: ['initialStatus'],
+    name: 'firstTransition',
+    conditions: [
+      {
+        type: 'input',
+        configuration: {
+          type: 'object',
+          properties: {
+            address: {
+              type: 'object',
+              properties: {
+                inhabited: { type: 'boolean' },
+              },
+              required: ['inhabited'],
+            },
+          },
+          required: ['address'],
+        },
+      },
+    ],
+  });
 ```
 {% endtab %}
 
