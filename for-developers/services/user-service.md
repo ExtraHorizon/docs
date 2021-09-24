@@ -5,7 +5,7 @@ description: >-
   the API Reference documentation.
 ---
 
-# User Service
+# Users
 
 ### Intro
 

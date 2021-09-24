@@ -5,7 +5,7 @@ description: >-
   complementary to the API reference documentation.
 ---
 
-# Notification Service
+# Notifications
 
 ## Intro
 

@@ -4,7 +4,7 @@ description: >-
   enable the (scheduled) execution of code on demand.
 ---
 
-# Task Service
+# Tasks
 
 ## Intro
 

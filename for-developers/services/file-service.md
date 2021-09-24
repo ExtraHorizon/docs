@@ -5,7 +5,7 @@ description: >-
   complement to the API reference documentation.
 ---
 
-# File Service
+# Files
 
 ### Intro
 

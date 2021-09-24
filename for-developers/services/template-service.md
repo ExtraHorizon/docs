@@ -5,7 +5,7 @@ description: >-
   the API reference documentation.
 ---
 
-# Template Service
+# Templates
 
 ## Intro
 

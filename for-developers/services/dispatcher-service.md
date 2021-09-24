@@ -5,7 +5,7 @@ description: >-
   complementary to the API reference documentati
 ---
 
-# Dispatcher Service
+# Dispatcher
 
 ## Intro
 
