@@ -9,7 +9,7 @@ description: >-
 
 ## Intro
 
-ExtraHorizon exists of a set of web services that the customer can use to compose a custom backend specific to their needs
+ExtraHorizon exists of a set of web services that the customer can use to compose a custom backend specific to their needs and specifications.
 
 ![](../../.gitbook/assets/b5579e35-6688-4944-9ae0-c69e44940810.png)
 
