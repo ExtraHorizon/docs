@@ -438,6 +438,8 @@ The Index object is identified by an id and a name. An index is set on a specifi
 | sparse | A boolean value to determine whether the index must be sparse |
 | system | A boolean value to determine whether the index must be |
 
+### 
+
 ### Other settings
 
 Additionally, the Data Service stores the following attributes when a new Schema is added:
@@ -502,28 +504,21 @@ After the creation of a Schema, a document can be created which adheres to the S
 {% endtab %}
 {% endtabs %}
 
-* The status the Document resides in \(all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to\),
-* The ids of the user currently authenticated \(userId\) and the groups the document is linked to \(groupIds\),
-* The time of creation, of transition and of the latest update of the Document object \(timestamps and transitionLock\).
+### Creating a document
 
-![](https://lh5.googleusercontent.com/XyPnDmjLZd-6Cr3Dvfi3vIot6qYGHdKOGSv-WFDVICqfEmG39Kn_cJGBVSTEgW6j9Y93UZ3hS6mrMOu2OvUtVsrGJXEDEYBOZiIK0Cc4WuL8YTR1buAOe1BItcZHdxYdNSFWwTM=s0)
+### Querying
 
-#### Comments
+### Performing updates
 
-Comments can be linked to documents. A Comment object is identified by an id, contains text \(text\) and is linked to a Schema \(schemaId\). Furthermore, the object contains the following attributes:
+### Permanent delete
 
-* The id of the measurement system \(measurementId\) and of the user currently authenticated \(userId\),
-* The time of creation and of the latest update of the Comment object \(timestamps\).
+### Triggering transitions
 
-![](https://lh5.googleusercontent.com/WptW1_9Jhl2kesLY46a8R_1FrRjpbNJqgPI9DJ4W6g-EG4F7D7p663Yw8oeKh_LX-HKHKilFVTRrx3xER9RppsXZkTSSVmD64O3wFSMMoEc3snHkBU3GPLJ5vPL8anOK4-B2THU=s0)
+### updating access
 
+#### 
 
 
-
-
-#### Conditions
-
-#### Actions
 
 ## Endpoints
 
