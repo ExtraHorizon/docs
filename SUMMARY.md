@@ -6,11 +6,12 @@
 
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Services](for-developers/services/README.md)
+  * [User Service](for-developers/services/user-service.md)
   * [Data Service](for-developers/services/data-service/README.md)
     * [Create a new Schema](for-developers/services/data-service/create-a-new-schema.md)
     * [Untitled](for-developers/services/data-service/untitled.md)
-  * [File Service](for-developers/services/file-service.md)
   * [Task Service](for-developers/services/task-service.md)
+  * [File Service](for-developers/services/file-service.md)
   * [Mail service](for-developers/services/mail-service.md)
   * [Localization Service](for-developers/services/localization-service.md)
   * [Template Service](for-developers/services/template-service.md)
