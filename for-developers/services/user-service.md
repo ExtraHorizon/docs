@@ -14,7 +14,9 @@ In addition to the **user management** features, this Service also handles **com
 
 &lt;optionally include: how is this API related to the other Services&gt;
 
-### Information Model
+## **Users**
+
+#### Information Model
 
 The User Service allows Extra Horizon customers to create **Users** which can be enlisted in groups as **staff member** or **patient**. Staff members can receive specific **GroupRoles** that determine which type of actions the User is allowed to perform within the group. In addition, Users can receive global **Roles**, which are independent of group enlistments. The latter typically include the roles of administrator or IT support helpdesk of the customer’s application.
 
@@ -22,7 +24,7 @@ The User Service allows Extra Horizon customers to create **Users** which can be
 | :--- |
 
 
-### Objects and Attributes
+#### Objects and Attributes
 
 #### Timestamp Attributes
 
@@ -183,6 +185,8 @@ o   Resend the verification email: GET /activation
   </thead>
   <tbody></tbody>
 </table>
+
+\*\*\*\*
 
 **Registration of a new User**
 
