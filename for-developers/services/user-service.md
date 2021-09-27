@@ -40,8 +40,9 @@ In addition to role base access controls this service also provides registration
     "first_name": "John",
     "last_name": "Doe",
     "language": "EN",
-    "email": "john.doe@extrahorizon.io",
+    "email": "john.doe@example.com",
     "phone_number": "+32012345678",
+    "timeZone": "Europe/London",
     "activation": true,
     "roles":[...],
     "staff_enlistments":[...],
@@ -55,9 +56,38 @@ In addition to role base access controls this service also provides registration
 {% endtab %}
 {% endtabs %}
 
-{% hint style="warning" %}
-When using the Javascript SDK fields are transformed into a camelCase. snake\_case will also be phased out for the user service and all other ExtraHorizon Services.
+{% hint style="info" %}
+When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
 {% endhint %}
+
+#### Register a new user
+
+You can make use of the ExtraHorizon SDK to create new users in your application.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const myNewSchema = await sdk.users.createAccount({
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@example.com',
+    password: 'Secret1234',
+    phoneNumber: '+32012345678',
+    birthday: '1987-06-05',
+    country: 'UK',
+    gender: 1,
+    language: 'EN',
+    timeZone: 'Europe/London'
+});
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="warning" %}
+Notice **birthday**, **country** & **gender** is part of the registration fields but is not returned when Querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation a user profile is created and these fields are stored there.
+{% endhint %}
+
+#### 
 
 #### Users
 
