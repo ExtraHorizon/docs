@@ -8,20 +8,28 @@ description: >-
 
 ## Intro
 
-There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
+The user service handles user management and a general role based access control system. At a basic level every user in the system starts out as basic user without any permissions. Based on the type of application you want to build you can create roles on system and group level and assign permissions to them.
 
-In addition to the **user management** features, this Service also handles **common user actions**, such as account registration and password control.
-
-&lt;optionally include: how is this API related to the other Services&gt;
+In addition to role base access controls this service also provides registration and password management functionality.
 
 ## **Users**
 
-#### Information Model
+{% tabs %}
+{% tab title="Overview" %}
+| Attribute | Description |
+| :--- | :--- |
+|  |  |
+{% endtab %}
 
-The User Service allows Extra Horizon customers to create **Users** which can be enlisted in groups as **staff member** or **patient**. Staff members can receive specific **GroupRoles** that determine which type of actions the User is allowed to perform within the group. In addition, Users can receive global **Roles**, which are independent of group enlistments. The latter typically include the roles of administrator or IT support helpdesk of the customer’s application.
+{% tab title="Json" %}
+```javascript
 
-| Tip:       A **group** is a collection of Users joined together by a group\_id. It typically is the digital representation of a specific **company or medical practice**. Groups are used to manage staff members and to connect patients with medical services. |
-| :--- |
+```
+{% endtab %}
+{% endtabs %}
+
+#### 
+
 
 
 #### Objects and Attributes
@@ -77,6 +85,20 @@ The same type of Role, possibly with the same name, can exist on both levels. A 
 | Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
 | :--- |
 
+
+## Groups
+
+There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
+
+The User Service allows Extra Horizon customers to create **Users** which can be enlisted in groups as **staff member** or **patient**. Staff members can receive specific **GroupRoles** that determine which type of actions the User is allowed to perform within the group. In addition, Users can receive global **Roles**, which are independent of group enlistments. The latter typically include the roles of administrator or IT support helpdesk of the customer’s application.
+
+Tip:       A **group** is a collection of Users joined together by a group\_id. It typically is the digital representation of a specific **company or medical practice**. Groups are used to manage staff members and to connect patients with medical services.
+
+### Staff Membership
+
+### Patient Membership
+
+### 
 
 ### Actions
 
