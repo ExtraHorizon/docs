@@ -39,7 +39,7 @@ The data service is a service that provides storage and query capabilities.
 
 The service allows you to: define you own queryable data models by utilizing JSON Schema’s, define workflows that can trigger other services or automation rules in the network. The data service like all other services support an extremely flexible querying language in the form of querying parameters.
 
-{% page-ref page="data-service/" %}
+{% page-ref page="data-service.md" %}
 
 ### File Service
 

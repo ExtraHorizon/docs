@@ -69,24 +69,6 @@ Users are uniquely identified by their email address, which must be validated to
 
 A User can be enlisted to multiple groups as staff member \(staff\_enlistments\) and/or as patient \(patient\_enlistments\) and can have one or more global Roles \(roles\). The values for these optional attributes consist of arrays of the respective type of object.
 
-#### Enlistments
-
-An enlistment is an object that connects a User to a specific group by means of the group\_id. These objects do not have an identifier and can only be accessed via the associated User. There are two types of enlistments:
-
-·       PatientEnlistment
-
-The optional expiry\_timestamp attribute in the PatientEnlistment object can be used to limit the time a patient has access to a specific group. This access right is represented by the expired attribute \(true/false\).
-
-| Note:    The expiry\_timestamp cannot be updated\[NB1\] . The PatientEnlistment must be removed and recreated \[NB2\] to extend the subscription to the specific group. |
-| :--- |
-
-
-·       StaffEnlistment
-
-Staff members can be in charge of a range of actions in a group, such as managing the group’s userbase or processing the patients’ medical data. To specify which actions each staff member is allowed to perform, the StaffEnlistment object can include an array of GroupRoles \(roles\).
-
-In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relationship.
-
 ## System Roles
 
 Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
@@ -116,6 +98,26 @@ The User Service allows Extra Horizon customers to create **Users** which can be
 Tip:       A **group** is a collection of Users joined together by a group\_id. It typically is the digital representation of a specific **company or medical practice**. Groups are used to manage staff members and to connect patients with medical services.
 
 ### Staff Membership
+
+#### Enlistments
+
+An enlistment is an object that connects a User to a specific group by means of the group\_id. These objects do not have an identifier and can only be accessed via the associated User. There are two types of enlistments:
+
+·       PatientEnlistment
+
+The optional expiry\_timestamp attribute in the PatientEnlistment object can be used to limit the time a patient has access to a specific group. This access right is represented by the expired attribute \(true/false\).
+
+| Note:    The expiry\_timestamp cannot be updated\[NB1\] . The PatientEnlistment must be removed and recreated \[NB2\] to extend the subscription to the specific group. |
+| :--- |
+
+
+·       StaffEnlistment
+
+Staff members can be in charge of a range of actions in a group, such as managing the group’s userbase or processing the patients’ medical data. To specify which actions each staff member is allowed to perform, the StaffEnlistment object can include an array of GroupRoles \(roles\).
+
+In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relationship.
+
+## 
 
 ### Patient Membership
 
