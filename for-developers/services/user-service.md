@@ -15,7 +15,7 @@ In addition to role base access controls this service also provides registration
 ## **Users**
 
 {% tabs %}
-{% tab title="Overview" %}
+{% tab title="List" %}
 | Attribute | Description |
 | :--- | :--- |
 | `id` | The identifier of the user. |
@@ -58,14 +58,6 @@ In addition to role base access controls this service also provides registration
 {% hint style="warning" %}
 When using the Javascript SDK fields are transformed into a camelCase. snake\_case will also be phased out for the user service and all other ExtraHorizon Services.
 {% endhint %}
-
-
-
-#### Objects and Attributes
-
-#### Timestamp Attributes
-
-All objects in the User Service receive timestamps to indicate their time of creation and/or latest update. For security reasons, the User object also stores the number of failed login attempts and a timestamp for the most recent failed attempt \(see the Auth Service\).
 
 #### Users
 
