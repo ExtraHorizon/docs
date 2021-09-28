@@ -134,6 +134,14 @@ await sdk.users.requestEmailActivation('john.doe@example.com');
 
 
 
+
+
+
+
+
+
+
+
 #### Users
 
 Users are uniquely identified by their email address, which must be validated to activate the user account \(see Registration of a new User\). In addition, a unique identifier \(id\) is assigned to each new User. This id is used, among others, to link the User object to the user’s Profile \(see the Profile Service\).
