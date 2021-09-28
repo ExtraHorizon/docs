@@ -14,8 +14,6 @@ In addition to role base access controls this service also provides registration
 
 ## **Users**
 
-The ****user 
-
 {% tabs %}
 {% tab title="List" %}
 | Attribute | Description |
@@ -96,14 +94,43 @@ After registration the activation attribute will default to `false`. While email
 The user service can be configured to hold a reference to an html template in the template service. When a registration occurs the user service will try to send an email by using this template.
 
 {% hint style="danger" %}
-Current email verif
+Currently the configuration of a templateId is not possible through the API. Contact ExtraHorizon support in order to set this variable.
 {% endhint %}
 
+The user service will provide the users **firstname** and **activation\_hash** to the email service. The email service will add the **tracking\_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
 
+```javascript
+...,
+"schema": {
+    "type": "object",
+    "fields": {
+        "firstname": {
+            "type": "string"
+        },
+        "activation_hash": {
+            "type": "string"
+        },
+        "tracking_hash": {
+            "type": "string"
+        }
+    },
+}
+...
+```
 
+#### Resending the email verification
 
+When you make an application where email verification is a prerequisite or when you want to provide password reset capabilities you want your user to be able to trigger the email verification mail again.
 
-While email verification is not blocking the use of any API services, it is blocking the possibility to initiate a password reset. 
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.requestEmailActivation('john.doe@example.com');
+```
+{% endtab %}
+{% endtabs %}
+
+### Lost password
 
 
 
