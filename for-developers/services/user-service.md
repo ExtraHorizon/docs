@@ -14,6 +14,8 @@ In addition to role base access controls this service also provides registration
 
 ## **Users**
 
+The ****user 
+
 {% tabs %}
 {% tab title="List" %}
 | Attribute | Description |
@@ -60,9 +62,9 @@ In addition to role base access controls this service also provides registration
 When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
 {% endhint %}
 
-#### Register a new user
+### Register a new user
 
-You can make use of the ExtraHorizon SDK to create new users in your application.
+You can make use of the ExtraHorizon SDK to create new users from your application.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -87,7 +89,23 @@ const myNewSchema = await sdk.users.createAccount({
 Notice **birthday**, **country** & **gender** is part of the registration fields but is not returned when Querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation a user profile is created and these fields are stored there.
 {% endhint %}
 
-#### 
+### Email verification
+
+After registration the activation attribute will default to `false`. While email verification is not blocking the use of any API services, it is blocking the possibility to initiate a password reset. If you are not providing password reset functionality inside your application you can skip this step. For other applications it is highly recommended as you want to prevent sending emails to the wrong person.
+
+The user service can be configured to hold a reference to an html template in the template service. When a registration occurs the user service will try to send an email by using this template.
+
+{% hint style="danger" %}
+Current email verif
+{% endhint %}
+
+
+
+
+
+While email verification is not blocking the use of any API services, it is blocking the possibility to initiate a password reset. 
+
+
 
 #### Users
 
