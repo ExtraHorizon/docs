@@ -167,45 +167,28 @@ await sdk.users.requestPasswordReset('john.doe@example.com');
 
 #### Resetting a password
 
+With the steps above you can provide your user with an email containing a reset token. Typically this is embedded inside a url or deeplink towards your application. You can then use that token to reset the password of the user.
 
-
-
-
-
-
-
-
-#### Users
-
-Users are uniquely identified by their email address, which must be validated to activate the user account \(see Registration of a new User\). In addition, a unique identifier \(id\) is assigned to each new User. This id is used, among others, to link the User object to the user’s Profile \(see the Profile Service\).
-
-| Note:    Personally identifiable information, such as contact details, is stored within the User object, whereas medical data, including date of birth, gender, and country of residence, is stored within the Profile object. This allows the retention of the \(anonymized\) medical data when a user account is deleted. This data thus remains available for future research purposes. |
-| :--- |
-
-
-A User can be enlisted to multiple groups as staff member \(staff\_enlistments\) and/or as patient \(patient\_enlistments\) and can have one or more global Roles \(roles\). The values for these optional attributes consist of arrays of the respective type of object.
-
-## System Roles
-
-Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
-
-| Tip:       The permissions that are applicable within the Extra Horizon Services can be consulted via the List all \(group\) permissions endpoints. |
-| :--- |
-
-
-The Extra Horizon Services make a distinction between two types of roles:
-
-·       GroupRoles, which only apply within the scope of a specific group. They are linked to a User via a StaffEnlistment object.
-
-·       Global Roles, which are independent of groups. They are assigned directly to the User object.
-
-The same type of Role, possibly with the same name, can exist on both levels. A User can have multiple GroupRoles and/or multiple global Roles.
-
-| Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
-| :--- |
-
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.validatePasswordReset({
+    hash: 'be7ab8ebe9094588ac3693cd6ec9d5b7',
+    newPassword: 'myNewSecret1234',
+});
+```
+{% endtab %}
+{% endtabs %}
 
 ## Groups
+
+Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
+
+The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a role that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
+
+
+
+
 
 There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
 
@@ -481,4 +464,26 @@ Kobe: nog na te vragen
 -         hoe blokkade opheffen? \(zou API call voor moeten komen, maar kan zijn dat die er vandaag nog niet is\)
 
 Kobe: nog na te vragen
+
+## System Roles
+
+Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
+
+| Tip:       The permissions that are applicable within the Extra Horizon Services can be consulted via the List all \(group\) permissions endpoints. |
+| :--- |
+
+
+The Extra Horizon Services make a distinction between two types of roles:
+
+·       GroupRoles, which only apply within the scope of a specific group. They are linked to a User via a StaffEnlistment object.
+
+·       Global Roles, which are independent of groups. They are assigned directly to the User object.
+
+The same type of Role, possibly with the same name, can exist on both levels. A User can have multiple GroupRoles and/or multiple global Roles.
+
+| Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
+| :--- |
+
+
+## 
 
