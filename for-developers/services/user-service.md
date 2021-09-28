@@ -97,7 +97,7 @@ The user service can be configured to hold a reference to an html template in th
 Currently the configuration of a templateId is not possible through the API. Contact ExtraHorizon support in order to set this variable.
 {% endhint %}
 
-The user service will provide the users **firstname** and **activation\_hash** to the email service. The email service will add the **tracking\_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
+The user service will provide the users **firstname, lastname** and **activation\_hash** to the email service. The email service will add the **tracking\_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
 
 ```javascript
 ...,
@@ -105,6 +105,9 @@ The user service will provide the users **firstname** and **activation\_hash** t
     "type": "object",
     "fields": {
         "firstname": {
+            "type": "string"
+        },
+        "lastname": {
             "type": "string"
         },
         "activation_hash": {
@@ -118,7 +121,7 @@ The user service will provide the users **firstname** and **activation\_hash** t
 ...
 ```
 
-#### Resending the email verification
+#### Resending email verification
 
 When you make an application where email verification is a prerequisite or when you want to provide password reset capabilities you want your user to be able to trigger the email verification mail again.
 
@@ -130,9 +133,39 @@ await sdk.users.requestEmailActivation('john.doe@example.com');
 {% endtab %}
 {% endtabs %}
 
-### Lost password
+You can choose to set a different templateId for this email in the [User Service](user-service.md). Currently this functionality is not supported through the API. Contact ExtraHorizon support in order to set this variable.
 
+#### Performing a user activation
 
+With the steps above you can provide your user with an email containing an activation token. Typically this is embedded inside a url or deeplink towards your application. You can then use that token to activate the user.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.validateEmailActivation({
+    hash: '6ca1691b4c5b4dbfa5def4c49b910657',
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### Reset password
+
+Users not remembering their password is common and you want to deal with it safely in your applications. The ExtraHorizon SDK provides you with the ability to do so.
+
+#### Requesting a password reset email
+
+Much like the email verification flow, the password reset flow provides you with a reset token that you can use to set a new password for your users account. The user service again contains a templateId for this email, contact ExtraHorizon support in order to set this variable.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.requestPasswordReset('john.doe@example.com');
+```
+{% endtab %}
+{% endtabs %}
+
+#### Resetting a password
 
 
 
