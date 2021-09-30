@@ -104,7 +104,7 @@ There is no automatic retrying for a failed task. To rerun a failed Task, create
 
 ## FAQ
 
-### How to repeate a task at regular interval?
+### How to repeat a task at regular interval?
 
 To repeat the same Task at regular intervals, create a recurring Task that triggers the scheduling of an identical Task with `startTimestamp = {previous startTimestamp + N}`.
 
