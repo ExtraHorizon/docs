@@ -1,6 +1,11 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [Overview](README.md)
+
+## FAQ
+
+* [General](faq/general.md)
+* [Regulatory](faq/regulatory.md)
 
 ## For Developers
 
@@ -16,4 +21,8 @@
   * [Notifications](for-developers/services/notification-service.md)
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
+
+## Additional Resources
+
+* [GitHub](https://github.com/ExtraHorizon)
 
