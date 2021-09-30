@@ -186,6 +186,22 @@ Groups are entities that combine users together. Allowing us to create access co
 
 The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a role that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
 
+### Creating a group
+
+A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a group or a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with ar groupRole containing the **ADD\_STAFF** permission.
+
+### sdf
+
+```javascript
+await sdk.users.groupRoles.addUsersToStaff({
+    groups: ['841e55106a2a40c39ed6359b2c137a19'],
+});
+
+// or
+
+
+```
+
 
 
 
