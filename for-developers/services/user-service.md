@@ -211,7 +211,7 @@ await sdk.users.addPatientEnlistment('{yourUserId}', {
 
 ### Staff Members
 
-Within a group one staff member has one
+You can add a user as a staff member to a group in some services this already provides you with some basic permissions in specific services. As a staff member you can 
 
 #### 
 
@@ -497,6 +497,36 @@ Kobe: nog na te vragen
 Kobe: nog na te vragen
 
 ## System Roles
+
+### Permissions
+
+| name | Description |
+| :--- | :--- |
+| `VIEW_USER` | view users |
+| `UPDATE_USER` | update users |
+| `UPDATE_USER_EMAIL` | update users email |
+| `DELETE_USER` | delete users |
+| `CREATE_ROLE` | create a new role |
+| `VIEW_ROLE` | view roles |
+| `UPDATE_ROLE` | updata a role |
+| `DELETE_ROLE` | delete a role |
+| `ADD_ROLE_PERMISSION` | Add permissions to a role |
+| `REMOVE_ROLE_PERMISSION` | Remove permissions from a role |
+| `ADD_ROLE_TO_USER` | add a role to a user |
+| `REMOVE_ROLE_FROM_USER` | remove a role from a user |
+| `CREATE_GROUP_ROLE` | add roles to a group |
+| `UPDATE_GROUP_ROLE` | update roles from a group |
+| `DELETE_GROUP_ROLE` | delete roles from group |
+| `ADD_GROUP_ROLE_PERMISSION` | Add a permission to group roles |
+| `REMOVE_GROUP_ROLE_PERMISSION` | Remove a permission from group roles |
+| `VIEW_STAFF` | View the staff members of groups |
+| `ADD_STAFF` | Add staff to a group |
+| `REMOVE_STAFF` | Remove staff from a group |
+| `ADD_GROUP_ROLE_TO_STAFF` | Add a group role to a staff member |
+| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member |
+| `VIEW_PATIENTS` | View the patients of groups |
+| `ADD_PATIENT` | Add patients to a group |
+| `REMOVE_PATIENT` | Remove patients from a group |
 
 Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
 
