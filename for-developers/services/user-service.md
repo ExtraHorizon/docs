@@ -100,25 +100,27 @@ Currently the configuration of a templateId is not possible through the API. Con
 The user service will provide the users **firstname, lastname** and **activation\_hash** to the email service. The email service will add the **tracking\_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
 
 ```javascript
-...,
-"schema": {
-    "type": "object",
-    "fields": {
-        "firstname": {
-            "type": "string"
+{
+    ...,
+    "schema": {
+        "type": "object",
+        "fields": {
+            "firstname": {
+                "type": "string"
+            },
+            "lastname": {
+                "type": "string"
+            },
+            "activation_hash": {
+                "type": "string"
+            },
+            "tracking_hash": {
+                "type": "string"
+            }
         },
-        "lastname": {
-            "type": "string"
-        },
-        "activation_hash": {
-            "type": "string"
-        },
-        "tracking_hash": {
-            "type": "string"
-        }
-    },
+    }
+    ...
 }
-...
 ```
 
 #### Resending email verification
@@ -188,10 +190,10 @@ The user service was build specifically for medical applications where patients 
 
 ### Creating a group
 
-A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a group or a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with ar groupRole containing the **ADD\_STAFF** permission.
+A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a group or a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with a groupRole containing the **ADD\_STAFF** permission.
 
-### sdf
-
+{% tabs %}
+{% tab title="JavaScript" %}
 ```javascript
 await sdk.users.groupRoles.addUsersToStaff({
     groups: ['841e55106a2a40c39ed6359b2c137a19'],
@@ -199,12 +201,21 @@ await sdk.users.groupRoles.addUsersToStaff({
 
 // or
 
-
+await sdk.users.addPatientEnlistment('{yourUserId}', {
+    groupId: '841e55106a2a40c39ed6359b2c137a19',
+    expiryTimestamp: 1234567890,
+});
 ```
+{% endtab %}
+{% endtabs %}
 
+### Staff Members
 
+Within a group one staff member has one
 
+#### 
 
+### Patient Members
 
 There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
 
@@ -212,7 +223,11 @@ The User Service allows Extra Horizon customers to create **Users** which can be
 
 Tip:       A **group** is a collection of Users joined together by a group\_id. It typically is the digital representation of a specific **company or medical practice**. Groups are used to manage staff members and to connect patients with medical services.
 
-### Staff Membership
+
+
+
+
+
 
 #### Enlistments
 
@@ -234,11 +249,11 @@ In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relati
 
 ## 
 
-### Patient Membership
+
 
 ### 
 
-### Actions
+## Actions
 
 The sections below give an overview of the available User Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API Reference documentation.
 
