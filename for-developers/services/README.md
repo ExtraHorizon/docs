@@ -19,17 +19,21 @@ Each customer can have one or more dedicated clusters. Each cluster has a basic 
 
 IAM or identity and access management is at the center of each ExtraHorzion setup. This is the place where you can manage and create users, groups, define roles and allocate permissions, manage security settings such as 2FA and much more…
 
+### Authentication Service
+
+The authentication service main responsibility is authenticating each incoming request and attaching an identity to that request.
+
+The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2.0, SSO, MFA,… You can register frontend applications and determine it's accessible functionality.
+
+{% page-ref page="authentication.md" %}
+
 ### User Service
 
 The user service is responsible for managing identities in an ExtraHorizon Cluster. Each action you take always occurs in the context of such an identity.
 
 The service has functionality ranging from registering new identities, managing roles, permissions, password management, etc…
 
-### Authentication Service
-
-The authentication service main responsibility is authenticating each incoming request and attaching an identity to that request.
-
-The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2.0, SSO, MFA,… You can register frontend applications and determine it's accessible functionality.
+{% page-ref page="user-service.md" %}
 
 ## Storage
 
