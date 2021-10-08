@@ -197,7 +197,19 @@ await sdk.users.validateEmailActivation({
 {% endtab %}
 {% endtabs %}
 
-### Reset password
+### Changing email
+
+When logged in you can change the email of your/a user account depending on your permissions. When doing this you will be required to reactive your account.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.updateEmail('abcdef0123456789abcdef01', 'jane.doe@example.com');
+```
+{% endtab %}
+{% endtabs %}
+
+### Password reset
 
 Users not remembering their password is common and you want to deal with it safely in your applications. The ExtraHorizon SDK provides you with the ability to do so.
 
@@ -228,9 +240,20 @@ await sdk.users.validatePasswordReset({
 {% endtab %}
 {% endtabs %}
 
-### Changing a password
+### Password Change
 
-When 
+When authenticated you can also implement password change functionality in your application. Changing the password requires you to resend the current password together with the new password.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.changePassword({
+    oldPassword: 'password123',
+    newPassword: 'newPassword123',
+});
+```
+{% endtab %}
+{% endtabs %}
 
 ## Groups
 
