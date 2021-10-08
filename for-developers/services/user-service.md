@@ -14,6 +14,20 @@ In addition to role base access controls this service also provides registration
 
 ## **Users**
 
+#### Retrieving a user
+
+Using the 
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.findById();
+```
+{% endtab %}
+{% endtabs %}
+
+
+
 {% tabs %}
 {% tab title="Json" %}
 ```javascript
@@ -23,7 +37,7 @@ In addition to role base access controls this service also provides registration
     "last_name": "Doe",
     "language": "EN",
     "email": "john.doe@example.com",
-    "phone_number": "+32012345678",
+    "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
     "roles":[...],
@@ -54,13 +68,35 @@ In addition to role base access controls this service also provides registration
 | `creation_timestamp` | Epoch timestamp when the user was created. |
 | `update_timestamp` | Epoch timestamp when this user object was last updated. |
 {% endtab %}
+
+{% tab title="PatientView" %}
+```javascript
+{
+    "id": "abcdef0123456789abcdef01",
+    "first_name": "John",
+    "last_name": "Doe",
+    "language": "EN",
+    "email": "john.doe@example.com",
+    "phoneNumber": "+32012345678",
+    "timeZone": "Europe/London",
+    "activation": true,
+    "patient_enlistments": [...] //only the groups where you are staff
+  }
+```
+{% endtab %}
+
+{% tab title="StaffView" %}
+```
+
+```
+{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
 When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
 {% endhint %}
 
-### Register a new user
+### **Create** a new user
 
 You can make use of the ExtraHorizon SDK to create new users from your application.
 
@@ -211,7 +247,21 @@ await sdk.users.addPatientEnlistment('{yourUserId}', {
 
 ### Staff Members
 
-You can add a user as a staff member to a group in some services this already provides you with some basic permissions in specific services. As a staff member you can 
+You can add a user as a staff member to a group in some services this already provides you with some basic permissions in a lot of different services. As a staff member you can.
+
+#### Permissions granted to you by default as a staff member
+
+|  |  |
+| :--- | :--- |
+| Retrieving users | See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
+|  | View all the patients in a group |
+|  | View the other staff members of the group |
+|  | See a subset of the fields for any staff member or patient of the group |
+|  | View the roles of the groups where you have a staff enlistment |
+
+
+
+
 
 #### Group role permissions
 
