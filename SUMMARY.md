@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Overview](README.md)
+* [Demo Use Cases](use-cases/README.md)
+  * [Polysomnography \(PSG\)](use-cases/polysomnography-psg.md)
 
 ## FAQ
 
