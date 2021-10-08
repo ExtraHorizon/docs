@@ -108,7 +108,7 @@ When using the Javascript SDK fields are transformed into a **camelCase**. **sna
 
 ### **Create** a new user
 
-You can make use of the ExtraHorizon SDK to create new users from your application.
+You can make use of the ExtraHorizon SDK to create new users from your application. This will also trigger a [UserCreated](user-service.md#usercreated) event.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -263,6 +263,18 @@ await sdk.users.changePassword({
     oldPassword: 'password123',
     newPassword: 'newPassword123',
 });
+```
+{% endtab %}
+{% endtabs %}
+
+### Removing a user
+
+Removing a user requires the global [DELETE\_USER](user-service.md#permissions) permission. This will also trigger a [UserDeleted](user-service.md#userdeleted) event.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.remove('abcdef0123456789abcdef01');
 ```
 {% endtab %}
 {% endtabs %}
@@ -454,6 +466,24 @@ await sdk.users.globalRoles.addToUsers(rql2, {
 {% hint style="warning" %}
 There are more permissions that you can attach to system roles that have effect in other services. An overview of those permissions can be found in the designated service documentation.
 {% endhint %}
+
+## Events
+
+Every Extra Horizon service will emit events towards the Event Service. You can subscribe to events in other services and dispatch specific actions depending on the wanted functionality in your system.
+
+### UserCreated
+
+### UserDeleted
+
+### PatientEnlistmentAdded
+
+### PatientEnlistmentRemoved
+
+
+
+
+
+## 
 
 ## Actions
 
