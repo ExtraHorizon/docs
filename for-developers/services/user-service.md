@@ -133,6 +133,18 @@ const myNewSchema = await sdk.users.createAccount({
 Notice **birthday**, **country** & **gender** is part of the registration fields but is not returned when Querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation a user profile is created and these fields are stored there.
 {% endhint %}
 
+#### Check for email availability
+
+As an application you have the ability to check if an email is available or already in use in a user account.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.isEmailAvailable('jane.doe@example.com');
+```
+{% endtab %}
+{% endtabs %}
+
 ### Email verification
 
 After registration the activation attribute will default to `false`. While email verification is not blocking the use of any API services, it is blocking the possibility to initiate a password reset. If you are not providing password reset functionality inside your application you can skip this step. For other applications it is highly recommended as you want to prevent sending emails to the wrong person.
@@ -259,46 +271,48 @@ await sdk.users.changePassword({
 
 Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
 
-The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a role that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
+The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
 
-#### Creating a group
+### Create a group
 
-A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with a groupRole containing the **ADD\_STAFF** permission.
+A group is no more than the collection of its members. Creating a group thus is as simple as creating your first group role or attaching your first patient or staf member to a **shared identifier.**
+
+* [Create a group role](user-service.md#create-a-group-role)
+* [Enlist a staff member](user-service.md#enlist-a-staff-member)
+* [Enlist a patient](user-service.md#enlist-a-patient)
+
+### Create a Group Role
+
+Group roles give the ability to provide specific users with specific permissions in the context of that group. You can assign permissions that give access to action within the user service or other Extra Horizon Services.
 
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.groupRoles.addUsersToStaff({
-    groups: ['841e55106a2a40c39ed6359b2c137a19'],
-});
+//step1: create a new role
+const myNewGroupRole = await sdk.users.groupRoles.add(
+    '841e55106a2a40c39ed6359b2c137a19',
+    {
+        name: 'myGroupRole',
+        description: 'myNewGroupRoleDescription',
+    }
+);
 
-// or
-
-await sdk.users.addPatientEnlistment('{yourUserId}', {
-    groupId: '841e55106a2a40c39ed6359b2c137a19',
-    expiryTimestamp: 1234567890,
-});
+//step2: attach permissions to the new group role
+const rql = rqlBuilder().eq('id', myNewGroupRole.id).build();
+await sdk.users.groupRoles.addPermissions(
+    myNewGroupRole.groupId,
+    {
+        permissions: ['UPDATE_GROUP_ROLE'],
+    },
+    rql
+);
 ```
 {% endtab %}
 {% endtabs %}
 
-## Staff Enlistment
+### Group Permissions
 
-You can enlist a user as a staff member of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.
-
-#### Default permissions
-
-| Description |
-| :--- |
-| See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
-| View all the patients in a group |
-| View the other staff members of the group |
-| See a subset of the fields for any staff member or patient of the group |
-| View the roles of the groups where you have a staff enlistment |
-
-### Permissions
-
-You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role
+You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role.
 
 {% hint style="warning" %}
 There are more permissions that you can attach to staff members that have effect in other services. An overview of those permissions can be found in the designated service documentation.
@@ -317,6 +331,36 @@ There are more permissions that you can attach to staff members that have effect
 | `ADD_STAFF` | Add staff to the group |
 | `REMOVE_STAFF` | Remove staff from the group |
 
+## Staff Enlistment
+
+You can enlist a user as a staff member of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.
+
+#### Default permissions
+
+| Description |
+| :--- |
+| See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
+| View all the patients in a group |
+| View the other staff members of the group |
+| See a subset of the fields for any staff member or patient of the group |
+| View the roles of the groups where you have a staff enlistment |
+
+### Enlist a Staff member
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.groupRoles.addUsersToStaff({
+    groups: ['841e55106a2a40c39ed6359b2c137a19'],
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### Assign a groupRole
+
+
+
 ## Patient Enlistment
 
 You can enlist a user a patient of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services. You can not attach additional permissions to patients.
@@ -327,6 +371,19 @@ You can enlist a user a patient of a group. This will provide that user with som
 | :--- |
 | See a limited set of fields of the staff members \(of the groups where you are enlisted as a patient\) |
 | See a subset of the fields for any staff member or patient of the group |
+
+### Enlist a patient
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await sdk.users.addPatientEnlistment('{userId}', {
+    groupId: '841e55106a2a40c39ed6359b2c137a19',
+    expiryTimestamp: 1234567890,
+});
+```
+{% endtab %}
+{% endtabs %}
 
 ## System Roles
 
@@ -360,7 +417,7 @@ await sdk.users.globalRoles.addToUsers(rql2, {
 {% endtab %}
 {% endtabs %}
 
-### Permission overview
+### Permissions
 
 | name | Description |
 | :--- | :--- |
