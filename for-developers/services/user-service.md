@@ -14,20 +14,6 @@ In addition to role base access controls this service also provides registration
 
 ## **Users**
 
-#### Retrieving a user
-
-Using the 
-
-{% tabs %}
-{% tab title="JavaScript" %}
-```javascript
-await sdk.users.findById();
-```
-{% endtab %}
-{% endtabs %}
-
-
-
 {% tabs %}
 {% tab title="Json" %}
 ```javascript
@@ -96,7 +82,7 @@ await sdk.users.findById();
     "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
-    "staff_enlistments": [...] //only the groups where you are staff
+    "staff_enlistments": [...] //only the groups where you are patient
   }
 ```
 {% endtab %}
