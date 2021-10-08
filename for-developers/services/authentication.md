@@ -29,7 +29,7 @@ The Password Grant accepts your username and password, then returns an Access To
 
 The Refresh Token Grant is a mechanism to obtain a new Access Token. The grant accepts a Refresh Token and returns a new Access Token and a new Refresh Token. That way, the application keeps a valid access token without having the user to provide its credentials again.
 
-#### [\#](https://developers.extrahorizon.io/services/auth-service/2.0.4-dev/#examples)Examples <a id="examples"></a>
+#### Examples
 
 The requests made using OAuth2 are bound within the context of an Application. An Application instance is identified by a Client ID. The Client ID should be specified in the creation phase of the tokens.
 
@@ -37,7 +37,7 @@ We will authenticate using the `password` grant type, when authenticating with a
 
 In the following examples it is assumed that a valid OAuth 2.0 application exists, with a client id `0f4061a353c848eb0e02b80a2fe7bbc2254f1f77`.
 
-**\#Password Grant**
+### **Password Grant**
 
 **Request:**
 
@@ -70,7 +70,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-**\#Refresh Token Grant**
+### **Refresh Token Grant**
 
 **Request:**
 
@@ -102,7 +102,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-**\#Request with an expired Access Token**
+### **Request with an expired Access Token**
 
 When an access token is used which is no longer valid, an error is returned. This can be used to detect if the Refresh Token Grant should be used to obtain a new Access Token.
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-#### [\#](https://developers.extrahorizon.io/services/auth-service/2.0.4-dev/#further-readings)Further readings <a id="further-readings"></a>
+### Further readings
 
 * OAuth 2.0: https://tools.ietf.org/html/rfc6749
   * Security considerations: https://tools.ietf.org/html/rfc6819
