@@ -10,5 +10,3 @@ description: >-
 
 {% embed url="https://extrahorizon.github.io/javascript-sdk/\#/" %}
 
-
-

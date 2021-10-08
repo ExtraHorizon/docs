@@ -86,8 +86,18 @@ await sdk.users.findById();
 {% endtab %}
 
 {% tab title="StaffView" %}
-```
-
+```javascript
+{
+    "id": "abcdef0123456789abcdef01",
+    "first_name": "John",
+    "last_name": "Doe",
+    "language": "EN",
+    "email": "john.doe@example.com",
+    "phoneNumber": "+32012345678",
+    "timeZone": "Europe/London",
+    "activation": true,
+    "patient_enlistments": [...] //only the groups where you are staff
+  }
 ```
 {% endtab %}
 {% endtabs %}
@@ -224,7 +234,7 @@ Groups are entities that combine users together. Allowing us to create access co
 
 The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a role that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
 
-### Creating a group
+#### Creating a group
 
 A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with a groupRole containing the **ADD\_STAFF** permission.
 
@@ -245,48 +255,85 @@ await sdk.users.addPatientEnlistment('{yourUserId}', {
 {% endtab %}
 {% endtabs %}
 
-### Staff Members
+## Staff Enlistment
 
-You can add a user as a staff member to a group in some services this already provides you with some basic permissions in a lot of different services. As a staff member you can.
+You can enlist a user as a staff member of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.
 
-#### Permissions granted to you by default as a staff member
+#### Default permissions
 
-|  |  |
-| :--- | :--- |
-| Retrieving users | See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
-|  | View all the patients in a group |
-|  | View the other staff members of the group |
-|  | See a subset of the fields for any staff member or patient of the group |
-|  | View the roles of the groups where you have a staff enlistment |
+| Description |
+| :--- |
+| See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
+| View all the patients in a group |
+| View the other staff members of the group |
+| See a subset of the fields for any staff member or patient of the group |
+| View the roles of the groups where you have a staff enlistment |
 
+### Group Role Permissions
 
+Permissions that are not granted by you by default and you need to obtain via a group role
 
-
-
-#### Group role permissions
+{% hint style="warning" %}
+There are more permissions that you can attach to staff members that have effect in other services. An overview of those permissions can be found in the designated service documentation.
+{% endhint %}
 
 | Permission | Description |
 | :--- | :--- |
-| REMOVE\_PATIENT | Remove a patient from the group where you have this permission |
-| CREATE\_GROUP\_ROLE | Create a role for the group where you have this permission |
-| UPDATE\_GROUP\_ROLE | Update a role for the group where you have this permission |
-| DELETE\_GROUP\_ROLE | Delete a role for the group where you have this permission |
-| ADD\_GROUP\_ROLE\_PERMISSION | Add permissions to any role of the group where you have this permission |
-| REMOVE\_GROUP\_ROLE\_PERMISSION | Remove permissions from any role of the group where you have this permission |
-| ADD\_GROUP\_ROLE\_TO\_STAFF | Assign a group role to a staff member of the group |
-| REMOVE\_GROUP\_ROLE\_FROM\_STAFF | Remove a group role from a staff member of the group |
-| ADD\_STAFF | Add staff to the group |
-| REMOVE\_STAFF | Remove staff from the group |
+| `REMOVE_PATIENT` | Remove a patient from the group where you have this permission |
+| `CREATE_GROUP_ROLE` | Create a role for the group where you have this permission |
+| `UPDATE_GROUP_ROLE` | Update a role for the group where you have this permission |
+| `DELETE_GROUP_ROLE` | Delete a role for the group where you have this permission |
+| `ADD_GROUP_ROLE_PERMISSION` | Add permissions to any role of the group where you have this permission |
+| `REMOVE_GROUP_ROLE_PERMISSION` | Remove permissions from any role of the group where you have this permission |
+| `ADD_GROUP_ROLE_TO_STAFF` | Assign a group role to a staff member of the group |
+| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member of the group |
+| `ADD_STAFF` | Add staff to the group |
+| `REMOVE_STAFF` | Remove staff from the group |
 
-#### 
+## Patient Enlistment
 
-### Patient Members
+You can enlist a user a patient of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services. You can not attach additional permissions to patients.
 
-There are two types of end-users for a medical application: patients and staff members. The Extra Horizon User Service provides a system to connect both types of users in a group and to assign the correct permissions to the staff members via a system of roles.
+#### Default permissions
 
-The User Service allows Extra Horizon customers to create **Users** which can be enlisted in groups as **staff member** or **patient**. Staff members can receive specific **GroupRoles** that determine which type of actions the User is allowed to perform within the group. In addition, Users can receive global **Roles**, which are independent of group enlistments. The latter typically include the roles of administrator or IT support helpdesk of the customer’s application.
+| Description |
+| :--- |
+| See a limited set of fields of the staff members \(of the groups where you are enlisted as a patient\) |
+| See a subset of the fields for any staff member or patient of the group |
 
-Tip:       A **group** is a collection of Users joined together by a group\_id. It typically is the digital representation of a specific **company or medical practice**. Groups are used to manage staff members and to connect patients with medical services.
+## System Roles
+
+You can
+
+### Permissions
+
+| name | Description |
+| :--- | :--- |
+| `VIEW_USER` | view users |
+| `UPDATE_USER` | update users |
+| `UPDATE_USER_EMAIL` | update users email |
+| `DELETE_USER` | delete users |
+| `CREATE_ROLE` | create a new role |
+| `VIEW_ROLE` | view roles |
+| `UPDATE_ROLE` | updata a role |
+| `DELETE_ROLE` | delete a role |
+| `ADD_ROLE_PERMISSION` | Add permissions to a role |
+| `REMOVE_ROLE_PERMISSION` | Remove permissions from a role |
+| `ADD_ROLE_TO_USER` | add a role to a user |
+| `REMOVE_ROLE_FROM_USER` | remove a role from a user |
+| `CREATE_GROUP_ROLE` | add roles to a group |
+| `UPDATE_GROUP_ROLE` | update roles from a group |
+| `DELETE_GROUP_ROLE` | delete roles from group |
+| `ADD_GROUP_ROLE_PERMISSION` | Add a permission to group roles |
+| `REMOVE_GROUP_ROLE_PERMISSION` | Remove a permission from group roles |
+| `VIEW_STAFF` | View the staff members of groups |
+| `ADD_STAFF` | Add staff to a group |
+| `REMOVE_STAFF` | Remove staff from a group |
+| `ADD_GROUP_ROLE_TO_STAFF` | Add a group role to a staff member |
+| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member |
+| `VIEW_PATIENTS` | View the patients of groups |
+| `ADD_PATIENT` | Add patients to a group |
+| `REMOVE_PATIENT` | Remove patients from a group |
 
 
 
@@ -294,29 +341,25 @@ Tip:       A **group** is a collection of Users joined together by a group\_id. 
 
 
 
-#### Enlistments
 
-An enlistment is an object that connects a User to a specific group by means of the group\_id. These objects do not have an identifier and can only be accessed via the associated User. There are two types of enlistments:
 
-·       PatientEnlistment
+Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
 
-The optional expiry\_timestamp attribute in the PatientEnlistment object can be used to limit the time a patient has access to a specific group. This access right is represented by the expired attribute \(true/false\).
-
-| Note:    The expiry\_timestamp cannot be updated\[NB1\] . The PatientEnlistment must be removed and recreated \[NB2\] to extend the subscription to the specific group. |
+| Tip:       The permissions that are applicable within the Extra Horizon Services can be consulted via the List all \(group\) permissions endpoints. |
 | :--- |
 
 
-·       StaffEnlistment
+The Extra Horizon Services make a distinction between two types of roles:
 
-Staff members can be in charge of a range of actions in a group, such as managing the group’s userbase or processing the patients’ medical data. To specify which actions each staff member is allowed to perform, the StaffEnlistment object can include an array of GroupRoles \(roles\).
+·       GroupRoles, which only apply within the scope of a specific group. They are linked to a User via a StaffEnlistment object.
 
-In contrast, Users cannot be assigned a GroupRole via a PatientEnlistment relationship.
+·       Global Roles, which are independent of groups. They are assigned directly to the User object.
 
-## 
+The same type of Role, possibly with the same name, can exist on both levels. A User can have multiple GroupRoles and/or multiple global Roles.
 
+| Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
+| :--- |
 
-
-### 
 
 ## Actions
 
@@ -560,56 +603,4 @@ Kobe: nog na te vragen
 -         hoe blokkade opheffen? \(zou API call voor moeten komen, maar kan zijn dat die er vandaag nog niet is\)
 
 Kobe: nog na te vragen
-
-## System Roles
-
-### Permissions
-
-| name | Description |
-| :--- | :--- |
-| `VIEW_USER` | view users |
-| `UPDATE_USER` | update users |
-| `UPDATE_USER_EMAIL` | update users email |
-| `DELETE_USER` | delete users |
-| `CREATE_ROLE` | create a new role |
-| `VIEW_ROLE` | view roles |
-| `UPDATE_ROLE` | updata a role |
-| `DELETE_ROLE` | delete a role |
-| `ADD_ROLE_PERMISSION` | Add permissions to a role |
-| `REMOVE_ROLE_PERMISSION` | Remove permissions from a role |
-| `ADD_ROLE_TO_USER` | add a role to a user |
-| `REMOVE_ROLE_FROM_USER` | remove a role from a user |
-| `CREATE_GROUP_ROLE` | add roles to a group |
-| `UPDATE_GROUP_ROLE` | update roles from a group |
-| `DELETE_GROUP_ROLE` | delete roles from group |
-| `ADD_GROUP_ROLE_PERMISSION` | Add a permission to group roles |
-| `REMOVE_GROUP_ROLE_PERMISSION` | Remove a permission from group roles |
-| `VIEW_STAFF` | View the staff members of groups |
-| `ADD_STAFF` | Add staff to a group |
-| `REMOVE_STAFF` | Remove staff from a group |
-| `ADD_GROUP_ROLE_TO_STAFF` | Add a group role to a staff member |
-| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member |
-| `VIEW_PATIENTS` | View the patients of groups |
-| `ADD_PATIENT` | Add patients to a group |
-| `REMOVE_PATIENT` | Remove patients from a group |
-
-Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
-
-| Tip:       The permissions that are applicable within the Extra Horizon Services can be consulted via the List all \(group\) permissions endpoints. |
-| :--- |
-
-
-The Extra Horizon Services make a distinction between two types of roles:
-
-·       GroupRoles, which only apply within the scope of a specific group. They are linked to a User via a StaffEnlistment object.
-
-·       Global Roles, which are independent of groups. They are assigned directly to the User object.
-
-The same type of Role, possibly with the same name, can exist on both levels. A User can have multiple GroupRoles and/or multiple global Roles.
-
-| Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
-| :--- |
-
-
-## 
 
