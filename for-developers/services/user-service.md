@@ -190,7 +190,7 @@ The user service was build specifically for medical applications where patients 
 
 ### Creating a group
 
-A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a group or a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with a groupRole containing the **ADD\_STAFF** permission.
+A group is no more than the collection of its members. Creating a group thus is as simple as attaching your first patient or staf member to a shared identifier. If the group doesn't exist a user with a system level permission will need to create a group as there is no user yet with a groupRole containing the **ADD\_STAFF** permission.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -212,6 +212,21 @@ await sdk.users.addPatientEnlistment('{yourUserId}', {
 ### Staff Members
 
 You can add a user as a staff member to a group in some services this already provides you with some basic permissions in specific services. As a staff member you can 
+
+#### Group role permissions
+
+| Permission | Description |
+| :--- | :--- |
+| REMOVE\_PATIENT | Remove a patient from the group where you have this permission |
+| CREATE\_GROUP\_ROLE | Create a role for the group where you have this permission |
+| UPDATE\_GROUP\_ROLE | Update a role for the group where you have this permission |
+| DELETE\_GROUP\_ROLE | Delete a role for the group where you have this permission |
+| ADD\_GROUP\_ROLE\_PERMISSION | Add permissions to any role of the group where you have this permission |
+| REMOVE\_GROUP\_ROLE\_PERMISSION | Remove permissions from any role of the group where you have this permission |
+| ADD\_GROUP\_ROLE\_TO\_STAFF | Assign a group role to a staff member of the group |
+| REMOVE\_GROUP\_ROLE\_FROM\_STAFF | Remove a group role from a staff member of the group |
+| ADD\_STAFF | Add staff to the group |
+| REMOVE\_STAFF | Remove staff from the group |
 
 #### 
 
