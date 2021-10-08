@@ -485,70 +485,11 @@ Every Extra Horizon service will emit events towards the Event Service. You can 
 
 ## 
 
-## Actions
-
-
-
-**Forgot password flow**
-
-Users can request a password reset by providing the email address linked to their account. When the user clicks the reset password link in the resulting email, the Extra Horizon customer’s client application must obtain a new password from the user and complete the password reset process. The required endpoints are:
-
-1. Request a password reset:    GET    /forgot\_password
-
-2. Complete a password reset:      POST   /forgot\_password
-
-**Managing user data**
-
-Once logged in, each user can make changes to their own account. In addition, users with the correct permissions and scopes, for example administrators, can make changes to all Users.
-
-The following actions are available:
-
-o   Update email address
-
-a.  Update the email address:   PUT    /{userId}/email
-
-b.  Activate the email address:   POST   /activation
-
-o   Change password:                                PUT    /password
-
-o    Delete profile picture\[NB7\] :                   DELETE /{userId}/profile\_image
-
-o   Update personal information:               PUT    /{userId}
-
-o   Remove a User:                     DELETE /{userId}
-
-| **Important**: When a User is removed by the User Service, the other Extra Horizon Services are /customer’s application is\[NB8\]  notified of this event. The Extra Horizon customer is responsible for the implementation of the functionality to remove all personally identifiable information from the Extra Horizon Services, as required by the applicable governmental rules, such as the GDPR. |
-| :--- |
-
+## Other/TODO
 
 The Extra Horizon customer can implement \[NB9\] an extra layer of security for certain actions, e.g. account deletion, by requiring the \(logged in\) user to confirm the action with their password.
 
 o   Confirm action with password:             POST   /confirm\_password
-
-**Viewing User data**
-
-With the correct permissions or the correct enlistment, users can view \(a selection of\) the data of other Users.
-
-| Example: Patients can request a list of \(the names of\)\[NB10\]  all staff members in the group\(s\) to which they are enlisted as patient. However, they cannot access other patients’ data. |
-| :--- |
-
-
-The following endpoints can be used to view:
-
-o   The current logged in User:      /me
-
-o   A specific User:                                    /{userId}
-
-o   A list of Users:                         /
-
-o   A list of patients:                      /patients
-
-o   A list of staff members:                        /staff  
-
-
-#### III. Back-end Actions\[NB11\] 
-
-The following actions allow back-end communication between the Extra Horizon Services.
 
 **Authentication**
 
@@ -556,57 +497,7 @@ Users are authenticated at the Auth Service with their email address and passwor
 
 o   Authenticate a User: POST /authenticate
 
-| Note:    For security \[NB12\] reasons, an account will be frozen/ blocked when … To unblock an account… |
-| :--- |
-
-
 **Health Check**
 
-See xxx. &lt; Op centrale pagina bespreken; geldt voor alle services.&gt;
 
- \[NB1\]correct zo?
-
-er is geen PUT, dus expiry kan niet verlengd worden? Of kan dat via POST \(RESOURCE\_ALREADY\_EXISTS\_EXCEPTION" lijkt te suggereren van niet\)?
-
- \[NB2\]or “A new PatientEnlistment must be created”?
-
- \[NB3\]To be checked.
-
- \[NB4\]correct zo? GET activation werkt voor registratie én update email \(maar dus niet voor password reset\)
-
- \[NB5\]Is dit hoe het werkt? Waarom zou er niet eerst een default template klaargezet worden met een id die reeds gelinkt kan worden aan de user service. De klant kan dan later die template aanpassen.
-
- \[NB6\]+ “provide the link to which the hash code must be forwarded”?
-
-hier vermelden? Hoort eerder bij deployment workflow?
-
- \[NB7\]is deze dan ook deprecated?  \[NB7\]
-
-\[deprecated\] U \[NB7\]pdate profile picture PUT /{userId}/profile\_image \(laat weg uit docs\)
-
- \[NB8\]Kobe:“ services zijn een manier om data op te slaan, dus als user gedelete wordt, kan er een taak getriggerd worden, die dan info gaat weghalen bij andere services”
-
-Gaat het event naar de andere services of naar de app van de klant?
-
-\(indien 2e: hoe “onderschep”/lees je dit event als client app? elders in docs stuk info over events toevoegen?\)
-
- \[NB9\]Correct?
-
-Is het de customer’s app die zelf kiest welke acties nog eens bevestigd moeten worden met een wachtwoord? \(niet per se enkel bij delete user?\)
-
- \[NB10\]In swagger: “limited set of fields” \(maar fullUser in example response\); wat wordt effectief teruggegeven?
-
-Kobe: nog na te vragen
-
- \[NB11\]Te bespreken of dit wel in publieke docs moet komen
-
-\(info komt beter bij Auth Service pagina\)
-
--         \[NB12\]Na hoeveel failed logins bevroren/geblokeerd?
-
--         Hoe lang bevroren?
-
--         hoe blokkade opheffen? \(zou API call voor moeten komen, maar kan zijn dat die er vandaag nog niet is\)
-
-Kobe: nog na te vragen
 
