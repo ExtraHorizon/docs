@@ -271,11 +271,11 @@ await sdk.users.changePassword({
 
 Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
 
-The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the **patient\_enlistement** is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the **staff\_enlistments** allow you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
+The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the [**Patient Enlistment**](user-service.md#patient-enlistment) ****is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the [**Staff Enlistment**](user-service.md#staff-enlistment) allows you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
 
 ### Create a group
 
-A group is no more than the collection of its members. Creating a group thus is as simple as creating your first group role or attaching your first patient or staf member to a **shared identifier.**
+A group is no more than the collection of its members. Creating a group thus is as simple as creating your first group role or attaching your first patient or staf member to a **shared identifier**: the group Id**.**
 
 * [Create a group role](user-service.md#create-a-group-role)
 * [Enlist a staff member](user-service.md#enlist-a-staff-member)
@@ -283,7 +283,7 @@ A group is no more than the collection of its members. Creating a group thus is 
 
 ### Create a Group Role
 
-Group roles give the ability to provide specific users with specific permissions in the context of that group. You can assign permissions that give access to action within the user service or other Extra Horizon Services.
+Group roles give the ability to provide specific users with specific permissions in the context of a group. You can assign permissions that give access to actions within the User Service or other Extra Horizon Services.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -312,11 +312,7 @@ await sdk.users.groupRoles.addPermissions(
 
 ### Group Permissions
 
-You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role.
-
-{% hint style="warning" %}
-There are more permissions that you can attach to staff members that have effect in other services. An overview of those permissions can be found in the designated service documentation.
-{% endhint %}
+You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role. Below is a summary of the group permissions that you can attach to a group role that have an effect in the User Service.
 
 | Permission | Description |
 | :--- | :--- |
@@ -330,6 +326,10 @@ There are more permissions that you can attach to staff members that have effect
 | `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member of the group |
 | `ADD_STAFF` | Add staff to the group |
 | `REMOVE_STAFF` | Remove staff from the group |
+
+{% hint style="warning" %}
+There are more permissions that you can attach to a group role that have their effect in other services. An overview of those permissions can be found in the designated service documentation.
+{% endhint %}
 
 ## Staff Enlistment
 
@@ -345,7 +345,7 @@ You can enlist a user as a staff member of a group. This will provide that user 
 | See a subset of the fields for any staff member or patient of the group |
 | View the roles of the groups where you have a staff enlistment |
 
-### Enlist a Staff member
+#### Enlist a Staff member
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -357,9 +357,7 @@ await sdk.users.groupRoles.addUsersToStaff({
 {% endtab %}
 {% endtabs %}
 
-### Assign a groupRole
-
-
+Once a staff member you can start [attaching group roles](user-service.md#create-a-group-role) to give the user additional permissions.
 
 ## Patient Enlistment
 
@@ -372,7 +370,7 @@ You can enlist a user a patient of a group. This will provide that user with som
 | See a limited set of fields of the staff members \(of the groups where you are enlisted as a patient\) |
 | See a subset of the fields for any staff member or patient of the group |
 
-### Enlist a patient
+#### Enlist a patient
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -384,6 +382,12 @@ await sdk.users.addPatientEnlistment('{userId}', {
 ```
 {% endtab %}
 {% endtabs %}
+
+With a patient enlistment you can provide an **expiryTimestamp** \(Your are not obligated to use this functionality\). When you retrieve users the user service will display wether the expiry timestamp was exceeded or is still in the future.
+
+{% hint style="info" %}
+**USE CASE:** You can use this feature to implement a prescription like application functionality where you provide patients with access to specific functionality while the prescription lasts.
+{% endhint %}
 
 ## System Roles
 
