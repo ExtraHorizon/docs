@@ -96,7 +96,7 @@ await sdk.users.findById();
     "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
-    "patient_enlistments": [...] //only the groups where you are staff
+    "staff_enlistments": [...] //only the groups where you are staff
   }
 ```
 {% endtab %}
@@ -228,6 +228,10 @@ await sdk.users.validatePasswordReset({
 {% endtab %}
 {% endtabs %}
 
+### Changing a password
+
+When 
+
 ## Groups
 
 Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
@@ -269,9 +273,9 @@ You can enlist a user as a staff member of a group. This will provide that user 
 | See a subset of the fields for any staff member or patient of the group |
 | View the roles of the groups where you have a staff enlistment |
 
-### Group Role Permissions
+### Permissions
 
-Permissions that are not granted by you by default and you need to obtain via a group role
+You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role
 
 {% hint style="warning" %}
 There are more permissions that you can attach to staff members that have effect in other services. An overview of those permissions can be found in the designated service documentation.
@@ -303,19 +307,47 @@ You can enlist a user a patient of a group. This will provide that user with som
 
 ## System Roles
 
-You can
+You can assign permissions to system roles that have an effect on a system wide level. 
 
-### Permissions
+### Create a role
+
+Creating a system wide role requires you to have the create `CREATE_ROLE` permission on system level. An example of how you can do this with The Extra Horizon SDK below:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+// Step1: create a new role
+const myNewRole = await sdk.users.globalRoles.create({
+  name: 'myRole',
+  description: 'myNewRoleDescription',
+});
+
+//step2: Attach the permissions to the role
+const rql = rqlBuilder().eq('id', myNewRole.id).build();
+await sdk.users.globalRoles.addPermissions(rql, {
+  permissions: [GlobalPermissionName.ADD_PATIENT],
+});
+
+//step3: Attach the new role to a user
+const rql2 = rqlBuilder().eq('email', 'john.doe@example.com').build();
+await sdk.users.globalRoles.addToUsers(rql2, {
+  roles: [myNewRole.id],
+});
+```
+{% endtab %}
+{% endtabs %}
+
+### Permission overview
 
 | name | Description |
 | :--- | :--- |
-| `VIEW_USER` | view users |
-| `UPDATE_USER` | update users |
-| `UPDATE_USER_EMAIL` | update users email |
-| `DELETE_USER` | delete users |
-| `CREATE_ROLE` | create a new role |
-| `VIEW_ROLE` | view roles |
-| `UPDATE_ROLE` | updata a role |
+| `VIEW_USER` | View all users |
+| `UPDATE_USER` | Update a user |
+| `UPDATE_USER_EMAIL` | Update users email |
+| `DELETE_USER` | Delete users |
+| `CREATE_ROLE` | Create a new role |
+| `VIEW_ROLE` | View roles |
+| `UPDATE_ROLE` | update a role |
 | `DELETE_ROLE` | delete a role |
 | `ADD_ROLE_PERMISSION` | Add permissions to a role |
 | `REMOVE_ROLE_PERMISSION` | Remove permissions from a role |
@@ -335,153 +367,13 @@ You can
 | `ADD_PATIENT` | Add patients to a group |
 | `REMOVE_PATIENT` | Remove patients from a group |
 
-
-
-
-
-
-
-
-
-Many API requests to the Extra Horizon Services require a specific permission and/or scope in the access token that accompanies the request \(see the Auth Service\). To facilitate granting permissions to Users, Roles with predefined sets of permissions can be created.
-
-| Tip:       The permissions that are applicable within the Extra Horizon Services can be consulted via the List all \(group\) permissions endpoints. |
-| :--- |
-
-
-The Extra Horizon Services make a distinction between two types of roles:
-
-·       GroupRoles, which only apply within the scope of a specific group. They are linked to a User via a StaffEnlistment object.
-
-·       Global Roles, which are independent of groups. They are assigned directly to the User object.
-
-The same type of Role, possibly with the same name, can exist on both levels. A User can have multiple GroupRoles and/or multiple global Roles.
-
-| Example:  - Jane is a practicing physician in group A \(a GroupRole\) and can therefore prescribe medication to patients enlisted to this same group. However, she cannot do so for patients enlisted to group B.  - In addition, Jane is configurator of the application \(a global Role\) and can therefore add staff members to both groups, A and B.  - Karim has a configurator role within group B \(a GroupRole\). He cannot add staff members to group A, in contrast to Jane. |
-| :--- |
-
+{% hint style="warning" %}
+There are more permissions that you can attach to system roles that have effect in other services. An overview of those permissions can be found in the designated service documentation.
+{% endhint %}
 
 ## Actions
 
-The sections below give an overview of the available User Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API Reference documentation.
 
-#### I. User Management Actions
-
-In general, only a small selection of Users is expected to manage \(Group\)Roles and \(Patient/Staff\)Enlistments. Accordingly, the endpoints for user management require specific permissions and/or scopes.
-
-**Managing Enlistments**
-
-The enlistment process for patients differs somewhat from the one for staff members. Whereas multiple staff members can be assigned to one or more groups with a single API request, patients must be added to a group one at a time.
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Patient</b>
-      </th>
-      <th style="text-align:left"><b>Staff member</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p>o Add a PatientEnlistment to a User</p>
-        <p>POST /{userId}/patient_enlistments/</p>
-        <p>o Remove a PatientEnlistment from a User
-          <br />DELETE /{userId}/patient_enlistments/{groupId}</p>
-      </td>
-      <td style="text-align:left">
-        <p>o Add StaffEnlistment(s) to User(s)
-          <br />POST /add_to_staff</p>
-        <p>o Remove StaffEnlistment(s) from User(s)
-          <br />POST /remove_from_staff</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-Note:    While the permission ADD\_PATIENT is required to enlist a patient to a group, any User can withdraw themselves from a group by removing the associated PatientEnlistment object. In contrast, the ADD\_STAFF permission is always required to manage staff members, including yourself.
-
-**Managing Roles**
-
-GroupRoles and global roles are managed via similar endpoints. The URIs provided below are those for the global Roles. See the API Reference documentation for the exact URIs for GroupRoles.
-
-The following actions are available to set up Roles:      
-
-o   List all permissions:                      GET    /permissions
-
-o   List all Roles:                                GET    /roles
-
-o   Create a Role \(step 1\):         POST   /roles
-
-o   Update a Role:              PUT    /roles/{id}
-
-o   Remove a Role:                            DELETE /roles\*
-
-\*The Remove a GroupRole URI includes the path parameter {roleId}.
-
-o   Add permissions to Role\(s\) \(step 2\):POST /roles/add\_permissions
-
-o   Remove permissions from Role\(s\): POST /roles/remove\_permissions
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>Note: Creating a new Role is a two-step process:</p>
-        <p>1. Create the object, i.e. specify a name and description.</p>
-        <p>2. Add permissions.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-The following endpoints can be used to assign Roles to Users:
-
-o    Add Role\(s\) to User\(s\):         POST   /add\_roles
-
-o    Remove Role\(s\) from User\(s\):    POST   /remove\_roles
-
-#### II. Common User Actions
-
-Some actions \(indicated with\) require the user’s confirmation via a link send to their email address. These emails are handled by the Mail Service and are based on a template created by the Extra Horizon customer via the Template Service. By clicking the link, the user forwards the included hash code to the Extra Horizon customer’s client application, which must then send the correct follow-up request to the User Service. The hash code expires after xxx\[NB3\] . However, for email verification\[NB4\]  actions, an email with a new code can be sent via the following endpoint:
-
-o   Resend the verification email: GET /activation
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>Important: Before [NB5] the User Service can be deployed, the customer
-          must create the following templates and provide [NB6] the associated id&#x2019;s
-          to the Extra Horizon configurator:</p>
-        <p>&#xB7; Email address activation (Registration of a new User)</p>
-        <p>&#xB7; Email address activation (Update email address)</p>
-        <p>&#xB7; Password reset (Forgot password flow)</p>
-        <p>The attributes that are passed along to the Mail Service (and thus can
-          be used in the templates) are:</p>
-        <p>&#xB7; first_name</p>
-        <p>&#xB7; last_name</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-\*\*\*\*
-
-**Registration of a new User**
-
-To check whether an email address can still be used to create a new account, the following endpoint can be consulted by the customer’s application, e.g. at the start of the registration process:
-
-o   Check availability of an email address: GET /email\_available
-
-The actual User registration is a two-step process. Upon creation of the user account, a verification email is sent to the provided email address.
-
-1. Create a user account:         POST   /register
-
-2. Activate the email address:       POST   /activation
 
 **Forgot password flow**
 
