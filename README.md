@@ -22,9 +22,7 @@ To get a general overview of the different modules that can be used on ExtraHori
 
 ## Where to get additional support?
 
-**Support questions?** Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com) 
+**Support questions? **Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com) 
 
-**General questions?** Fill in [the form on our website](https://www.extrahorizon.com/contact) and we'll get in touch with you asap
-
-
+**General questions? **Fill in [the form on our website](https://www.extrahorizon.com/contact) and we'll get in touch with you asap
 

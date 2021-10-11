@@ -38,21 +38,21 @@ In addition to role base access controls this service also provides registration
 {% endtab %}
 
 {% tab title="List" %}
-| Attribute | Description |
-| :--- | :--- |
-| `id` | The identifier of the user. |
-| `first_name` | First name of the user. |
-| `last_name` | Last name of the user. |
-| `email` | email address of the user. |
-| `phone_number` | phone number of the user. |
-| `activation` | Boolean indicating the email address has been activated true or false. |
-| `roles` | Array containing a description of the roles this user has obtained. |
-| `staff_enlistments` | Array containing a description of the staff enlistments this user has within one or more groups. |
-| `patient_enlistments` | Array containing a description of the patient enlistments this user has within one or more groups. |
-| `last_failed_timestamp` | Epoch timestamp Information about when the last password login attempt failed. |
-| `failed_count` | The number of consecutive password login attempts. |
-| `creation_timestamp` | Epoch timestamp when the user was created. |
-| `update_timestamp` | Epoch timestamp when this user object was last updated. |
+| Attribute               | Description                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------- |
+| `id`                    | The identifier of the user.                                                                        |
+| `first_name`            | First name of the user.                                                                            |
+| `last_name`             | Last name of the user.                                                                             |
+| `email`                 | email address of the user.                                                                         |
+| `phone_number`          | phone number of the user.                                                                          |
+| `activation`            | Boolean indicating the email address has been activated true or false.                             |
+| `roles`                 | Array containing a description of the roles this user has obtained.                                |
+| `staff_enlistments`     | Array containing a description of the staff enlistments this user has within one or more groups.   |
+| `patient_enlistments`   | Array containing a description of the patient enlistments this user has within one or more groups. |
+| `last_failed_timestamp` | Epoch timestamp Information about when the last password login attempt failed.                     |
+| `failed_count`          | The number of consecutive password login attempts.                                                 |
+| `creation_timestamp`    | Epoch timestamp when the user was created.                                                         |
+| `update_timestamp`      | Epoch timestamp when this user object was last updated.                                            |
 {% endtab %}
 
 {% tab title="PatientView" %}
@@ -89,7 +89,7 @@ In addition to role base access controls this service also provides registration
 {% endtabs %}
 
 {% hint style="info" %}
-When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
+When using the Javascript SDK fields are transformed into a **camelCase**. **snake_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
 {% endhint %}
 
 ### **Create** a new user
@@ -141,7 +141,7 @@ The user service can be configured to hold a reference to an html template in th
 Currently the configuration of a templateId is not possible through the API. Contact ExtraHorizon support in order to set this variable.
 {% endhint %}
 
-The user service will provide the users **firstname, lastname** and **activation\_hash** to the email service. The email service will add the **tracking\_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
+The user service will provide the users **firstname, lastname** and **activation_hash** to the email service. The email service will add the **tracking_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
 
 ```javascript
 {
@@ -255,7 +255,7 @@ await sdk.users.changePassword({
 
 ### Removing a user
 
-Removing a user requires the global [DELETE\_USER](user-service.md#permissions) permission. This will also trigger a [UserDeleted](user-service.md#userdeleted) event.
+Removing a user requires the global [DELETE_USER](user-service.md#permissions) permission. This will also trigger a [UserDeleted](user-service.md#userdeleted) event.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -269,7 +269,7 @@ await sdk.users.remove('abcdef0123456789abcdef01');
 
 Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
 
-The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the [**Patient Enlistment**](user-service.md#patient-enlistment) ****is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the [**Staff Enlistment**](user-service.md#staff-enlistment) allows you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
+The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the [**Patient Enlistment**](user-service.md#patient-enlistment)** **is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the [**Staff Enlistment**](user-service.md#staff-enlistment) allows you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
 
 ### Create a group
 
@@ -312,18 +312,18 @@ await sdk.users.groupRoles.addPermissions(
 
 You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role. Below is a summary of the group permissions that you can attach to a group role that have an effect in the User Service.
 
-| Permission | Description |
-| :--- | :--- |
-| `REMOVE_PATIENT` | Remove a patient from the group where you have this permission |
-| `CREATE_GROUP_ROLE` | Create a role for the group where you have this permission |
-| `UPDATE_GROUP_ROLE` | Update a role for the group where you have this permission |
-| `DELETE_GROUP_ROLE` | Delete a role for the group where you have this permission |
-| `ADD_GROUP_ROLE_PERMISSION` | Add permissions to any role of the group where you have this permission |
+| Permission                     | Description                                                                  |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `REMOVE_PATIENT`               | Remove a patient from the group where you have this permission               |
+| `CREATE_GROUP_ROLE`            | Create a role for the group where you have this permission                   |
+| `UPDATE_GROUP_ROLE`            | Update a role for the group where you have this permission                   |
+| `DELETE_GROUP_ROLE`            | Delete a role for the group where you have this permission                   |
+| `ADD_GROUP_ROLE_PERMISSION`    | Add permissions to any role of the group where you have this permission      |
 | `REMOVE_GROUP_ROLE_PERMISSION` | Remove permissions from any role of the group where you have this permission |
-| `ADD_GROUP_ROLE_TO_STAFF` | Assign a group role to a staff member of the group |
-| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member of the group |
-| `ADD_STAFF` | Add staff to the group |
-| `REMOVE_STAFF` | Remove staff from the group |
+| `ADD_GROUP_ROLE_TO_STAFF`      | Assign a group role to a staff member of the group                           |
+| `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member of the group                         |
+| `ADD_STAFF`                    | Add staff to the group                                                       |
+| `REMOVE_STAFF`                 | Remove staff from the group                                                  |
 
 {% hint style="warning" %}
 There are more permissions that you can attach to a group role that have their effect in other services. An overview of those permissions can be found in the designated service documentation.
@@ -335,13 +335,13 @@ You can enlist a user as a staff member of a group. This will provide that user 
 
 #### Default permissions
 
-| Description |
-| :--- |
-| See a limited set of fields of all patients and staff members \(of the groups where you are enlisted as staff member\) |
-| View all the patients in a group |
-| View the other staff members of the group |
-| See a subset of the fields for any staff member or patient of the group |
-| View the roles of the groups where you have a staff enlistment |
+| Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- |
+| See a limited set of fields of all patients and staff members (of the groups where you are enlisted as staff member) |
+| View all the patients in a group                                                                                     |
+| View the other staff members of the group                                                                            |
+| See a subset of the fields for any staff member or patient of the group                                              |
+| View the roles of the groups where you have a staff enlistment                                                       |
 
 #### Enlist a Staff member
 
@@ -363,10 +363,10 @@ You can enlist a user a patient of a group. This will provide that user with som
 
 #### Default permissions
 
-| Description |
-| :--- |
-| See a limited set of fields of the staff members \(of the groups where you are enlisted as a patient\) |
-| See a subset of the fields for any staff member or patient of the group |
+| Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- |
+| See a limited set of fields of the staff members (of the groups where you are enlisted as a patient) |
+| See a subset of the fields for any staff member or patient of the group                              |
 
 #### Enlist a patient
 
@@ -381,7 +381,7 @@ await sdk.users.addPatientEnlistment('{userId}', {
 {% endtab %}
 {% endtabs %}
 
-With a patient enlistment you can provide an **expiryTimestamp** \(Your are not obligated to use this functionality\). When you retrieve users the user service will display wether the expiry timestamp was exceeded or is still in the future.
+With a patient enlistment you can provide an **expiryTimestamp **(Your are not obligated to use this functionality). When you retrieve users the user service will display wether the expiry timestamp was exceeded or is still in the future.
 
 {% hint style="info" %}
 **USE CASE:** You can use this feature to implement a prescription like application functionality where you provide patients with access to specific functionality while the prescription lasts.
@@ -421,33 +421,33 @@ await sdk.users.globalRoles.addToUsers(rql2, {
 
 ### Permissions
 
-| name | Description |
-| :--- | :--- |
-| `VIEW_USER` | View all users |
-| `UPDATE_USER` | Update a user |
-| `UPDATE_USER_EMAIL` | Update users email |
-| `DELETE_USER` | Delete users |
-| `CREATE_ROLE` | Create a new role |
-| `VIEW_ROLE` | View roles |
-| `UPDATE_ROLE` | update a role |
-| `DELETE_ROLE` | delete a role |
-| `ADD_ROLE_PERMISSION` | Add permissions to a role |
-| `REMOVE_ROLE_PERMISSION` | Remove permissions from a role |
-| `ADD_ROLE_TO_USER` | add a role to a user |
-| `REMOVE_ROLE_FROM_USER` | remove a role from a user |
-| `CREATE_GROUP_ROLE` | add roles to a group |
-| `UPDATE_GROUP_ROLE` | update roles from a group |
-| `DELETE_GROUP_ROLE` | delete roles from group |
-| `ADD_GROUP_ROLE_PERMISSION` | Add a permission to group roles |
-| `REMOVE_GROUP_ROLE_PERMISSION` | Remove a permission from group roles |
-| `VIEW_STAFF` | View the staff members of groups |
-| `ADD_STAFF` | Add staff to a group |
-| `REMOVE_STAFF` | Remove staff from a group |
-| `ADD_GROUP_ROLE_TO_STAFF` | Add a group role to a staff member |
+| name                           | Description                             |
+| ------------------------------ | --------------------------------------- |
+| `VIEW_USER`                    | View all users                          |
+| `UPDATE_USER`                  | Update a user                           |
+| `UPDATE_USER_EMAIL`            | Update users email                      |
+| `DELETE_USER`                  | Delete users                            |
+| `CREATE_ROLE`                  | Create a new role                       |
+| `VIEW_ROLE`                    | View roles                              |
+| `UPDATE_ROLE`                  | update a role                           |
+| `DELETE_ROLE`                  | delete a role                           |
+| `ADD_ROLE_PERMISSION`          | Add permissions to a role               |
+| `REMOVE_ROLE_PERMISSION`       | Remove permissions from a role          |
+| `ADD_ROLE_TO_USER`             | add a role to a user                    |
+| `REMOVE_ROLE_FROM_USER`        | remove a role from a user               |
+| `CREATE_GROUP_ROLE`            | add roles to a group                    |
+| `UPDATE_GROUP_ROLE`            | update roles from a group               |
+| `DELETE_GROUP_ROLE`            | delete roles from group                 |
+| `ADD_GROUP_ROLE_PERMISSION`    | Add a permission to group roles         |
+| `REMOVE_GROUP_ROLE_PERMISSION` | Remove a permission from group roles    |
+| `VIEW_STAFF`                   | View the staff members of groups        |
+| `ADD_STAFF`                    | Add staff to a group                    |
+| `REMOVE_STAFF`                 | Remove staff from a group               |
+| `ADD_GROUP_ROLE_TO_STAFF`      | Add a group role to a staff member      |
 | `REMOVE_GROUP_ROLE_FROM_STAFF` | Remove a group role from a staff member |
-| `VIEW_PATIENTS` | View the patients of groups |
-| `ADD_PATIENT` | Add patients to a group |
-| `REMOVE_PATIENT` | Remove patients from a group |
+| `VIEW_PATIENTS`                | View the patients of groups             |
+| `ADD_PATIENT`                  | Add patients to a group                 |
+| `REMOVE_PATIENT`               | Remove patients from a group            |
 
 {% hint style="warning" %}
 There are more permissions that you can attach to system roles that have effect in other services. An overview of those permissions can be found in the designated service documentation.
@@ -469,13 +469,13 @@ Every Extra Horizon service will emit events towards the Event Service. You can 
 
 
 
-## 
+##
 
 ## Other/TODO
 
-The Extra Horizon customer can implement \[NB9\] an extra layer of security for certain actions, e.g. account deletion, by requiring the \(logged in\) user to confirm the action with their password.
+The Extra Horizon customer can implement \[NB9] an extra layer of security for certain actions, e.g. account deletion, by requiring the (logged in) user to confirm the action with their password.
 
-o   Confirm action with password:             POST   /confirm\_password
+o   Confirm action with password:             POST   /confirm_password
 
 **Authentication**
 
@@ -484,6 +484,4 @@ Users are authenticated at the Auth Service with their email address and passwor
 o   Authenticate a User: POST /authenticate
 
 **Health Check**
-
-
 

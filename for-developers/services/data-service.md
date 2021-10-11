@@ -11,12 +11,14 @@ description: >-
 
 Data is managed using structured documents, written in JSON. These documents rely on data Schemas which determine the structure, behavior, and logic of the documents in a schema collection. The purpose of a data schema is twofold:
 
-1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
-2. **Define behaviour logic** Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
+1. **Define Data structure**\
+   ****Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definition in schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
+2. **Define behaviour logic**\
+   ****Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
 
 ## Schema's
 
-A schema defines both the data contained and the behavior \(in the form of a state machine\) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier \(id\) and contains a name and description. A Schema is based on:
+A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name and description. A Schema is based on:
 
 * Permissions that determine who can access what documents,
 * Statuses which define the state of the document,
@@ -38,46 +40,46 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Permissions
 
-A schema contains some specific attributes which define the conditions which must be met to create \(createMode\), view \(readMode\), update \(updateMode\) or delete \(deleteMode\) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation. 
+A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation. 
 
 #### createMode
 
 createMode defines the permissions needed to create a document in a schema collection.
 
-| Mode | Description |
-| :--- | :--- |
-| `DEFAULT` | The default mode allows every logged-in user to create a new document in the collection. If you don't specify the createMode during schema creation it will by default end up in this mode. |
-| `PERMISSIONREQUIRED` | Only users with the`CREATE_DOCUMENTS`permission will have the ability create a document. |
+| Mode                 | Description                                                                                                                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DEFAULT`            | The default mode allows every logged-in user to create a new document in the collection. If you don't specify the createMode during schema creation it will by default end up in this mode. |
+| `PERMISSIONREQUIRED` | Only users with the`CREATE_DOCUMENTS`permission will have the ability create a document.                                                                                                    |
 
 #### readMode
 
 readMode defines the permissions need to read a document in a schema collection
 
-| Mode | Description |
-| :--- | :--- |
-| `DEFAULT` | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
-| `ALLUSERS` | All users will have the permission to read the documents in the schema collection. |
-| `ENLISTEDINLINKEDGROUPS` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document. |
+| Mode                     | Description                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DEFAULT`                | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
+| `ALLUSERS`               | All users will have the permission to read the documents in the schema collection.                                                                                            |
+| `ENLISTEDINLINKEDGROUPS` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document.                                           |
 
 #### updateMode
 
 updateMode defines the permissions need to update a document in a schema collection
 
-| Mode | Description |
-| :--- | :--- |
-| `DEFAULT` | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
-| `CREATORONLY` | Only the user that created the document is able to update the document |
-| `DISABLED` | Nobody can update the document |
-| `LINKEDGROUPSSTAFFONLY` | All users that have a staff enlistment in a group that is in the list of groupIds of the document. |
+| Mode                    | Description                                                                                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DEFAULT`               | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
+| `CREATORONLY`           | Only the user that created the document is able to update the document                                                                                                        |
+| `DISABLED`              | Nobody can update the document                                                                                                                                                |
+| `LINKEDGROUPSSTAFFONLY` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
 
 #### deleteMode
 
 deleteMode defines the permissions needed to remove a document permanently from a schema collection.
 
-| Mode | Description |
-| :--- | :--- |
+| Mode                 | Description                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------- |
 | `PERMISSIONREQUIRED` | Only users with the`DELETE_DOCUMENTS`permission will be able to remove a document. |
-| `LINKEDUSERSONLY` | All users where their userId is in the list of userIds attached to the document. |
+| `LINKEDUSERSONLY`    | All users where their userId is in the list of userIds attached to the document.   |
 
 #### Creating a schema with permissions
 
@@ -96,19 +98,19 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Properties
 
-A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org/). 
+A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org). 
 
 ![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg_WiBjiuzqgpFDjYJL1ker6l4fM_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
 
-The Data Service supports five kinds of configurations \(type attribute\): 
+The Data Service supports five kinds of configurations (type attribute): 
 
-| Type | Description |
-| :--- | :--- |
-| `object` | A container object to define multiple objects, in which each object must meet the schema defined in the properties attribute |
-| `array` | An array object in which each value must meet the schema defined by the items attribute |
-| `string` | A string object of which each value must meet the schema defined by the pattern, format, enum and/or const attributes, |
-| `number` | A number object of which each value must meet the schema defined by the enum or const attribute, |
-| `boolean` | A boolean object of which each value must meet the schema defined by the enum or const attribute. |
+| Type      | Description                                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `object`  | A container object to define multiple objects, in which each object must meet the schema defined in the properties attribute |
+| `array`   | An array object in which each value must meet the schema defined by the items attribute                                      |
+| `string`  | A string object of which each value must meet the schema defined by the pattern, format, enum and/or const attributes,       |
+| `number`  | A number object of which each value must meet the schema defined by the enum or const attribute,                             |
+| `boolean` | A boolean object of which each value must meet the schema defined by the enum or const attribute.                            |
 
 #### Adding properties to your schema
 
@@ -232,54 +234,29 @@ sdk.data.transitions.updateCreation(newSchema.id,{
 {% endtab %}
 {% endtabs %}
 
-A Transition object is identified by its name \(name\) and has a specific type assigned:
+A Transition object is identified by its name (name) and has a specific type assigned:
 
 #### Types
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><b>Manual</b>
-      </td>
-      <td style="text-align:left">A manual transition will be triggered when the transition execution endpoint
-        is called on the document.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Automatic</b>
-      </td>
-      <td style="text-align:left">
-        <p>An automatic transition will trigger when its conditions are met. E.g.
-          when a document is transitioned to status <b>A</b> the data service will
-          look for any automatic transitions that have status <b>A </b>mentioned as
-          a fromStatus. If the conditions of that transition are met it will execute.
-          If not the data service will go to the next automatic transition in line.</p>
-        <p>
-          <br />The sequence of the transitions will depend on the sequence of configuration.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Manual**    | A manual transition will be triggered when the transition execution endpoint is called on the document.                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A </strong>mentioned as a fromStatus. If the conditions of that transition are met it will execute. If not the data service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
 
 ### Transition conditions
 
 Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions: 
 
-| Type | Description |
-| :--- | :--- |
-| `input` | The transition data must match a desired form, as specified by the type configurations in the configuration attribute \(inputCondition\) |
-| `initiatorHasRelationToUserInData` | The initiator of the Transition has a specified relation \(as determined in relation\) to a user \(as determined in userIdField\) mentioned in the transition data  |
-| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation \(as determined in relation\) to a group \(as determined in groupIdField\) mentioned in the transition data  |
+| Type                                | Description                                                                                                                                                       |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `input`                             | The transition data must match a desired form, as specified by the type configurations in the configuration attribute (inputCondition)                            |
+| `initiatorHasRelationToUserInData`  | The initiator of the Transition has a specified relation (as determined in relation) to a user (as determined in userIdField) mentioned in the transition data    |
+| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation (as determined in relation) to a group (as determined in groupIdField) mentioned in the transition data  |
 
 There is an additional condition which applies to all Transitions:
 
-| Type | Description |
-| :--- | :--- |
+| Type       | Description                                                                                                                 |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `document` | The content of a document must match a desired form, as specified by the type configurations in the configuration attribute |
 
 #### **Examples**
@@ -353,7 +330,6 @@ the example above would require the API client to provide the address.inhabited 
 
 
 ```javascript
-
 ```
 {% endtab %}
 
@@ -361,7 +337,6 @@ the example above would require the API client to provide the address.inhabited 
 
 
 ```javascript
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -372,12 +347,12 @@ You can attach actions to transitions. This way when a transition is executed an
 
 #### **Modifying the document**
 
-| Action Type | Description |
-| :--- | :--- |
-| `Set` | Change the value of a specific field |
-| `Unset` | Remove one or multiple fields |
-| `AddItems` | Add values to an array field |
-| `RemoveItems` | Removes values from an array field |
+| Action Type   | Description                          |
+| ------------- | ------------------------------------ |
+| `Set`         | Change the value of a specific field |
+| `Unset`       | Remove one or multiple fields        |
+| `AddItems`    | Add values to an array field         |
+| `RemoveItems` | Removes values from an array field   |
 
 {% hint style="info" %}
 To access an element in an array or embedded documents, use the dot notation.
@@ -407,15 +382,15 @@ To access an element in an array or embedded documents, use the dot notation.
 
 Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
 
-| Action Type | Description |
-| :--- | :--- |
-| `LinkCreator` | Add the creatorId to the userIds of the document  |
-| `LinkUserFromData` | Add a user id found in data of the document to the userIds of the document |
+| Action Type          | Description                                                                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `LinkCreator`        | Add the creatorId to the userIds of the document                                                               |
+| `LinkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                     |
 | `LinkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document  |
-| `LinkGroupFromData` | Add a group id found in data of the document to the groupIds field of the document |
+| `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                             |
 
 {% hint style="info" %}
-An enlistment is an object that connects a User to a specific group by means of the group\_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
+An enlistment is an object that connects a User to a specific group by means of the group_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
 {% endhint %}
 
 **code examples**
@@ -440,11 +415,11 @@ An enlistment is an object that connects a User to a specific group by means of 
 
 #### Other actions
 
-| **Action Type** | Description |
-| :--- | :--- |
-| `Task` | trigger the creation of a Task in the Task Service by using the task action. Specify the functionName \(which references the AWS Lambda function\) and optionally extra data as key-value pairs in the data variable. |
+| **Action Type** | Description                                                                                                                                                                                                         |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Task`          | trigger the creation of a Task in the Task Service by using the task action. Specify the functionName (which references the AWS Lambda function) and optionally extra data as key-value pairs in the data variable. |
 
-#### **code** examples
+#### **code **examples
 
 {% tabs %}
 {% tab title="Task" %}
@@ -456,14 +431,14 @@ An enlistment is an object that connects a User to a specific group by means of 
 
 The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
 
-| Attribute | Description |
-| :--- | :--- |
-| background | A boolean value to determine whether the index must be |
-| unique | A boolean value to determine whether the index must be unique |
-| sparse | A boolean value to determine whether the index must be sparse |
-| system | A boolean value to determine whether the index must be |
+| Attribute  | Description                                                   |
+| ---------- | ------------------------------------------------------------- |
+| background | A boolean value to determine whether the index must be        |
+| unique     | A boolean value to determine whether the index must be unique |
+| sparse     | A boolean value to determine whether the index must be sparse |
+| system     | A boolean value to determine whether the index must be        |
 
-### 
+###
 
 ### Other settings
 
@@ -473,10 +448,10 @@ Additionally, the Data Service stores the following attributes when a new Schema
 
 TODO more explanation
 
-| Value | Description |
-| :--- | :--- |
-| `disabled` | no synchronization |
-| `creatorPatientEnlistments` | TODO |
+| Value                           | Description                                                                                                           |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `disabled`                      | no synchronization                                                                                                    |
+| `creatorPatientEnlistments`     | TODO                                                                                                                  |
 | `linkedUsersPatientEnlistments` | all the groups where the specified user is enlisted as patient will also be added or removed to or from the document. |
 
 **code example**
@@ -501,16 +476,16 @@ After the creation of a Schema, a document can be created which adheres to the S
 
 {% tabs %}
 {% tab title="List" %}
-| Attribute | Description |
-| :--- | :--- |
-| id | The id of the document |
-| userIds | The ids of the users linked to this document \(e.g. when the readMode is set to default and you userId is in this list you will have access to the document\) |
-| groupIds | The groups the document is linked to. \(e.g. when the readMode is set to default and you have a staff enlistment in one of the groups you have access to the document\) |
-| status | The status the Document resides in \(all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to\) |
-| data | The data stored in the document compliant with the properties defined in the schema. |
-| transitionLock | When a transition is complex it might take some time to execute. During that time the document is in a locked state and no updates are permitted. the transitionLock is an object containing a timestamp when the initial transition was initiated. |
-| updateTimestamp | The time when the document was last updated \(including when a transition was executed\). |
-| creationTimestamp | The time the document was created. |
+| Attribute         | Description                                                                                                                                                                                                                                         |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                | The id of the document                                                                                                                                                                                                                              |
+| userIds           | The ids of the users linked to this document (e.g. when the readMode is set to default and you userId is in this list you will have access to the document)                                                                                         |
+| groupIds          | The groups the document is linked to. (e.g. when the readMode is set to default and you have a staff enlistment in one of the groups you have access to the document)                                                                               |
+| status            | The status the Document resides in (all statuses the document can reside in are determined by the Statuses object in the Schema object the Document adheres to)                                                                                     |
+| data              | The data stored in the document compliant with the properties defined in the schema.                                                                                                                                                                |
+| transitionLock    | When a transition is complex it might take some time to execute. During that time the document is in a locked state and no updates are permitted. the transitionLock is an object containing a timestamp when the initial transition was initiated. |
+| updateTimestamp   | The time when the document was last updated (including when a transition was executed).                                                                                                                                                             |
+| creationTimestamp | The time the document was created.                                                                                                                                                                                                                  |
 {% endtab %}
 
 {% tab title="Json" %}
@@ -541,7 +516,7 @@ After the creation of a Schema, a document can be created which adheres to the S
 
 ### updating access
 
-#### 
+####
 
 
 
@@ -570,22 +545,34 @@ General create, update and delete endpoints
 
 * Create a schema: POST/
 * Update a schema: PUT/{schemaId}
-* Delete a schema: DELETE/{schemaId}  
+* Delete a schema: DELETE/{schemaId}\
+  \
+
 * Create a property: POST/{schemaId}/properties
 * Delete a property: DELETE/{schemaId}/properties/{propertyPath}
-* Update a property: PUT/{schemaId}/properties/{propertyPath}  
+* Update a property: PUT/{schemaId}/properties/{propertyPath}\
+  \
+
 * Create a status: POST/{schemaId}/statuses
 * Delete a status: DELETE/{schemaId}/statuses/{name}
-* Update a status: PUT/{schemaId}/statuses/{name}  
+* Update a status: PUT/{schemaId}/statuses/{name}\
+  \
+
   * Create a transition: POST/{schemaId}/transitions
   * Update a transition: PUT/{schemaId}/transitions/{transitionId}
-  * Delete a transition: DELETE/{schemaId}/transitions/{transitionId}  
+  * Delete a transition: DELETE/{schemaId}/transitions/{transitionId}\
+    \
+
   * Create a document: POST/{schemaId}/documents
   * Update a document: PUT/{schemaId}/documents/{documentId}
-* Delete a document: DELETE/{schemaId}/documents/{documentId}  
+* Delete a document: DELETE/{schemaId}/documents/{documentId}\
+  \
+
 * Create a comment: POST/{schemaId}/documents/{documentId}/comments
 * Update a comment: PUT/{schemaId}/documents/{documentId}/comments
-* Delete a comment: DELETE/{schemaId}/documents/{documentId}/comments  
+* Delete a comment: DELETE/{schemaId}/documents/{documentId}/comments\
+  \
+
 * Create an index: POST/{schemaId}/indexes
 * Delete an index: PUT/{schemaId}/indexes/{indexId}
 
@@ -632,15 +619,14 @@ Add or remove data to or from the groupIds and userIds attributes.
 * Link users to a document: POST/{schemaId}/documents/{documentId}/linkUsers
 * Unlink users from a document: POST/{schemaId}/documents/{documentId}/unlinkUsers
 
-Notes: When GroupSyncMode is set to LINKED\_USERS\_PATIENT\_ENLISTMENT for a document, all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.  
-Specifying an empty userIds or groupIds array will have no effect on the document.  
+Notes: When GroupSyncMode is set to LINKED_USERS_PATIENT_ENLISTMENT for a document, all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.\
+Specifying an empty userIds or groupIds array will have no effect on the document.\
 Not specifying the userIds or groupIds array will unlink all users or groups from the document.
 
 Viewing schemas, documents, and comments
 
-With the correct permissions or the correct enlistment, users can view \(a selection of\) the data of schemas, documents, and comments. 
+With the correct permissions or the correct enlistment, users can view (a selection of) the data of schemas, documents, and comments. 
 
 * Request a list of schemas: GET/ 
 * Request a list of documents: GET/{schemaId}/documents
-* Request a list of comments: GET/{schemaId}/documents/{documentId}/comments 
-
+* Request a list of comments: GET/{schemaId}/documents/{documentId}/comments\

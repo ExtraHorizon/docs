@@ -10,10 +10,14 @@ Every medical application is different. Based on your application and requiremen
 
 The following examples give an idea how you might use the tasks service:
 
-* **Data Processing** When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make 3th-party API calls to augment the measurement.
-* **Data synchronization** If you use other systems and want to synchronize data between ExtraHorizon and the respective system, a task can be created to perform the synchronization. This can happen on a scheduled basis \(daily, weekly, ...\) or based on events.
-* **GDPR-compliant user management** When a user is deleted from the system, a task can be triggered that uses the API of a 3th-party system to delete the user's data in that system as well.
-* **Daily reporting** Run a reporting task to aggregate data from the data service into a daily report.
+* **Data Processing**\
+  When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make 3th-party API calls to augment the measurement.
+* **Data synchronization**\
+  ****If you use other systems and want to synchronize data between ExtraHorizon and the respective system, a task can be created to perform the synchronization. This can happen on a scheduled basis (daily, weekly, ...) or based on events.
+* **GDPR-compliant user management**\
+  When a user is deleted from the system, a task can be triggered that uses the API of a 3th-party system to delete the user's data in that system as well.
+* **Daily reporting**\
+  Run a reporting task to aggregate data from the data service into a daily report.
 
 ## Writing tasks
 
@@ -73,8 +77,8 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 ```
 
 * `functionName` - the name of the AWS Lambda function that should be executed. This function must be created in the same AWS account as the ExtraHorizon deployment.
-* `data` - \[optional\] A key-value object where input to the function is provided
-* `tags` - \[optional\] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
+* `data` - \[optional] A key-value object where input to the function is provided
+* `tags` - \[optional] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
 * `status` - Task status, see below for more information
 * `statusChangedTimestamp` - timestamp when the status was last updated
 * `priority` - define which tasks should get precedence in a queue
@@ -90,11 +94,11 @@ When many tasks need to be executed within a short timeframe, the Tasks are queu
 
 
 
-The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task \(status: new\) can be revoked via the Cancel a Task endpoint \(canceled\). 
+The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: new) can be revoked via the Cancel a Task endpoint (canceled). 
 
 Once the Task Service invokes the specified AWS Lambda function, the Task receives the inProgress status and the execution of the code cannot be halted via Extra Horizon. 
 
-Upon \(un\)successful execution of the code, AWS Lambda reports back to the Task Service and the Task status is updated accordingly to `complete` or `failed`
+Upon (un)successful execution of the code, AWS Lambda reports back to the Task Service and the Task status is updated accordingly to `complete` or `failed`
 
 If AWS Lambda does not report anything within 5 minutes, the associated task status is set to `failed`.
 
@@ -112,7 +116,7 @@ To repeat the same Task at regular intervals, create a recurring Task that trigg
 
 ![Execute multiple tasks at once](https://lh5.googleusercontent.com/MBbXkcRf4eh3FeHU34PhUDVURT5LFVnEWWCIxFSFCYH1-xVhJGtZTimJcqB0xZoSGK45E2gzRmK1eD_x-eIPhvu1bB7Kk3AvT3NFR4L17BqgO0MtJjI9hShhlkCh_MR4EvFNKtg=s0)
 
-To automate the execution of multiple repeating actions, set up a \(recurring\) task that triggers the scheduling of a collection of tasks.
+To automate the execution of multiple repeating actions, set up a (recurring) task that triggers the scheduling of a collection of tasks.
 
 ## Examples
 
@@ -136,5 +140,4 @@ const tasks = await sdk.tasks.find();
 
 ## Resources & References
 
-* [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml) 
-
+* [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml)\
