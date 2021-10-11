@@ -6,16 +6,25 @@ description: >-
 
 # Users
 
-## Intro
-
 The user service handles user management and a general role based access control system. At a basic level every user in the system starts out as basic user without any permissions. Based on the type of application you want to build you can create roles on system and group level and assign permissions to them.
 
 In addition to role base access controls this service also provides registration and password management functionality.
 
 ## **Users**
 
+#### **Retrieve users**
+
+```javascript
+const rql = rqlBuilder().eq('email', 'john.doe@example.com').build();
+await sdk.users.find({
+  rql,
+});
+```
+
+Using the extrahorizon SDK or REST API's you can easily retrieve users. The permissions assigned to you will determine what fields will be returned to you. You will receive either a **full User**, a **Patient** or a **Staff** view. 
+
 {% tabs %}
-{% tab title="Json" %}
+{% tab title="Full User" %}
 ```javascript
 {
     "id": "abcdef0123456789abcdef01",
@@ -27,17 +36,57 @@ In addition to role base access controls this service also provides registration
     "timeZone": "Europe/London",
     "activation": true,
     "roles":[...],
-    "staff_enlistments":[...],
-    "patient_enlistments":[...]
-    "last_failed_timestamp": 1632733680,
-    "failed_count": 0,
-    "creation_timestamp": 1632733681,
-    "update_timestamp": 1632733682
+    "staffEnlistments":[...],
+    "patientEnlistments":[...]
+    "lastFailedTimestamp": 1632733680,
+    "failedCount": 0,
+    "creationTimestamp": 1632733681,
+    "updateTimestamp": 1632733682
 }
 ```
 {% endtab %}
 
-{% tab title="List" %}
+{% tab title="Patient" %}
+```javascript
+{
+    "id": "abcdef0123456789abcdef01",
+    "first_name": "John",
+    "last_name": "Doe",
+    "language": "EN",
+    "email": "john.doe@example.com",
+    "phoneNumber": "+32012345678",
+    "timeZone": "Europe/London",
+    "activation": true,
+    "patientEnlistments": [...] //only the groups where you are staff
+  }
+```
+
+
+
+When you receive a **Patient** the patientEnlistments property will only hold the enlistments for groups where you are a staffMember.
+{% endtab %}
+
+{% tab title="Staff" %}
+```javascript
+{
+    "id": "abcdef0123456789abcdef01",
+    "first_name": "John",
+    "last_name": "Doe",
+    "language": "EN",
+    "email": "john.doe@example.com",
+    "phoneNumber": "+32012345678",
+    "timeZone": "Europe/London",
+    "activation": true,
+    "staffEnlistments": [...] //only the groups where you are patient
+  }
+```
+
+When you receive a **Staff** the staffEnlistments property will only hold the enlistments for groups where you are a staffMember
+{% endtab %}
+{% endtabs %}
+
+#### Property overview
+
 | Attribute               | Description                                                                                        |
 | ----------------------- | -------------------------------------------------------------------------------------------------- |
 | `id`                    | The identifier of the user.                                                                        |
@@ -53,40 +102,6 @@ In addition to role base access controls this service also provides registration
 | `failed_count`          | The number of consecutive password login attempts.                                                 |
 | `creation_timestamp`    | Epoch timestamp when the user was created.                                                         |
 | `update_timestamp`      | Epoch timestamp when this user object was last updated.                                            |
-{% endtab %}
-
-{% tab title="PatientView" %}
-```javascript
-{
-    "id": "abcdef0123456789abcdef01",
-    "first_name": "John",
-    "last_name": "Doe",
-    "language": "EN",
-    "email": "john.doe@example.com",
-    "phoneNumber": "+32012345678",
-    "timeZone": "Europe/London",
-    "activation": true,
-    "patient_enlistments": [...] //only the groups where you are staff
-  }
-```
-{% endtab %}
-
-{% tab title="StaffView" %}
-```javascript
-{
-    "id": "abcdef0123456789abcdef01",
-    "first_name": "John",
-    "last_name": "Doe",
-    "language": "EN",
-    "email": "john.doe@example.com",
-    "phoneNumber": "+32012345678",
-    "timeZone": "Europe/London",
-    "activation": true,
-    "staff_enlistments": [...] //only the groups where you are patient
-  }
-```
-{% endtab %}
-{% endtabs %}
 
 {% hint style="info" %}
 When using the Javascript SDK fields are transformed into a **camelCase**. **snake_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
@@ -456,6 +471,8 @@ There are more permissions that you can attach to system roles that have effect 
 ## Events
 
 Every Extra Horizon service will emit events towards the Event Service. You can subscribe to events in other services and dispatch specific actions depending on the wanted functionality in your system.
+
+<table><thead><tr><th>UserCreated</th><th data-type="number">test</th><th></th></tr></thead><tbody><tr><td></td><td>null</td><td></td></tr><tr><td></td><td>null</td><td></td></tr><tr><td></td><td>null</td><td></td></tr></tbody></table>
 
 ### UserCreated
 
