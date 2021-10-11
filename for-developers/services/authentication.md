@@ -12,6 +12,8 @@ description: >-
 
 ### Password Grant
 
+### Mfa Grant
+
 ### Authorization Grant
 
 ### Refresh Token Grant
@@ -19,6 +21,10 @@ description: >-
 ## oAuth1
 
 
+
+### SSO
+
+## MFA
 
 
 
