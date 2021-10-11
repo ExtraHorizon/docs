@@ -6,13 +6,25 @@ description: >-
 
 # Authentication
 
+{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="undefined" method="undefined" %}
+[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
+{% endswagger %}
+
+{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="/applications" method="get" %}
+[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
+{% endswagger %}
+
+{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="/applications/{applicationId}" method="put" %}
+[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
+{% endswagger %}
+
 ## OAuth 2.0 support
 
 The Authentication Service provides OAuth 2.0 authentication, allowing access to the other services within the system.
 
 For instance a request to the User Service which is authenticated by OAuth2 looks like this:
 
-```text
+```
 GET users/v1/me HTTP/1.1
 Host: api.<environment>.<​company>.extrahorizon.io
 Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
@@ -25,7 +37,7 @@ In OAuth 2.0, Access Tokens can be obtained by different kind of Grants. For now
 * Password Grant
 * Refresh Token Grant
 
-The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests. These Access Tokens are short lived \(A lifetime of 5 minutes for the flow described in the example below\).
+The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests. These Access Tokens are short lived (A lifetime of 5 minutes for the flow described in the example below).
 
 The Refresh Token Grant is a mechanism to obtain a new Access Token. The grant accepts a Refresh Token and returns a new Access Token and a new Refresh Token. That way, the application keeps a valid access token without having the user to provide its credentials again.
 
@@ -41,7 +53,7 @@ In the following examples it is assumed that a valid OAuth 2.0 application exist
 
 **Request:**
 
-```text
+```
 POST /auth/v2/oauth2/tokens HTTP/1.1
 Host: api.<environment>.<​company>.extrahorizon.io
 Content-Type: application/x-www-form-urlencoded
@@ -56,7 +68,7 @@ _Extra line breaks are for display purposes only._
 
 **Response:**
 
-```text
+```
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 
@@ -74,7 +86,7 @@ Content-Type: application/json;charset=UTF-8
 
 **Request:**
 
-```text
+```
 POST /auth/v2/oauth2/tokens HTTP/1.1
 Host: api.<environment>.<​company>.extrahorizon.io
 Content-Type: application/x-www-form-urlencoded
@@ -88,7 +100,7 @@ _Extra line breaks are for display purposes only._
 
 **Response:**
 
-```text
+```
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 
@@ -108,7 +120,7 @@ When an access token is used which is no longer valid, an error is returned. Thi
 
 **Request:**
 
-```text
+```
 GET users/v1/me HTTP/1.1
 Host: api.<environment>.<​company>.extrahorizon.io
 Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
@@ -116,7 +128,7 @@ Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
 
 **Response:**
 
-```text
+```
 HTTP/1.1 401 Unauthorized
 Content-Type: application/json
 
@@ -133,4 +145,3 @@ Content-Type: application/json
   * Security considerations: https://tools.ietf.org/html/rfc6819
   * PKCE: https://tools.ietf.org/html/rfc7636
   * PKCE S256 tool: https://tonyxu-io.github.io/pkce-generator/
-
