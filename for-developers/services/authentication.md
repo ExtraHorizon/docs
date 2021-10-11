@@ -6,17 +6,195 @@ description: >-
 
 # Authentication
 
-{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="undefined" method="undefined" %}
-[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
-{% endswagger %}
+## Applications
 
-{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="/applications" method="get" %}
-[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
-{% endswagger %}
+## oAuth2
 
-{% swagger src="../../.gitbook/assets/openapi (1).yaml" path="/applications/{applicationId}" method="put" %}
-[openapi (1).yaml](<../../.gitbook/assets/openapi (1).yaml>)
-{% endswagger %}
+### Password Grant
+
+### Authorization Grant
+
+### Refresh Token Grant
+
+## oAuth1
+
+
+
+
+
+##
+
+### Snippet for authentication flow in Browser
+
+Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is called with the response. You can store this data in `localStorage` or any other persistant data store. When you restart your application, you can check the data store for a `refreshToken` and use that to authenticate with the SDK.
+
+```javascript
+import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth2Client({
+  host: '',
+  clientId: '',
+  freshTokensCallback: tokenData => {
+    localStorage.setItem('refreshToken', tokenData.refreshToken);
+  },
+});
+
+try {
+  const refreshToken = await localStorage.getItem('refreshToken');
+
+  if (refreshToken) {
+    await sdk.auth.authenticate({
+      refreshToken,
+    });
+  } else {
+    // redirect to /login
+  }
+} catch (error) {
+  localStorage.removeItem('refreshToken');
+  // redirect to /login
+}
+```
+
+### OAuth1
+
+#### Token authentication with optional skip
+
+The `skipTokenCheck` saves \~300ms by skipping validation on your `token` and `tokenSecret`.
+
+```javascript
+import { createOAuth1Client } from '@extrahorion/javascript-sdk';
+
+const sdk = createOAuth1Client({
+  host: 'dev.fibricheck.com',
+  consumerKey: '',
+  consumerSecret: '',
+});
+
+await sdk.auth.authenticate({
+  token: '',
+  tokenSecret: '',
+  skipTokenCheck: true,
+});
+```
+
+#### Email authentication
+
+```java
+import { createOAuth1Client } from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth1Client({
+  host: 'dev.fibricheck.com',
+  consumerKey: '',
+  consumerSecret: '',
+});
+
+await sdk.auth.authenticate({
+  email: '',
+  password: '',
+});
+```
+
+### OAuth2
+
+#### Password Grant flow
+
+```javascript
+import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth2Client({
+  host: '',
+  clientId: '',
+});
+
+await sdk.auth.authenticate({
+  password: '',
+  username: '',
+});
+```
+
+#### Authorization Code Grant flow with callback (Only for Fibricheck)
+
+* Open [https://pages.dev.fibricheck.com/authorize/?client_id=CLIENT_ID\&response_type=code\&redirect_uri=REDIRECT_URI](https://pages.dev.fibricheck.com/authorize/?client_id=CLIENT_ID\&response_type=code\&redirect_uri=REDIRECT_URI)
+* click Authorize
+* Capture the query params on the redirect uri
+* Authenticate with the code query param
+
+```javascript
+import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth2Client({
+  host: '',
+  clientId: '',
+  freshTokensCallback: tokenData => {
+    localStorage.setItem('tokenData', tokenData);
+  },
+});
+
+await sdk.auth.authenticate({
+  code: '',
+});
+```
+
+#### Refresh Token Grant flow
+
+```javascript
+import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth2Client({
+  host: '',
+  clientId: '',
+});
+
+await sdk.auth.authenticate({
+  refreshToken: '',
+});
+```
+
+#### Password Grant flow with two-step MFA in try / catch
+
+```javascript
+import {
+  createOAuth2Client,
+  MfaRequiredError,
+} from '@extrahorizon/javascript-sdk';
+
+const sdk = createOAuth2Client({
+  host: '',
+  clientId: '',
+});
+
+try {
+  await sdk.auth.authenticate({
+    password: '',
+    username: '',
+  });
+} catch (error) {
+  if (error instanceof MfaRequiredError) {
+    const { mfa } = error.response;
+
+    // Your logic to request which method the user want to use in case of multiple methods
+    const methodId = mfa.methods[0].id;
+
+    await sdk.auth.confirmMfa({
+      token: mfa.token,
+      methodId,
+      code: '', // code from ie. Google Authenticator
+    });
+  }
+}
+```
+
+#### Confidential Applications
+
+```
+const sdk = createClient({
+  host: 'https://api.dev.fibricheck.com',
+  clientId: '',
+  clientSecret: '',
+});
+```
+
+![](https://github.com/ExtraHorizon/javascript-sdk/raw/dev/docs/assets/refresh.webp)
 
 ## OAuth 2.0 support
 
