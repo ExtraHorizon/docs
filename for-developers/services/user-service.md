@@ -472,33 +472,16 @@ There are more permissions that you can attach to system roles that have effect 
 
 Every Extra Horizon service will emit events towards the Event Service. You can subscribe to events in other services and dispatch specific actions depending on the wanted functionality in your system.
 
-<table><thead><tr><th>UserCreated</th><th data-type="number">test</th><th></th></tr></thead><tbody><tr><td></td><td>null</td><td></td></tr><tr><td></td><td>null</td><td></td></tr><tr><td></td><td>null</td><td></td></tr></tbody></table>
-
-### UserCreated
-
-### UserDeleted
-
-### PatientEnlistmentAdded
-
-### PatientEnlistmentRemoved
 
 
+| Event Name                 | Description                                                                                                                 |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `UserCreated`              | When a [new user is created](user-service.md#create-a-new-user) the **UserCreated** event is triggered.                     |
+| `UserDeleted`              | When a [user is removed](user-service.md#removing-a-user) the **UserDeleted** event is triggered.                           |
+| `PatientEnlistmentAdded`   | When a [patient enlistment is added](user-service.md#patient-enlistment) the **PatientEnlistmentAdded** event is triggered. |
+| `PatientEnlistmentRemoved` | When a patient enlistment is removed the **PatientEnlistmentRemoved** is triggered.                                         |
 
-
-
-##
-
-## Other/TODO
-
-The Extra Horizon customer can implement \[NB9] an extra layer of security for certain actions, e.g. account deletion, by requiring the (logged in) user to confirm the action with their password.
-
-o   Confirm action with password:             POST   /confirm_password
-
-**Authentication**
-
-Users are authenticated at the Auth Service with their email address and password. However, these credentials are stored by the User Service and must therefore be validated by the latter.
-
-o   Authenticate a User: POST /authenticate
-
-**Health Check**
+{% hint style="info" %}
+You can user the [Dispatcher Service](dispatcher-service.md) to trigger actions like **sending mails**, **sending notifications** or **running a Task** based on events.
+{% endhint %}
 
