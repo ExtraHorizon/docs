@@ -6,11 +6,37 @@ description: >-
 
 # Authentication
 
-## Applications
+The **Auth Service **is responsible for both Authentication and Authorization and supports both OAuth 1.0a and OAuth 2.0 standards.
 
 ## oAuth2
 
+oAuth2.0 standard: [\[rfc6749\]](https://datatracker.ietf.org/doc/html/rfc6749)
+
+### Making an authenticated request
+
+{% tabs %}
+{% tab title="Curl" %}
+An example request to the User Service which is authenticated by OAuth2 looks like this:
+
+```
+GET users/v1/me HTTP/1.1
+Host: api.<environment>.<​company>.extrahorizon.io
+Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
+```
+
+The role of the `Bearer` prefix in the **Authorization header** specifies that a token value is expected, implying a token-based authentication. In the case of OAuth2, this token value is the Access Token.
+{% endtab %}
+
+{% tab title="JavaScript" %}
+**Authorization Header**
+
+The [Extra Horizon sdk](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/PBohhdoDnU7Kj1aCVLWD/) solves the problem of making authenticated requests for you and will attach the right headers to the calls you are making in the background.
+{% endtab %}
+{% endtabs %}
+
 ### Password Grant
+
+
 
 ### Mfa Grant
 
@@ -18,15 +44,37 @@ description: >-
 
 ### Refresh Token Grant
 
+{% tabs %}
+{% tab title="Curl" %}
+
+{% endtab %}
+
+{% tab title="JavaScript" %}
+When an access token is expired the [sdk](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/PBohhdoDnU7Kj1aCVLWD/) will use the refresh token stored in memory to refresh the tokens and make sure your call to the api is tried again.
+{% endtab %}
+{% endtabs %}
+
+### Revoking tokens
+
 ## oAuth1
 
-
+### Creating Tokens
 
 ### SSO
 
 ## MFA
 
+## Applications
 
+Applications represent the 
+
+### Creating an application
+
+### Adding a version
+
+### Deprecating versions
+
+### Removing an application
 
 ##
 
