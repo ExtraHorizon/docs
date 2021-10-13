@@ -1,8 +1,8 @@
 # Table of contents
 
-* [Overview](README.md)
+* [Extra Horizon Documentation](README.md)
 * [Demo Use Cases](use-cases/README.md)
-  * [Polysomnography \(PSG\)](use-cases/polysomnography-psg.md)
+  * [Polysomnography (PSG)](use-cases/polysomnography-psg.md)
 
 ## FAQ
 
@@ -27,4 +27,3 @@
 ## Additional Resources
 
 * [GitHub](https://github.com/ExtraHorizon)
-
