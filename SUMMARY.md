@@ -16,7 +16,7 @@
   * [Authentication](for-developers/services/authentication.md)
   * [Users](for-developers/services/user-service.md)
   * [Documents](for-developers/services/data-service.md)
-  * [Files](for-developers/services/file-service.md)
+  * [File](for-developers/services/file-service.md)
   * [Tasks](for-developers/services/task-service.md)
   * [Dispatchers](for-developers/services/dispatcher-service.md)
   * [Mails](for-developers/services/mail-service.md)
