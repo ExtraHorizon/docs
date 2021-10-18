@@ -35,7 +35,7 @@ The Notification Service also stores a **Settings** object for each User. This o
 
 ### Notifications
 
-The Notification object is uniquely identified by its `id`. The object contains the identifier of the intended receiver (`user_id`), the elements to generate the message (`type` and `fields`), and a boolean that indicates whether the message has been viewed by the user. The latter can be set to `true` via the Mark your notification(s) as viewed request.
+The Notification object is uniquely identified by its `id`. The object contains the identifier of the intended receiver (`user_id`), the elements to generate the message (`type` and `fields`), and a boolean that indicates whether the message has been viewed by the user. The latter can be set to `true` via the [Mark your notification(s) as viewed](notification-service-1.md#undefined) request.
 
 To generate the `title` and `body` texts of the (push) notification, the key-value pairs provided in the fields attribute are used to replace the variables in the template of the specified notification type. 
 
@@ -45,7 +45,7 @@ The Notification object also contains a deprecated attribute: `important`. It wa
 
 ### Types
 
-The Notification Service offers a couple of default notification Types that can be used by the customer’s application. These Type objects are uniquely identified by their name (“message” and “link”) and define templates for the title and body text fields of a notification. The templates can include variables for which the value must be provided in the Create a Notification request. The `required_fields` and `optional_fields` attributes specify which parameters are to be included in the request.
+The Notification Service offers a couple of [default notification Types](notification-service-1.md#default-types) that can be used by the customer’s application. These Type objects are uniquely identified by their name (“message” and “link”) and define templates for the title and body text fields of a notification. The templates can include variables for which the value must be provided in the [Create a Notification](notification-service-1.md#create-a-notification) request. The `required_fields` and `optional_fields` attributes specify which parameters are to be included in the request.
 
 {% hint style="info" %}
 In the current version of the Notification Service, Type objects cannot be created by the customer, nor can the default Type objects be customized.
@@ -53,7 +53,7 @@ In the current version of the Notification Service, Type objects cannot be creat
 
 ### Push notification-specific attributes
 
-When set up correctly (see Sending Push Notifications), push notifications can be send to a user’s mobile device when a new Notification object is created. However, a user can choose which types of push notifications they will receive by adjusting their preferences in the Settings object. The default preferences are derived from the `push_by_default` attribute in each of the Type objects.
+When set up correctly (see [Sending Push Notifications](notification-service-1.md#sending-push-notifications)), push notifications can be send to a user’s mobile device when a new Notification object is created. However, a user can choose which types of push notifications they will receive by adjusting their preferences in the Settings object. The default preferences are derived from the `push_by_default` attribute in each of the Type objects.
 
 Before sending the push notification, the service will check if there are other Notifications of the same type (and for the same User) for which the `viewed` attribute is set to `false`. If so, the push notification that is sent out will contain the `combined_body` text instead of the text specified in the body attribute. 
 
@@ -81,7 +81,7 @@ With \`keyX referring to a LocalizationSet with the English text snippet:
 
 ### Settings objects
 
-Each Settings object is uniquely identified by the `id` of the User it represents. The object contains a preferences attribute which defines whether the sending of a specific type of push notifications is enabled for the user. The Settings object is created when a new User is registered. At that moment, the key-value pairs in the `preferences` attribute are set to the `push_by_default` value of all available notification Types. Afterwards, a Create/update the Settings for a User request can be made to update these preferences. 
+Each Settings object is uniquely identified by the `id` of the User it represents. The object contains a preferences attribute which defines whether the sending of a specific type of push notifications is enabled for the user. The Settings object is created when a new User is registered. At that moment, the key-value pairs in the `preferences` attribute are set to the `push_by_default` value of all available notification Types. Afterwards, a [Create/update the Settings](notification-service-1.md#create-update-the-settings-for-a-used) for a User request can be made to update these preferences. 
 
 The Notification Service can only send push notifications to a user’s mobile device when the Settings object includes an active key. This attribute holds a secret value set by the customer’s (mobile) application that enables the identification of the associated device. 
 
@@ -124,7 +124,7 @@ Important: The customer must implement [Firebase](https://firebase.google.com) i
 {% endhint %}
 
 {% hint style="info" %}
-Tip: To disable the sending of push notifications of a specific type to a user, set the value of the corresponding field in the preferences attribute of the Settings object to false.
+Tip: To disable the sending of push notifications of a specific type to a user, set the value of the corresponding field in the preferences attribute of the [Settings object](notification-service-1.md#settings-objects) to false.
 {% endhint %}
 
 ## Default Types
@@ -144,20 +144,20 @@ Note: Currently, the title of Notifications of the message and link Types is fix
 ![](<../../.gitbook/assets/Screenshot\_20211018\_154407 (1).png>)
 
 {% hint style="info" %}
-Note: The JSON syntax in the Type objects is different from other services. The double brackets do not refer to a localization key (as used in the Template Service) but to the values provided in the Create a Notification request. To include text snippets stored in the Localization Service, the client application must first retrieve the snippets in the required language and subsequently include them as plain text in the request `title` or `body` parameter.
+Note: The JSON syntax in the Type objects is different from other services. The double brackets do not refer to a localization key (as used in the [Template Service](template-service.md)) but to the values provided in the [Create a Notification](notification-service-1.md#create-a-notification) request. To include text snippets stored in the [Localization Service](localization-service.md), the client application must first retrieve the snippets in the required language and subsequently include them as plain text in the request `title` or `body` parameter.
 {% endhint %}
 
 {% hint style="info" %}
-Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the Data Service (e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
+Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the [Data Service ](data-service.md)(e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
 {% endhint %}
 
 ### Application Specific Types
 
 #### Application-specific Types <a href="docs-internal-guid-778ff6b1-7fff-cce7-0358-450af1f76fd3" id="docs-internal-guid-778ff6b1-7fff-cce7-0358-450af1f76fd3"></a>
 
-For the above non-specific Types, the `title` and `body` text fields must be completely provided during the Create a Notification request. For more specific Types, these text fields are usually predefined and only some variables are required. 
+For the above non-specific Types, the `title` and `body` text fields must be completely provided during the [Create a Notification ](notification-service-1.md#create-a-notification)request. For more specific Types, these text fields are usually predefined and only some variables are required. 
 
-Two notification Types are used to create Notifications in response to successful actions at the User Service: `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.  
+Two notification Types are used to create Notifications in response to successful actions at the [User Service](user-service.md): `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.  
 
 {% hint style="info" %}
 For internal developers: The User Service-specific Types will not be included in V2.
@@ -212,22 +212,22 @@ In general, Notifications are managed by (a) system User(s) with the required pe
 {% endswagger %}
 
 {% hint style="info" %}
-Info: Users can retrieve their Notifications via two endpoints. The more recent List all Notifications endpoint also enables administrators to access another User’s Notifications. However, it makes the original List your own Notifications endpoint redundant. The latter will be excluded in V2.
+Info: Users can retrieve their Notifications via two endpoints. The more recent [List all Notifications](notification-service-1.md#list-all-notifications) endpoint also enables administrators to access another User’s Notifications. However, it makes the original List your own Notifications endpoint redundant. The latter will be excluded in V2.
 {% endhint %}
 
 {% hint style="info" %}
-Note: The V1 Notification Service does not support localization keys in the request parameters. The customer’s application must fetch the snippet(s) in a specific language and use these resolved strings in the Create a Notification request. The same applies when using data from other services (e.g. `first_name`).
+Note: The V1 Notification Service does not support localization keys in the request parameters. The customer’s application must fetch the snippet(s) in a specific language and use these resolved strings in the [Create a Notification](notification-service-1.md#create-a-notification) request. The same applies when using data from other services (e.g. `first_name`).
 {% endhint %}
 
 {% hint style="info" %}
-For internal developers: The variables in the title and body template of the specified notification Type are processed after resolving localization keys. Therefore, these keys can be used in the attributes of the Type object but not in the Create a Notification request parameters.
+For internal developers: The variables in the title and body template of the specified notification Type are processed after resolving localization keys. Therefore, these keys can be used in the attributes of the Type object but not in the [Create a Notification](notification-service-1.md#create-a-notification) request parameters.
 {% endhint %}
 
 ### Keeping track of viewed Notifications <a href="docs-internal-guid-a4e91704-7fff-c0fa-432a-1a488f4e3f40" id="docs-internal-guid-a4e91704-7fff-c0fa-432a-1a488f4e3f40"></a>
 
 When the user interacts with a notification in the UI (e.g. by clicking it), the customer’s application can set the viewed attribute in the associated Notification object to true. This information enables the application to stylize previously viewed notifications differently in the UI or to omit them from the displayed list. 
 
-{% swagger method="post" path="/viewed" baseUrl=" " summary="" %}
+{% swagger method="post" path="/viewed" baseUrl=" " summary="Mark your Notification(s) as viewed" %}
 {% swagger-description %}
 
 {% endswagger-description %}
