@@ -23,6 +23,7 @@
   * [Notifications](for-developers/services/notification-service.md)
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
+  * [Event Service](for-developers/services/event-service.md)
 
 ## Additional Resources
 
