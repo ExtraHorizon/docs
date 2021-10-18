@@ -1,17 +1,14 @@
 ---
 description: >-
-  The Extra Horizon Mail Service provides email functionality for other
-  services. This guide provides a conceptual overview and is complementary to
-  the API reference documentation.
+  The Extra Horizon Mail Service offers email functionality for other services.
+  This guide provides a conceptual overview of the Mail service.
 ---
 
 # Mails
 
-## **Intro**
+### Introduction
 
-The Mail Service is used to automatically compose and send emails in response to specific actions, such as user registration. These emails are either composed of plain text entries or are based on a template from the Template Service. The latter also enables the use of localization keys for language selection, as explained in the Localization Service guide. 
-
-![](https://lh4.googleusercontent.com/Jw6u5bNyP_Ep0eKGeVgiOBxKc8p60tx_pYddk7IBfKHunSJD4XpvOWS2FQt3m_P6tKKsq5GCvWZ7U0UidGro8pF6qjOCblk2Gowp2p_El2fKES3\_8CuAfjGHQHaXVXZJd13fjow=s0)
+The Extra Horizon Mail Service is built upon Amazon Simple Email Service ([SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html)). It is used to automatically compose and send emails in response to specific actions, such as user registration. These emails are either composed of plain-text entries or are based on a (multi-lingual) template from the Template module. The latter also enables the use of localization keys for language selection, as explained in the Localization Service guide.
 
 ### Objects and Attributes
 
@@ -19,62 +16,85 @@ The Mail Service is used to automatically compose and send emails in response to
 
 The Mail Service collects all data required to compose an email and to complete the sending process in a temporary object. Only a selection of (meta)data remains available in a permanent object (Mail) for record-keeping purposes:
 
-* Metadata such as a unique identifier (id), a reference to the user that made the request (creator_id), some information regarding the sending process with AWS (aws_message_id) and the views attribute used for email tracking,
+* Metadata such as a unique identifier (`id`), a reference to the User that made the request (creator_id), some information regarding the sending process with AWS (aws_message_id) and the views attribute used for email tracking,
 * Contact information for sender and recipient(s), and
 * Content-related data.
 
-![](https://lh6.googleusercontent.com/xuAEUH7oXFxTXwzo2vtEyLZVVA2IMD28stzAg3B8QnvRvhcsiUipjVHsKYE02n308T6SZwMj8HCsqFKj3tnILOyGEx9fdxU3bKWMnFXDh9898Sgj0YO9GGJxPjGvcuKpYhO6HWI=s0)
-
-| For internal developers: The temporary object is referred to as QueuedMail. The Internal Process on how the Send an email request is processed, is described at the end of this guide.  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+![](https://lh3.googleusercontent.com/rS9LwuN3CvUdBlni19gX1Svc7sMUX6I8qevYmvb11RV0NAMlYGc6NPczmZaWRzdzF-ipmHD-qyztSpbDR6zCzq3wgXnYicEkOdh3jdPz4A01dSbBGWqjRH1ZTYte_ZrNysoK5NY=s0)
 
 #### Contact information attributes
 
 The Mail object includes the email addresses of the sender and intended recipients of the email. The attributes used to provide these are:
 
-* from: The email address of the sender of the email, 
-* reply_to: An optional array of email address(es) to which a reply will be directed.
-* recipients: An object to specify the three types of recipients of the email (to, cc, and bcc). Each of these are specified as arrays that can contain multiple email addresses.
+* `from`: The email address of the sender of the email, 
+* `reply_to`: An optional array of one or more email addresses to which a reply will be directed, and
+* `recipients`: An object to specify the three types of recipients of the email (to, cc, and bcc). Each of these are specified as arrays that can contain multiple email addresses.
 
 #### Attributes for the subject and body
 
 An email has two textual elements: the email subject and the body. Which attributes are used to represent these texts depends on how the email was composed.
 
-Plain text email 
+**Plain-text email **
 
-The content of plain-text emails is directly provided as strings in the Send an email request. These values are stored in the respective attributes: subject and body.
+The content of plain-text emails is directly provided as strings in the Send an email request. These values are stored in the respective attributes: subject and body. Note that this method of creating emails does not support HTML.
 
-Template-based email 
+**Template-based email **
 
-Mail objects for template-based emails store a reference to the chosen Template (template_id) and the raw data required to resolve this Template: the content key-value pairs and/or the language code. In addition, the resolved text for the subject is stored to facilitate querying. \
+Mail objects for template-based emails store a reference to the chosen Template (template_id) and the raw data required to resolve this Template: the content key-value pairs and/or the language code. In addition, the resolved text for the subject is stored to facilitate querying. 
 
-
-| Tip: The body attribute can be used as a fallback solution to provide plain text to users without HTML support. |
-| --------------------------------------------------------------------------------------------------------------- |
+{% hint style="info" %}
+**Tip: **The body attribute can be used as a fallback solution to provide plain text to users without HTML support.
+{% endhint %}
 
 #### Attachments
 
-Attachments can be included in an email but are not stored in the (permanent) Mail object. They are only passed on to the temporary object that is used to compose and send the email. An Attachment consists of a filename, Base64 encoded binary data (content) and a MIME type.
+Attachments can be included in an email by specifying a file name and Base64 encoded binary data (content) in the Send an email request. However, this data is not stored in the permanent Mail object. They are only passed on to the temporary object that is used to compose and send the email. An Attachment consists of a filename, Base64 encoded binary data (content) and a MIME type.
 
-![](https://lh3.googleusercontent.com/3TynKEp98GUWXxmY-AL-aJEgL6bC-qHY-H1sJesTH8JGhmBj2Eabkn5OP2YIZ_qqUpPHJyRkhjtJukv9WaBYvQRwyILXwmB0WBNXWN7jseXLXTdtJQRug4BJllYAPqKbD1r8\_ow=s0)
+#### Common timestamp attributes
 
-Common timestamp attributes
+All Extra Horizon Services keep track of the time of creation (`creationTimestamp`) and of the most recent update (`updateTimestamp`) of their stored objects.
 
-All Extra Horizon Services keep track of the time of creation (creationTimestamp) and of the most recent update (updateTimestamp) of their stored objects.
+{% hint style="info" %}
+Note: The timestamp attributes in the Mail Service have a number format, whereas other services use a string($date-time) format.\
 
-| Note: The timestamp attributes in the Mail Service have a number format, whereas other services use a string($date-time) format. |
-| -------------------------------------------------------------------------------------------------------------------------------- |
+{% endhint %}
 
 ### Email tracking
 
-The number of times an email is opened by the recipient(s), can be tracked by adding an (invisible) image to the email, such as a transparent, 1px by 1px “tracker pixel”. Every time this image is downloaded, a request is sent to the Mail Service, which increases the count of the views attribute in the associated Mail object. The unique string value that links the image to the correct object, is called a hash code. 
+#### Tracking Process
 
-How to use hash codes in combination with Templates is described in the Template Service guide. The first step, adding a tracking_hash to the content attribute of template-based Mails, is done by the Mail Service by default.
+The number of times an email is opened by the recipient(s), can be tracked by adding an (invisible) image to the email, such as a transparent, 1px by 1px “tracker pixel”. Every time this image is downloaded, the views counter for this email increases by one. The unique string value that links the image to the correct Mail object, is called a tracking hash code. 
 
-Tracking of plain-text emails is not enabled in this service.
+Tracking of template-based emails with a hash code involves the following steps:
 
-| Tip: Be aware that loading the image only implies interaction with the email and does not guarantee the email was viewed or read. In addition, image loading must not be blocked by the receiving party in order to track views.  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+1. The customer’s application or an Extra Horizon service makes a template-based Send an email request to the Mail Service. 
+2. The Mail Service makes the Resolve a Template request to the Template Service. By default, it adds a unique tracking_hash code to the content parameter. 
+3. The Mail Service uses the response to compose and send the email. If the used Template implements the tracking_hash code correctly, the email will contain a tracker pixel.
+4. When the email is opened, a request containing the hash code is sent to the customer’s application to download the image.
+5. The customer’s application must use the tracking_hash code in the Register an email being opened request. As a result, the number of views in the associated Mail object increases with one. 
+
+{% hint style="info" %}
+**Tip:** Be aware that loading the image only implies interaction with the email and does not guarantee the email was viewed or read. In addition, image loading must not be blocked by the receiving party in order to track views. 
+{% endhint %}
+
+{% hint style="warning" %}
+Tracking of plain-text emails is not enabled in this service.\
+
+{% endhint %}
+
+#### Template requirements
+
+To enable email tracking of a type of template-based emails, the associated Templates must be designed as follows in the Template Service:
+
+* The `tracking_hash` variable is declared in the schema of the Template, and
+* The `fields.body` attribute contains HTML code for an image of which the src is a hyperlink to the customer’s application. This URL must include `$content.tracking_hash`.
+
+```json
+"body": "Some text. <img src=\"https://api.client-a.extrahorizon.io/mail/v1/$content.tracking_hash/open\">"
+
+
+
+```
 
 ### Actions
 
@@ -82,35 +102,40 @@ The sections below give an overview of the available Mail Service endpoints. The
 
 #### Sending an email
 
-The Mail Service accepts two parameter schemes to specify the content of an email: plain text-based or template-based. If applicable, the Template and Localization Services are called by the Mail Service to resolve the email’s content. Next, the email is sent via the AWS email functionality. When the sending is successful, the Mail object receives the aws_message_id attribute.
+The Mail Service accepts two parameter schemes to specify the content of an email: plain text-based or template-based. In the latter case, the Mail Service will first resolve the template, before sending the email via the AWS email functionality.
 
-* Send an email: POST /
+* Send an email:                 POST    /
 
-| Note: If sending the email fails, the system will not retry to send the email. The client must repeat the request to the Mail Service. |
-| -------------------------------------------------------------------------------------------------------------------------------------- |
+{% hint style="info" %}
+Note: AWS imposes some restrictions on the emails it sends. For example, the maximum message size is 10 MB and the amount of recipients must lie between 1 and 50. More information is available in the [Amazon SES API Reference](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html)\
+
+{% endhint %}
 
 #### Registering the opening of an email
 
-When implementing a tracking pixel to count the number of times an email is opened, the below endpoint must be called with each download of the included image. This increases the views value of the associated Mail object by one. 
+When implementing a tracker pixel to count the number of times an email is opened, the below endpoint must be called with each download of the included image. This increases the views value of the associated Mail object by one. 
 
-* Register an email being opened: GET /{tracking_hash}/open
+* Register an email being opened:        GET    /{tracking_hash}/open
+
+\
+
 
 #### Viewing Mails
 
 The existing Mail objects can be retrieved (or queried) via the following endpoint. 
 
-* List all Mails: GET /
+* List all Mails:                 GET    /
 
-| <p>For internal developers: A list of QueuedMails can be retrieved for debugging purposes.</p><ul><li>List all QueuedMails: GET /queued</li></ul> |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p>For internal developers: A list of QueuedMails can be retrieved for debugging purposes.</p><ul><li>List all QueuedMails:             GET    /queued</li></ul> |
+
+\
+
 
 Internal Process – For internal developers only
 
 Email sending via AWS
-
-The Extra Horizon Mail Service is built upon the Amazon Simple Email Service ([SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html)). The requirements to send an email via AWS are described in the [Amazon SES API Reference](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html), which states for example that the maximum message size is 10 MB and that the amount of recipients must lie between 1 and 50. The data necessary to build the request parameters (Destination and Message) are first collected by the Extra Horizon Mail Service in a temporary object, called QueuedMail. This temporary storage allows for a fast response while the data is still being processed. 
-
-The process can be summarized as follows:
 
 1. A Send an email request is made for a plain text-based or template-based email.
 2. A QueuedMail and a Mail object are created with the same identifier. The status of the QueuedMail is set to queued. 
@@ -119,13 +144,18 @@ The process can be summarized as follows:
 5. If the email is template-based, the template is resolved via a request to the Template Service. The result is stored in the text and/or html attributes of the QueuedMail object. 
 6. A [SendEmail](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) request to AWS is made. The status of the QueuedMail is set to sending.
 7. The response is received, including the aws_message_id.
+8.
    1. Success: The Mail object is updated. It receives the aws_message_id and, if template-based, a copy of the subject from the QueuedMail object. The latter object is removed.
    2. Failure: The QueuedMail receives the aws_message_id and its status is set to failed. The Mail object is not updated.
 
-| Note: At failure, neither the QueuedMail nor the Mail object are removed.  |
-| -------------------------------------------------------------------------- |
+\
 
-![](https://lh6.googleusercontent.com/C-RdEaTQbK_ZdppksHnacDukk\_8FoQyRX3Z7CTHsqdMz4IaZF-DvSzTj0GqFFkA7GWf4oYZ6S010VWrfp6kkIHrj-Ynbk6ofe-4X3a_ye6\_39Xwo4y3iiSyAx7Oq5QMXXo79JfE=s0)
+
+![](https://lh3.googleusercontent.com/lpJ-G96pMHlNRUiqbElAVeVxV_tRgxgWVGMMTPQidFFWJAU2lrZkVknyruLnrFRTGH_pAPK-4K9zJhryChjeULSL8lv5IcUrnRGrl6fJ-6i7fzi\_85BCNDINkPnf_JXyz1sv1PQ=s0)
+
+\
+\
+
 
 Objects and Attributes
 
@@ -137,4 +167,7 @@ Whereas the Mail object keeps track of which user made the request (creator_id),
 
 The encoding and textEncoding attributes have fixed values which are used to prepare the input for the AWS [SendEmail](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) request.
 
-![](https://lh3.googleusercontent.com/cn-FwlUvHGbEnHe36VZViRxxu-iOo\_5SD2QisIxvOD8siQcuKt8JEIGJwt6olEPszMUg2UFPTumTBkberV4mR6mzW-50Y1Hcq0kDGHmzEvDTXXN8Efy5ILi9tVrRos3cWT-HlIE=s0)
+![](https://lh3.googleusercontent.com/AQq3vKj2lqTy4Si1mhGvDANEgOmb8jsqEPzjLij0KkiOoJQfFBFbboVGIxOd4gV9UJ0eVkOOJXAxo24ZTpnaVcz_C061-dHw-WUz4gdyxSKlU-U_KgKQirZWlrdNn1VwdCcQCyU=s0)
+
+\
+\
