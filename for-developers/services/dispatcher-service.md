@@ -1,79 +1,115 @@
 ---
 description: >-
   The Extra Horizon Dispatcher Service executes actions as a response to events.
-  This guide provides a conceptual overview of the Dispatcher Service and is
-  complementary to the API reference documentati
+  This guide is complementary to the API reference documentation
 ---
 
 # Dispatchers
 
-## Intro
+## &#x20;About the Dispatcher Service
 
-When a Service or a user creates an event, actions are triggered as a response. The Dispatcher Service provides the link between the event and the consequent actions: when a dispatcher receives an event of a specific type, the dispatcher triggers an action based on the event’s data.
+Whereas the [Event Service](event-service.md) is in charge of communicating the occurrence of specific types of actions, the Dispatcher Service makes sure the required follow-up actions are performed. This can either be the sending of a template-based email via the [Mail Service](mail-service.md) or the execution of a Task via the [Task Service](task-service.md). For each type of Event, a different dispatcher can be configured, with different actions that are triggered.
 
-![](https://lh6.googleusercontent.com/ObAJNZpGnAlDHYz5S8J1Vj3qoEXM_L2V4iisDw5-0FEW5k9HCiywDGKucauSHOPwmHQlSkkXS1wUey7wfUwA2vxFQHkI2Qi2D8AX5cm3UalcOofZP0LRA6Vh-nnnOr1Y6j9Zc4A=s0)
+![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
 
-| For example, when a user is removed (using the ‘remove a user’ endpoint), an event is configured in the Event Service. This is noticed by the Dispatcher Service, which triggers the execution of a Task that removes all personally identifiable information of the user. |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+#### Example
 
-### Information Model
+When a User object is removed in the User Service, the customer must guarantee that all personally identifiable information of the user disappears from all services. A dispatcher for the user\_deleted Event type must therefore create a Task which eliminates the PII in, for example, the Data Service.
+
+## Information Model
+
+Configurators of the customer’s application can create multiple **Dispatchers** to monitor the different types of Events and to trigger **MailActions** and/or **TaskActions**.
 
 ![](https://lh5.googleusercontent.com/HWx1d8raCgb4krRTMaQXf87qrTNs1REe2KJTTrz1zZwSNbgrQIvOo7jhSTDDHOdujlccumzLal1gCDPHzAgWghYKjqrYJfoClSXRmrgzQhq15GUNhUchJmwY80LfIsrzz-oaU9Q=s0)
 
-The Dispatcher Service allows users to create dispatchers. The Dispatcher object determines which event types are monitored, as configured in the Event Service, and which actions will be executed. Two types of actions can be configured:
+## Objects and Attributes
 
-* A mail (MailAction), as configured in the Mail Service,
-* A task (TaskAction), as configured in the Task Service.
+### Dispatchers
 
-### Objects and Attributes
-
-#### Dispatcher object
-
-The Dispatcher object is identified by a unique id. Furthermore, the object contains:
-
-* A type of event (eventTypes), as defined in the Event Service,
-* Either a MailAction or a TaskAction as a response to the event,
-* The time of creation and of the latest update (timestamps).
-
-#### Mail object
-
-The Mail object is uniquely identified by an id and contains a type attribute with the value mail to define the Mail action. The mail addresses of the people who are to receive the mail are defined in arrays in the recipients attribute. If the mail is based on a template, the template is defined in the template_id attribute, which links the object to a Template configured in the Template Service.
-
-#### Task object
-
-The Task object is uniquely identified by an id and contains a type attribute with the value task to define the Task action. In the tags attribute several tags can be added to describe the Task. Furthermore, the object contains attributes required to execute the task as defined in the Task Service:
-
-* The name of the AWS function (functionName), 
-* The data the AWS function needs as input (data), 
-* The moment at which the Task is to be executed (startimestamp).
+A Dispatcher object is uniquely identified by its `id`. Each Dispatcher can only monitor Events of one `eventType` but it can trigger multiple `actions` to send template-based emails and/or create Tasks.
 
 ### Actions
 
+Action objects are uniquely identified by their `id` and contain a `mail` or `task` type attribute.
+
+#### MailActions
+
+A MailAction object contains part of the parameters required for the Send an email request to the [Mail Service](mail-service.md). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
+
+The fixed components include the recipients of the email and the templateId which is needed to compose the email subject and body text fields.&#x20;
+
+{% hint style="info" %}
+Note: Only template-based emails can be sent via the Dispatcher Service.
+{% endhint %}
+
+#### TaskActions
+
+The TaskAction object contains the (optional) parameters for the Create a Task request to the Task Service:
+
+* `functionName`: The name of the AWS function to invoke,&#x20;
+* `data`: The key-value pairs the AWS function expects as input,&#x20;
+* `startimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed, and
+* `tags`: Descriptive keywords that are stored in the Task object.&#x20;
+
+The values for the above attributes can be variables that refer to the content attribute of the captured Event object.
+
+#### Common timestamp attributes <a href="docs-internal-guid-2bab1c3c-7fff-eacb-5ca1-4c989f84ba8f" id="docs-internal-guid-2bab1c3c-7fff-eacb-5ca1-4c989f84ba8f"></a>
+
+All Extra Horizon Services keep track of the time of creation (`creationTimestamp`) and of the most recent update (`updateTimestamp)` of their stored objects.&#x20;
+
+{% hint style="info" %}
+Note: The timestamp attributes in the Dispatcher Service have a number format, whereas other services use a string(`$date-time`) format.
+{% endhint %}
+
+## Actions
+
 This section gives an overview of the available Dispatcher Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API reference documentation.
 
-#### Create Dispatchers
+### Managing Dispatchers
 
-With the correct permissions, users can create dispatchers and add actions:
+Configurators, with the correct permissions, can create Dispatchers for the different Event types that they have set up in other services. Each Dispatcher can contain multiple Actions.
 
-* Create a dispatcher: POST /
-* Add an action to the dispatcher: POST /{dispatcherId}/actions
+{% swagger method="post" path="/" baseUrl=" " summary="Create a Dispatcher" %}
+{% swagger-description %}
 
-#### Update and delete Actions
+{% endswagger-description %}
+{% endswagger %}
 
-With the correct permission, the identifier of the action and corresponding dispatcher, a user can update or delete any action.
+{% swagger method="get" path="/" baseUrl=" " summary="List all Dispatchers" %}
+{% swagger-description %}
 
-* Update an action: PUT /{dispatcherId}/actions/{actionId}
-* Delete an action: DELETE /{dispatcherId}/actions/{actionId}
+{% endswagger-description %}
+{% endswagger %}
 
-#### Delete and list Dispatchers
+{% swagger method="delete" path="/{dispatcherId}" baseUrl=" " summary="Delete a Dispatcher" %}
+{% swagger-description %}
 
-With the correct permission, the identifier of the action and corresponding dispatcher, users can delete any dispatcher. With the correct permission, users can list all dispatchers.
+{% endswagger-description %}
+{% endswagger %}
 
-* List all dispatchers: GET /
-* Delete a dispatcher: DELETE /{dispatcherId}
+### Managing Actions
 
-#### Back-end Actions
+Once a Dispatcher is created, its `eventType` can no longer be changed. However, the included Actions can be managed via the following endpoints.
 
-Health Check 
+{% swagger method="post" path="/{dispatcherId}/actions" baseUrl=" " summary="Add an Action to a Dispatcher" %}
+{% swagger-description %}
 
-See xxx. < Discuss on central page: applies to all services.>\
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="put" path="/{dispatcherId}/actions/{actionId}" baseUrl=" " summary="Update an Action from a Dispatcher" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="delete" path="/{dispatcherId}/actions/{actionId}" baseUrl=" " summary="Delete an action from a Dispatcher" %}
+{% swagger-description %}
+
+
+\
+
+
+
+{% endswagger-description %}
+{% endswagger %}
