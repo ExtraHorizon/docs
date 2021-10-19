@@ -12,6 +12,7 @@
 ## For Developers
 
 * [Access Management](for-developers/access-management.md)
+* [Manage Data](for-developers/manage-data.md)
 * [Automation](for-developers/automation.md)
 * [Communication Options](for-developers/communication-options.md)
 * [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
