@@ -1,4 +1,4 @@
-# Overview
+# Extra Horizon Documentation
 
 ## What is ExtraHorizon?
 
@@ -36,18 +36,20 @@ The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2
 
 #### Document Service <a href="document-service" id="document-service"></a>
 
-The document service is a service that provides storage and query capabilities.
+The document service allows you to configure collections of structured documents with their own data schemes that will act as validation for the API. You can create, read, update and delete the documents based on the defined permissions and validation schemes.
+
+Besides updating documents, you can configure a state machine that allows more specific validation rules upon each transition.
 
 The service allows you to:
 
 * define your own queryable data models by utilizing JSON Schema’s
-* define workflows that can trigger other services or automation rules in the network. 
+* define workflows that can trigger other services or automation rules in the network.&#x20;
 
 The data service like all other services supports an extremely flexible querying language in the form of querying parameters.
 
 #### File Service <a href="file-service" id="file-service"></a>
 
-The file service provides storage for non queryable data such as images, video, raw ECG signals, etc. And in combination with the document service the combination can be made to accommodate for any storage need a customer might have.
+The file service provides storage for non-queryable data such as images, video, raw ECG signals, etc. And in combination with the document module the combination can be made to accommodate for any storage need a customer might have.
 
 ### Automation <a href="automation" id="automation"></a>
 
@@ -89,7 +91,7 @@ Make good-looking HTML templates for Emails or make detailed pdf reports for a m
 
 ## Where to get additional support?
 
-**Support questions? **Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com) 
+**Support questions? **Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com)&#x20;
 
 **General questions? **Fill in [the form on our website](https://www.extrahorizon.com/contact) and we'll get in touch with you asap
 
