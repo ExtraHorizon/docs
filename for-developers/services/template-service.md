@@ -5,163 +5,146 @@ description: >-
   the API reference documentation.
 ---
 
-# Templates
+# Template Service
 
 ## Intro
 
-Templates facilitate the \(automated\) composition of generic messages to users. A typical example is the email following a user’s registration to a service. Although the bulk of the message is identical for all users, some variable data is present, such as the user’s name. A blueprint for this type of messages can be configured with the Template Service. Subsequently, the service can generate a complete message when the variable values are provided via a request. 
+Templates facilitate the (automated) composition of generic messages to users. A typical example is the email following a user’s registration to a service. Although the bulk of the message is identical for all users, some variable data is present, such as the user’s name. A blueprint for this type of messages can be configured with the Template Service. Subsequently, the service can generate a complete message when the variable values are provided via a request.&#x20;
 
 ## Objects and attributes
 
 ### Templates
 
-The Template object is uniquely identified by its id and contains a name and description, which help to identify the Template and its intended purpose. The fields attribute holds the blueprint for the text\(s\) used in the message and the schema specifies the expected input. 
+The Template object is uniquely identified by its id and contains a name and description, which help to identify the Template and its intended purpose. The fields attribute holds the blueprint for the text(s) used in the message and the schema specifies the expected input.&#x20;
 
-![](https://lh6.googleusercontent.com/wzMMo-asqA9YaONHCIoeMudEbrrvgpaSvGVrLzLQtvOfqj-EPAHywXkJXEycud_D73aZAvzURNPKMkGMidAckNFC_vPwCmHcK_bXoJ50vXF1c8jCvaJhp17NTw-7aDVNB4VERJM=s0)
+![](https://lh3.googleusercontent.com/LBtwFT67OeRdp27XZK\_wtU-FIaL5RoWL8Hjj1s0HnR8cIzwJ3lUeuPVBNUgghufKfnsTIDHTgltD5\_qKCfjxADoXQUREySQLJEMN1VNlV5BXRVuWjkUs39\_tl5FL2\_CUPKqKhWY=s1600)
 
 ### Defining the blueprint: fields
 
-A Template can provide a blueprint for one or more text fields via the fields attribute. For example, an email requires a subject and body field. The associated string values can include variables for which a value must be provided as content in the request to resolve a Template. Moreover, the string can be a combination of localization keys, i.e. references to text snippets stored in several languages in the Localization Service.
+A Template can provide a blueprint for one or more text fields via the fields attribute. For example, an email requires a subject and body field. The associated string values can include variables for which a value must be provided as content in the request to resolve a Template.&#x20;
 
-| Tip: Depending on the intended use of the texts, the string values can be written in HTML. This enables the addition of, among others, images and hyperlinks.  |
-| :--- |
+#### Example
 
-
-Plain-text example
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>&#x201C;fields&#x201D;: {</p>
-        <p>&#x201C;subject&#x201D;: &#x201C;Order $content.order_id is ready&#x201D;,</p>
-        <p>&#x201C;body&#x201D;: &#x201C;Hello $content.first_name $content.last_name,</p>
-        <p>Your order is ready.</p>
-        <p>For more information, please contact us at $content.contact.&#x201D;}</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-Localization keys example
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>&#x201C;fields&#x201D;: {</p>
-        <p>&#x201C;subject&#x201D;: &#x201C;{{order_ready_subject,$content.order_id}}&#x201D;,</p>
-        <p>&#x201C;body&#x201D;: &#x201C;{{greeting,$content.first_name,$content.last_name
-          }},</p>
-        <p>{{order_ready}}</p>
-        <p>{{more_info,$content.contact}}&#x201D;</p>
-        <p>}</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+```
+{
+  “fields”: {
+    “subject”: “Order $content.order_id is ready”,
+    “body”: “Hello $content.first_name $content.last_name, Your order is ready. For more information, please contact us at $content.contact.”}
+}
+```
 
 ### Validating variables: schema
 
-The variables that are used as placeholders in the text fields, must be declared in a schema, within another fields object. In addition to specifying the value type \(array, string, number, or boolean\), the customer can set some restrictions to which values are allowed. The available options to define a schema are listed in our [API reference documentation](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/templates-service/1.0.13/openapi.yaml#/Template/post_).
+The variables that are used as placeholders in the text fields, must be declared in a schema, within another fields object. In addition to specifying the value type (array, string, number, or boolean), the customer can set some restrictions to which limit the range of allowed values are allowed. The available options to define a schema are listed in our [API reference documentation](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/templates-service/1.0.13/openapi.yaml#/Template/post\_).
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>&quot;schema&quot;: {</p>
-        <p>&quot;type&quot;: &quot;object&quot;,</p>
-        <p>&quot;fields&quot;: {</p>
-        <p>&quot;first_name&quot;: {</p>
-        <p>&quot;type&quot;: &quot;string&quot;</p>
-        <p>}</p>
-        <p>&quot;order_id&quot;: {</p>
-        <p>&quot;type&quot;: &quot;number&quot;,</p>
-        <p>&quot;minimum&quot;: 1</p>
-        <p>}</p>
-        <p>}</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+```json
+{
+  "schema": {
+    "type": "object",
+    "fields": {
+      "first_name": {
+        "type": "string"
+      },
+      "order_id": {
+        "type": "number",
+        "options": [{
+          type: “min”,
+          value: 1
+        }]
+      }
+  }
+}
+```
 
-## Resolving the Template
+#### Common timestamp attributes
 
-Resolving a Template means that specific values are assigned to the variables and localization keys in the blueprint for the text fields. The result is a human-readable \(HTML\) text that can be used for communication to users, for example via email. However, before the Template Service attempts to resolve the text fields, a validity check is performed on the delivered values. 
+All Extra Horizon Services keep track of the time of creation (creation\_Timestamp) and of the most recent update (update\_Timestamp) of their stored objects.
+
+{% hint style="info" %}
+**Note: **The timestamp attributes in the Template Service have a number format, whereas other Services use a string($date-time) format.
+{% endhint %}
+
+## Designing text fields
+
+### Multi-lingual Templates: localization keys
+
+One Template can be used for messages in multiple languages when the text fields are composed with localization keys, i.e. references to text snippets in several languages that are stored by the Localization Service. Since the order of words in a sentence can differ between languages due to their unique set of grammar rules, it is recommended to compose text snippets with complete sentences. Consequently, variables that are part of a sentence should be included in the text snippet. In a Template, their values must be provided, together with the key, within double curly brackets:&#x20;
+
+`{{key, argument1, argument2, etc}}`
+
+The arguments can consist of actual values, e.g. “16”, or of variables that receive a value via the resolve a Template request, e.g.  “$content.age“.
+
+#### Example
+
+Template:
+
+```
+“fields”: {
+  “message”: “{{age_requirement, $content.age}}”
+}
+```
+
+LocalizationSet stored by the Localization Service:
+
+```
+"key": " age_requirement",
+"text": {"EN": "For individuals above the age of $1",
+         "ES": "Para personas mayores de $1 años",
+         "NL": "Voor personen ouder dan $1 jaar"}
+```
+
+#### HTML and hash codes
+
+Depending on the intended use of the text fields in a Template, their string values can be written in plain text or in HTML. The latter enables the addition of, among others, images and hyperlinks. Hyperlinks can be used to forward information that was included in an email, to the customer’s client application. Examples are the tracking\_hash code, which is used by the Mail Service to count how often an email is opened, and the activation\_hash code, which is needed by the User Service to verify a user’s email address. As for all variables in a Template, hash codes that are part of a URL, must be declared in the Template’s schema.&#x20;
+
+#### Example: Email Template with tracker pixel&#x20;
+
+```json
+{
+  "fields": {
+    "subject": "Weekly report"  
+    "body": "Some text. <img src=\"https://api.client-a.extrahorizon.io/mail/v1/$content.tracking_hash/open\">"
+  },
+  "schema": {
+    "type": "object",
+    "fields": {
+      "tracking_hash": {
+          "type": "string"
+      }
+    }
+}
+```
+
+### Resolving the Template
+
+Resolving a Template means that specific values are assigned to the variables and localization keys in the blueprint for the text fields. The result is a human-readable (HTML) text that can be used for communication to users, for example via email. However, before the Template Service attempts to resolve the text fields, a validity check is performed on the delivered values.&#x20;
 
 The process to resolve a Template is as follows:
 
-1. A Resolve a Template request is made by an Extra Horizon service or directly by the customer. The content parameter contains the required key-value pairs. Additionally, a language code can be specified for use by the Localization Service.
+1. A Resolve a Template request is made by an Extra Horizon service or directly by the customer’s application. There are three parameters:&#x20;
+2.
+   * content: The key-value pairs required to resolve the variables.&#x20;
+   * language: The code of the language in which text snippets must be requested if localization keys are present. &#x20;
+   * time\_zone: The time zone of the user to whom the message is intended. This enables the correct conversion of values with a number or dateTime format to a human-readable time representation.
+3. The content key-value pairs are validated against the Template’s schema. If one or more required values are missing or do not qualify, an error response is immediately returned.
+4. The Template’s text fields are resolved and returned. This involves assigning the (converted) values to the corresponding variables and/or requesting text snippets in the specified language from the Localization Service.
 
-| Tip: When using variables that indicate time, the time\_zone of the specific user must be included in the request. This enables the correct conversion of values with a number or dateTime format to a human-readable time representation.  |
-| :--- |
+### Default Templates for the User Service
 
+The User Service requires specific Templates to send verification emails to users via the Mail Service. While setting up a new environment for the customer, Extra Horizon already creates these default required Templates. Once set up, the customer can further manage these Templates themselves and replace the default content. The default Templates enable sending emails with the following purposes:
 
-1. The content key-value pairs are validated against the Template’s schema. If one or more required values are missing or do not qualify, an error response is immediately returned.
-2. The Template’s text fields are resolved and returned. This involves assigning the values to the corresponding variables and/or requesting text snippets in the specified language from the Localization Service.
+* Email address activation verification (Registration of a new User),
+* Email address verification activation (Update of an email address), and
+* Password reset (Forgot password).
 
-| For internal developers: Resolving the Template is powered by [Velocity engine](https://velocity.apache.org/). |
-| :--- |
+{% hint style="info" %}
+**Tip: **The following key-value pairs from the User Service reach the Template Service (via the Mail Service) and can therefore be used in the default Templates, provided that they have been declared in the associated schema:&#x20;
 
-
-## Default Templates for the User Service
-
-The User Service requires specific Templates to send verification emails to users via the Mail Service. While setting up a new environment, Extra Horizon already creates the default Templates. Once set up, the customer can further manage these Templates themselves. The default Templates enable sending emails with the following purposes:
-
-* Email address activation \(Registration of a new User\),
-* Email address activation \(Update of an email address\),
-* Password reset.
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>Tip: The following key-value pairs from the User Service reach the Template
-          Service (via the Mail Service) and can therefore be used in the default
-          Templates, provided that they have been declared in the associated schema:</p>
-        <ul>
-          <li>first_name: string</li>
-          <li>last_name: string</li>
-          <li>activation_hash: string (for email address activation)</li>
-          <li>reset_hash: string (for password reset)</li>
-        </ul>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-## Adding hash codes to a Template
-
-Hash codes in emails are unique strings that are used to monitor user behaviour in respect to specific objects. For example, the number of times a specific email is opened by the recipient\(s\), can be counted by adding an \(invisible\) tracker pixel including a tracking\_hash code. Similarly, email address verification is based on a clickable button with an activation\_hash code attached to the underlying URL.
-
-To make use of hash codes in template-based emails, the customer must set up the following: 
-
-1. The hash code key-value pair is included in the content parameter of the Resolve a Template request. 
-
-| Tip: By default, the Mail Service adds a unique tracking\_hash code to all its requests. In addition, it forwards the activation\_hash and reset\_hash codes it receives from the User Service.  |
-| :--- |
-
-
-1. The hash variable is declared in the schema of the Template.
-2. Via the fields attribute, the body of the email receives a hyperlink that calls the customer’s client application, for example through a “verify email address” button or a tracker pixel. The composed URL must include the hash variable.
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>Tracker pixel example</p>
-        <p>&#x201C;body&#x201D;: &#x201C;some text &lt;img src= &#x201C;https://www.organization.com/track?code={hash_code}&#x201D;&gt;&#x201D;</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-1. The client application uses the provided hash code to make the required follow-up request, e.g. register user or increase email view count.
+* `first_name: string`
+* `last_name: string`
+* `activation_hash: string` (for email address activation)
+* `reset_hash: string` (for password reset)
+{% endhint %}
 
 ## Actions
 
@@ -171,23 +154,58 @@ The sections below give an overview of the available Template Service endpoints.
 
 The four CRUD actions are available to set up Templates.
 
-* Create a Template: POST /
-* List all Templates: GET /
-* Update a Template: PUT /{templateId}
-* Delete a Template: DELETE /{templateId}
+{% swagger method="post" path="/" baseUrl="" summary="Create a Template" %}
+{% swagger-description %}
 
-| Note: Deleting default Templates will break the email functionality of the User Service.  |
-| :--- |
+{% endswagger-description %}
+{% endswagger %}
 
+{% swagger method="get" path="/" baseUrl="" summary="List all Templates" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="put" path="/{templateId}" baseUrl="" summary="Update a Template" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="delete" path="/{templateId}" baseUrl="" summary="Delete a Template" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
+
+{% hint style="info" %}
+**Note:** Deleting default Templates will break the email functionality of the User Service.&#x20;
+{% endhint %}
 
 ### Resolving Templates
 
-The action of replacing the placeholders in a Template with actual values and returning the resulting message, is called “resolving” a Template. This result will be presented in a JSON or PDF format, depending on the chosen endpoint.
+The action of replacing the placeholders in a Template with actual values and returning the resulting message, is called resolving a Template. This result will be presented in a JSON or PDF format, depending on the chosen endpoint.
 
-* Resolve a Template \(JSON\): POST /{templateId}/resolve
-* Resolve a Template \(PDF\): POST /{templateId}/pdf
+{% swagger method="post" path="/{templateId}/resolve" baseUrl="" summary="Resolve JSON template" %}
+{% swagger-description %}
 
-| Tip: The content parameter must have the same structure as the Template’s schema. |
-| :--- |
+{% endswagger-description %}
 
+{% swagger-parameter in="path" name="templateId" required="true" %}
 
+{% endswagger-parameter %}
+{% endswagger %}
+
+{% swagger method="post" path="/{templateId}/pdf" baseUrl="" summary="Resolve PDF template" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+
+{% swagger-parameter in="path" name="templateId" required="true" %}
+
+{% endswagger-parameter %}
+{% endswagger %}
+
+{% hint style="info" %}
+**Tip: **The content parameter in the request body must have the same structure as the Template’s schema.
+{% endhint %}

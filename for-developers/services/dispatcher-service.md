@@ -4,11 +4,11 @@ description: >-
   This guide is complementary to the API reference documentation
 ---
 
-# Dispatchers
+# Dispatcher Service
 
 ## &#x20;About the Dispatcher Service
 
-Whereas the [Event Service](event.md) is in charge of communicating the occurrence of specific types of actions, the Dispatcher Service makes sure the required follow-up actions are performed. This can either be the sending of a template-based email via the [Mail Service](mail-service.md) or the execution of a Task via the [Task Service](task-service.md). For each type of Event, a different dispatcher can be configured, with different actions that are triggered.
+Whereas the [Event Service](event-service.md) is in charge of communicating the occurrence of specific types of actions, the Dispatcher Service makes sure the required follow-up actions are performed. This can either be the sending of a template-based email via the [Mail Service](mail-service.md) or the execution of a Task via the [Task Service](task-service.md). For each type of Event, a different dispatcher can be configured, with different actions that are triggered.
 
 ![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
 

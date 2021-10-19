@@ -1,10 +1,10 @@
 ---
 description: >-
-  Use the Tasks Service to add add custom code and business logic to your
+  Use the Task Service to add add custom code and business logic to your
   ExtraHorizon backend.
 ---
 
-# Tasks
+# Task Service
 
 Every medical application is different. Based on your application and requirements, the backend needs to provide some custom functionality and/or data processing. Within ExtraHorizon, custom functionality can be easily added using the tasks service.
 
@@ -37,7 +37,7 @@ The Tasks Service uses[ AWS Lambda](https://aws.amazon.com/lambda/) as the engin
 
 ## Scheduling tasks
 
-Tasks can be triggered in a number of ways ways. 
+Tasks can be triggered in a number of ways ways.&#x20;
 
 ### Scheduling via a data service transitions
 
@@ -45,13 +45,13 @@ When configuring your application's data model, it's possible to attach an [acti
 
 ### Scheduling via the SDK
 
-In JavaScript/TypeScript environments, our open source [ExtraHorizon SDK ](../extrahorizon-sdk.md)offers a convenient wrapper around the API. 
+In JavaScript/TypeScript environments, our open source [ExtraHorizon SDK ](../extrahorizon-sdk.md)offers a convenient wrapper around the API.&#x20;
 
 ### Scheduling via an API call
 
 See the [Tasks Service API Reference](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml) to learn how to schedule a Task via the API
 
-## Tasks Service API 
+## Tasks Service API&#x20;
 
 ### Task Definition
 
@@ -86,17 +86,17 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 
 ### Task Queuing
 
-When many tasks need to be executed within a short timeframe, the Tasks are queued chronologically by the value of their startTimestamp attribute. However, in a queue, the `priority` attribute takes precedence over the `startTimestamp` attribute. Tasks with a higher `priority` value will be executed first. 
+When many tasks need to be executed within a short timeframe, the Tasks are queued chronologically by the value of their startTimestamp attribute. However, in a queue, the `priority` attribute takes precedence over the `startTimestamp` attribute. Tasks with a higher `priority` value will be executed first.&#x20;
 
 ### Task Lifecycle
 
-![](https://lh6.googleusercontent.com/af5KNmsUUbeSMWvMsNd27lX2m1O5sQlQq4UyIZFC6pYtUlNFJioAG6OiDVidT52T8nt1iClUDsmaDveT71ej6QkVmRQGrgkxt8CztZTOkcw0IBrACEQhEYf5jw_wEMKNmZabTac=s0)
+![](https://lh6.googleusercontent.com/af5KNmsUUbeSMWvMsNd27lX2m1O5sQlQq4UyIZFC6pYtUlNFJioAG6OiDVidT52T8nt1iClUDsmaDveT71ej6QkVmRQGrgkxt8CztZTOkcw0IBrACEQhEYf5jw\_wEMKNmZabTac=s0)
 
 
 
-The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: new) can be revoked via the Cancel a Task endpoint (canceled). 
+The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: new) can be revoked via the Cancel a Task endpoint (canceled).&#x20;
 
-Once the Task Service invokes the specified AWS Lambda function, the Task receives the inProgress status and the execution of the code cannot be halted via Extra Horizon. 
+Once the Task Service invokes the specified AWS Lambda function, the Task receives the inProgress status and the execution of the code cannot be halted via Extra Horizon.&#x20;
 
 Upon (un)successful execution of the code, AWS Lambda reports back to the Task Service and the Task status is updated accordingly to `complete` or `failed`
 
@@ -114,7 +114,7 @@ To repeat the same Task at regular intervals, create a recurring Task that trigg
 
 ### How to schedule multiple tasks at once?
 
-![Execute multiple tasks at once](https://lh5.googleusercontent.com/MBbXkcRf4eh3FeHU34PhUDVURT5LFVnEWWCIxFSFCYH1-xVhJGtZTimJcqB0xZoSGK45E2gzRmK1eD_x-eIPhvu1bB7Kk3AvT3NFR4L17BqgO0MtJjI9hShhlkCh_MR4EvFNKtg=s0)
+![Execute multiple tasks at once](https://lh5.googleusercontent.com/MBbXkcRf4eh3FeHU34PhUDVURT5LFVnEWWCIxFSFCYH1-xVhJGtZTimJcqB0xZoSGK45E2gzRmK1eD\_x-eIPhvu1bB7Kk3AvT3NFR4L17BqgO0MtJjI9hShhlkCh\_MR4EvFNKtg=s0)
 
 To automate the execution of multiple repeating actions, set up a (recurring) task that triggers the scheduling of a collection of tasks.
 

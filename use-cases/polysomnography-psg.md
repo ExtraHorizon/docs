@@ -50,7 +50,7 @@ The [Task module](../for-developers/services/task-service.md) provides a way to 
 
 ### Communication <a href="communication" id="communication"></a>
 
-The [Notification module](../for-developers/services/notifications.md) makes it easy to send notifications to users and checking if they've been received. The [Mail module](../for-developers/services/mail-service.md) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](../for-developers/services/localization-service.md).
+The [Notification module](../for-developers/services/notification-service-1.md) makes it easy to send notifications to users and checking if they've been received. The [Mail module](../for-developers/services/mail-service.md) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](../for-developers/services/localization-service.md).
 
 ## Example configuration <a href="demo-process" id="demo-process"></a>
 
