@@ -1,109 +1,144 @@
-# Localizations
+---
+description: >-
+  The Extra Horizon Localization Service manages storage and retrieval of text
+  snippets translated into multiple languages.
+---
+
+# Localization Service
+
+## Intro
+
+The Localization Service provides a database to store text snippets in multiple languages that can be retrieved on demand by using a `localization key`. These keys can be included in the Template Service to automatically provide the text messages in the preferred language.
+
+#### Example: Template Service message with localization keys&#x20;
+
+![](https://lh4.googleusercontent.com/0MWrt1Xuj7PkzYIt\_Mj2z9fYLH0MErNmL6aNvXNw6kzHEaO6bNnw\_o8SCNVR7meIv2m\_tnoywnkdPxu4a0xwEqdga1h0-D8z50MLF2iBLEtmrBpraj3F2Jy\_5jHEgrjvo1tNulM=s1600)
+
+\
+
+
+## Objects and attributes
+
+### LocalizationSets
+
+Text snippets are stored in a `LocalizationSet` object, which is uniquely identified by its key attribute. The translations and their respective language codes (`ISO 639-1`) are stored as key-value pairs in the text attribute.&#x20;
+
+![Graphical user interface
+
+Description automatically generated with low confidence](https://lh5.googleusercontent.com/lk2JJvQdefKnVKKy-DQa-4gC32jifY5IdpFaBJB8VgNc5UTZ5TtTjb5Ih\_H1Qp6\_AzZIuwLLzFQnCy8cwYlq2XAQdVhq\_AFk\_LIRPCgRsiHQbmyGT6vMYSDEi6iXuOP9r\_O5bEU=s1600)
+
+{% hint style="info" %}
+**Tip: **It is recommended to compose text snippets with complete sentences because the order of words in a sentence can differ between languages due to their unique set of grammar rules.&#x20;
+{% endhint %}
 
 
 
-## Localization Service
+### Common timestamp attributes
 
-The Extra Horizon Localization Service manages storage and retrieval of text snippets translated into multiple languages. This guide provides a conceptual overview of the Localization Service and is complementary to the API reference documentation.
+All Extra Horizon Services keep track of the time of creation (creation\_Timestamp) and of the most recent update (update\_Timestamp) of their stored objects.
 
-### About the Localization Service
-
-The Localization Service provides a database to store text snippets in multiple languages that can be retrieved on demand by using a “localization key”. The Template and Notification Services use these keys in their messages to automatically provide the text in the user’s preferred language. 
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <p>Example</p>
-        <p>
-          <img src="https://lh4.googleusercontent.com/EoWe1p3noBGRp59m4J3OAroSDkfsbbAwPolDy5lZO3WQ1fxyetCwLsxgD4YlUJeY_i961KNuxuTIOdmo_RFq_Wq3vZPOvTD4XG4uT4Xi4GQ_sXT6hHddHhO9qU1By1mETyWHjLY=s0"
-          alt/>
-        </p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-### Objects and attributes
-
-#### LocalizationSets
-
-Text snippets are stored in a LocalizationSet object, which is uniquely identified by its key attribute. The translations and their respective language codes \(ISO 639-1\) are stored as key-value pairs in the text attribute. 
-
-![](https://lh4.googleusercontent.com/PEylWnecR8M3PCNVN-uVAg6VsQOitznySjo2DZShgoka-qxK3Q4Q-6XGbnxsrBWNI3a1wpJH7t3ctwX83GdHB31tyC5ZZ46wNvuGCHNBB67le81Y_4B1avp-hJIYbDm6XTm4wYE=s0)
-
-#### Common timestamp attributes
-
-All Extra Horizon Services keep track of the time of creation \(creationTimestamp\) and of the most recent update \(updateTimestamp\) of their stored objects.
-
-| Note: The timestamp attributes in the Localization Service have a number format, whereas other Services use a string\($date-time\) format. |
-| :--- |
+{% hint style="info" %}
+**Note:** The timestamp attributes in the Localization Service have a number format, whereas other Services use a string($date-time) format.
+{% endhint %}
 
 
-### Actions
+
+## Using Variables in a LocalizationSet
+
+Generic text snippets are often combined with user-specific data, such as the user’s name or medical records. These variables can be added to the text strings of the `LocalizationSet` as `$1`, `$2`, etc.&#x20;
+
+
+
+#### Example LocalizationSet
+
+```json
+{
+  "key": " heart_rate",
+  "text": {
+    "EN": "On $1 at $2, your heart rate was $3 bpm.",
+    "ES": "El $1 a la(s) $2, su frecuencia cardíaca era de $3 lpm.",
+    "NL": "Uw hartslag was $3 hsm op $1 om $2."
+  }
+}
+```
+
+
+
+When requesting text snippets, a value for each variable should be added in numeric order. This means that the first additional argument in the request corresponds to $1.&#x20;
+
+\
+
+
+#### Example List LocalizationSet text(s) in specific language(s) request
+
+Request body:
+
+```json
+{
+  "localization_codes": ["NL"],
+  "localizations": ["heart_rate, 06/10/2021, 21:00, 63"]
+}
+```
+
+Request Response:
+
+```json
+{
+  "heart_rate": {
+        "NL": "Uw hartslag was 63 hsm op 06/10/2021 om 21:00."
+        "EN": "On 06/10/2021 at 21:00, your heart rate was 63 bpm.",
+  }
+}
+```
+
+## Actions
 
 This section gives an overview of the available Localization Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API reference documentation.
 
-#### Managing LocalizationSets
+### Managing LocalizationSets
 
-The four CRUD actions are available to set up LocalizationSets. The {languageCode: string} pairs in a set can be updated but cannot be removed individually. 
+The four CRUD actions are available to set up LocalizationSets. The `{languageCode: string}` pairs in a set can be updated but cannot be removed individually.&#x20;
 
-* Create LocalizationSet\(s\): POST /
-* List all LocalizationSets: GET /
-* Update LocalizationSet\(s\): PUT /
-* Delete LocalizationSet\(s\): DELETE /
+{% swagger method="post" path="/" baseUrl="" summary="Create LocalizationSet(s)" %}
+{% swagger-description %}
 
-#### Using LocalizationSets
+{% endswagger-description %}
+{% endswagger %}
 
-References to LocalizationSets can be made in the Template and Notification Services by using double curly brackets: {{key}}. The Services will then communicate with each other to provide the text snippet in the user’s preferred language, if available. If not, the default text is returned, i.e. the English version. 
+{% swagger method="get" path="/" baseUrl="" summary="List all LocalizationSets" %}
+{% swagger-description %}
 
-Text snippets in one or more languages can also be requested directly from the Localization Service with the following endpoint:
+{% endswagger-description %}
+{% endswagger %}
 
-* List LocalizationSet text\(s\) in specific language\(s\): POST /request
+{% swagger method="put" path="/" baseUrl="" summary="Update LocalizationSet(s)" %}
+{% swagger-description %}
 
-| Tip: The order of words in a sentence can differ between languages due to their unique set of grammar rules. The Localization Service accepts multiple arguments that can be used to resolve variables in the text snippets. The order of appearance dictates the variable name in the snippet: $1, $2, etc.  |
-| :--- |
+{% endswagger-description %}
+{% endswagger %}
+
+{% swagger method="delete" path="/" baseUrl="" summary="Delete LocalizationSet(s)" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
 
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Example</th>
-      <th style="text-align:left"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">LocalizationSet
-        <br />
-      </td>
-      <td style="text-align:left">
-        <p>&quot;key&quot;: &quot; age_requirement&quot;,</p>
-        <p>&quot;text&quot;: {&quot;EN&quot;: &quot;For individuals above the age
-          of $1&quot;,</p>
-        <p>&quot;NL&quot;: &quot;Voor personen ouder dan $1 jaar&#x201D;}</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Template-based message</td>
-      <td style="text-align:left">&quot;message&quot;: &quot;{{age_requirement,16}}&quot;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Request body</td>
-      <td style="text-align:left">
-        <p>&quot;localization_codes&quot;: [&quot;NL&quot;],</p>
-        <p>&quot;localizations&quot;: [&quot;age_requirement,16&quot;]</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
-#### Deprecated Actions \(For internal developers\)
+### Using LocalizationSets
 
-Country and region codes \(ISO 3166 nomenclature\) are no longer used by this service. The endpoint to retrieve language codes only returns the languages supported by Fibricheck, i.e. DA, DE, EN, ES, FR, IT, and NL.
+Text snippets in one or more languages can also be requested directly from the Localization Service with the following endpoint. The response will include the snippet in the requested language(s), if available, and in English.&#x20;
 
-* List all country codes: GET /countries
-* List all regions for a country code: GET /countries/{country}/regions
-* List all supported language codes: GET /languages
+{% swagger method="post" path="/request" baseUrl="" summary="List LocalizationSet text(s) in specific language(s)" %}
+{% swagger-description %}
 
+{% endswagger-description %}
+{% endswagger %}
+
+
+
+In addition, LocalizationSets can be implemented in the Template Service by using double curly brackets: `{{key}}` in the text fields. The Services will then communicate with each other to provide the text snippets in the user’s preferred language, if available. If not, the default text is returned, i.e. the English version of the snippet.&#x20;
+
+
+
+\

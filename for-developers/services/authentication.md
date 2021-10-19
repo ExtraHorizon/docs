@@ -66,7 +66,7 @@ When an access token is expired the [sdk](https://app.gitbook.com/o/-MkCjSW-Ht0-
 
 ## Applications
 
-Applications represent the 
+Applications represent the&#x20;
 
 ### Creating an application
 
@@ -168,7 +168,7 @@ await sdk.auth.authenticate({
 
 #### Authorization Code Grant flow with callback (Only for Fibricheck)
 
-* Open [https://pages.dev.fibricheck.com/authorize/?client_id=CLIENT_ID\&response_type=code\&redirect_uri=REDIRECT_URI](https://pages.dev.fibricheck.com/authorize/?client_id=CLIENT_ID\&response_type=code\&redirect_uri=REDIRECT_URI)
+* Open [https://pages.dev.fibricheck.com/authorize/?client\_id=CLIENT\_ID\&response\_type=code\&redirect\_uri=REDIRECT\_URI](https://pages.dev.fibricheck.com/authorize/?client\_id=CLIENT\_ID\&response\_type=code\&redirect\_uri=REDIRECT\_URI)
 * click Authorize
 * Capture the query params on the redirect uri
 * Authenticate with the code query param
@@ -377,3 +377,6 @@ Content-Type: application/json
   * Security considerations: https://tools.ietf.org/html/rfc6819
   * PKCE: https://tools.ietf.org/html/rfc7636
   * PKCE S256 tool: https://tonyxu-io.github.io/pkce-generator/
+
+## API Specification&#x20;
+

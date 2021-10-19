@@ -25,9 +25,9 @@
   * [File](for-developers/services/file-service.md)
   * [Tasks](for-developers/services/task-service.md)
   * [Dispatchers](for-developers/services/dispatcher-service.md)
-  * [Mails](for-developers/services/mail-service.md)
+  * [Mail](for-developers/services/mail-service.md)
   * [Templates](for-developers/services/template-service.md)
-  * [Localizations](for-developers/services/localization-service.md)
+  * [Localization Service](for-developers/services/localization-service.md)
   * [Event](for-developers/services/event.md)
   * [Notifications](for-developers/services/notifications.md)
 
