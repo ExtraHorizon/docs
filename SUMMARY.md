@@ -20,11 +20,10 @@
   * [Tasks](for-developers/services/task-service.md)
   * [Dispatchers](for-developers/services/dispatcher-service.md)
   * [Mails](for-developers/services/mail-service.md)
-  * [Notifications](for-developers/services/notification-service.md)
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
   * [Event Service](for-developers/services/event-service.md)
-  * [Notification Service](for-developers/services/notification-service-1.md)
+  * [Notifications](for-developers/services/notifications.md)
 
 ## Additional Resources
 
