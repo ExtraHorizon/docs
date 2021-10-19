@@ -13,7 +13,7 @@
 
 * [Communication Options](for-developers/communication-options.md)
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
-* [Services](for-developers/services/README.md)
+* [Service Documentation](for-developers/services/README.md)
   * [Authentication](for-developers/services/authentication.md)
   * [Users](for-developers/services/user-service.md)
   * [Documents](for-developers/services/data-service.md)
