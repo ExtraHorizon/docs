@@ -11,6 +11,7 @@
 
 ## For Developers
 
+* [Communication Options](for-developers/communication-options.md)
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Services](for-developers/services/README.md)
   * [Authentication](for-developers/services/authentication.md)
@@ -22,8 +23,9 @@
   * [Mails](for-developers/services/mail-service.md)
   * [Templates](for-developers/services/template-service.md)
   * [Localizations](for-developers/services/localization-service.md)
-  * [Event Service](for-developers/services/event-service.md)
+  * [Event](for-developers/services/event.md)
   * [Notifications](for-developers/services/notifications.md)
+* [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
 
 ## Additional Resources
 

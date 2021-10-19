@@ -1,19 +1,18 @@
 ---
 description: >-
-  The Extra Horizon Event Service serves as an intermediary between other
-  services to communicate the occurrence of certain types of actions. This guide
-  is complementary to the API reference documenatio
+  The Event Module serves as an intermediary between other services to
+  communicate the occurrence of certain types of actions.
 ---
 
-# Event Service
+# Event
 
-## About the Event Service
+## Intro
 
-Certain types of actions that are performed in one service require follow-up actions within other services. These actions, or events, can be registered in the Event Service by the “event-informing service” (or the customer’s application). Subsequently, the Event Service notifies the relevant “event-receiving services” of the occurred action. Which types of events each service receives, is configured within Subscription objects.
+Certain types of actions that are performed in one module require follow-up actions in other modules. These actions, or events, can be registered in the Event Module by the “event-informing service” (or the customer’s application). Subsequently, the Event Service notifies the relevant “event-receiving services” of the occurred action. Which types of events each service receives, is configured within Subscription objects.
 
 #### Example
 
-When a User object is removed, the User Service creates an Event to notify other services of this action. Only the services that are subscribed to this type of Events will be notified. The customer can configure follow-up actions via the Dispatcher Service, e.g. deleting all personally identifiable information (PII) of the removed user.
+When a User object is removed, the User module creates an Event to notify other services. Only the services that are subscribed to this type of Events will be notified. The customer can configure follow-up actions via the Dispatcher module, e.g. deleting all personally identifiable information (PII) of the removed user.
 
 ![](../../.gitbook/assets/Screenshot\_20211018\_141014.png)
 
@@ -21,15 +20,15 @@ When a User object is removed, the User Service creates an Event to notify other
 
 ### Events
 
-An Event object is uniquely identified by its id. The type attribute contains a string value which has been chosen by the customer (or Extra Horizon) for this particular kind of event. The same value can be listed in the Subscription objects to indicate an interest in all Event objects of this type.   
+An Event object is uniquely identified by its id. The type attribute contains a string value which has been chosen by the customer (or Extra Horizon) for this particular kind of event. The same value can be listed in the Subscription objects to indicate an interest in all Event objects of this type.  &#x20;
 
-Optionally, the Event object stores a set of key-value pairs with information from the informing service in a content attribute. This data can be used by the receiving service to perform the required follow-up action(s). 
+Optionally, the Event object stores a set of key-value pairs with information from the informing service in a content attribute. This data can be used by the receiving service to perform the required follow-up action(s).&#x20;
 
 ![](<../../.gitbook/assets/Screenshot\_20211018\_141452 (1).png>)
 
 ### Subscriptions
 
-Subscription objects are uniquely identified by their id. They contain the “contact details” of the subscribing service and a list of event_types of which the service wishes to receive Events. 
+Subscription objects are uniquely identified by their id. They contain the “contact details” of the subscribing service and a list of event\_types of which the service wishes to receive Events.&#x20;
 
 The (Extra Horizon) services are uniquely identified by (and can be contacted via) their name (a URL) and version. The version consists of three numbers as defined by the [Semantic Versioning](https://semver.org) specifications: major, minor, and patch.
 
@@ -48,7 +47,7 @@ The timestamp attributes in the Event Service have a number format, while other 
 To make use of Events, the customer’s application must configure the following:
 
 1. Set up the customer’s application to make a Create an Event request after specific types of actions. Choose a unique type name for each kind of action and make sure to include the content that is required for follow-up actions.
-2. Create (a) Subscription(s) for the Dispatcher (or other) Service(s) to receive these types of Events. 
+2. Create (a) Subscription(s) for the Dispatcher (or other) Service(s) to receive these types of Events.&#x20;
 3. Configure (third party) services to intercept Events
 4. Configure the Dispatcher (or other) Service(s) to take the required action(s), for example to send an email or create a Task.
 
@@ -56,7 +55,7 @@ Configure the Dispatcher (or other) Service(s) to take the required action(s), f
 
 ## Default Events/Subscriptions/Actions
 
-* user_deleted
+* user\_deleted
 
 ## Actions
 
