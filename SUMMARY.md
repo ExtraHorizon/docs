@@ -20,6 +20,7 @@
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Service Documentation](for-developers/services/README.md)
   * [Authentication](for-developers/services/authentication.md)
+  * [Notifications](for-developers/services/notification-service.md)
   * [Users](for-developers/services/user-service.md)
   * [Documents](for-developers/services/data-service.md)
   * [File](for-developers/services/file-service.md)
