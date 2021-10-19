@@ -11,7 +11,10 @@
 
 ## For Developers
 
+* [Automation](for-developers/automation.md)
 * [Communication Options](for-developers/communication-options.md)
+* [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
+* [Handling Errors](for-developers/handling-errors.md)
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Service Documentation](for-developers/services/README.md)
   * [Authentication](for-developers/services/authentication.md)
@@ -25,8 +28,6 @@
   * [Localizations](for-developers/services/localization-service.md)
   * [Event](for-developers/services/event.md)
   * [Notifications](for-developers/services/notifications.md)
-* [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
-* [Handling Errors](for-developers/handling-errors.md)
 
 ## Additional Resources
 
