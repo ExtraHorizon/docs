@@ -14,11 +14,11 @@ Data is managed using structured documents, written in JSON. These documents rel
 1. **Define Data structure**\
    ****Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definitions in schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
 2. **Define behavior logic**\
-   ****Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services. 
+   ****Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services.&#x20;
 
 ### Data Structure
 
-![](<../../.gitbook/assets/image (5).png>)
+![](<../../.gitbook/assets/image (5) (1).png>)
 
 The document service validation is based on the open-source JSON schema specification. This allows you to create complex data structures that you can configure yourself.
 
@@ -26,7 +26,7 @@ Besides defining field types, you can create complex fields with constraints lik
 
 ### States & Transitions
 
-![](<../../.gitbook/assets/image (2).png>)
+![](<../../.gitbook/assets/image (2) (1).png>)
 
 The document service allows you to configure workflows that match your exact business need.   You can mark your documents with specific states and create transitions between these states, these can be manual or automatic.
 
@@ -34,11 +34,11 @@ For example, you can create an order and shipment workflow to keep track of all 
 
 ### Conditions & Actions
 
-![](<../../.gitbook/assets/image (3).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)
 
 You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific cercomstances. (Field value, the person executing the transition, …)
 
-When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more… 
+When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more…&#x20;
 
 ## Schema's
 
@@ -64,7 +64,7 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Permissions
 
-A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation. 
+A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation.&#x20;
 
 #### createMode
 
@@ -122,11 +122,11 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Properties
 
-A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org). 
+A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).&#x20;
 
-![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg_WiBjiuzqgpFDjYJL1ker6l4fM_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
+![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg\_WiBjiuzqgpFDjYJL1ker6l4fM\_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
 
-The Data Service supports five kinds of configurations (type attribute): 
+The Data Service supports five kinds of configurations (type attribute):&#x20;
 
 | Type      | Description                                                                                                                  |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -196,7 +196,7 @@ await sdk.data.properties.create(newSchema.id,
 {% endtab %}
 {% endtabs %}
 
- All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
+&#x20;All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
 
 ### Statuses
 
@@ -238,9 +238,9 @@ For a creationTransition the type will always be set to `manual`
 
 ### Transitions
 
-When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`. 
+When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.&#x20;
 
-A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute. 
+A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute.&#x20;
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -269,7 +269,7 @@ A Transition object is identified by its name (name) and has a specific type ass
 
 ### Transition conditions
 
-Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions: 
+Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions:&#x20;
 
 | Type                                | Description                                                                                                                                                       |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -287,7 +287,7 @@ There is an additional condition which applies to all Transitions:
 
 {% tabs %}
 {% tab title="inputCondition" %}
-When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them 
+When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them&#x20;
 
 ```javascript
   await sdk.data.transitions.create(newSchema.id, {
@@ -367,7 +367,7 @@ the example above would require the API client to provide the address.inhabited 
 
 ### Transition actions
 
-You can attach actions to transitions. This way when a transition is executed and its conditions are met it will also trigger the action. In case of a Creation Transition, the action will be executed during the creation of the document. 
+You can attach actions to transitions. This way when a transition is executed and its conditions are met it will also trigger the action. In case of a Creation Transition, the action will be executed during the creation of the document.&#x20;
 
 #### **Modifying the document**
 
@@ -414,7 +414,7 @@ Each document has a `userIds` and `groupIds` field. These field are part of dete
 | `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                             |
 
 {% hint style="info" %}
-An enlistment is an object that connects a User to a specific group by means of the group_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
+An enlistment is an object that connects a User to a specific group by means of the group\_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
 {% endhint %}
 
 **code examples**
@@ -494,7 +494,7 @@ TODO
 
 **example**
 
-## Documents 
+## Documents&#x20;
 
 After the creation of a Schema, a document can be created which adheres to the Schema. A document is identified by an id and contains data as defined by the properties field in the Schema. Furthermore, the object contains the following attributes:
 
@@ -555,8 +555,8 @@ Creating a document
 1. Create a schema: POST/
 2. Enable the schema: POST/{schemaId}/enable
 3. Create properties: POST/{schemaId}/properties
-4. Create statuses: POST/{schemaId}/statuses 
-5. Create transitions: POST/{schemaId}/transitions 
+4. Create statuses: POST/{schemaId}/statuses&#x20;
+5. Create transitions: POST/{schemaId}/transitions&#x20;
 6. Create an index: POST/{schemaId}/indexes
 7. Create the document: POST/{schemaId}/documents
 8. Link users to a document: POST/{schemaId}/documents/{documentId}/linkUsers
@@ -627,7 +627,7 @@ Manually start the transition of a document adhering to a Schema, when the follo
 * The initiatorHasRelationToUserInDataCondition,
 * The initiatorHasRelationToGroupInDataCondition,
 * The Transition type is manual,
-* The Transition exists within the Schema object, 
+* The Transition exists within the Schema object,&#x20;
 * The Document resides in a Status defined in the fromStatuses object of the Transition.
 
 With the correct permission, multiple documents can be transitions at once.
@@ -643,14 +643,14 @@ Add or remove data to or from the groupIds and userIds attributes.
 * Link users to a document: POST/{schemaId}/documents/{documentId}/linkUsers
 * Unlink users from a document: POST/{schemaId}/documents/{documentId}/unlinkUsers
 
-Notes: When GroupSyncMode is set to LINKED_USERS_PATIENT_ENLISTMENT for a document, all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.\
+Notes: When GroupSyncMode is set to LINKED\_USERS\_PATIENT\_ENLISTMENT for a document, all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.\
 Specifying an empty userIds or groupIds array will have no effect on the document.\
 Not specifying the userIds or groupIds array will unlink all users or groups from the document.
 
 Viewing schemas, documents, and comments
 
-With the correct permissions or the correct enlistment, users can view (a selection of) the data of schemas, documents, and comments. 
+With the correct permissions or the correct enlistment, users can view (a selection of) the data of schemas, documents, and comments.&#x20;
 
-* Request a list of schemas: GET/ 
+* Request a list of schemas: GET/&#x20;
 * Request a list of documents: GET/{schemaId}/documents
 * Request a list of comments: GET/{schemaId}/documents/{documentId}/comments\
