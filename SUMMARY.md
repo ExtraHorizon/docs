@@ -26,6 +26,7 @@
   * [Event](for-developers/services/event.md)
   * [Notifications](for-developers/services/notifications.md)
 * [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
+* [Handling Errors](for-developers/handling-errors.md)
 
 ## Additional Resources
 
