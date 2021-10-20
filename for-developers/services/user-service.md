@@ -1,12 +1,10 @@
 ---
-description: >-
-  The User Service handles user management and general role base access control
-  functionality.
+description: The User Service handles user management and role base access control.
 ---
 
-# Users
+# User Service
 
-The user service handles user management and a general role based access control system. At a basic level every user in the system starts out as basic user without any permissions. Based on the type of application you want to build you can create roles on system and group level and assign permissions to them.
+The user service handles user management and offers role-based access control. By default, a new user has no permissions. Depending on the type of application you want to build you can create roles on a system and group-level and assign permissions to them.
 
 In addition to role base access controls this service also provides registration and password management functionality.
 
@@ -21,7 +19,7 @@ await sdk.users.find({
 });
 ```
 
-Using the extrahorizon SDK or REST API's you can easily retrieve users. The permissions assigned to you will determine what fields will be returned to you. You will receive either a **full User**, a **Patient** or a **Staff** view. 
+Using the Extra Horizon SDK or REST API's you can easily retrieve users. The permissions assigned to you determine the returned fields. You will receive either a **Full User**, a **Patient,** or a **Staff** view.&#x20;
 
 {% tabs %}
 {% tab title="Full User" %}
@@ -63,7 +61,7 @@ Using the extrahorizon SDK or REST API's you can easily retrieve users. The perm
 
 
 
-When you receive a **Patient** the patientEnlistments property will only hold the enlistments for groups where you are a staffMember.
+When you receive a **Patient** the patientEnlistments property will only hold the enlistments for groups where you are a Staff member.
 {% endtab %}
 
 {% tab title="Staff" %}
@@ -81,7 +79,7 @@ When you receive a **Patient** the patientEnlistments property will only hold th
   }
 ```
 
-When you receive a **Staff** the staffEnlistments property will only hold the enlistments for groups where you are a staffMember
+When you receive a **Staff** the `staffEnlistments` property will only hold the enlistments for groups where you are a Staff member.
 {% endtab %}
 {% endtabs %}
 
@@ -104,12 +102,12 @@ When you receive a **Staff** the staffEnlistments property will only hold the en
 | `update_timestamp`      | Epoch timestamp when this user object was last updated.                                            |
 
 {% hint style="info" %}
-When using the Javascript SDK fields are transformed into a **camelCase**. **snake_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
+When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
 {% endhint %}
 
 ### **Create** a new user
 
-You can make use of the ExtraHorizon SDK to create new users from your application. This will also trigger a [UserCreated](user-service.md#usercreated) event.
+You can use the Extra Horizon SDK to create new users from your application. This also triggers a [UserCreated](user-service.md#usercreated) event.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -131,12 +129,12 @@ const myNewSchema = await sdk.users.createAccount({
 {% endtabs %}
 
 {% hint style="warning" %}
-Notice **birthday**, **country** & **gender** is part of the registration fields but is not returned when Querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation a user profile is created and these fields are stored there.
+**Notice:** **birthday**, **country** & **gender** are part of the registration fields but are not returned when querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation, a user profile is created and these fields are stored there.
 {% endhint %}
 
 #### Check for email availability
 
-As an application you have the ability to check if an email is available or already in use in a user account.
+As an application, you have the ability to check if an email is available or already in use in a user account.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -148,15 +146,15 @@ await sdk.users.isEmailAvailable('jane.doe@example.com');
 
 ### Email verification
 
-After registration the activation attribute will default to `false`. While email verification is not blocking the use of any API services, it is blocking the possibility to initiate a password reset. If you are not providing password reset functionality inside your application you can skip this step. For other applications it is highly recommended as you want to prevent sending emails to the wrong person.
+After registration, the activation attribute defaults to `false`. While email verification does not block using any API services, it does block the possibility to initiate a password reset. If you do not provide password reset functionality in your application, you can skip this step. For other applications, it is highly recommended to implement email verification to prevent sending emails to the wrong person.
 
-The user service can be configured to hold a reference to an html template in the template service. When a registration occurs the user service will try to send an email by using this template.
+The user service can be configured to hold a reference to an HTML template in the template service. When registration occurs, the user service will try to send an email by using this template.
 
 {% hint style="danger" %}
-Currently the configuration of a templateId is not possible through the API. Contact ExtraHorizon support in order to set this variable.
+To use an email verification template other than the default one, contact [Extra Horizon](mailto:requests@extrahorizon.com)
 {% endhint %}
 
-The user service will provide the users **firstname, lastname** and **activation_hash** to the email service. The email service will add the **tracking_hash** before it reaches the template service. Thus you have the option to use these three fields in your email template. Please check the [Template Service ](template-service.md)for more details.
+The user service will provide the user's `firstname`, `lastname`, and `activation_hash` values to the email service. The email service adds a `tracking_hash` before it reaches the template service. Thus you can use these three fields in your email template. Please review the [Template Service ](template-service.md)documentation to learn how to design email templates.
 
 ```javascript
 {
@@ -184,7 +182,7 @@ The user service will provide the users **firstname, lastname** and **activation
 
 #### Resending email verification
 
-When you make an application where email verification is a prerequisite or when you want to provide password reset capabilities you want your user to be able to trigger the email verification mail again.
+When you make an application where email verification is a prerequisite, or when you want to provide password reset capabilities, you want your user to be able to trigger the email verification mail again.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -194,11 +192,13 @@ await sdk.users.requestEmailActivation('john.doe@example.com');
 {% endtab %}
 {% endtabs %}
 
-You can choose to set a different templateId for this email in the [User Service](user-service.md). Currently this functionality is not supported through the API. Contact ExtraHorizon support in order to set this variable.
+{% hint style="danger" %}
+To use an email activation template other than the default one, contact [Extra Horizon Support](mailto:requests@extrahorizon.com)
+{% endhint %}
 
 #### Performing a user activation
 
-With the steps above you can provide your user with an email containing an activation token. Typically this is embedded inside a url or deeplink towards your application. You can then use that token to activate the user.
+By performing the steps mentioned higher, you can send your user an email with an activation token. Typically this is embedded inside an URL or a deep link. You can then use that token to activate the user.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -210,9 +210,9 @@ await sdk.users.validateEmailActivation({
 {% endtab %}
 {% endtabs %}
 
-### Changing email
+### Change an email
 
-When logged in you can change the email of your/a user account depending on your permissions. When doing this you will be required to reactive your account.
+When a user is logged in, he can change the email of his or another user's account, depending on the set permissions. Changing an email requires re-activating the associated account.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -224,11 +224,11 @@ await sdk.users.updateEmail('abcdef0123456789abcdef01', 'jane.doe@example.com');
 
 ### Password reset
 
-Users not remembering their password is common and you want to deal with it safely in your applications. The ExtraHorizon SDK provides you with the ability to do so.
+Users not remembering their password is common. You want to deal with it safely in your applications. The Extra Horizon SDK provides you with the ability to do so.
 
 #### Requesting a password reset email
 
-Much like the email verification flow, the password reset flow provides you with a reset token that you can use to set a new password for your users account. The user service again contains a templateId for this email, contact ExtraHorizon support in order to set this variable.
+Similar to the email verification flow, the password reset flow provides you with a reset token that you can use to set a new password for your user's account.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -238,9 +238,13 @@ await sdk.users.requestPasswordReset('john.doe@example.com');
 {% endtab %}
 {% endtabs %}
 
+{% hint style="danger" %}
+To use a password reset template other than the default one, contact [Extra Horizon Support](mailto:requests@extrahorizon.com)
+{% endhint %}
+
 #### Resetting a password
 
-With the steps above you can provide your user with an email containing a reset token. Typically this is embedded inside a url or deeplink towards your application. You can then use that token to reset the password of the user.
+By performing the steps mentioned higher, you can provide your user with an email containing a reset token. Typically this is embedded inside a URL or deep link towards your application. You can then use that token to reset the password of the user.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -270,7 +274,7 @@ await sdk.users.changePassword({
 
 ### Removing a user
 
-Removing a user requires the global [DELETE_USER](user-service.md#permissions) permission. This will also trigger a [UserDeleted](user-service.md#userdeleted) event.
+Removing a user requires the global [DELETE\_USER](user-service.md#permissions) permission. This will also trigger a [UserDeleted](user-service.md#userdeleted) event.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -282,13 +286,17 @@ await sdk.users.remove('abcdef0123456789abcdef01');
 
 ## Groups
 
-Groups are entities that combine users together. Allowing us to create access control policies for the entire group or for users with a specific role within that group. 
+Groups allow you to create access control policies for a group of users, or for users with a specific role within that group.
 
-The user service was build specifically for medical applications where patients and medical staff can collaborate and share information. With this in mind you can join a group from a patient and/or from a staff member perspective. While the [**Patient Enlistment**](user-service.md#patient-enlistment)** **is a type of enlistment that is a dedicated for patients without the ability to add more specific permissions the [**Staff Enlistment**](user-service.md#staff-enlistment) allows you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for you application.
+The user service is built for medical applications, where patients and medical staff collaborate and share information. A user can join a group from a patient and/or from a staff member's perspective.&#x20;
+
+A [**Patient Enlistment**](user-service.md#patient-enlistment)** **is a type of enlistment that is dedicated to patients without the ability to add more specific permissions.
+
+A [**Staff Enlistment**](user-service.md#staff-enlistment) allows you to create roles within a group where you can attach any kind of permissions to create the role base access system you need for your application.
 
 ### Create a group
 
-A group is no more than the collection of its members. Creating a group thus is as simple as creating your first group role or attaching your first patient or staf member to a **shared identifier**: the group Id**.**
+A group is nothing more than the collection of its members. Creating a group is as simple as creating your first group role or attaching your first patient or staff member to a **shared identifier**: the `groupId`**.**
 
 * [Create a group role](user-service.md#create-a-group-role)
 * [Enlist a staff member](user-service.md#enlist-a-staff-member)
@@ -296,7 +304,7 @@ A group is no more than the collection of its members. Creating a group thus is 
 
 ### Create a Group Role
 
-Group roles give the ability to provide specific users with specific permissions in the context of a group. You can assign permissions that give access to actions within the User Service or other Extra Horizon Services.
+Group roles give the ability to provide specific users with specific permissions in the context of a group. You can assign permissions that allow users to perform specific actions across the Extra Horizon Services.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -325,7 +333,7 @@ await sdk.users.groupRoles.addPermissions(
 
 ### Group Permissions
 
-You can attach a group Role to Staff Members. Permissions that are not granted by you by default and you need to obtain via a group role. Below is a summary of the group permissions that you can attach to a group role that have an effect in the User Service.
+You can attach a group Role to Staff Members. Permissions that are not granted to a user by default and you need to obtain via a group role. The table below gives a summary of the group permissions that you can attach to a group role. These permissions allow certain actions in the User Service.
 
 | Permission                     | Description                                                                  |
 | ------------------------------ | ---------------------------------------------------------------------------- |
@@ -341,18 +349,17 @@ You can attach a group Role to Staff Members. Permissions that are not granted b
 | `REMOVE_STAFF`                 | Remove staff from the group                                                  |
 
 {% hint style="warning" %}
-There are more permissions that you can attach to a group role that have their effect in other services. An overview of those permissions can be found in the designated service documentation.
+There are more permissions that you can attach to a group role that affect the allowed actions in other services. An overview of those permissions can be found in the designated service documentation.
 {% endhint %}
 
 ## Staff Enlistment
 
-You can enlist a user as a staff member of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.
+You can enlist a user as a staff member of a group. This provides that user with some basic permissions in the User Service and other Extra Horizon services.
 
 #### Default permissions
 
-| Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- |
 | See a limited set of fields of all patients and staff members (of the groups where you are enlisted as staff member) |
+| -------------------------------------------------------------------------------------------------------------------- |
 | View all the patients in a group                                                                                     |
 | View the other staff members of the group                                                                            |
 | See a subset of the fields for any staff member or patient of the group                                              |
@@ -374,7 +381,11 @@ Once a staff member you can start [attaching group roles](user-service.md#create
 
 ## Patient Enlistment
 
-You can enlist a user a patient of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services. You can not attach additional permissions to patients.
+You can enlist a user as a patient of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.&#x20;
+
+{% hint style="warning" %}
+You can not attach additional permissions to patients
+{% endhint %}
 
 #### Default permissions
 
@@ -396,19 +407,19 @@ await sdk.users.addPatientEnlistment('{userId}', {
 {% endtab %}
 {% endtabs %}
 
-With a patient enlistment you can provide an **expiryTimestamp **(Your are not obligated to use this functionality). When you retrieve users the user service will display wether the expiry timestamp was exceeded or is still in the future.
+With a patient enlistment, you can **optionally** provide an `expiryTimestamp`. When you retrieve users, the user service will display whether the expiry timestamp was exceeded or not.
 
 {% hint style="info" %}
-**USE CASE:** You can use this feature to implement a prescription like application functionality where you provide patients with access to specific functionality while the prescription lasts.
+**Use Case:** You can use this feature to implement a prescription-like application functionality where you provide patients with access to specific functionality while the prescription lasts.
 {% endhint %}
 
 ## System Roles
 
-You can assign permissions to system roles that have an effect on a system wide level. 
+You can assign permissions to system roles that have a system-wide effect.
 
 ### Create a role
 
-Creating a system wide role requires you to have the create `CREATE_ROLE` permission on system level. An example of how you can do this with The Extra Horizon SDK below:
+Creating a system-wide role requires the `CREATE_ROLE` permission on a system level. The following example shows how you can do this using the Extra Horizon SDK:
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -465,14 +476,12 @@ await sdk.users.globalRoles.addToUsers(rql2, {
 | `REMOVE_PATIENT`               | Remove patients from a group            |
 
 {% hint style="warning" %}
-There are more permissions that you can attach to system roles that have effect in other services. An overview of those permissions can be found in the designated service documentation.
+There are more permissions that you can attach to system roles that affect the allowed actions in other services. An overview of those permissions can be found in the designated service documentation.
 {% endhint %}
 
 ## Events
 
-Every Extra Horizon service will emit events towards the Event Service. You can subscribe to events in other services and dispatch specific actions depending on the wanted functionality in your system.
-
-
+Every Extra Horizon service will emit events towards the Event service. You can subscribe to events in other services and dispatch specific actions.
 
 | Event Name                 | Description                                                                                                                 |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -482,6 +491,11 @@ Every Extra Horizon service will emit events towards the Event Service. You can 
 | `PatientEnlistmentRemoved` | When a patient enlistment is removed the **PatientEnlistmentRemoved** is triggered.                                         |
 
 {% hint style="info" %}
-You can user the [Dispatcher Service](dispatcher-service.md) to trigger actions like **sending mails**, **sending notifications** or **running a Task** based on events.
+Use the [Dispatcher Service](dispatcher-service.md) to trigger actions like **sending emails**, **sending notifications,** or **executing tasks** based on events.
 {% endhint %}
 
+
+
+## &#x20;References
+
+* [User Service API Reference](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/users-service/1.1.7/openapi.yaml)
