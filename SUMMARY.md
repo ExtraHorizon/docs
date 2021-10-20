@@ -31,6 +31,7 @@
   * [Localization Service](for-developers/services/localization-service.md)
   * [Event Service](for-developers/services/event-service.md)
   * [Notification Service](for-developers/services/notification-service-1.md)
+  * [Profile Service](for-developers/services/profile-service.md)
 
 ## Additional Resources
 
