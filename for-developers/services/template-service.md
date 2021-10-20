@@ -9,7 +9,7 @@ description: >-
 
 ## Intro
 
-Templates facilitate the (automated) composition of generic messages to users. A typical example is the email following a user’s registration to a service. Although the bulk of the message is identical for all users, some variable data is present, such as the user’s name. A blueprint for this type of messages can be configured with the Template Service. Subsequently, the service can generate a complete message when the variable values are provided via a request.&#x20;
+Templates facilitate the (automated) composition of generic messages to users. A typical example is an email following a user’s registration to a service. Although the bulk of the message is identical for all users, some variable data is present, such as the user’s name. A blueprint for this type of messages can be configured with the Template Service. Subsequently, the service can generate a complete message when the variable values are provided via a request.&#x20;
 
 ## Objects and attributes
 
@@ -35,10 +35,11 @@ A Template can provide a blueprint for one or more text fields via the fields at
 
 ### Validating variables: schema
 
-The variables that are used as placeholders in the text fields, must be declared in a schema, within another fields object. In addition to specifying the value type (array, string, number, or boolean), the customer can set some restrictions to which limit the range of allowed values are allowed. The available options to define a schema are listed in our [API reference documentation](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/templates-service/1.0.13/openapi.yaml#/Template/post\_).
+The variables that are used as placeholders in the text fields, must be declared in a schema, within another field's object. In addition to specifying the value type (array, string, number, or boolean), the customer can set some restrictions to which limit the range of allowed values are allowed. The available options to define a schema are listed in our [API reference documentation](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/templates-service/1.0.13/openapi.yaml#/Template/post\_).
 
 ```json
 {
+  "id": "5cff960c46e0fb0007b45cc4",
   "schema": {
     "type": "object",
     "fields": {
@@ -72,7 +73,7 @@ One Template can be used for messages in multiple languages when the text fields
 
 `{{key, argument1, argument2, etc}}`
 
-The arguments can consist of actual values, e.g. “16”, or of variables that receive a value via the resolve a Template request, e.g.  “$content.age“.
+The arguments can consist of actual values, e.g. “16”, or of variables that receive a value via the resolve a Template request, e.g.  $content.age“.
 
 #### Example
 
@@ -95,7 +96,7 @@ LocalizationSet stored by the Localization Service:
 
 #### HTML and hash codes
 
-Depending on the intended use of the text fields in a Template, their string values can be written in plain text or in HTML. The latter enables the addition of, among others, images and hyperlinks. Hyperlinks can be used to forward information that was included in an email, to the customer’s client application. Examples are the tracking\_hash code, which is used by the Mail Service to count how often an email is opened, and the activation\_hash code, which is needed by the User Service to verify a user’s email address. As for all variables in a Template, hash codes that are part of a URL, must be declared in the Template’s schema.&#x20;
+Depending on the intended use of the text fields in a Template, their string values can be written in plain text or HTML. The latter enables the addition of, among others, images and hyperlinks. Hyperlinks can be used to forward information that was included in an email, to the customer’s client application. Examples are the tracking\_hash code, which is used by the Mail Service to count how often an email is opened, and the activation\_hash code, which is needed by the User Service to verify a user’s email address. As for all variables in a Template, hash codes that are part of a URL, must be declared in the Template’s schema.&#x20;
 
 #### Example: Email Template with tracker pixel&#x20;
 
@@ -125,7 +126,7 @@ The process to resolve a Template is as follows:
 2.
    * content: The key-value pairs required to resolve the variables.&#x20;
    * language: The code of the language in which text snippets must be requested if localization keys are present. &#x20;
-   * time\_zone: The time zone of the user to whom the message is intended. This enables the correct conversion of values with a number or dateTime format to a human-readable time representation.
+   * time\_zone: The time zone of the user to whom the message is intended. This enables the correct conversion of values with a number or `dateTime` format to a human-readable time representation.
 3. The content key-value pairs are validated against the Template’s schema. If one or more required values are missing or do not qualify, an error response is immediately returned.
 4. The Template’s text fields are resolved and returned. This involves assigning the (converted) values to the corresponding variables and/or requesting text snippets in the specified language from the Localization Service.
 
@@ -209,3 +210,7 @@ The action of replacing the placeholders in a Template with actual values and re
 {% hint style="info" %}
 **Tip: **The content parameter in the request body must have the same structure as the Template’s schema.
 {% endhint %}
+
+## References
+
+* [Template service API Reference](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/templates-service/1.0.13/openapi.yaml)

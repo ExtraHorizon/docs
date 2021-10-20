@@ -32,6 +32,7 @@
   * [Event Service](for-developers/services/event-service.md)
   * [Notification Service](for-developers/services/notification-service-1.md)
   * [Profile Service](for-developers/services/profile-service.md)
+  * [Payment Service](for-developers/services/payment-service.md)
 
 ## Additional Resources
 
