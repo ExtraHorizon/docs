@@ -37,3 +37,7 @@
 ## Additional Resources
 
 * [GitHub](https://github.com/ExtraHorizon)
+
+## ExH Platform
+
+* [Security](exh-platform/security.md)

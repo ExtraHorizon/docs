@@ -10,7 +10,7 @@ description: >-
 
 Polysomnography, also called a sleep study, is a comprehensive test used to diagnose sleep disorders. Polysomnography records your brain waves, the oxygen level in your blood, heart rate, and breathing, as well as eye and leg movements during the study. Polysomnography may be done at a sleep disorders unit within a hospital, a sleep center, or at home. A polysomnography records raw, multichannel time series data from channels such as EEG, EMG, ECG, PulseOx,… at a sampling rate of ±256Hz
 
-![Example of a polysomnography record](<../.gitbook/assets/image (1).png>)
+![Example of a polysomnography record](<../.gitbook/assets/image (1) (1).png>)
 
 ## Objective <a href="objective" id="objective"></a>
 
