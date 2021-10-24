@@ -5,7 +5,7 @@ description: >-
   attaching them to automation workflows.
 ---
 
-# Documents
+# Document Service
 
 ## **Intro**
 
@@ -193,6 +193,22 @@ await sdk.data.properties.create(newSchema.id,
   }
 });
 ```
+{% endtab %}
+
+{% tab title="Date-time" %}
+```
+await sdk.data.properties.create(newSchema.id, 
+  {
+    name: 'birthdate',
+    configuration: {
+      type: 'string',
+      format: 'date-time'
+    }
+  }
+});
+```
+
+this allows you to create a ISO formatted date-time field wich accepts rql to query on using gt,gte, lt and lte ,...&#x20;
 {% endtab %}
 {% endtabs %}
 
