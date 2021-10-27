@@ -556,9 +556,37 @@ After the creation of a Schema, a document can be created which adheres to the S
 
 ### updating access
 
-####
+#### &#x20;Linking users
 
+```javascript
+await sdk.data.documents.linkUsers('{yourSchemaId}', '{yourDocumentId}', {
+  userIds: ['{userIdToLink}'],
+});
+```
 
+#### Unlink users
+
+```javascript
+await sdk.data.documents.unlinkUsers('{yourSchemaId}', '{yourDocumentId}', {
+  userIds: ['{userIdToUnLink}'],
+});
+```
+
+#### Linking groups
+
+```javascript
+await sdk.data.documents.linkGroups('{yourSchemaId}', '{yourDocumentId}', {
+    groupIds: ['{groupIdToLink}'],
+});
+```
+
+#### Unlink groups
+
+```javascript
+await sdk.data.documents.unlinkGroups('{yourSchemaId}', '{yourDocumentId}', {
+  groupIds: ['{groupIdToUnLink}'],
+});
+```
 
 ## Endpoints
 
