@@ -422,6 +422,8 @@ To access an element in an array or embedded documents, use the dot notation.
 
 Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
 
+Using actions you can modify these fields and therefore the access of the document.
+
 | Action Type          | Description                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `LinkCreator`        | Add the creatorId to the userIds of the document                                                               |
@@ -430,26 +432,61 @@ Each document has a `userIds` and `groupIds` field. These field are part of dete
 | `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                             |
 
 {% hint style="info" %}
-An enlistment is an object that connects a User to a specific group by means of the group\_id. There are two types of enlistments: PatientEnlistment and StaffEnlistment. For more information see the User Service.
+If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](data-service.md#updating-access "mention")
 {% endhint %}
 
 **code examples**
 
 {% tabs %}
-{% tab title="FirstCreator" %}
-
+{% tab title="LinkCreator" %}
+```
+c
+```
 {% endtab %}
 
 {% tab title="LinkUserFromData" %}
-
+```
+await sdk.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'linkUserFromData',
+      userIdField: '{UserIdField}', // Field in dot notation.The root is data
+    }
+  ],
+  ...
+});
+```
 {% endtab %}
 
 {% tab title="LinkEnlistedGroups" %}
-
+```
+await sdk.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'LinkEnlistedGroups',
+      onlyActive: true, // Optional, defaults to false
+    }
+  ],
+  ...
+});
+```
 {% endtab %}
 
 {% tab title="LinkGroupFromData" %}
-
+```
+await sdk.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'linkGroupFromData',
+      groupIdField: 'my_group_id', // Field in dot notation.The root is data
+    }
+  ],
+  ...
+});
+```
 {% endtab %}
 {% endtabs %}
 
