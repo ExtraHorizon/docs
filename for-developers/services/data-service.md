@@ -18,7 +18,7 @@ Data is managed using structured documents, written in JSON. These documents rel
 
 ### Data Structure
 
-![](<../../../.gitbook/assets/image (5) (1).png>)
+![](<../../.gitbook/assets/image (5) (1).png>)
 
 The document service validation is based on the open-source JSON schema specification. This allows you to create complex data structures that you can configure yourself.
 
@@ -26,7 +26,7 @@ Besides defining field types, you can create complex fields with constraints lik
 
 ### States & Transitions
 
-![](<../../../.gitbook/assets/image (2) (1).png>)
+![](<../../.gitbook/assets/image (2) (1).png>)
 
 The document service allows you to configure workflows that match your exact business need.   You can mark your documents with specific states and create transitions between these states, these can be manual or automatic.
 
@@ -34,7 +34,7 @@ For example, you can create an order and shipment workflow to keep track of all 
 
 ### Conditions & Actions
 
-![](<../../../.gitbook/assets/image (3) (1).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)
 
 You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific cercomstances. (Field value, the person executing the transition, …)
 
@@ -432,7 +432,7 @@ Using actions you can modify these fields and therefore the access of the docume
 | `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                             |
 
 {% hint style="info" %}
-If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](./#updating-access "mention")
+If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](data-service.md#updating-access "mention")
 {% endhint %}
 
 **code examples**

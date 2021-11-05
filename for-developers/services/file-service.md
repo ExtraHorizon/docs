@@ -11,7 +11,7 @@ description: >-
 The File module is a file storage solution. This module stores files as binary data together with some metadata. The File module accepts all data types but aims at data that does not adhere to a particular structure, such as images, log files, and zipped files. File retrieval is based on tokens that grant either full or read-only access.
 
 {% hint style="info" %}
-**Tip: **If you have structured data to store,** **we recommend that you take a look at our [Document Module](data-service/). This module has more features to define additional logic when data changes.
+**Tip: **If you have structured data to store,** **we recommend that you take a look at our [Document Module](data-service.md). This module has more features to define additional logic when data changes.
 {% endhint %}
 
 ### Information Model
