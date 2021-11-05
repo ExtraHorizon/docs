@@ -151,6 +151,14 @@ await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
 {% endtab %}
 {% endtabs %}
 
+#### Updating properties
+
+TODO
+
+#### Removing properties
+
+TODO
+
 #### Some examples
 
 you can also make more complex objects and array's of objects.
@@ -196,7 +204,7 @@ await sdk.data.properties.create(newSchema.id,
 {% endtab %}
 
 {% tab title="Date-time" %}
-```
+```javascript
 await sdk.data.properties.create(newSchema.id, 
   {
     name: 'birthdate',
@@ -208,7 +216,7 @@ await sdk.data.properties.create(newSchema.id,
 });
 ```
 
-this allows you to create a ISO formatted date-time field wich accepts rql to query on using gt,gte, lt and lte ,...&#x20;
+this allows you to create a ISO formatted date-time field wich accepts RQL to query on using gt,gte, lt and lte ,...&#x20;
 {% endtab %}
 {% endtabs %}
 
@@ -547,6 +555,12 @@ TODO
 
 **example**
 
+#### **Enabling and disabling schema's**
+
+**TODO**
+
+****
+
 ## Documents&#x20;
 
 After the creation of a Schema, a document can be created which adheres to the Schema. A document is identified by an id and contains data as defined by the properties field in the Schema. Furthermore, the object contains the following attributes:
@@ -653,145 +667,41 @@ When executing a transition you will need to provide the id of the transition th
 
 ### updating access
 
-#### &#x20;Linking users
+Access rules are defined in the schema and in many cases are dependent on the userIds and groupIds properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
 
+You can use the following functions to add or remove userIds and or groupIds from the document.
+
+{% tabs %}
+{% tab title="Linking Users" %}
 ```javascript
 await sdk.data.documents.linkUsers('{yourSchemaId}', '{yourDocumentId}', {
-  userIds: ['{userIdToLink}'],
+    userIds: ['{userIdToLink}'],
 });
 ```
+{% endtab %}
 
-#### Unlink users
-
+{% tab title="Unlink Users" %}
 ```javascript
 await sdk.data.documents.unlinkUsers('{yourSchemaId}', '{yourDocumentId}', {
-  userIds: ['{userIdToUnLink}'],
+    userIds: ['{userIdToUnLink}'],
 });
 ```
+{% endtab %}
 
-#### Linking groups
-
+{% tab title="Linking Groups" %}
 ```javascript
 await sdk.data.documents.linkGroups('{yourSchemaId}', '{yourDocumentId}', {
     groupIds: ['{groupIdToLink}'],
 });
 ```
+{% endtab %}
 
-#### Unlink groups
-
+{% tab title="Unlink Groups" %}
 ```javascript
 await sdk.data.documents.unlinkGroups('{yourSchemaId}', '{yourDocumentId}', {
-  groupIds: ['{groupIdToUnLink}'],
+    groupIds: ['{groupIdToUnLink}'],
 });
+
 ```
-
-## Endpoints
-
-This section gives an overview of the available Data Service endpoints. The full descriptions, including the required conditions, permissions and/or scopes, can be found in the API reference documentation.
-
-#### I. Getting started with the Data Service
-
-Creating a document
-
-1. Create a schema: POST/
-2. Enable the schema: POST/{schemaId}/enable
-3. Create properties: POST/{schemaId}/properties
-4. Create statuses: POST/{schemaId}/statuses&#x20;
-5. Create transitions: POST/{schemaId}/transitions&#x20;
-6. Create an index: POST/{schemaId}/indexes
-7. Create the document: POST/{schemaId}/documents
-8. Link users to a document: POST/{schemaId}/documents/{documentId}/linkUsers
-9. Link groups to a document: POST/{schemaId}/documents/{documentId}/linkGroups
-10. Create comments: POST/{schemaId}/documents/{documentId}/comments
-
-#### II. Document management
-
-General create, update and delete endpoints
-
-* Create a schema: POST/
-* Update a schema: PUT/{schemaId}
-* Delete a schema: DELETE/{schemaId}\
-  \
-
-* Create a property: POST/{schemaId}/properties
-* Delete a property: DELETE/{schemaId}/properties/{propertyPath}
-* Update a property: PUT/{schemaId}/properties/{propertyPath}\
-  \
-
-* Create a status: POST/{schemaId}/statuses
-* Delete a status: DELETE/{schemaId}/statuses/{name}
-* Update a status: PUT/{schemaId}/statuses/{name}\
-  \
-
-  * Create a transition: POST/{schemaId}/transitions
-  * Update a transition: PUT/{schemaId}/transitions/{transitionId}
-  * Delete a transition: DELETE/{schemaId}/transitions/{transitionId}\
-    \
-
-  * Create a document: POST/{schemaId}/documents
-  * Update a document: PUT/{schemaId}/documents/{documentId}
-* Delete a document: DELETE/{schemaId}/documents/{documentId}\
-  \
-
-* Create a comment: POST/{schemaId}/documents/{documentId}/comments
-* Update a comment: PUT/{schemaId}/documents/{documentId}/comments
-* Delete a comment: DELETE/{schemaId}/documents/{documentId}/comments\
-  \
-
-* Create an index: POST/{schemaId}/indexes
-* Delete an index: PUT/{schemaId}/indexes/{indexId}
-
-Enabling/disabling a Schema
-
-* Disable a schema: POST/{schemaId}/disable
-* Enable a schema: POST/{schemaId}/enable
-
-Updating the Creation Transition
-
-Update the Creation Transition analogous to updating the Transition. Make sure the toStatus value is determined in the Schema object.
-
-* Update the creation transition: PUT/{schemaId}/creationTransition
-
-Deleting data fields from a document
-
-Any data field of a document can be deleted. With the correct permission, multiple documents can be changed at once.
-
-Tip: To access an element in an array or embedded documents, use the dot notation.
-
-* Delete fields from a document: POST/{schemaId}/documents/{documentId}/deleteFields
-
-Transitioning a document
-
-Manually start the transition of a document adhering to a Schema, when the following conditions are met:
-
-* The inputCondition,
-* The initiatorHasRelationToUserInDataCondition,
-* The initiatorHasRelationToGroupInDataCondition,
-* The Transition type is manual,
-* The Transition exists within the Schema object,&#x20;
-* The Document resides in a Status defined in the fromStatuses object of the Transition.
-
-With the correct permission, multiple documents can be transitions at once.
-
-* Transition a document: POST/{schemaId}/documents/{documentId}/transition
-
-Linking and unlinking groups and users
-
-Add or remove data to or from the groupIds and userIds attributes.
-
-* Link groups to a document: POST/{schemaId}/documents/{documentId}/linkGroups
-* Unlink groups from a document:POST/{schemaId}/documents/{documentId}/unlinkGroups
-* Link users to a document: POST/{schemaId}/documents/{documentId}/linkUsers
-* Unlink users from a document: POST/{schemaId}/documents/{documentId}/unlinkUsers
-
-Notes: When GroupSyncMode is set to LINKED\_USERS\_PATIENT\_ENLISTMENT for a document, all the groups where the specified user is enlisted as patient will also be added or removed to or from the document.\
-Specifying an empty userIds or groupIds array will have no effect on the document.\
-Not specifying the userIds or groupIds array will unlink all users or groups from the document.
-
-Viewing schemas, documents, and comments
-
-With the correct permissions or the correct enlistment, users can view (a selection of) the data of schemas, documents, and comments.&#x20;
-
-* Request a list of schemas: GET/&#x20;
-* Request a list of documents: GET/{schemaId}/documents
-* Request a list of comments: GET/{schemaId}/documents/{documentId}/comments\
+{% endtab %}
+{% endtabs %}
