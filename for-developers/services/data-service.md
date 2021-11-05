@@ -583,11 +583,59 @@ After the creation of a Schema, a document can be created which adheres to the S
 
 ### Creating a document
 
+Below you can find an example of how you can create a document. You need to specify the schema and the properties you want to provide when creating the document.
+
+```javascript
+const document = await sdk.data.documents.create(schema.id,{
+    fieldA: "value",
+    fieldB: 123456
+});
+```
+
+The creation transition and the schema will determine what properties will be required and the conditions that both the input fields and the permissions the creator will need to successfully create the document.
+
 ### Querying
 
-### Performing updates
+Using [RQL](../resource-query-language-rql.md) you can build queries on any field in the document service. The ExtraHorizon SDK contains an RQL builder that allows you to easily build queries and explore the different query functions supported.
+
+```javascript
+const myRql = rqlBuilder().eq('data.fieldA', 'myValue').gt('creationTimestamp', '2021-01-21').build();
+const documents = await sdk.data.documents.find(schema.id, {
+  rql: myRql,
+});
+```
+
+Note that all custom properties defined in the schema will be under the `data` property of the document. You can query both on document properties and custom properties by using the dot notation in the RQL builder.
+
+{% hint style="warning" %}
+When queries take more than X milliseconds. The document service will stop the running query and respond with an error indicating the query took longer than the allowed limit.
+
+To resolve this it is advised to add indexes on fields you use often in queries.
+{% endhint %}
+
+### Updating a document
+
+When permitted by the settings in the schema and the permissions assigned to you, you will be able to update any field in a document.
+
+```javascript
+await sdk.data.documents.update(schema.id, document.id, {
+    fieldB: 4321,
+});
+```
+
+{% hint style="info" %}
+As a good practice you can also add an RQL query when updating a document. This way you can guarantee you document is in a specific status or a fields holds a specific value and let the update fail it this is not the case.
+{% endhint %}
 
 ### Permanent delete
+
+While in many cases you will want to implement a `deleted` status to keep records of removed documents. In other cases you will want to remove a document from existence.
+
+```javascript
+await sdk.data.documents.remove(schema.id,document.id);
+```
+
+The schema configuration will determine who can execute a permanent delete of a document.
 
 ### Triggering transitions
 
