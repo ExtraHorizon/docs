@@ -581,7 +581,7 @@ After the creation of a Schema, a document can be created which adheres to the S
 {% endtab %}
 {% endtabs %}
 
-### Creating a document
+### Create
 
 Below you can find an example of how you can create a document. You need to specify the schema and the properties you want to provide when creating the document.
 
@@ -613,7 +613,7 @@ When queries take more than X milliseconds. The document service will stop the r
 To resolve this it is advised to add indexes on fields you use often in queries.
 {% endhint %}
 
-### Updating a document
+### Update
 
 When permitted by the settings in the schema and the permissions assigned to you, you will be able to update any field in a document.
 
@@ -638,6 +638,18 @@ await sdk.data.documents.remove(schema.id,document.id);
 The schema configuration will determine who can execute a permanent delete of a document.
 
 ### Triggering transitions
+
+Transitions allow you to move documents from one state to another. While automatic transitions will be triggered when the documents ends up in transitions `fromState`, manual transitions will need to be triggered by an API call.
+
+```javascript
+const transitionId = schema.findTransitionIdByName('myTransition');
+await sdk.data.documents.transition(schema.id, document.id, {
+  id: transitionId,
+  data: {...},
+});
+```
+
+When executing a transition you will need to provide the id of the transition that you want to execute.
 
 ### updating access
 
