@@ -148,7 +148,7 @@ Note: The JSON syntax in the Type objects is different from other services. The 
 {% endhint %}
 
 {% hint style="info" %}
-Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the [Data Service ](data-service.md)(e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
+Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the [Data Service ](data-service/)(e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
 {% endhint %}
 
 ### Application Specific Types

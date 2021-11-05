@@ -41,7 +41,7 @@ Tasks can be triggered in a number of ways ways.&#x20;
 
 ### Scheduling via a data service transitions
 
-When configuring your application's data model, it's possible to attach an [action](data-service.md#transition-actions) to a transition. Triggering the scheduling of a task is one of the available actions. Read more about how to implement this functionality in the [Documents Service section](data-service.md)
+When configuring your application's data model, it's possible to attach an [action](data-service/#transition-actions) to a transition. Triggering the scheduling of a task is one of the available actions. Read more about how to implement this functionality in the [Documents Service section](data-service/)
 
 ### Scheduling via the SDK
 

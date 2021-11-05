@@ -5,7 +5,7 @@ description: >-
   devices.
 ---
 
-# Services
+# Service Documentation
 
 ## Intro
 
@@ -25,7 +25,9 @@ The authentication service main responsibility is authenticating each incoming r
 
 The service supports multiple authentication mechanisms such as oAuth1.0, oAuth2.0, SSO, MFA,… You can register frontend applications and determine it's accessible functionality.
 
-{% page-ref page="authentication.md" %}
+{% content-ref url="authentication.md" %}
+[authentication.md](authentication.md)
+{% endcontent-ref %}
 
 ### User Service
 
@@ -33,7 +35,9 @@ The user service is responsible for managing identities in an ExtraHorizon Clust
 
 The service has functionality ranging from registering new identities, managing roles, permissions, password management, etc…
 
-{% page-ref page="user-service.md" %}
+{% content-ref url="user-service.md" %}
+[user-service.md](user-service.md)
+{% endcontent-ref %}
 
 ## Storage
 
@@ -43,13 +47,17 @@ The data service is a service that provides storage and query capabilities.
 
 The service allows you to: define you own queryable data models by utilizing JSON Schema’s, define workflows that can trigger other services or automation rules in the network. The data service like all other services support an extremely flexible querying language in the form of querying parameters.
 
-{% page-ref page="data-service.md" %}
+{% content-ref url="data-service/" %}
+[data-service](data-service/)
+{% endcontent-ref %}
 
 ### File Service
 
 The file service provides storage for non queryable data such as images, video, raw ECG signals, etc. And in combination with the document service the combination can be made to accommodate for any storage need a customer might have.
 
-{% page-ref page="file-service.md" %}
+{% content-ref url="file-service.md" %}
+[file-service.md](file-service.md)
+{% endcontent-ref %}
 
 ## Automation
 
@@ -57,7 +65,7 @@ The file service provides storage for non queryable data such as images, video, 
 
 The task service is the glue between al our services. Every client as specific business logic that needs to be implemented. Whether it ranges from sending an email when a person registers or sending a Text message when you have ordered a new product.
 
-By using the ExtraHorizon SDK you can write very small and simple scripts in a range of languages \(Node. **js**, **Python**, **Java**, **Ruby**, C\#, Go and **PowerShell**\)
+By using the ExtraHorizon SDK you can write very small and simple scripts in a range of languages (Node. **js**, **Python**, **Java**, **Ruby**, C#, Go and **PowerShell**)
 
 ### Webhook Service
 
@@ -102,4 +110,3 @@ Make an easy process of integration any payment system. Apple IAP, Google Pay, S
 ### Template Service
 
 Make good looking html templates for Emails or make detailed pdf reports for medical user.
-
