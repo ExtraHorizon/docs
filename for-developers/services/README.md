@@ -11,7 +11,7 @@ description: >-
 
 ExtraHorizon exists of a set of web services that the customer can use to compose a custom backend specific to their needs and specifications.
 
-![](../../.gitbook/assets/b5579e35-6688-4944-9ae0-c69e44940810.png)
+![](<../../.gitbook/assets/Extra Horizon Overview 2.png>)
 
 Each customer can have one or more dedicated clusters. Each cluster has a basic ExtraHorizon infrastructure layer where additional services can be installed.
 

@@ -2,7 +2,7 @@
 
 ## What is ExtraHorizon?
 
-![](.gitbook/assets/image.png)
+![](<.gitbook/assets/Extra Horizon Overview 2.png>)
 
 [ExtraHorizon](https://www.extrahorizon.com/medical-cloud-backend) is a medical Backend As A Service product that leverages existing cloud providers such as AWS, Google Cloud, Microsoft Azure to deliver an easy and fast roadmap towards fully certified and compliant cloud-connected medical devices. Currently, Extra Horizon compatibility is optimized with AWS. Future clouds are on the roadmap.
 

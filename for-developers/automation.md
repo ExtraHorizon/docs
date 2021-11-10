@@ -53,7 +53,7 @@ _Events_ are simple objects which can be created manually, although they are als
 
 Similar to event-receiving services ,_dispatchers_ wait and listen for an event of a specific type to occur. Upon receiving an event, dispatchers will trigger an action based on that event and it's data. The event type to listen for an the action to perform are configurable through the `dispatcher service`. The actions a dispatcher can trigger are sending an e-mail and triggering a task.
 
-![event\_flowchart](https://bytebucket.org/extrahorizon/exhz-user-guide/raw/5c89db24939dfd20e92c10df46a532724ff545af/assets/img/tasks\_flow\_event.svg?token=1b2cdcab198c7c7fc43beb90fb026a2768d044cd)
+![event\_flowchart](<../.gitbook/assets/Automation - Dispatchers scheme.png>)
 
 ### Related Documents <a href="markdown-header-related-documents" id="markdown-header-related-documents"></a>
 
