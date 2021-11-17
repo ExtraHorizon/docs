@@ -19,7 +19,7 @@
 * [Handling Errors](for-developers/handling-errors.md)
 * [ExtraHorizon SDK](for-developers/extrahorizon-sdk.md)
 * [Service Documentation](for-developers/services/README.md)
-  * [Authentication Service](for-developers/services/authentication.md)
+  * [Auth Service](for-developers/services/authentication.md)
   * [User Service](for-developers/services/user-service.md)
   * [Document Service](for-developers/services/data-service.md)
   * [File Service](for-developers/services/file-service.md)

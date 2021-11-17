@@ -4,9 +4,7 @@ description: >-
   both OAuth 1.0a and OAuth 2.0 standards.
 ---
 
-# Authentication
-
-The **Auth Service **is responsible for both Authentication and Authorization and supports both OAuth 1.0a and OAuth 2.0 standards.
+# Auth Service
 
 ## oAuth2
 
@@ -14,8 +12,6 @@ oAuth2.0 standard: [\[rfc6749\]](https://datatracker.ietf.org/doc/html/rfc6749)
 
 ### Making an authenticated request
 
-{% tabs %}
-{% tab title="Curl" %}
 An example request to the User Service which is authenticated by OAuth2 looks like this:
 
 ```
@@ -25,91 +21,156 @@ Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
 ```
 
 The role of the `Bearer` prefix in the **Authorization header** specifies that a token value is expected, implying a token-based authentication. In the case of OAuth2, this token value is the Access Token.
-{% endtab %}
 
-{% tab title="JavaScript" %}
-**Authorization Header**
+**Using the Extra Horizon SDK**
 
-The [Extra Horizon sdk](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/PBohhdoDnU7Kj1aCVLWD/) solves the problem of making authenticated requests for you and will attach the right headers to the calls you are making in the background.
-{% endtab %}
-{% endtabs %}
+The Extra Horizon sdk solves the problem of making authenticated requests for you and will attach the right headers to the calls you are making in the background.
 
 ### Password Grant
 
+The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests. These Access Tokens are short lived (A lifetime of 5 minutes for the flow described in the example below).
 
+```javascript
+await sdk.auth.authenticate({
+    username:'john.doe@example.com'
+    password:'myPassword1234'
+});
+```
+
+{% hint style="warning" %}
+Not that in case this user has MFA enable this function will throw a `MfaRequiredError`. With the information in the error you can follow the [Mfa Grant](authentication.md#mfa-grant) to complete the authentication.
+{% endhint %}
 
 ### Mfa Grant
 
+When MFA is enabled for a user and you try to authenticate using the password grant you will receive a `MfaRequiredError` . You can catch the error and use the Mfa Grant to complete the authentication.
+
+```javascript
+try {
+  await sdk.auth.authenticate({
+    password: '',
+    username: '',
+  });
+} catch (error) {
+  if (error instanceof MfaRequiredError) {
+    const { mfa } = error.response;
+
+    // Your logic to request which method the user want to use in case of multiple methods
+    const methodId = mfa.methods[0].id;
+
+    await sdk.auth.confirmMfa({
+      token: mfa.token,
+      methodId,
+      code: '', // code from ie. Google Authenticator
+    });
+  }
+  // handle other possible authentication errors
+}
+```
+
 ### Authorization Grant
+
+In most cases you will want to use to authorization Grant flow for external applications that are not under your direct control. E.g. partners that you allow to have an integration with your platform.
+
+You don't want them to handle your users credentials and will require these applications to obtain an authorization grant code by redirecting you a /authorize endpoint hosted by one of your trusted applications.
+
+An example of such a webpage would look like this:&#x20;
+
+```
+/authorize/?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}
+```
+
+When the user is authenticated on that page he/she will be redirected back to the URI specified in the client registration and the query parameter. this redirect will contain an authorization code that you can then use in the SDK to obtain an authentication.
+
+```javascript
+await sdk.auth.authenticate({
+  code: '{yourAuthorizionCodeHere}',
+});
+```
 
 ### Refresh Token Grant
 
-{% tabs %}
-{% tab title="Curl" %}
+The Refresh Token Grant is a mechanism to obtain a new Access Token. The grant accepts a Refresh Token and returns a new Access Token and a new Refresh Token. That way, the application keeps a valid access token without having the user to provide its credentials again.
 
-{% endtab %}
+When an access token is expired the SDK will use the refresh token stored in memory to refresh the tokens and make sure your call to the api is tried again.
 
-{% tab title="JavaScript" %}
-When an access token is expired the [sdk](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/PBohhdoDnU7Kj1aCVLWD/) will use the refresh token stored in memory to refresh the tokens and make sure your call to the api is tried again.
-{% endtab %}
-{% endtabs %}
+When you want your user to stay authenticated when he reopens you app you will need to store the refreshToken and initiate the SDK authentication with the stored token.
 
-### Revoking tokens
+```javascript
+await sdk.auth.authenticate({
+  refreshToken: 'myRefreshToken',
+});
+```
 
-## oAuth1
-
-### Creating Tokens
-
-### SSO
-
-## MFA
-
-## Applications
-
-Applications represent the&#x20;
-
-### Creating an application
-
-### Adding a version
-
-### Deprecating versions
-
-### Removing an application
-
-##
-
-### Snippet for authentication flow in Browser
+{% hint style="danger" %}
+Note that the refresh token changes every time a new access token is obtained. Therefore you will need to add a listener to the SDK to be notified when a new refresh token is received and for your app to safely and securely store it.
+{% endhint %}
 
 Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is called with the response. You can store this data in `localStorage` or any other persistant data store. When you restart your application, you can check the data store for a `refreshToken` and use that to authenticate with the SDK.
 
 ```javascript
-import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
-
 const sdk = createOAuth2Client({
   host: '',
   clientId: '',
   freshTokensCallback: tokenData => {
-    localStorage.setItem('refreshToken', tokenData.refreshToken);
+    localStorage.setItem('tokenData', tokenData);
   },
 });
-
-try {
-  const refreshToken = await localStorage.getItem('refreshToken');
-
-  if (refreshToken) {
-    await sdk.auth.authenticate({
-      refreshToken,
-    });
-  } else {
-    // redirect to /login
-  }
-} catch (error) {
-  localStorage.removeItem('refreshToken');
-  // redirect to /login
-}
 ```
 
-### OAuth1
+### Retrieve a list of active tokens
+
+You can retrieve a list of active tokens and the applications they correspond to.
+
+```javascript
+await sdk.auth.oauth2.getAuthorizations({
+    rql: //optional rql query
+});
+```
+
+### Revoking tokens
+
+You can revoke tokens by use the deleteAuthorization function.
+
+```javascript
+await sdk.auth.oauth2.deleteAuthorization('');
+```
+
+## oAuth1
+
+### Password grant
+
+This grant for the sdk works the same way as for oauth2. [read more](authentication.md#password-grant)
+
+### Mfa Grant
+
+This grant for the sdk works the same way as for oauth2. [read more](authentication.md#mfa-grant)
+
+### Retrieve a list of active tokens
+
+TODO, not yet supported by SDK
+
+### Revoking tokens
+
+TODO, not yet supported by SDK
+
+### Generate SSO Tokens
+
+Using the SDK you can create a single use SSO token. Another client can consume such a token and exchange it for an authorization.
+
+```
+TODO
+```
+
+### Consume SSO Tokens
+
+SSO tokens can only be consumed by oAuth1 applications.
+
+```
+TODO
+```
+
+### Other settings
 
 #### Token authentication with optional skip
 
@@ -131,252 +192,27 @@ await sdk.auth.authenticate({
 });
 ```
 
-#### Email authentication
+## MFA
 
-```java
-import { createOAuth1Client } from '@extrahorizon/javascript-sdk';
+Extrahorizon supports multiple multifactor authentication methods. To obtain ExH access tokens you will always need the users credentials. Depending on the MFA settings of the user you will either receive the tokens or be prompted with an error requiring you to use a MFA method.
 
-const sdk = createOAuth1Client({
-  host: 'dev.fibricheck.com',
-  consumerKey: '',
-  consumerSecret: '',
-});
+Currently Extra Horizon supports two MFA methods: Recovery codes and Google Authenticator.
 
-await sdk.auth.authenticate({
-  email: '',
-  password: '',
-});
-```
+### Retrieving MFA methods for a user
 
-### OAuth2
+TODO, not yet supported by SDK
 
-#### Password Grant flow
+### Enable  & Disable MFA
 
-```javascript
-import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
+TODO, not yet supported by SDK
 
-const sdk = createOAuth2Client({
-  host: '',
-  clientId: '',
-});
+### Adding a new MFA method
 
-await sdk.auth.authenticate({
-  password: '',
-  username: '',
-});
-```
+TODO, not yet supported by SDK
 
-#### Authorization Code Grant flow with callback (Only for Fibricheck)
+### Removing an MFA method
 
-* Open [https://pages.dev.fibricheck.com/authorize/?client\_id=CLIENT\_ID\&response\_type=code\&redirect\_uri=REDIRECT\_URI](https://pages.dev.fibricheck.com/authorize/?client\_id=CLIENT\_ID\&response\_type=code\&redirect\_uri=REDIRECT\_URI)
-* click Authorize
-* Capture the query params on the redirect uri
-* Authenticate with the code query param
+TODO, not yet supported by SDK
 
-```javascript
-import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
 
-const sdk = createOAuth2Client({
-  host: '',
-  clientId: '',
-  freshTokensCallback: tokenData => {
-    localStorage.setItem('tokenData', tokenData);
-  },
-});
-
-await sdk.auth.authenticate({
-  code: '',
-});
-```
-
-#### Refresh Token Grant flow
-
-```javascript
-import { createOAuth2Client } from '@extrahorizon/javascript-sdk';
-
-const sdk = createOAuth2Client({
-  host: '',
-  clientId: '',
-});
-
-await sdk.auth.authenticate({
-  refreshToken: '',
-});
-```
-
-#### Password Grant flow with two-step MFA in try / catch
-
-```javascript
-import {
-  createOAuth2Client,
-  MfaRequiredError,
-} from '@extrahorizon/javascript-sdk';
-
-const sdk = createOAuth2Client({
-  host: '',
-  clientId: '',
-});
-
-try {
-  await sdk.auth.authenticate({
-    password: '',
-    username: '',
-  });
-} catch (error) {
-  if (error instanceof MfaRequiredError) {
-    const { mfa } = error.response;
-
-    // Your logic to request which method the user want to use in case of multiple methods
-    const methodId = mfa.methods[0].id;
-
-    await sdk.auth.confirmMfa({
-      token: mfa.token,
-      methodId,
-      code: '', // code from ie. Google Authenticator
-    });
-  }
-}
-```
-
-#### Confidential Applications
-
-```
-const sdk = createClient({
-  host: 'https://api.dev.fibricheck.com',
-  clientId: '',
-  clientSecret: '',
-});
-```
-
-![](https://github.com/ExtraHorizon/javascript-sdk/raw/dev/docs/assets/refresh.webp)
-
-## OAuth 2.0 support
-
-The Authentication Service provides OAuth 2.0 authentication, allowing access to the other services within the system.
-
-For instance a request to the User Service which is authenticated by OAuth2 looks like this:
-
-```
-GET users/v1/me HTTP/1.1
-Host: api.<environment>.<​company>.extrahorizon.io
-Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
-```
-
-The role of the `Bearer` prefix in the **Authorization header** specifies that a token value is expected, implying a token-based authentication. In the case of OAuth2, this token value is the Access Token.
-
-In OAuth 2.0, Access Tokens can be obtained by different kind of Grants. For now the relevant Grants are:
-
-* Password Grant
-* Refresh Token Grant
-
-The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests. These Access Tokens are short lived (A lifetime of 5 minutes for the flow described in the example below).
-
-The Refresh Token Grant is a mechanism to obtain a new Access Token. The grant accepts a Refresh Token and returns a new Access Token and a new Refresh Token. That way, the application keeps a valid access token without having the user to provide its credentials again.
-
-#### Examples
-
-The requests made using OAuth2 are bound within the context of an Application. An Application instance is identified by a Client ID. The Client ID should be specified in the creation phase of the tokens.
-
-We will authenticate using the `password` grant type, when authenticating with a client ID along with the credentials, the service will respond with the required tokens, a corresponding User ID, and an Application ID. The access token from the response will provide access to the other platform services
-
-In the following examples it is assumed that a valid OAuth 2.0 application exists, with a client id `0f4061a353c848eb0e02b80a2fe7bbc2254f1f77`.
-
-### **Password Grant**
-
-**Request:**
-
-```
-POST /auth/v2/oauth2/tokens HTTP/1.1
-Host: api.<environment>.<​company>.extrahorizon.io
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=password\
-&client_id=0f4061a353c848eb0e02b80a2fe7bbc2254f1f77\
-&username=john@example.com\
-&password=secr3t
-```
-
-_Extra line breaks are for display purposes only._
-
-**Response:**
-
-```
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-
-{
-  "token_type": "bearer",
-  "expires_in": 300,
-  "access_token": "72bc81dceb58fe53bddee9969d54f76913bb29d8",
-  "refresh_token": "1f9de38da7a5df5b2056800be5356f2d4b9e79c5",
-  "user_id": "60758d7159080100071a3d9b",
-  "application_id": "5c77a981b03575a7c499c892"
-}
-```
-
-### **Refresh Token Grant**
-
-**Request:**
-
-```
-POST /auth/v2/oauth2/tokens HTTP/1.1
-Host: api.<environment>.<​company>.extrahorizon.io
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=refresh_token
-&refresh_token=1f9de38da7a5df5b2056800be5356f2d4b9e79c5
-&client_id=0f4061a353c848eb0e02b80a2fe7bbc2254f1f77\
-```
-
-_Extra line breaks are for display purposes only._
-
-**Response:**
-
-```
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-
-{
-  "token_type": "bearer",
-  "expires_in": 300,
-  "access_token": "3f350e4e3bb358fd1e0a2a1d2cd5f41ffd62e3be",
-  "refresh_token": "760a7c2d4bfa43d3369e0cedc06b8d90a4d2d3bf",
-  "user_id": "60758d7159080100071a3d9b",
-  "application_id": "5c77a981b03575a7c499c892"
-}
-```
-
-### **Request with an expired Access Token**
-
-When an access token is used which is no longer valid, an error is returned. This can be used to detect if the Refresh Token Grant should be used to obtain a new Access Token.
-
-**Request:**
-
-```
-GET users/v1/me HTTP/1.1
-Host: api.<environment>.<​company>.extrahorizon.io
-Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
-```
-
-**Response:**
-
-```
-HTTP/1.1 401 Unauthorized
-Content-Type: application/json
-
-{
-  "code": 117,
-  "name": "ACCESS_TOKEN_UNKNOWN_EXCEPTION",
-  "message": "The access token is unknown"
-}
-```
-
-### Further readings
-
-* OAuth 2.0: https://tools.ietf.org/html/rfc6749
-  * Security considerations: https://tools.ietf.org/html/rfc6819
-  * PKCE: https://tools.ietf.org/html/rfc7636
-  * PKCE S256 tool: https://tonyxu-io.github.io/pkce-generator/
-
-## API Specification&#x20;
 

@@ -38,7 +38,7 @@ After configuring a data schema, any number of documents can be created that fol
 
 ## Unstructured data <a href="markdown-header-unstructured-data" id="markdown-header-unstructured-data"></a>
 
-While structured data is handled by `data service`, some file types don't gain any significant benefit from being structured with JSON. Storing and retrieving unstructured data with ExH services can be done with the `files service`.
+While structured data is handled by `data service`, some file types don't gain any significant benefit from being structured with JSON. Storing and retrieving unstructured data with ExH services can be done with the [file service.](services/file-service.md)
 
 #### Files <a href="markdown-header-files" id="markdown-header-files"></a>
 
