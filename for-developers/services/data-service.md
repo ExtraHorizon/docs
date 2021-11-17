@@ -523,8 +523,6 @@ The Index object is identified by an id and a name. An index is set on a specifi
 | sparse     | A boolean value to determine whether the index must be sparse |
 | system     | A boolean value to determine whether the index must be        |
 
-###
-
 ### Other settings
 
 Additionally, the Data Service stores the following attributes when a new Schema is added:
