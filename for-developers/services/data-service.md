@@ -555,11 +555,27 @@ TODO
 
 **example**
 
-#### **Enabling and disabling schema's**
+### **Enabling/disabling a schema**
 
-**TODO**
+As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allow to existing documents.
 
-****
+```javascript
+await sdk.data.schemas.disable('{yourSchemaId}');
+```
+
+You can enable a disabled schema the same way:
+
+```javascript
+await sdk.data.schemas.enable('{yourSchemaId}');
+```
+
+### Removing a schema
+
+You can only remove disabled schema's. Removing a schema removes all documents in that schema collection. Removed documents are non retrievable.
+
+```javascript
+await sdk.data.schemas.enable('{yourSchemaId}');
+```
 
 ## Documents&#x20;
 

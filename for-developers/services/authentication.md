@@ -216,5 +216,7 @@ TODO, not yet supported by SDK
 
 TODO, not yet supported by SDK
 
+## References
 
+* [Auth Service Api Reference](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/auth-service/2.0.4-dev/openapi.yaml)
 
