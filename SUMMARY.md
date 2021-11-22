@@ -33,6 +33,7 @@
   * [Localization Service](for-developers/services/localization-service.md)
   * [Payment Service](for-developers/services/payment-service.md)
   * [Profile Service](for-developers/services/profile-service.md)
+* [Building dashboards with Retool](for-developers/building-dashboards-with-retool.md)
 
 ## Additional Resources
 
