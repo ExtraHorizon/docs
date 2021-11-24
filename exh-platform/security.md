@@ -30,5 +30,5 @@ To make sure that all your data is secure in transit, only HTTPS communication i
 * ECDHE-RSA-AES256-GCM-SHA384
 
 {% hint style="info" %}
-The above-mentioned list of protocols and cipher suites holds for **new environments. **We are currently in the process of migrating all existing environments to reflect the protocols and cipher suites mentioned here.
+The above-mentioned list of protocols and cipher suites holds for **new environments**. We are currently in the process of migrating all existing environments to reflect the protocols and cipher suites mentioned here.
 {% endhint %}

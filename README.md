@@ -43,7 +43,7 @@ Besides updating documents, you can configure a state machine that allows more s
 The service allows you to:
 
 * define your own queryable data models by utilizing JSON Schema’s
-* define workflows that can trigger other services or automation rules in the network.&#x20;
+* define workflows that can trigger other services or automation rules in the network.
 
 The data service like all other services supports an extremely flexible querying language in the form of querying parameters.
 
@@ -91,7 +91,6 @@ Make good-looking HTML templates for Emails or make detailed pdf reports for a m
 
 ## Where to get additional support?
 
-**Support questions? **Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com)&#x20;
+**Support questions?** Reach out to our support team via [requests@extrahorizon.com](mailto:requests@extrahorizon.com)
 
-**General questions? **Fill in [the form on our website](https://www.extrahorizon.com/contact) and we'll get in touch with you asap
-
+**General questions?** Fill in [the form on our website](https://www.extrahorizon.com/contact) and we'll get in touch with you asap
