@@ -67,14 +67,6 @@ The task service is the glue between al our services. Every client as specific b
 
 By using the ExtraHorizon SDK you can write very small and simple scripts in a range of languages (Node. **js**, **Python**, **Java**, **Ruby**, C#, Go and **PowerShell**)
 
-### Webhook Service
-
-Planned for end of 2021
-
-The web hook service allows you to take action when a web hook is trigger from the outside or when you want to create a web hook that can be consumed by another application.
-
-This service is planned for development towards the end of 2021
-
 ### Event Service
 
 The event service is the backbone of an ExtraHorizon cluster. Each action you take in a service will also trigger an event. This service services acts as the central message broker throughout the system.
