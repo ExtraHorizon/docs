@@ -22,7 +22,7 @@
 * [Service Documentation](for-developers/services/README.md)
   * [Auth Service](for-developers/services/authentication.md)
   * [User Service](for-developers/services/user-service.md)
-  * [Document Service](for-developers/services/data-service.md)
+  * [Data Service](for-developers/services/data-service.md)
   * [File Service](for-developers/services/file-service.md)
   * [Task Service](for-developers/services/task-service.md)
   * [Event Service](for-developers/services/event-service.md)
