@@ -5,16 +5,16 @@ description: >-
   attaching them to automation workflows.
 ---
 
-# Document Service
+# Data Service
 
 ## **Intro**
 
 Data is managed using structured documents, written in JSON. These documents rely on data Schemas which determine the structure, behavior, and logic of the documents in a schema collection. The purpose of a data schema is twofold:
 
 1. **Define Data structure**\
-   ****Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definitions in schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
+   \*\*\*\*Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definitions in schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
 2. **Define behavior logic**\
-   ****Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services.&#x20;
+   \*\*\*\*Data Schemas define the behavior logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services.
 
 ### Data Structure
 
@@ -28,7 +28,7 @@ Besides defining field types, you can create complex fields with constraints lik
 
 ![](<../../.gitbook/assets/image (2) (1).png>)
 
-The document service allows you to configure workflows that match your exact business need.   You can mark your documents with specific states and create transitions between these states, these can be manual or automatic.
+The document service allows you to configure workflows that match your exact business need. You can mark your documents with specific states and create transitions between these states, these can be manual or automatic.
 
 For example, you can create an order and shipment workflow to keep track of all orders, connect your frontend applications, and trigger actions to inform stakeholders when needed.
 
@@ -38,7 +38,7 @@ For example, you can create an order and shipment workflow to keep track of all 
 
 You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific cercomstances. (Field value, the person executing the transition, …)
 
-When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more…&#x20;
+When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more…
 
 ## Schema's
 
@@ -64,7 +64,7 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Permissions
 
-A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation.&#x20;
+A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation.
 
 #### createMode
 
@@ -122,11 +122,11 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ### Properties
 
-A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).&#x20;
+A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).
 
 ![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg\_WiBjiuzqgpFDjYJL1ker6l4fM\_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
 
-The Data Service supports five kinds of configurations (type attribute):&#x20;
+The Data Service supports five kinds of configurations (type attribute):
 
 | Type      | Description                                                                                                                  |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -135,6 +135,94 @@ The Data Service supports five kinds of configurations (type attribute):&#x20;
 | `string`  | A string object of which each value must meet the schema defined by the pattern, format, enum and/or const attributes,       |
 | `number`  | A number object of which each value must meet the schema defined by the enum or const attribute,                             |
 | `boolean` | A boolean object of which each value must meet the schema defined by the enum or const attribute.                            |
+
+{% tabs %}
+{% tab title="Object" %}
+```json
+{
+  type: 'object',
+  properties: {
+    my_custom_field: { type: 'string' },
+  },
+  additionalProperties: { type: 'string' },
+  required: ['my_custom_field'],
+}
+```
+
+References:
+
+* [JSON Schema: Keywords for Applying Subschemas to Objects](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.2)
+* [JSON Schema Validation: Validation Keywords for Objects](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.5)
+{% endtab %}
+
+{% tab title="Array" %}
+```
+{
+  type: 'array',
+  items: { type: 'string' },
+  minItems: 1,
+  maxItems: 10,
+  contains: { type: 'string' },
+}
+```
+
+References:
+
+* [JSON Schema: Keywords for Applying Subschemas to Arrays](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.1)
+* [JSON Schema Validation: Validation Keywords for Arrays](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.4)
+{% endtab %}
+
+{% tab title="String" %}
+```
+{
+  type: 'string',
+  minLength: 1,
+  maxLength: 10,
+  pattern: '^[a-z]+$',
+  format: 'date-time', // The only supported format is `date-time`
+  enum: ['a', 'b', 'c'],
+  const: 'b' // Can only be one fixed string
+}
+```
+
+References:
+
+* [JSON Schema Validation: Validation Keywords for Strings](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.3)
+* [JSON Schema Validation: Dates, Times, and Duration](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.7.3.1)
+* [JSON Schema Validation: Validation Keywords for Any Instance Type](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.1)
+{% endtab %}
+
+{% tab title="Number" %}
+```
+{
+  type: 'number',
+  minimum: 1,
+  maximum: 5,
+  enum: [1, 2, 3, 4, 5],
+  const: 3 // Can only be 1 number
+}
+```
+
+References:
+
+* [JSON Schema Validation: Validation Keywords for Numeric Instances](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.4)
+* [JSON Schema Validation: Validation Keywords for Any Instance Type](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.1)
+{% endtab %}
+
+{% tab title="Boolean" %}
+```
+{
+  type: 'boolean',
+  enum: [true, false],
+  const: true, // Can only be either true or false
+}
+```
+
+References:
+
+* [JSON Schema Validation: Validation Keywords for Any Instance Type](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.1)
+{% endtab %}
+{% endtabs %}
 
 #### Adding properties to your schema
 
@@ -216,11 +304,11 @@ await sdk.data.properties.create(newSchema.id,
 });
 ```
 
-this allows you to create a ISO formatted date-time field wich accepts RQL to query on using gt,gte, lt and lte ,...&#x20;
+this allows you to create a ISO formatted date-time field wich accepts RQL to query on using gt,gte, lt and lte ,...
 {% endtab %}
 {% endtabs %}
 
-&#x20;All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
+All attributes required to compose the type configurations, can be found in the API reference documentation and on the JSON Schema webpage.
 
 ### Statuses
 
@@ -262,9 +350,9 @@ For a creationTransition the type will always be set to `manual`
 
 ### Transitions
 
-When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.&#x20;
+When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.
 
-A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute.&#x20;
+A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute.
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -289,17 +377,17 @@ A Transition object is identified by its name (name) and has a specific type ass
 | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Manual**    | A manual transition will be triggered when the transition execution endpoint is called on the document.                                                                                                                                                                                                                                                                                                                                                                                            |
-| **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A </strong>mentioned as a fromStatus. If the conditions of that transition are met it will execute. If not the data service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
+| **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A</strong> mentioned as a fromStatus. If the conditions of that transition are met it will execute. If not the data service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
 
 ### Transition conditions
 
-Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions:&#x20;
+Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions:
 
-| Type                                | Description                                                                                                                                                       |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `input`                             | The transition data must match a desired form, as specified by the type configurations in the configuration attribute (inputCondition)                            |
-| `initiatorHasRelationToUserInData`  | The initiator of the Transition has a specified relation (as determined in relation) to a user (as determined in userIdField) mentioned in the transition data    |
-| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation (as determined in relation) to a group (as determined in groupIdField) mentioned in the transition data  |
+| Type                                | Description                                                                                                                                                      |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `input`                             | The transition data must match a desired form, as specified by the type configurations in the configuration attribute (inputCondition)                           |
+| `initiatorHasRelationToUserInData`  | The initiator of the Transition has a specified relation (as determined in relation) to a user (as determined in userIdField) mentioned in the transition data   |
+| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation (as determined in relation) to a group (as determined in groupIdField) mentioned in the transition data |
 
 There is an additional condition which applies to all Transitions:
 
@@ -311,7 +399,7 @@ There is an additional condition which applies to all Transitions:
 
 {% tabs %}
 {% tab title="inputCondition" %}
-When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them&#x20;
+When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them
 
 ```javascript
   await sdk.data.transitions.create(newSchema.id, {
@@ -344,8 +432,6 @@ the example above would require the API client to provide the address.inhabited 
 {% endtab %}
 
 {% tab title="document" %}
-
-
 ```javascript
   await sdk.data.transitions.create(newSchema.id, {
     type: 'manual',
@@ -375,15 +461,11 @@ the example above would require the API client to provide the address.inhabited 
 {% endtab %}
 
 {% tab title="initiatorHasRelationToUserInData" %}
-
-
 ```javascript
 ```
 {% endtab %}
 
 {% tab title="initiatorHasRelationToGroupInData" %}
-
-
 ```javascript
 ```
 {% endtab %}
@@ -391,7 +473,7 @@ the example above would require the API client to provide the address.inhabited 
 
 ### Transition actions
 
-You can attach actions to transitions. This way when a transition is executed and its conditions are met it will also trigger the action. In case of a Creation Transition, the action will be executed during the creation of the document.&#x20;
+You can attach actions to transitions. This way when a transition is executed and its conditions are met it will also trigger the action. In case of a Creation Transition, the action will be executed during the creation of the document.
 
 #### **Modifying the document**
 
@@ -408,36 +490,18 @@ To access an element in an array or embedded documents, use the dot notation.
 
 #### code examples
 
-{% tabs %}
-{% tab title="Set" %}
-
-{% endtab %}
-
-{% tab title="Unset" %}
-
-{% endtab %}
-
-{% tab title="AddItems" %}
-
-{% endtab %}
-
-{% tab title="RemoveItems" %}
-
-{% endtab %}
-{% endtabs %}
-
 #### **Modifying document access**
 
 Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
 
 Using actions you can modify these fields and therefore the access of the document.
 
-| Action Type          | Description                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `LinkCreator`        | Add the creatorId to the userIds of the document                                                               |
-| `LinkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                     |
-| `LinkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document  |
-| `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                             |
+| Action Type          | Description                                                                                                   |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `LinkCreator`        | Add the creatorId to the userIds of the document                                                              |
+| `LinkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                    |
+| `LinkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document |
+| `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                            |
 
 {% hint style="info" %}
 If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](data-service.md#updating-access "mention")
@@ -504,13 +568,7 @@ await sdk.data.transitions.create(newSchema.id, {
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Task`          | trigger the creation of a Task in the Task Service by using the task action. Specify the functionName (which references the AWS Lambda function) and optionally extra data as key-value pairs in the data variable. |
 
-#### **code **examples
-
-{% tabs %}
-{% tab title="Task" %}
-
-{% endtab %}
-{% endtabs %}
+#### \*\*code \*\*examples
 
 ### Indexes
 
@@ -575,7 +633,7 @@ You can only remove disabled schema's. Removing a schema removes all documents i
 await sdk.data.schemas.enable('{yourSchemaId}');
 ```
 
-## Documents&#x20;
+## Documents
 
 After the creation of a Schema, a document can be created which adheres to the Schema. A document is identified by an id and contains data as defined by the properties field in the Schema. Furthermore, the object contains the following attributes:
 
@@ -715,7 +773,6 @@ await sdk.data.documents.linkGroups('{yourSchemaId}', '{yourDocumentId}', {
 await sdk.data.documents.unlinkGroups('{yourSchemaId}', '{yourDocumentId}', {
     groupIds: ['{groupIdToUnLink}'],
 });
-
 ```
 {% endtab %}
 {% endtabs %}
