@@ -26,7 +26,7 @@ To access your dedicated environment you need the following information:
 | `password`              | `SomeDiff!UnguessableP8ssword`               | login password                              |
 
 {% hint style="info" %}
-If you don't have access to an Extra Horizon environment yet, schedule a demo with us via: [https://www.extrahorizon.com/schedule-a-demo](https://www.extrahorizon.com/schedule-a-demo)
+If you don't have access to an Extra Horizon environment yet, contact our support team at [requests@extrahorizon.com](mailto:requests@extrahorizon.com)
 {% endhint %}
 
 
