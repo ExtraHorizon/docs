@@ -18,7 +18,7 @@
   * [Auth Service](for-developers/access-management/authentication.md)
   * [User Service](for-developers/access-management/user-service.md)
   * [Profile Service](for-developers/access-management/profile-service.md)
-* [Manage Data](for-developers/manage-data/README.md)
+* [Data Management](for-developers/manage-data/README.md)
   * [File Service](for-developers/manage-data/file-service.md)
   * [Data Service](for-developers/manage-data/data-service.md)
 * [Automation](for-developers/automation/README.md)

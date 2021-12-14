@@ -346,7 +346,7 @@ sdk.data.transitions.updateCreation(newSchema.id,{
 {% endtab %}
 {% endtabs %}
 
-For a creationTransition the type will always be set to `manual`
+For a creationTransition the type will always be set to `manual` .
 
 ### Transitions
 
@@ -376,7 +376,7 @@ A Transition object is identified by its name (name) and has a specific type ass
 
 | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Manual**    | A manual transition will be triggered when the transition execution endpoint is called on the document.                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Manual**    | A manual transition will be triggered when the [transition execution endpoint](data-service.md#triggering-transitions) is called on the document.                                                                                                                                                                                                                                                                                                                                                  |
 | **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A</strong> mentioned as a fromStatus. If the conditions of that transition are met it will execute. If not the data service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
 
 ### Transition conditions
