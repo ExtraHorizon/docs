@@ -114,6 +114,22 @@ See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-V
 {% endtab %}
 {% endtabs %}
 
+{% hint style="success" %}
+If a function is removed from the task service the logs aren't removed and can still be retrieved
+{% endhint %}
+
+### Logs
+
+{% tabs %}
+{% tab title="sdk" %}
+{% hint style="warning" %}
+This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
+{% endhint %}
+
+See the [API Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml) for more information.
+{% endtab %}
+{% endtabs %}
+
 ## Creating a task
 
 Tasks represent a scheduled or planned function. Tasks can give you insights in to when the function will be executed and provide insights into the success or failure of the execution.
@@ -219,4 +235,4 @@ To automate the execution of multiple repeating actions, set up a (recurring) ta
 
 ## Resources & References
 
-* [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml)\\
+* [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml)
