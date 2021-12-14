@@ -39,6 +39,8 @@
 ## Additional Resources
 
 * [GitHub](https://github.com/ExtraHorizon)
+* [SDK](https://github.com/ExtraHorizon/javascript-sdk)
+* [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
 
 ## ExH Platform
 
