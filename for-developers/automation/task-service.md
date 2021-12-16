@@ -45,6 +45,10 @@ See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-V
 {% endtab %}
 {% endtabs %}
 
+#### Tutorials
+
+* Checkout our [hello world task](https://docs.extrahorizon.com/extrahorizon-cli/tasks/hello-world-task) example.
+
 #### Supported runtimes
 
 Your task code will be executed in a code execution environment. Today, ExtraHorizon supports the following runtimes:&#x20;
