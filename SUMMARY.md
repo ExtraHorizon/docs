@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Extra Horizon Documentation](README.md)
-  * [Service Documentation](readme/services.md)
 * [Getting Started](getting-started.md)
 * [Demo's and tutorials](use-cases/README.md)
   * [Polysomnography (PSG)](use-cases/polysomnography-psg.md)
