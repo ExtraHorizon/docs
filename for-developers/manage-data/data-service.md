@@ -138,7 +138,7 @@ The Data Service supports five kinds of configurations (type attribute):
 
 {% tabs %}
 {% tab title="Object" %}
-```json
+```javascript
 {
   type: 'object',
   properties: {
@@ -156,7 +156,7 @@ References:
 {% endtab %}
 
 {% tab title="Array" %}
-```
+```javascript
 {
   type: 'array',
   items: { type: 'string' },
@@ -173,7 +173,7 @@ References:
 {% endtab %}
 
 {% tab title="String" %}
-```
+```javascript
 {
   type: 'string',
   minLength: 1,
@@ -193,7 +193,7 @@ References:
 {% endtab %}
 
 {% tab title="Number" %}
-```
+```javascript
 {
   type: 'number',
   minimum: 1,
@@ -210,7 +210,7 @@ References:
 {% endtab %}
 
 {% tab title="Boolean" %}
-```
+```javascript
 {
   type: 'boolean',
   enum: [true, false],
