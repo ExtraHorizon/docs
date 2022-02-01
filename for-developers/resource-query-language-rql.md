@@ -7,11 +7,11 @@ description: >-
 
 # Resource Query Language (RQL)
 
-### Where is it used? <a href="markdown-header-where-is-it-used" id="markdown-header-where-is-it-used"></a>
+### Where is it used? <a href="#markdown-header-where-is-it-used" id="markdown-header-where-is-it-used"></a>
 
 RQL is accepted on most of the endpoints that list multiple items. This is done to make querying large responses more manageable by filtering and sorting the requested data through RQL queries.
 
-### How can it be used? <a href="markdown-header-how-can-it-be-used" id="markdown-header-how-can-it-be-used"></a>
+### How can it be used? <a href="#markdown-header-how-can-it-be-used" id="markdown-header-how-can-it-be-used"></a>
 
 Let's say we're using the `localization service` for example. The `localization service` offers a `GET /` endpoint that allows us to pull all localizations the service has to offer. However, the response of this request might be a very large set of localizations of which we might not need all of the given localizations. This is where RQL steps in.
 
@@ -25,7 +25,7 @@ Which will in then return all localizations with the key `mail_greeting`. We can
 
 This request will still respond with all the available localizations, but they will be sorted according to their updateTimestamp.
 
-### Operators and their shorthands <a href="markdown-header-operators-and-their-shorthands" id="markdown-header-operators-and-their-shorthands"></a>
+### Operators and their shorthands <a href="#markdown-header-operators-and-their-shorthands" id="markdown-header-operators-and-their-shorthands"></a>
 
 |  Function  | Shorthand | Note                                                                         |
 | :--------: | :-------: | ---------------------------------------------------------------------------- |
@@ -47,6 +47,6 @@ This request will still respond with all the available localizations, but they w
 |   `sort`   |           |                                                                              |
 |  `select`  |           | Only return `field1` and `field2` from the records: `select(field1, field2)` |
 
-### More Information <a href="markdown-header-more-information" id="markdown-header-more-information"></a>
+### More Information <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
 
 For more information on RQL, visit [persvr/rql on GitHub](https://github.com/persvr/rql).

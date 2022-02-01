@@ -4,7 +4,7 @@ description: >-
   provided by the Extra Horizon platform.
 ---
 
-# Communication Options
+# Communication
 
 ## Intro <a href="#markdown-header-introduction" id="markdown-header-introduction"></a>
 

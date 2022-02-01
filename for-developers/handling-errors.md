@@ -6,8 +6,6 @@ description: >-
 
 # Handling Errors
 
-
-
 All errors reported by the API have a HTTP status code in the 400 - 599 range. A status code of 400 - 499 for client errors, 500-599 for server errors. The body of an error response should always be a JSON object with the following fields:
 
 ```
@@ -20,7 +18,7 @@ All errors reported by the API have a HTTP status code in the 400 - 599 range. A
 
 Below, some of the more common errors are listed per type of endpoint.
 
-### Authentication errors <a href="markdown-header-authentication-errors" id="markdown-header-authentication-errors"></a>
+### Authentication errors <a href="#markdown-header-authentication-errors" id="markdown-header-authentication-errors"></a>
 
 Possible errors thrown by endpoints requiring authentication:
 
@@ -35,7 +33,7 @@ Possible errors thrown by endpoints requiring authentication:
 |        117 |         401 | ACCESS\_TOKEN\_UNKNOWN\_EXCEPTION   | The supplied OAuth 2 access token is unknown.                                                                                                                                                         |
 |        118 |         401 | ACCESS\_TOKEN\_EXPIRED\_EXCEPTION   | The supplied OAuth 2 access token is expired.                                                                                                                                                         |
 
-### Request body errors <a href="markdown-header-request-body-errors" id="markdown-header-request-body-errors"></a>
+### Request body errors <a href="#markdown-header-request-body-errors" id="markdown-header-request-body-errors"></a>
 
 Possible errors thrown by all endpoints accepting a request body:
 
@@ -46,7 +44,7 @@ Possible errors thrown by all endpoints accepting a request body:
 |         15 |         400 | FIELD\_FORMAT\_EXCEPTION             | The provided body contained a field with a value that did past the validation. |
 |         22 |         400 | BODY\_FORMAT\_EXCEPTION              | The provided body could not be interpreted correctly.                          |
 
-### RQL errors <a href="markdown-header-rql-errors" id="markdown-header-rql-errors"></a>
+### RQL errors <a href="#markdown-header-rql-errors" id="markdown-header-rql-errors"></a>
 
 Possible errors for endpoints that accept RQL:
 
