@@ -30,8 +30,7 @@
 * [Other](for-developers/other/README.md)
   * [Template Service](https://docs.extrahorizon.com/template-service)
   * [Localization Service](https://docs.extrahorizon.com/localization-service)
-  * [Localization Service](for-developers/other/localization-service.md)
-  * [Payment Service](for-developers/other/payment-service.md)
+  * [Payment Service](https://docs.extrahorizon.com/payment-service/)
 * [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
 * [Handling Errors](for-developers/handling-errors.md)
 

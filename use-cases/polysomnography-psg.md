@@ -50,7 +50,7 @@ The [Task module](broken-reference) provides a way to execute code on demand by 
 
 ### Communication <a href="#communication" id="communication"></a>
 
-The [Notification module](broken-reference) makes it easy to send notifications to users and checking if they've been received. The [Mail module](broken-reference) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](../for-developers/other/localization-service.md).
+The [Notification module](broken-reference) makes it easy to send notifications to users and checking if they've been received. The [Mail module](broken-reference) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](broken-reference).
 
 ## Example configuration <a href="#demo-process" id="demo-process"></a>
 
