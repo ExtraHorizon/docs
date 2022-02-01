@@ -72,8 +72,8 @@ Finally, the **practice owner** has administrative control; which means they hav
 
 ### Related Pages
 
-{% content-ref url="authentication.md" %}
-[authentication.md](authentication.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 {% content-ref url="user-service.md" %}

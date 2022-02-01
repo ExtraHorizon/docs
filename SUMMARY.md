@@ -14,7 +14,7 @@
 ## For Developers
 
 * [Access Management](for-developers/access-management/README.md)
-  * [Auth Service](for-developers/access-management/authentication.md)
+  * [Auth Service](https://docs.extrahorizon.io/auth-service/)
   * [User Service](for-developers/access-management/user-service.md)
   * [Profile Service](for-developers/access-management/profile-service.md)
 * [Data Management](for-developers/manage-data/README.md)

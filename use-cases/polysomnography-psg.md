@@ -26,7 +26,7 @@ The following [image](https://miro.com/app/board/o9J\_lC-X3Us=/?moveToWidget=307
 
 ### Access management
 
-Access management in Extra Horizon services relies on two modules: the [Authentication module ](../for-developers/access-management/authentication.md)and the [User module](../for-developers/access-management/user-service.md) for user management.
+Access management in Extra Horizon services relies on two modules: the [Authentication module ](broken-reference)and the [User module](../for-developers/access-management/user-service.md) for user management.
 
 #### Security
 
