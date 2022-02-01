@@ -38,7 +38,7 @@ This functionality has not yet been added to the SDK. You can implement this fun
 
 {% tab title="cli" %}
 ```
-exh tasks functions create <functionName> <options>
+exh tasks create <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
@@ -75,7 +75,7 @@ This functionality has not yet been added to the SDK. You can implement this fun
 
 {% tab title="cli" %}
 ```
-exh tasks functions list <options>
+exh tasks list <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
@@ -111,7 +111,7 @@ This functionality has not yet been added to the SDK. You can implement this fun
 
 {% tab title="cli" %}
 ```
-exh tasks functions delete <functionName> <options>
+exh tasks delete <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
