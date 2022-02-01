@@ -46,11 +46,11 @@ Next to storing data in structured documents, the Data module allows configuring
 
 ### Automation <a href="#automation" id="automation"></a>
 
-The [Task module](../for-developers/automation/task-service.md) provides a way to execute code on demand by scheduling tasks. Tasks do not contain code themselves, but instead contain the information necessary to invoke code that is stored elsewhere, such as an AWS Lambda function. Tasks can either be queued to be executed as soon as possible, or scheduled for execution at a later moment.
+The [Task module](broken-reference) provides a way to execute code on demand by scheduling tasks. Tasks do not contain code themselves, but instead contain the information necessary to invoke code that is stored elsewhere, such as an AWS Lambda function. Tasks can either be queued to be executed as soon as possible, or scheduled for execution at a later moment.
 
 ### Communication <a href="#communication" id="communication"></a>
 
-The [Notification module](../for-developers/communication-options/notification-service/) makes it easy to send notifications to users and checking if they've been received. The [Mail module](../for-developers/communication-options/mail-service.md) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](../for-developers/other/localization-service.md).
+The [Notification module](broken-reference) makes it easy to send notifications to users and checking if they've been received. The [Mail module](broken-reference) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](../for-developers/other/localization-service.md).
 
 ## Example configuration <a href="#demo-process" id="demo-process"></a>
 
