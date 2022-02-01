@@ -157,7 +157,7 @@ Note for internal developers: Originally, the purpose of the message Type was to
 
 For the above non-specific Types, the `title` and `body` text fields must be completely provided during the [Create a Notification ](./#create-a-notification)request. For more specific Types, these text fields are usually predefined and only some variables are required.
 
-Two notification Types are used to create Notifications in response to successful actions at the [User Service](../../access-management/user-service.md): `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.
+Two notification Types are used to create Notifications in response to successful actions at the [User Service](broken-reference): `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.
 
 {% hint style="info" %}
 For internal developers: The User Service-specific Types will not be included in V2.
