@@ -12,10 +12,9 @@
 
 ## Services
 
-* [Access Management](for-developers/access-management/README.md)
+* [Identity and Access Management](for-developers/access-management/README.md)
   * [Auth Service](https://docs.extrahorizon.io/auth-service/)
   * [User Service](http://docs.extrahorizon.io/user-service)
-  * [Profile Service](https://docs.extrahorizon.io/profile-service)
 * [Data Management](for-developers/manage-data/README.md)
   * [File Service](https://docs.extrahorizon.io/file-service)
   * [Data Service](https://docs.extrahorizon.io/data-service)
@@ -34,7 +33,7 @@
 
 ## Tools
 
-* [SDK](https://github.com/ExtraHorizon/javascript-sdk)
+* [SDK](https://docs.extrahorizon.com/javascript-sdk/)
 * [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
 
 ## Additional Resources
