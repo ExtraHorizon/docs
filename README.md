@@ -73,21 +73,21 @@ The mail service allows you to send custom emails to your registered identities.
 
 #### Notification Service <a href="#notification-service" id="notification-service"></a>
 
-Send push notifications to android and iOS.
+The notification service is able to send push notifications to android and iOS.
 
 #### Localization Service <a href="#localisation-service" id="localisation-service"></a>
 
-Translations of documents in your cloud, email and notifications can be handled by the localisation service to ensure an optimal and compliant user experience.
+The localization service handles translations of documents in your cloud, email and notifications to ensure an optimal and compliant user experience.
 
 ### Other Services <a href="#other-services" id="other-services"></a>
 
 #### Payment Service <a href="#payment-service" id="payment-service"></a>
 
-Easily integrate multiple payment systems. Currently supports Apple IAP, Google Pay and Stripe.
+The payment service offers easy integration of multiple payment systems, supporting Apple IAP, Google Pay and Stripe.
 
 #### Template Service <a href="#template-service" id="template-service"></a>
 
-Make good-looking HTML templates for Emails or make detailed pdf reports for a medical user.
+The template service allows you to make good-looking HTML templates for emails or make detailed pdf reports for a medical user.
 
 ## Where to get additional support?
 
