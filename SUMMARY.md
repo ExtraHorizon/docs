@@ -33,7 +33,6 @@
 
 ## Tools
 
-* <a target="_self" href="https://docs.extrahorizon.com/javascript-sdk/" >SDK</a>
 * [SDK](https://docs.extrahorizon.com/javascript-sdk/)
 * [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
 
