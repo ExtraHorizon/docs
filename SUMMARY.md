@@ -33,7 +33,7 @@
 
 ## Tools
 
-* [SDK](https://docs.extrahorizon.com/javascript-sdk/){:target="_blank"}
+* [SDK](https://docs.extrahorizon.com/javascript-sdk/)
 * [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
 
 ## Additional Resources
@@ -45,4 +45,3 @@
 ## ExH Platform
 
 * [Security](exh-platform/security.md)
-

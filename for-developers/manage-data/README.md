@@ -10,6 +10,10 @@ For structured data, the Data service supports creating and manipulating [JSON](
 
 Extra horizon services also provide storage for files that don't adhere to a particular structure, like images or zipped files. This service is called the `files service`, and allows storage and retrieval of a large variety of files.
 
+{% content-ref url="https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/dvL2SAPQmpnpHBxsorAZ/" %}
+[Data Service v1](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/dvL2SAPQmpnpHBxsorAZ/)
+{% endcontent-ref %}
+
 ## Structured data <a href="#markdown-header-structured-data" id="markdown-header-structured-data"></a>
 
 As previously mentioned, storage of structured data with ExH services relies on the `data service`. This service stores data in structured _documents_ and uses _data schemas_ to determine the structure of these documents. Documents can also adapt to a configurable logic, which is also determined in the document's schema.
