@@ -33,7 +33,7 @@
 
 ## Tools
 
-* [SDK](https://docs.extrahorizon.com/javascript-sdk/)
+* [SDK](../javascript-sdk/)
 * [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
 
 ## Additional Resources
