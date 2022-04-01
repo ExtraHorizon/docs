@@ -29,7 +29,7 @@ Secondly, data schemas allow configuration of the behavior logic of a document, 
 **Finite-state machines**
 
 A traffic light could be considered a finite-state machine. It can exist in three **states**: green, orange and red.\
-Changing from one state to another is called a **transition**. In the case of a traffic light, that would mean it has three transitions: changing from green to orange, changing from orange to red, and changing from red back to green.\
+Changing from one state to another is called a **transition**. In the case of a traffic light, that would mean it has three transitions: changing from green to orange, changing from orange to red, and changing from red back to green.
 
 
 #### Documents <a href="markdown-header-documents" id="markdown-header-documents"></a>
