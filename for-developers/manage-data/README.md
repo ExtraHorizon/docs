@@ -24,7 +24,7 @@ As previously mentioned, storage of structured data with ExH services relies on 
 
 #### Data schemas <a href="#markdown-header-data-schemas" id="markdown-header-data-schemas"></a>
 
-Before a new creating document, the data service requires a _data schema_. The purpose of a data schema is twofold: It dictates the _data structure_ of a document, as well as the _behavior logic_ of that same document. ExH data schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
+Before creating a new document, the data service requires a _data schema_. The purpose of a data schema is twofold: It dictates the _data structure_ of a document, as well as the _behavior logic_ of that same document. ExH data schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
 
 **Data structure**
 
@@ -32,16 +32,16 @@ The primary function of a data schema is to ensure documents that are created wi
 
 **Configurable logic**
 
-Secondly, data schemas allow configuration of the behavior logic of a document, similar to a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state\_machine). This means that the document can possess one of a limited amount of states, and change between these states based on the configuration provided. Similar to properties, the states and transitions of a document are configured in it's data schema.
+Secondly, data schemas allow configuration of the behavior logic of a document, similar to a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state\_machine). This means that the document can possess one of a limited amount of states, and change between these states based on the configuration provided. Similar to properties, the states and transitions of a document are configured in its data schema.
 
 **Finite-state machines**
 
 A traffic light could be considered a finite-state machine. It can exist in three **states**: green, orange and red.\
-Changing from one state to another is called a **transition**. In the case of a traffic light, that would mean it has three transitions: changing from green to orange, changing from orange to red, and changing from red back to green.\\
+Changing from one state to another is called a **transition**. In the case of a traffic light, that would mean it has three transitions: changing from green to orange, changing from orange to red, and changing from red back to green.
 
 #### Documents <a href="#markdown-header-documents" id="markdown-header-documents"></a>
 
-After configuring a data schema, any number of documents can be created that follow it's structure. These documents will exist in the states that are defined by the schema's _statuses_, and follow the logic configured in the schema's _transitions_. As previously mentioned, transitioning a document between statuses can trigger actions such as sending a mail, or tasks that interact with other services.
+After configuring a data schema, any number of documents can be created that follow its structure. These documents will exist in the states that are defined by the schema's _statuses_, and follow the logic configured in the schema's _transitions_. As previously mentioned, transitioning a document between statuses can trigger actions such as sending a mail, or tasks that interact with other services.
 
 {% content-ref url="https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/dvL2SAPQmpnpHBxsorAZ/" %}
 [Data Service v1](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/dvL2SAPQmpnpHBxsorAZ/)

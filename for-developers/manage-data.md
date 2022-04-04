@@ -24,7 +24,7 @@ The primary function of a data schema is to ensure documents that are created wi
 
 **Configurable logic**
 
-Secondly, data schemas allow configuration of the behavior logic of a document, similar to a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state\_machine). This means that the document can possess one of a limited amount of states, and change between these states based on the configuration provided. Similar to properties, the states and transitions of a document are configured in it's data schema.
+Secondly, data schemas allow configuration of the behavior logic of a document, similar to a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state\_machine). This means that the document can possess one of a limited amount of states, and change between these states based on the configuration provided. Similar to properties, the states and transitions of a document are configured in its data schema.
 
 **Finite-state machines**
 
@@ -34,7 +34,7 @@ Changing from one state to another is called a **transition**. In the case of a 
 
 #### Documents <a href="markdown-header-documents" id="markdown-header-documents"></a>
 
-After configuring a data schema, any number of documents can be created that follow it's structure. These documents will exist in the states that are defined by the schema's _statuses_, and follow the logic configured in the schema's _transitions_. As previously mentioned, transitioning a document between statuses can trigger actions such as sending a mail, or tasks that interact with other services.
+After configuring a data schema, any number of documents can be created that follow its structure. These documents will exist in the states that are defined by the schema's _statuses_, and follow the logic configured in the schema's _transitions_. As previously mentioned, transitioning a document between statuses can trigger actions such as sending a mail, or tasks that interact with other services.
 
 ## Unstructured data <a href="markdown-header-unstructured-data" id="markdown-header-unstructured-data"></a>
 
