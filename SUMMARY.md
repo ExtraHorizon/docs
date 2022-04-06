@@ -26,7 +26,7 @@
   * [Mail Service](https://docs.extrahorizon.io/mail-service)
   * [Notification Service](https://docs.extrahorizon.com/notification-service)
 * [Other](for-developers/other/README.md)
-  * [Template Service](https://docs.extrahorizon.com/template-service)
+  * [Template Service](services/other/template-service.md)
   * [Localization Service](https://docs.extrahorizon.com/localization-service)
   * [Payment Service](https://docs.extrahorizon.com/payment-service/)
   * [Configuration Service](https://docs.extrahorizon.com/configuration-service/)
