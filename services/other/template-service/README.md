@@ -175,3 +175,10 @@ To define e-mail templates there are additional requirements on the `fields` tha
 For more info how to send e-mails using templates, take a look in the [mail service documentation](https://docs.extrahorizon.com/mail-service/)
 {% endhint %}
 
+
+
+
+
+\
+ <a href="#other-operations" id="other-operations"></a>
+-------------------------------------------------------

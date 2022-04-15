@@ -121,4 +121,3 @@ will yield the following response:
 }
 ```
 
-## &#x20;<a href="#other-operations" id="other-operations"></a>
