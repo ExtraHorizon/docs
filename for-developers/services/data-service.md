@@ -36,11 +36,11 @@ For example, you can create an order and shipment workflow to keep track of all 
 
 ![](<../../.gitbook/assets/image (3) (1).png>)
 
-You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific cercomstances. (Field value, the person executing the transition, …)
+You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific circumstances. (Field value, the person executing the transition, …)
 
 When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more…
 
-## Schema's
+## Schemas
 
 A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name and description. A Schema is based on:
 
@@ -304,7 +304,7 @@ await sdk.data.properties.create(newSchema.id,
 });
 ```
 
-this allows you to create a ISO formatted date-time field wich accepts RQL to query on using gt,gte, lt and lte ,...
+this allows you to create a ISO formatted date-time field which accepts RQL to query on using gt,gte, lt and lte ,...
 {% endtab %}
 {% endtabs %}
 
@@ -329,7 +329,7 @@ await sdk.data.statuses.create(newSchema.id, {
 The creation transition is the transition that is executed when you create a document. It is the only type of transition that doesn't have a `fromStatus` as there is no status to start from.
 
 {% hint style="warning" %}
-When you create new schema, by default the data service will include a **NEW** status and a creation transition towards that status. This is the reason why you wont find a create creationTransition or delete creationTransition function and only an updateCreationTransition function.
+When you create new schema, by default the data service will include a **NEW** status and a creation transition towards that status. This is the reason why you won't find a create creationTransition or delete creationTransition function and only an updateCreationTransition function.
 {% endhint %}
 
 {% tabs %}
@@ -492,7 +492,7 @@ To access an element in an array or embedded documents, use the dot notation.
 
 #### **Modifying document access**
 
-Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
+Each document has a `userIds` and `groupIds` field. These fields are part of determining the access policy towards that specific document depending on the general collection schema configuration.
 
 Using actions you can modify these fields and therefore the access of the document.
 
@@ -613,7 +613,7 @@ TODO
 
 ### **Enabling/disabling a schema**
 
-As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allow to existing documents.
+As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled, creation of new documents is disabled and no changes are allowed for existing documents.
 
 ```javascript
 await sdk.data.schemas.disable('{yourSchemaId}');
@@ -627,7 +627,7 @@ await sdk.data.schemas.enable('{yourSchemaId}');
 
 ### Removing a schema
 
-You can only remove disabled schema's. Removing a schema removes all documents in that schema collection. Removed documents are non retrievable.
+You can only remove disabled schema's. Removing a schema removes all documents in that schema collection. Removed documents are non-retrievable.
 
 ```javascript
 await sdk.data.schemas.enable('{yourSchemaId}');
