@@ -20,20 +20,24 @@ const myNewSchema = await sdk.data.schemas.create({
 {% endtab %}
 {% endtabs %}
 
-## Permissions
+## Data Access Management
 
-A schema contains some specific attributes which define the conditions which must be met to create (createMode), view (readMode), update (updateMode) or delete (deleteMode) a document. The required conditions combined with the required permissions for each endpoint can be found in the API reference documentation.
+In this section we discuss how you can configure access to documents. A schema contains specific attributes that define the conditions which must be met to create, view, update or delete documents.&#x20;
+
+### Access Modes
 
 #### createMode
 
 createMode defines the permissions needed to create a document in a schema collection.
 
-| Mode                 | Description                                                                                                                                                                                 |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DEFAULT`            | The default mode allows every logged-in user to create a new document in the collection. If you don't specify the createMode during schema creation it will by default end up in this mode. |
-| `PERMISSIONREQUIRED` | Only users with the`CREATE_DOCUMENTS`permission will have the ability create a document.                                                                                                    |
+| Mode                 | Description                                                                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DEFAULT`            | The default mode allows every logged-in user to create a new document in the collection. **This is the default mode for creating documents.** |
+| `PERMISSIONREQUIRED` | Only users with `CREATE_DOCUMENTS` or   `CREATE_DOCUMENTS:{schemaName}`permission have the ability create a document.                         |
 
-### readMode
+
+
+#### readMode
 
 readMode defines the permissions need to read a document in a schema collection
 
@@ -44,28 +48,65 @@ readMode defines the permissions need to read a document in a schema collection
 | `ENLISTEDINLINKEDGROUPS` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document.                                            |
 
 {% hint style="info" %}
-Users that have the VIEW\_DOCUMENTS permission attached to a globalRole will be able to read any document in any collection regardless of the setting above.
+Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}`permission attached to a global role will be able to read any document regardless of the setting above.
 {% endhint %}
 
-### updateMode
+#### updateMode
 
 updateMode defines the permissions need to update a document in a schema collection
 
 | Mode                    | Description                                                                                                                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `DEFAULT`               | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
-| `CREATORONLY`           | Only the user that created the document is able to update the document                                                                                                        |
-| `DISABLED`              | Nobody can update the document                                                                                                                                                |
+| `CREATORONLY`           | Only the user that created the document is able to update a document                                                                                                          |
+| `DISABLED`              | Nobody can update a document                                                                                                                                                  |
 | `LINKEDGROUPSSTAFFONLY` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
 
-### deleteMode
+{% hint style="info" %}
+Users that have the UPDATE`_DOCUMENTS` or UPDATE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to update any document regardless of the setting above.
+{% endhint %}
+
+#### deleteMode
 
 deleteMode defines the permissions needed to remove a document permanently from a schema collection.
 
-| Mode                 | Description                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------- |
-| `PERMISSIONREQUIRED` | Only users with the`DELETE_DOCUMENTS`permission will be able to remove a document. |
-| `LINKEDUSERSONLY`    | All users where their userId is in the list of userIds attached to the document.   |
+| Mode                 | Description                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `PERMISSIONREQUIRED` | Only users with the`DELETE_DOCUMENTS` or  `DELETE_DOCUMENTS:{schemaName}`permission will be able to remove a document. |
+| `LINKEDUSERSONLY`    | All users where their userId is in the list of userIds attached to the document.                                       |
+
+{% hint style="info" %}
+Users that have the DELETE`_DOCUMENTS` or DELETE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to delete any document regardless of the setting above.
+{% endhint %}
+
+### Access to documents through role permissions
+
+Every permission has a global and a schema-specific variant. This allows you to define access to documents in a very granular way.&#x20;
+
+The following table lists the relevant permissions for the data service:
+
+| Permission                                                                                                                                                                                                                                          | Description                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `VIEW_DOCUMENTS`                                                                                                                                                                                                                                    | A user with this permission can view all documents in **any schema**                     |
+| <p><code>VIEW_DOCUMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> </p>                                                                                                                         | A user with this permission can view all documents in a specific schema `schemaName`     |
+| `CREATE_DOCUMENTS`                                                                                                                                                                                                                                  | A user with this permission can create documents **in any schema**                       |
+| <p><code>CREATE_DOCUMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> </p>                                                                                                                       | A user with this permission can create documents in a specific schema `schemaName`       |
+| `UPDATE_DOCUMENTS`                                                                                                                                                                                                                                  | A user with this permission can update all documents **in any schema**                   |
+| <p><code>UPDATE_DOCUMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> </p>                                                                                                                       | A user with this permission can update all documents in a specific schema `schemaName`   |
+| `DELETE_DOCUMENTS`                                                                                                                                                                                                                                  | A user with this permission can delete any document **in any schema**                    |
+| <p><code>DELETE_DOCUMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> </p>                                                                                                                       | A user with this permission can delete any document in schema `schemaName`               |
+| <p><code>CREATE_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                | A user with this permission can create comments in any document **in any schema**        |
+| <p><code>CREATE_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0 </mark><em><mark style="background-color:yellow;"></mark></em> <mark style="background-color:red;">deprecated</mark> </p> | A user with this permission can create comments in any document in schema `schemaName`   |
+| <p><code>VIEW_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                  | A user with this permission can view comments in any document **in any schema**          |
+| <p><code>IEW_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark> </p>                                                            | A user with this permission can view comments in any document in schema `schemaName`     |
+| <p><code>UPDATE_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                | A user with this permission can update any document comments **in any schema**           |
+| <p><code>UPDATE_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark>  <mark style="background-color:red;">deprecated</mark> </p>                                                        | A user with this permission can update any document comments in schema `schemaName`      |
+| `UPDATE_ACCESS_TO_DOCUMENT`                                                                                                                                                                                                                         | A user with this permission can update the access to any document **in any schema**      |
+| <p><code>UPDATE_ACCESS_TO_DOCUMENT:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> </p>                                                                                                              | A user with this permission can update the access to any document in schema `schemaName` |
+
+The above mentioned permissions can be granted to users through global roles or group roles.
+
+For more information how to add permissions to roles and roles to users, take a look at the [user service documentation](https://docs.extrahorizon.com/user-service/features/global-roles)
 
 ### Creating a schema with permissions
 
