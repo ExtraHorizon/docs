@@ -32,20 +32,20 @@ createMode defines the permissions needed to create a document in a schema colle
 
 | Mode                 | Description                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DEFAULT`            | The default mode allows every logged-in user to create a new document in the collection. **This is the default mode for creating documents.** |
-| `PERMISSIONREQUIRED` | Only users with `CREATE_DOCUMENTS` or   `CREATE_DOCUMENTS:{schemaName}`permission have the ability create a document.                         |
+| `default`            | The default mode allows every logged-in user to create a new document in the collection. When no `createMode` is set, this mode will be used. |
+| `permissionRequired` | Only users with `CREATE_DOCUMENTS` or   `CREATE_DOCUMENTS:{schemaName}`permission have the ability to create a document.                      |
 
 
 
 #### readMode
 
-readMode defines the permissions need to read a document in a schema collection
+readMode defines the permissions needed to read a document in a schema collection
 
 | Mode                     | Description                                                                                                                                                                    |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `DEFAULT`                | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document. |
-| `ALLUSERS`               | All users will have the permission to read the documents in the schema collection.                                                                                             |
-| `ENLISTEDINLINKEDGROUPS` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document.                                            |
+| `default`                | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document. |
+| `allUsers`               | All users will have the permission to read the documents in the schema collection.                                                                                             |
+| `enlistedInLinkedGroups` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document.                                            |
 
 {% hint style="info" %}
 Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}`permission attached to a global role will be able to read any document regardless of the setting above.
@@ -53,14 +53,14 @@ Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}`permission 
 
 #### updateMode
 
-updateMode defines the permissions need to update a document in a schema collection
+updateMode defines the permissions needed to update a document in a schema collection
 
 | Mode                    | Description                                                                                                                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DEFAULT`               | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
-| `CREATORONLY`           | Only the user that created the document is able to update a document                                                                                                          |
-| `DISABLED`              | Nobody can update a document                                                                                                                                                  |
-| `LINKEDGROUPSSTAFFONLY` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
+| `default`               | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
+| `creatorOnly`           | Only the user that created the document is able to update a document                                                                                                          |
+| `disabled`              | Nobody can update a document                                                                                                                                                  |
+| `linkedGroupsStaffOnly` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
 
 {% hint style="info" %}
 Users that have the UPDATE`_DOCUMENTS` or UPDATE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to update any document regardless of the setting above.
@@ -70,10 +70,10 @@ Users that have the UPDATE`_DOCUMENTS` or UPDATE`_DOCUMENTS:{schemaName}`permiss
 
 deleteMode defines the permissions needed to remove a document permanently from a schema collection.
 
-| Mode                 | Description                                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `PERMISSIONREQUIRED` | Only users with the`DELETE_DOCUMENTS` or  `DELETE_DOCUMENTS:{schemaName}`permission will be able to remove a document. |
-| `LINKEDUSERSONLY`    | All users where their userId is in the list of userIds attached to the document.                                       |
+| Mode                 | Description                                                                                                                       |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `permissionRequired` | Only users with the`DELETE_DOCUMENTS` or  `DELETE_DOCUMENTS:{schemaName}`permission will be able to remove a document. \[default] |
+| `linkedUsersOnly`    | All users where their userId is in the list of userIds attached to the document.                                                  |
 
 {% hint style="info" %}
 Users that have the DELETE`_DOCUMENTS` or DELETE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to delete any document regardless of the setting above.
