@@ -13,11 +13,16 @@
 ## Services
 
 * [Identity and Access Management](for-developers/access-management/README.md)
+  * [User service](services/access-management/user-service/README.md)
+    * [Users](services/access-management/user-service/users.md)
+    * [Groups](services/access-management/user-service/groups.md)
+    * [Events](services/access-management/user-service/events.md)
+    * [Global roles](services/access-management/user-service/global-roles.md)
+    * [Configuration](services/access-management/user-service/configuration.md)
   * [Auth Service](services/access-management/auth-service/README.md)
     * [oAuth2](services/access-management/auth-service/oauth2.md)
     * [oAuth1](services/access-management/auth-service/oauth1.md)
     * [MFA](services/access-management/auth-service/mfa.md)
-  * [User Service](http://docs.extrahorizon.io/user-service)
 * [Data Management](for-developers/manage-data/README.md)
   * [Data Service](services/manage-data/data-service/README.md)
     * [Schemas](services/manage-data/data-service/schemas.md)
