@@ -43,9 +43,10 @@
     * [Settings](services/communication/notification-service/settings.md)
   * [Mail Service](services/communication/mail-service.md)
 * [Other](for-developers/other/README.md)
+  * [Localizations Service](services/other/localizations-service/README.md)
+    * [Localizations](services/other/localizations-service/localizations.md)
   * [Template Service](services/other/template-service/README.md)
     * [Localizations](services/other/template-service/localizations.md)
-  * [Localization Service](https://docs.extrahorizon.com/localization-service)
   * [Payment Service](https://docs.extrahorizon.com/payment-service/)
   * [Configuration Service](https://docs.extrahorizon.com/configuration-service/)
 
