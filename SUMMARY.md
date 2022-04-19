@@ -38,7 +38,7 @@
     * [Events](services/automation/event-service/events.md)
     * [Subscriptions](services/automation/event-service/subscriptions.md)
 * [Communication](services/communication/README.md)
-  * [Mail Service](https://docs.extrahorizon.io/mail-service)
+  * [Mail Service](services/communication/mail-service.md)
   * [Notification Service](https://docs.extrahorizon.com/notification-service)
 * [Other](for-developers/other/README.md)
   * [Template Service](services/other/template-service/README.md)
