@@ -47,7 +47,10 @@
     * [Localizations](services/other/localizations-service/localizations.md)
   * [Template Service](services/other/template-service/README.md)
     * [Localizations](services/other/template-service/localizations.md)
-  * [Payment Service](https://docs.extrahorizon.com/payment-service/)
+  * [Payments Service](services/other/payments-service/README.md)
+    * [Subscriptions](services/other/payments-service/subscriptions.md)
+    * [Stripe](services/other/payments-service/stripe.md)
+    * [iOS App Store](services/other/payments-service/ios-app-store.md)
   * [Configurations Service](services/other/configurations-service.md)
 
 ## Tools
