@@ -13,7 +13,10 @@
 ## Services
 
 * [Identity and Access Management](for-developers/access-management/README.md)
-  * [Auth Service](https://docs.extrahorizon.io/auth-service/)
+  * [Auth Service](services/access-management/auth-service/README.md)
+    * [oAuth2](services/access-management/auth-service/oauth2.md)
+    * [oAuth1](services/access-management/auth-service/oauth1.md)
+    * [MFA](services/access-management/auth-service/mfa.md)
   * [User Service](http://docs.extrahorizon.io/user-service)
 * [Data Management](for-developers/manage-data/README.md)
   * [Data Service](services/manage-data/data-service/README.md)
