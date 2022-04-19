@@ -19,8 +19,8 @@ After acquiring an authentication token, requests to other ExH services can be m
 The authentication service supports both oAuth 1.0 and oAuth 2.0 authentication mechanisms.
 {% endhint %}
 
-{% content-ref url="https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/shlQh9HtXZI8Mk4PQbAj/" %}
-[Auth Service v2](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/shlQh9HtXZI8Mk4PQbAj/)
+{% content-ref url="../../services/access-management/auth-service/" %}
+[auth-service](../../services/access-management/auth-service/)
 {% endcontent-ref %}
 
 ### Authorization
