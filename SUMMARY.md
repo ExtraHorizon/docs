@@ -48,7 +48,7 @@
   * [Template Service](services/other/template-service/README.md)
     * [Localizations](services/other/template-service/localizations.md)
   * [Payment Service](https://docs.extrahorizon.com/payment-service/)
-  * [Configuration Service](https://docs.extrahorizon.com/configuration-service/)
+  * [Configurations Service](services/other/configurations-service.md)
 
 ## Tools
 
