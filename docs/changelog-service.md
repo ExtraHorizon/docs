@@ -27,8 +27,8 @@
 
 
 ## Tasks Service
-### 1.1.9 (2022-03-30)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.1.9/openapi.yaml)
+### 1.2.0 (2022-03-30)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.2.0/openapi.yaml)
 
 <details>
 <summary>Detailed Release Notes</summary>
