@@ -53,6 +53,11 @@
     * [iOS App Store](services/other/payments-service/ios-app-store.md)
   * [Configurations Service](services/other/configurations-service.md)
 
+## API Reference
+
+* [📦 Changelog](api-reference/changelog/README.md)
+  * [Per-service Changelog](api-reference/changelog/per-service-changelog.md)
+
 ## Tools
 
 * [SDK](https://docs.extrahorizon.com/javascript-sdk/)

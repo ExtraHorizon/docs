@@ -2,21 +2,21 @@
 
 This document serves as a guide and proof-of-concept on how Retool can be used to quickly build simple dashboards with data pulled from the Extra Horizon API. To demonstrate this, this guide will describe how to connect the FibriCheck development API to Retool as a resource, how to pull data into Retool from the API, and how to build simple visualizations with the data.
 
-### Creating a Retool application <a href="creating-a-retool-application" id="creating-a-retool-application"></a>
+### Creating a Retool application <a href="#creating-a-retool-application" id="creating-a-retool-application"></a>
 
 First off, we need to create a Retool application. Once you’re logged into retool, click on the `create new` button in the top right of the screen and select `Create a blank application`.
 
-![](../.gitbook/assets/retoolguide1.png)
+![](<../.gitbook/assets/retoolguide1 (1).png>)
 
 Pick a name for your application and click `create app`. This will create a blank application from which we can start building.
 
-![](../.gitbook/assets/retoolguide2.png)
+![](<../.gitbook/assets/retoolguide2 (1).png>)
 
-### Connecting the Extra Horizon API to Retool as a resource <a href="connecting-the-extrahorizon-api-to-retool-as-a-resource" id="connecting-the-extrahorizon-api-to-retool-as-a-resource"></a>
+### Connecting the Extra Horizon API to Retool as a resource <a href="#connecting-the-extrahorizon-api-to-retool-as-a-resource" id="connecting-the-extrahorizon-api-to-retool-as-a-resource"></a>
 
 In order to be able to fetch data from the Extra Horizon API we’ll need to set it up as a resource within Retool. To do this, click the menu button in the top left of the screen and click on `Resources`.
 
-![](../.gitbook/assets/retoolguide3.png)
+![](<../.gitbook/assets/retoolguide3 (1).png>)
 
 Next, click on `create new` to create a new resource.
 
@@ -32,7 +32,7 @@ Enter a name for your resource to reference later in the UI builder. Now, enter 
 
 ![](../.gitbook/assets/retoolguide6.1.png)
 
-#### Authentication <a href="authentication" id="authentication"></a>
+#### Authentication <a href="#authentication" id="authentication"></a>
 
 In order to fetch data at the API, we’ll need some form of authentication. Retool supports both OAuth1 and OAuth2. However, because Retool supports a one-legged version of OAuth1 and the Extra Horizon API only support three-legged OAuth1 we cannot use OAuth1 for authentication. OAuth2 would be an alternative option. However, the Extra Horizon API supports only the refresh token grant type and the password grant type, which Retool in turn does not support since Retool only supports the client credentials grant type.
 
@@ -82,7 +82,7 @@ Next add a new step to store our access token into the OAUTH2\_TOKEN environment
 
 To finish of, we’ll test our configuration by clicking the `Test auth workflow` and `Test refresh auth workflow` buttons. If all went well, we should be all set to start building our actual application.
 
-### Building an interface <a href="building-an-interface" id="building-an-interface"></a>
+### Building an interface <a href="#building-an-interface" id="building-an-interface"></a>
 
 Let’s return to our UI building interface. We’ll start by building a table of all our users. To do this, we will first fetch the necessary data. At the bottom of the interface you’ll find a window where you can form a request to the API.
 
@@ -133,7 +133,7 @@ We can now make an analogous request for other services as well. Now we can edit
 }
 ```
 
-The snippet above creates a record in the key-value table for each service. The value part of the record (between {{ }} brackets) is a JavaScript snippet that accesses the message field of the data object on the requests response. If a request is successful, this field will be empty and the expression will evaluate to `true`. In all other cases, the expression in {{ }} brackets will evaluate to `false`. Retool will then in turn display an appropriate icon for `true` and `false` evaluations accordingly in the table.
+The snippet above creates a record in the key-value table for each service. The value part of the record (between \{{ \}} brackets) is a JavaScript snippet that accesses the message field of the data object on the requests response. If a request is successful, this field will be empty and the expression will evaluate to `true`. In all other cases, the expression in \{{ \}} brackets will evaluate to `false`. Retool will then in turn display an appropriate icon for `true` and `false` evaluations accordingly in the table.
 
 ![](../.gitbook/assets/retoolguide22.png)
 
@@ -244,6 +244,6 @@ Our final configuration should give us the following pie chart:
 
 ![](../.gitbook/assets/retoolguide24.png)
 
-### Conclusion <a href="conclusion" id="conclusion"></a>
+### Conclusion <a href="#conclusion" id="conclusion"></a>
 
 This section concludes the integration guide showing the basics of building visualizations for Extra Horizon API’s with Retool. For a more comprehensive guide on working with Retool, we advise you to read the [Retool documentation.](https://docs.retool.com/docs/whats-retool)
