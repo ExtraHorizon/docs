@@ -9,6 +9,7 @@
 <summary>Detailed Release Notes</summary>
 {{ .RawContent }}
 </details>
-{{- end }}
-{{- end }}
-{{- end }}
+
+{{ end -}}
+{{- end -}}
+{{- end -}}
