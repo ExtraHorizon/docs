@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
     paths:
       # Only run when there are changes in the changelogs
       # Specifically exclude changes in docs folder
