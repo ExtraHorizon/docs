@@ -1,18 +1,7 @@
 
-
-
-## Authentication Service
-
-
-
-## Configurations Service
-
-
-
 ## Data Service
 ### 1.1.0 (2022-02-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.0/openapi.yaml)
-
 <details>
 <summary>Detailed Release Notes</summary>
 
@@ -29,59 +18,9 @@
 **🐞 Bugs Fixed**
 * While adding a property to a schema the configuration field was not marked as required
 </details>
-
-
-
-
-
-## Dispatchers Service
-
-
-
-## Events Service
-
-
-
-## Files Service
-
-
-
-## Groups Service
-
-
-
-## Localizations Service
-
-
-
-## Mail Service
-
-
-
-## Notifications Service v1
-
-
-
-## Payments Service
-
-
-
-## Prescriptions Service
-
-
-
-## Profiles Service
-
-
-
-## Reports Service
-
-
-
 ## Tasks Service
 ### 1.2.0 (2022-03-30)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.2.0/openapi.yaml)
-
 <details>
 <summary>Detailed Release Notes</summary>
 
@@ -113,19 +52,9 @@
 * Unknown fields are no longer causing errors while updating a function
 * Errors for invalid function names are now correctly reported
 </details>
-
-
-
-
-
-## Template Service
-
-
-
 ## Users Service
 ### 1.1.9 (2022-03-10)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.9/openapi.yaml)
-
 <details>
 <summary>Detailed Release Notes</summary>
 
@@ -133,11 +62,8 @@
 * Configurable Email Template ID's
   * The activation, reactivation and password reset mail template can now be configured by the end user.
 </details>
-
-
 ### 1.1.8 (2021-12-22)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.8/openapi.yaml)
-
 <details>
 <summary>Detailed Release Notes</summary>
 
@@ -148,5 +74,3 @@
   * PUT /password_policy
 
 </details>
-
-
