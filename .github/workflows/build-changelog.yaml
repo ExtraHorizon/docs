@@ -1,0 +1,32 @@
+name: Build and commit changelog
+on:
+  push:
+    branches:
+      - main
+    paths:
+      # Only run when there are changes in the changelogs
+      # Specifically exclude changes in docs folder
+      - 'changelog-generator/**'
+      - '!docs/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: peaceiris/actions-hugo@v2
+        with:
+            hugo-version: '0.96.0'
+            extended: true
+      - name: Build
+        run: |
+          cd changelog-generator
+          hugo
+          cp public/index.md ../docs/changelog-service.md
+          cp public/changelogs/index.md ../docs/changelog-chronological.md
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'ExH Changelog Commit'
+          git config --global user.email 'noreply@extrahorizon.com'
+          git add docs/
+          git commit -am "Automated Changelog Generator"
+          git push

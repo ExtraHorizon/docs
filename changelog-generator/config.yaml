@@ -1,0 +1,39 @@
+baseURL: "https://christopherh.dev"
+languageCode: "en-us"
+title: "Extra Horizon Changelogs"
+description: "Test"
+ignoreErrors:
+  - error-disable-taxonomy
+disableKinds:
+  - sitemap
+  - taxonomy
+params:
+  services:
+    users-service:
+      name: Users Service
+      docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service"
+    tasks-service:
+      name: Tasks Service
+      docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/automation/task-service"
+    data-service:
+      name: Data Service
+      docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service"
+mediaTypes:
+  text/markdown:
+    suffixes:
+      - md
+outputFormats:
+  GitBookMarkdown:
+    baseName: index
+    isPlainText: true
+    notAlternative: true
+    mediaType: text/markdown
+outputs:
+  home:
+    - GitBookMarkdown
+  page:
+    - GitBookMarkdown
+  section:
+    - GitBookMarkDown
+  term: 
+    - GitBookMarkDown
