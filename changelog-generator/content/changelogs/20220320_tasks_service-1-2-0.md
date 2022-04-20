@@ -1,6 +1,6 @@
 ---
 service: tasks-service
-version: 1.1.9
+version: 1.2.0
 date: 2022-03-30
 ---
 
