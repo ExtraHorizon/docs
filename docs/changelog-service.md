@@ -19,6 +19,8 @@
 **🐞 Bugs Fixed**
 * While adding a property to a schema the configuration field was not marked as required
 </details>
+
+
 ## Tasks Service
 
 ### 1.2.0 (2022-03-30)
@@ -54,6 +56,8 @@
 * Unknown fields are no longer causing errors while updating a function
 * Errors for invalid function names are now correctly reported
 </details>
+
+
 ## Users Service
 
 ### 1.1.9 (2022-03-10)
@@ -65,6 +69,8 @@
 * Configurable Email Template ID's
   * The activation, reactivation and password reset mail template can now be configured by the end user.
 </details>
+
+
 ### 1.1.8 (2021-12-22)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.8/openapi.yaml)
 <details>
@@ -77,3 +83,4 @@
   * PUT /password_policy
 
 </details>
+
