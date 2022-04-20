@@ -1,6 +1,14 @@
 
 
 
+## Authentication Service
+
+
+
+## Configurations Service
+
+
+
 ## Data Service
 ### 1.1.0 (2022-02-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.0/openapi.yaml)
@@ -23,6 +31,50 @@
 </details>
 
 
+
+
+
+## Dispatchers Service
+
+
+
+## Events Service
+
+
+
+## Files Service
+
+
+
+## Groups Service
+
+
+
+## Localizations Service
+
+
+
+## Mail Service
+
+
+
+## Notifications Service v1
+
+
+
+## Payments Service
+
+
+
+## Prescriptions Service
+
+
+
+## Profiles Service
+
+
+
+## Reports Service
 
 
 
@@ -63,6 +115,10 @@
 </details>
 
 
+
+
+
+## Template Service
 
 
 
