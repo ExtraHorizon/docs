@@ -12,9 +12,11 @@ params:
     users-service:
       name: Users Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service"
+      defaultVersion: 1.1.9
     tasks-service:
       name: Tasks Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/automation/task-service"
+      defaultVersion: 1.2.0
     data-service:
       name: Data Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service"

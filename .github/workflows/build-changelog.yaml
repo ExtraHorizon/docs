@@ -22,6 +22,7 @@ jobs:
         run: |
           cd changelog-generator
           hugo
+          cp public/apispecs/index.md ../docs/api-specs.md
           cp public/index.md ../docs/changelog-service.md
           cp public/changelogs/index.md ../docs/changelog-chronological.md
       - name: Commit Changes
