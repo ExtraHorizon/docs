@@ -20,6 +20,66 @@ params:
     data-service:
       name: Data Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service"
+      defaultVersion: 1.1.0
+    auth-service:
+      name: Authentication Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service
+      defaultVersion: 2.0.4
+    mail-service:
+      name: Mail Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service
+      defaultVersion: 1.1.0
+    notifications-service:
+      name: Notifications Service v1
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service
+      defaultVersion: 1.0.8
+    templates-service:
+      name: Template Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/template-service
+      defaultVersion: 1.0.14
+    payments-service:
+      name: Payments Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/payments-service
+      defaultVersion: 1.2.0
+    configurations-service:
+      name: Configurations Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service
+      defaultVersion: 2.0.2
+    dispatchers-service:
+      name: Dispatchers Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service
+      defaultVersion: 1.0.4
+    events-service:
+      name: Events Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/automation/event-service
+      defaultVersion: 1.0.6
+    files-service:
+      name: Files Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service
+      defaultVersion: 1.0.1
+    groups-service:
+      name: Groups Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups
+      defaultVersion: 1.1.5
+    localizations-service:
+      name: Localizations Service
+      docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service
+      defaultVersion: 1.1.6
+    prescriptions-service:
+      name: Prescriptions Service
+      docsUrl: https://docs.extrahorizon.com/
+      defaultVersion: 1.1.16
+    profiles-service:
+      name: Profiles Service
+      docsUrl: https://docs.extrahorizon.com/
+      defaultVersion: 1.1.3
+    reports-service:
+      name: Reports Service
+      docsUrl: https://docs.extrahorizon.com/
+      defaultVersion: 1.0.12
+    
+    
+    
 mediaTypes:
   text/markdown:
     suffixes:
