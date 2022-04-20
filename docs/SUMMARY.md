@@ -55,8 +55,8 @@
 
 ## API Reference
 
-* [📦 Changelog](api-reference/changelog/README.md)
-  * [Per-service Changelog](api-reference/changelog/per-service-changelog.md)
+* [📦 Changelog](changelog-chronological.md)
+  * [Per-service Changelog](changelog-service.md)
 
 ## Tools
 
