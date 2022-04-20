@@ -36,7 +36,7 @@ Security is an important feature of every web-based application. Authorization i
 
 The ExH User module manages standard user interaction like registering new users, activating prescriptions and resetting passwords. It also provides special features such as using _roles_ to manage user privileges and _groups_ to connect/aggregate any number of patients and staff members.
 
-![Relationship between groups and users](<../.gitbook/assets/Polysomnography scheme 1 (1).png>)
+![Relationship between groups and users](<../.gitbook/assets/Polysomnography scheme 1.png>)
 
 As is illustrated above, the `user service` allows to control a user's privileges by medium of _roles_. Users can also be connected to a _group_, wherein privilege levels are controlled through _group roles_. Group roles determine a user's permissions within a group, provided they are enlisted to that group as a staff member.
 

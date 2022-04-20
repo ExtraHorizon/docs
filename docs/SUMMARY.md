@@ -55,6 +55,7 @@
 
 ## API Reference
 
+* [OpenAPI Specifications](api-reference/openapi-specifications.md)
 * [📦 Changelog](changelog-chronological.md)
   * [Per-service Changelog](changelog-service.md)
 
