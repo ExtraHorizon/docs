@@ -60,7 +60,7 @@ params:
     groups-service:
       name: Groups Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups
-      defaultVersion: 1.1.5
+      defaultVersion: 1.1.4
     localizations-service:
       name: Localizations Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service
