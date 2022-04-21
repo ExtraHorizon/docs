@@ -3,7 +3,7 @@
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.5/openapi.yaml)
 
 <details>
-<summary>Detailed Release Notes</summary>
+<summary>Release Notes</summary>
 
 **🎁 Features**
 * Publish events for each group update
@@ -23,7 +23,7 @@
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.2.0/openapi.yaml)
 
 <details>
-<summary>Detailed Release Notes</summary>
+<summary>Release Notes</summary>
 
 	
 
@@ -59,7 +59,7 @@
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.9/openapi.yaml)
 
 <details>
-<summary>Detailed Release Notes</summary>
+<summary>Release Notes</summary>
 
 **🎁 Features**
 * Configurable Email Template ID's
@@ -71,7 +71,7 @@
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.0/openapi.yaml)
 
 <details>
-<summary>Detailed Release Notes</summary>
+<summary>Release Notes</summary>
 
 **🎁 Features**
 * Allow targeting schema’s by name in the url
@@ -92,7 +92,7 @@
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.8/openapi.yaml)
 
 <details>
-<summary>Detailed Release Notes</summary>
+<summary>Release Notes</summary>
 
 **🎁 Features**
 
