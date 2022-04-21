@@ -1,4 +1,24 @@
 
+## Groups Service 1.1.5 (2022-04-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.5/openapi.yaml)
+
+<details>
+<summary>Detailed Release Notes</summary>
+
+**🎁 Features**
+* Publish events for each group update
+  * When a group has been updated, a tag has been added/removed, or when a custom field is added/removed the group_updated-event is sent out. 
+
+
+**⚒️ Improvements**
+* Documentation - Correct the request body of the remove custom fields endpoint
+  * Updated openapi.yaml file so the example makes sense 
+
+**🐞 Bugs Fixed**
+* Cannot query on a custom field with a name ending with _id 
+</details>
+
+
 ## Tasks Service 1.2.0 (2022-03-30)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.2.0/openapi.yaml)
 
