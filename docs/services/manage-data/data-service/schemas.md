@@ -369,7 +369,7 @@ sdk.data.transitions.updateCreation(newSchema.id,{
 {% endtab %}
 {% endtabs %}
 
-For a creationTransition the type will always be set to `manual` .
+Currently the only supported transition type is `manual`. Other types may be added in the future.
 
 ## Transitions
 
