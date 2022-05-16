@@ -27,25 +27,25 @@ This request will still respond with all the available localizations, but they w
 
 ### Operators and their shorthands <a href="#markdown-header-operators-and-their-shorthands" id="markdown-header-operators-and-their-shorthands"></a>
 
-|  Function  | Shorthand | Note                                                                         |
-| :--------: | :-------: | ---------------------------------------------------------------------------- |
-|    `or`    |    `\|`   |                                                                              |
-|    `and`   |    `&`    |                                                                              |
-|    `eq`    |    `=`    |                                                                              |
-|    `ne`    |           |                                                                              |
-|    `gt`    |    `>`    |                                                                              |
-|    `ge`    |    `>=`   |                                                                              |
-|    `in`    |           |                                                                              |
-|    `out`   |           |                                                                              |
-| `contains` |           | Only return records that have `field1`:`contains(field)`                     |
-|            |           |                                                                              |
-| `excludes` |           | Only return records that don't have `field1`: `contains(field1)`             |
-|            |           |                                                                              |
-|   `like`   |           |                                                                              |
-|   `limit`  |           | Only return `1` record: `limit(1)`                                           |
-|            |           |                                                                              |
-|   `sort`   |           |                                                                              |
-|  `select`  |           | Only return `field1` and `field2` from the records: `select(field1, field2)` |
+|             Function             | Shorthand | Note                                                                                                                                                                                                                                            |
+| :------------------------------: | :-------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               `or`               |    `\|`   |                                                                                                                                                                                                                                                 |
+|               `and`              |    `&`    |                                                                                                                                                                                                                                                 |
+|       `eq(property, value)`      |    `=`    | Return records where `property` equals `value` or where `property` is an array which contains `value`. Only works for arrays containing simple types (number, boolean, string)                                                                  |
+|               `ne`               |           |                                                                                                                                                                                                                                                 |
+|               `gt`               |    `>`    |                                                                                                                                                                                                                                                 |
+|               `ge`               |    `>=`   |                                                                                                                                                                                                                                                 |
+|               `in`               |           |                                                                                                                                                                                                                                                 |
+|               `out`              |           |                                                                                                                                                                                                                                                 |
+| `contains(property, expression)` |           | Only return records where `property` is an array of objects and which contains an object that satisfies  `expression`. Eg `contains(myproperty, id=1)` returns all documents where the array `myproperty` contains an object `a` where `a.id=1` |
+|                                  |           |                                                                                                                                                                                                                                                 |
+|            `excludes`            |           | Only return records that don't have `field1`: `contains(field1)`                                                                                                                                                                                |
+|                                  |           |                                                                                                                                                                                                                                                 |
+|              `like`              |           |                                                                                                                                                                                                                                                 |
+|              `limit`             |           | Only return `1` record: `limit(1)`                                                                                                                                                                                                              |
+|                                  |           |                                                                                                                                                                                                                                                 |
+|              `sort`              |           |                                                                                                                                                                                                                                                 |
+|             `select`             |           | Only return `field1` and `field2` from the records: `select(field1, field2)`                                                                                                                                                                    |
 
 ### More Information <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
 
