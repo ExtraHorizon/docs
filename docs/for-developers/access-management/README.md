@@ -10,8 +10,7 @@ description: >-
 
 Security is critical to web services. All our API endpoints only respond to authenticated requests.
 
-A request is considered authenticated when it carries a valid authentication token. Such a token can be requested from the authentication service by exchanging user login credentials.
-
+A request is considered authenticated when it carries a valid authentication token. Such a token can be requested from the authentication service by exchanging user login credentials.\
 \
 After acquiring an authentication token, requests to other ExH services can be made by including this token in the request authorization header.
 
