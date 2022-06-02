@@ -12,18 +12,22 @@ params:
     users-service:
       name: Users Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service"
+      basePath: "/users/v1"
       defaultVersion: 1.1.9
     tasks-service:
       name: Tasks Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/automation/task-service"
+      basePath: "/tasks/v1"
       defaultVersion: 1.2.0
     data-service:
       name: Data Service
       docsUrl: "https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service"
+      basePath: "/data/v1"
       defaultVersion: 1.1.0
     auth-service:
       name: Authentication Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service
+      basePath: "/auth/v2"
       defaultVersion: 2.0.4
     mail-service:
       name: Mail Service
@@ -32,50 +36,62 @@ params:
     notifications-service:
       name: Notifications Service v1
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service
+      basePath: "/notifications/v2"
       defaultVersion: 1.0.8
     templates-service:
       name: Template Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/template-service
+      basePath: "/templates/v1"
       defaultVersion: 1.0.14
     payments-service:
       name: Payments Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/payments-service
+      basePath: "/payments/v1"
       defaultVersion: 1.2.0
     configurations-service:
       name: Configurations Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service
+      basePath: "/configurations/v2"
       defaultVersion: 2.0.2
     dispatchers-service:
       name: Dispatchers Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service
+      basePath: "/dispatchers/v1"
       defaultVersion: 1.0.4
     events-service:
       name: Events Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/automation/event-service
+      basePath: "/events/v1"
       defaultVersion: 1.0.6
     files-service:
       name: Files Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service
+      basePath: "/files/v1"
       defaultVersion: 1.0.1
     groups-service:
       name: Groups Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups
+      basePath: "/groups/v1"
       defaultVersion: 1.1.4
     localizations-service:
       name: Localizations Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service
+      basePath: "/localizations/v1"
       defaultVersion: 1.1.6
     prescriptions-service:
       name: Prescriptions Service
       docsUrl: https://docs.extrahorizon.com/
+      basePath: "/prescriptions/v1"
       defaultVersion: 1.1.16
     profiles-service:
       name: Profiles Service
       docsUrl: https://docs.extrahorizon.com/
+      basePath: "/profiles/v1"
       defaultVersion: 1.1.3
     reports-service:
       name: Reports Service
       docsUrl: https://docs.extrahorizon.com/
+      basePath: "/reports/v1"
       defaultVersion: 1.0.12
     
     
