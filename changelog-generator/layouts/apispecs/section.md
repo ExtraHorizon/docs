@@ -1,4 +1,4 @@
-| Service | Base Path | Latest Version | Older Versions |
+| Service | Base Path | Version | Older Versions |
 | ----| ---- | ---- | ---- |
 {{ range $key, $value := .Site.Params.services -}}
 {{- $.Scratch.Set "version" $value.defaultVersion -}}
