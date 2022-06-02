@@ -1,4 +1,4 @@
-| Service | Base Path | Latest Version | Older Versions |
+| Service | Base Path | Version | Older Versions |
 | ----| ---- | ---- | ---- |
 | Authentication Service | `https://<host>/auth/v2` | [2.0.4](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.0.4/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=auth-service) |
 | Configurations Service | `https://<host>/configurations/v2` | [2.0.2](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.2/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=configurations-service) |
