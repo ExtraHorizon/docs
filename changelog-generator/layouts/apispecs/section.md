@@ -7,5 +7,5 @@
 {{- end -}}
 
 {{- $version := $.Scratch.Get "version" -}}
-| {{ $value.name }} | `https://<host>{{ $value.basePath}}` | [{{$version}}](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/{{ $key }}/{{ $version }}/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service={{$key}}) |
+| {{ $value.name }} | `{{ $value.basePath}}` | [{{$version}}](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/{{ $key }}/{{ $version }}/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service={{$key}}) |
 {{ end }}
