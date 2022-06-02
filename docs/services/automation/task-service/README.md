@@ -27,6 +27,10 @@ To repeat the same Task at regular intervals, create a recurring Task that trigg
 
 To automate the execution of multiple repeating actions, set up a (recurring) task that triggers the scheduling of a collection of tasks.
 
+## Video Tutorials
+
+{% embed url="https://www.youtube.com/watch?v=uIuGQ_VZ4CM" %}
+
 ## Resources & References
 
 * [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml)
