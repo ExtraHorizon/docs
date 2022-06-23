@@ -28,6 +28,7 @@
   * [Data Service](services/manage-data/data-service/README.md)
     * [Schemas](services/manage-data/data-service/schemas.md)
     * [Documents](services/manage-data/data-service/documents.md)
+    * [FAQ Data Service](services/manage-data/data-service/faq-data-service.md)
     * [Changelog](services/manage-data/data-service/changelog.md)
 * [Automation](for-developers/automation/README.md)
   * [Task Service](services/automation/task-service/README.md)
