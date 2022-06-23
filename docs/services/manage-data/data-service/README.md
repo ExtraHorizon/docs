@@ -4,7 +4,7 @@
 
 Data is managed using structured documents, written in JSON. These documents rely on data schemas which determine the structure, behaviour, and logic of the documents in a schema collection. The purpose of a data schema is twofold:
 
-1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definitions in schemas are inspired by [JSON-schemas](http://json-schema.org/) and adhere to the same syntax.
+1. **Define Data structure** Data Schemas define the structure of a document using properties. This ensures uniform structuring of documents across the service and provides input validation for API interactions. Data structure definitions in schemas are inspired by [JSON-schemas](http://json-schema.org) and adhere to the same syntax.
 2. **Define behavioural logic** Data Schemas define the behavioural logic of a document using states and transitions. When a document transitions from one status to another, actions are triggered such as sending an email or running a small piece of code in other services.
 
 ### Data Structure <a href="#data-structure" id="data-structure"></a>

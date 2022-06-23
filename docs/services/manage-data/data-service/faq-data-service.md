@@ -10,8 +10,8 @@
 
 If it is an array of strings, you can use regex expressions. In the following schema definition, you can find an example of a validation where the tag important\_tag needs to be present.
 
-* Regex expression to check that the array **contains** the tag: ^important\_tag$
-* Regex expression to check that the array **does not contain** a value: ^(?!important\_tag$).+$
+* Regex expression to check that the array **contains** the tag: `^important_tag$`
+* Regex expression to check that the array **does not contain** a value: `^(?!important_tag$).+$`
 
 ```json
 {
