@@ -1,10 +1,6 @@
 # FAQ Data Service
 
-
-
 ## Schema Design
-
-
 
 ### How can I validate that an array contains a certain value in a transition condition?
 
@@ -63,3 +59,16 @@ If it is an array of strings, you can use regex expressions. In the following sc
 }
 ```
 
+
+
+## Data Manipulation
+
+### How can I remove values from an array property in a record?
+
+If the array items are objects, you can remove an object by executing the following HTTP call:
+
+```
+DELETE /data/v1/{{schema}}/documents/${schemaId}/{{arrayName}}/{{objectId}}
+```
+
+If the array items are simple values, like strings or numbers, you have to execute a `PUT` to the record endpoint and provide the full array (leaving out the value that you want to remove).
