@@ -36,7 +36,7 @@ The `schema` key allows you to define the variables that must be provided to ren
 
 The `fields` key allows you to define the different outputs that the template service should render. You can reference input fields and other fields by using `$content.<variable>`
 
-Under the hood, this service uses [Apache Velocity](https://velocity.apache.org) as a template engine. Take a look at the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for in-depth information how to write more complex templates.
+Under the hood, this service uses [Apache Velocity](https://velocity.apache.org/) as a template engine. Take a look at the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.html) for in-depth information how to write more complex templates.
 
 #### Create or update templates
 
