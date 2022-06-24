@@ -2,12 +2,11 @@
 
 ## Schema Design
 
-### How can I validate that an array contains a certain value in a transition condition?
+### How can I validate that an array does not contain a certain value in a transition condition?
 
-If it is an array of strings, you can use regex expressions. In the following schema definition, you can find an example of a validation where the tag important\_tag needs to be present.
+If it is an array of strings, you can use regex expressions. In the following schema definition, you can find an example of a validation where the tag important\_tag should not be present.
 
-* Regex expression to check that the array **contains** the tag: `^important_tag$`
-* Regex expression to check that the array **does not contain** a value: `^(?!important_tag$).+$`
+The relevant regex expression is `^(?!important_tag$).+$`
 
 ```json
 {
@@ -39,7 +38,7 @@ If it is an array of strings, you can use regex expressions. In the following sc
                                 "type": "array",
                                 "items": {
                                   "type": "string",
-                                  "pattern": "^important_tag$"
+                                  "pattern": "^(?!important_tag$).+$"
                                 }
                             }
                         }
@@ -59,7 +58,55 @@ If it is an array of strings, you can use regex expressions. In the following sc
 }
 ```
 
+### How can I validate that an array does contain a certain value in a transition condition?
 
+To validate that an array does contain a certain value there are different options. The following examples show how to check if an array contains the value `important_tag`.
+
+Each code snippet shows the code in the condition configuration part of the schema.
+
+#### Option 1 • Use a regex
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "contains": {
+    "type": "string",
+    "pattern": "^important_tag$"
+  }
+```
+
+#### Option 2 • Use the const keyword
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "contains": {
+    "type": "string",
+    "const": "important_tag"
+  }
+}
+```
+
+#### Option 3 • Use the enum keyword
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "contains": {
+    "type": "string",
+    "enum": ["important_tag"]
+  }
+}
+```
 
 ## Data Manipulation
 
