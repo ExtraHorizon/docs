@@ -511,8 +511,6 @@ You can attach actions to transitions. This way when a transition is executed an
 To access an element in an array or embedded documents, use the dot notation.
 {% endhint %}
 
-#### code examples
-
 ### **Modifying document access**
 
 Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
@@ -635,19 +633,33 @@ The Index object is identified by an id and a name. An index is set on a specifi
 
 ## Other settings
 
-Additionally, the Data Service stores the following attributes when a new Schema is added:
-
 ### groupSyncMode
 
-The groupSyncMode option allows access synchronization between the user service and de data service. The data service can listen to the user service events and automatically adjust the groupIds attached to the document in order to give access to these documents.
+The `groupIds` field allows to define which groups should get access to the document. The users that have a staff enlistment in a group that is in the `groupIds` field will get access to the document. The level of access depends on the `readMode`, `writeMode`, `updateMode`  and `deleteMode` values.
 
-| Mode                            | Description                                                                                                                |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `disabled`                      | no synchronization                                                                                                         |
-| `creatorPatientEnlistments`     | All the groups where the creator of the document is enlisted as patient will also be synchronized with the document.       |
-| `linkedUsersPatientEnlistments` | All the groups where the users linked to the document are enlisted as patient will also be synchronized with the document. |
+When a `groupSyncMode` is configured, the data service will automatically update the `groupIds` field of documents in the schema depending on changes in the user service. The table below lists the different options.
 
-**code example**
+| Mode                            | Description                                                                                                                                         |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disabled`                      | The `groupIds` field is not automatically updated.                                                                                                  |
+| `creatorPatientEnlistments`     | All the groups where the user that created the document (`creatorId`) is enlisted as a patient will be automatically added to the `groupIds` field. |
+| `linkedUsersPatientEnlistments` | The groups that contain the users defined in the `userIds` as a patient are added to the `groupIds` field.                                          |
+
+The synchronization is applied retroactively. It will be applied to all documents in a schema. That includes the documents that were created before configuring this setting and the documents that were created before the user was added to a group.
+
+#### Example 1 • Allow doctors to access measurements created by patients
+
+When you define a measurements schema, the patients will be the users creating the measurement documents. The `creatorId` of a measurement will be set to the patient `userId`.&#x20;
+
+To automatically give the appropriate doctors access to the measurements of their patients, you can set the `groupSyncMode` to `creatorPatientEnlistments`.
+
+#### Example 2 • Allow doctors to read lab results of patients
+
+Consider the use case where patients can have their saliva tested at kiosks that are deployed in pharmacies. When patients provide a specimen in the kiosk, the kiosk will process the specimen and upload the results. The corresponding document is created by the kiosk, thus `creatorId`  of the document will not correspond to the `userId` of the patient.
+
+To give doctors access to the results, set the `groupSyncMode` to `linkedUsersPatientEnlistments` and configure the kiosk to add the `userId` of the patient in the `userIds` field of the document.
+
+**Code Example**
 
 {% tabs %}
 {% tab title="Javascript" %}
