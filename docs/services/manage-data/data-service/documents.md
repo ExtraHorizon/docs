@@ -102,6 +102,10 @@ await sdk.data.documents.transition(schema.id, document.id, {
 
 When executing a transition you will need to provide the id of the transition that you want to execute.
 
+{% hint style="danger" %}
+**Important!** If you set properties in `data` that correspond to properties in the document, the transition will update the record with the values from the `data` property.
+{% endhint %}
+
 ### updating access
 
 Access rules are defined in the schema and in many cases are dependent on the userIds and groupIds properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
