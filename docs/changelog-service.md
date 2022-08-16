@@ -1,4 +1,16 @@
 
+## Configurations Service
+
+### 2.0.3 (2022-06-28)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Internal improvements that make the service less dependent on changes in other services.
+</details>
+
+
 ## Data Service
 
 ### 1.1.0 (2022-02-16)
@@ -42,7 +54,105 @@
 </details>
 
 
+## Localizations Service
+
+### 1.1.7 (2022-06-28)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.7/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Expand the accepted language codes to at least include all entries in ISO 639-1.
+
+**🐞 Bugs Fixed**
+* Users with some languages could not use the service correctly.
+* When non-existent localization code is translated, fall back to the default language.
+
+**🚨 Deprecation Warnings**
+* `GET /languages` is now deprecated
+</details>
+
+
+## Payments Service
+
+### 1.3.1 (2022-08-03)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+* AppStore: Transactions with a changed `transaction_id` value do no longer cause issues.
+* An active subscription being detached from a user will now correctly update the `expireTimestamp` of the relevant entitlement. 
+
+**🚨 Deprecation Warnings**
+* The `lastTransactionId` field in the App Store subscriptions is replaced by `lastWebOrderId`. App Store subscriptions are returned by the `GET /appStore/subscriptions endpoint`.
+</details>
+
+
+### 1.3.0 (2022-07-14)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Complete a purchase for another user
+  * When the payment details of a Play Store or App Store purchase are known, it is now possible to complete the purchase process for another user. This allows users with administrative privileges to move a subscription from one user to another or help users with (technical) difficulties.
+* Re-evaluate the state of a Play Store or App Store subscription
+  * We now allow to trigger a re-evaluation of the subscription state. If the Play Store or App Store subscription state is out of sync, a re-evaluation will bring the state back in sync with the information reported by the payment provider.
+* Detach a Play Store or App Store subscription from a user
+  * It is now possible to remove a Play Store and App Store subscription. This allows the subscription to be moved to another user.
+
+
+**⚒️ Improvements**
+* Improved the integration with Play Store and App Store
+  * The Play Store integration got a big overhaul and the stability of the App Store integration has been improved.
+* Automatically detach subscriptions on user removal
+  * When a user account is deleted, the subscriptions linked to the account are removed. This allows users that deleted their account to reclaim their subscription when creating a new account.
+
+**🐞 Bugs Fixed**
+* Play Store subscriptions no longer end up in the `expired_from_billing` status after a successful renewal
+* App Store receipts with awkward ordering are now handled correctly
+* Invalid RQL queries are now reported with the correct error
+</details>
+
+
+## Prescriptions Service
+
+### 1.1.17 (2022-04-29)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.17/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+* Sometimes the 7/30 days past timestamp was not updated
+* The PeriodExpiryCheckStartJob scheduler stopped after a while
+* Users with some languages could not use the service correctly
+
+</details>
+
+
 ## Tasks Service
+
+### 1.3.0 (2022-08-09)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+	
+
+**🎁 Features**
+
+* Function retry policy
+  * Users can now enable a retry policy on a function, which retries tasks of the function that fail. The user can choose between retrying all errors or specifying specific errors that should be retried.
+
+* Task-specific logs
+  * It is now possible to list the logs of a specific task. This allows users to easily find what happened during a task run. 
+
+
+**🚨 Deprecation Warnings**
+* `GET /functions/:functionName/logs` is now deprecated
+</details>
+
 
 ### 1.2.0 (2022-03-30)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.2.0/openapi.yaml)
