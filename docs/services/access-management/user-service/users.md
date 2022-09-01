@@ -90,7 +90,7 @@ When you receive a **Staff** the `staffEnlistments` property will only hold the 
 | `update_timestamp`      | Epoch timestamp when this user object was last updated.                                            |
 
 {% hint style="info" %}
-When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other ExtraHorizon Services in the future.
+When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other Extra Horizon Services in the future.
 {% endhint %}
 
 ## **Create** a new user
@@ -117,7 +117,7 @@ const myNewSchema = await sdk.users.createAccount({
 {% endtabs %}
 
 {% hint style="warning" %}
-**Notice:** **birthday**, **country** & **gender** are part of the registration fields but are not returned when querying for the user. This is because of the underlying integration with the ExtraHorizon Profile Service. During account creation, a user profile is created and these fields are stored there.
+**Notice:** **birthday**, **country** & **gender** are part of the registration fields but are not returned when querying for the user. This is because of the underlying integration with the Extra Horizon Profile Service. During account creation, a user profile is created and these fields are stored there.
 {% endhint %}
 
 ### **Check for email availability**
