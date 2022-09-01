@@ -47,7 +47,7 @@ The creation transition and the schema will determine what properties will be re
 
 ### Querying
 
-Using [RQL](../../../for-developers/resource-query-language-rql.md) you can build queries on any field in the document service. The Extra Horizon SDK contains an RQL builder that allows you to easily build queries and explore the different query functions supported.
+Using [RQL](../../../for-developers/resource-query-language-rql.md) you can build queries on any field in the document service. The ExtraHorizon SDK contains an RQL builder that allows you to easily build queries and explore the different query functions supported.
 
 ```javascript
 const myRql = rqlBuilder().eq('data.fieldA', 'myValue').gt('creationTimestamp', '2021-01-21').build();

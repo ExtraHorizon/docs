@@ -12,7 +12,7 @@ When configuring your application's data model, it's possible to attach an [acti
 
 #### Scheduling via the SDK
 
-In JavaScript/TypeScript environments, our open source [ExtraHorizon SDK ](broken-reference)offers a convenient wrapper around the API.
+In JavaScript/TypeScript environments, our open source [Extra Horizon SDK ](broken-reference)offers a convenient wrapper around the API.
 
 ```typescript
 await sdk.tasks.create({
