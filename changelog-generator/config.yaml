@@ -37,7 +37,7 @@ params:
     notifications-service:
       name: Notifications Service v1
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service
-      basePath: "/notifications/v2"
+      basePath: "/notifications/v1"
       defaultVersion: 1.0.8
     templates-service:
       name: Template Service
