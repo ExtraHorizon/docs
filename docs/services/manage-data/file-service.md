@@ -3,7 +3,7 @@
 The File module is a file storage solution. This module stores files as binary data together with some metadata. The File module accepts all data types but aims at data that does not adhere to a particular structure, such as images, log files, and zipped files. File retrieval is based on tokens that grant either full or read-only access.
 
 {% hint style="info" %}
-**Tip:** If you have structured data to store we recommend that you take a look at our  This module has more features to define additional logic on data changes.
+**Tip:** If you have structured data to store we recommend that you take a look at our [Data Service](data-service/). This module has more features to define additional logic on data changes.
 {% endhint %}
 
 ### Information Model
@@ -11,7 +11,7 @@ The File module is a file storage solution. This module stores files as binary d
 For each File with binary data, the File module stores a FileMetadata object and one or more associated Token objects. To receive access to a File or its metadata, the user (or system) must possess one of the associated access tokens.
 
 {% hint style="info" %}
-\*\*Tip: \*\*Files and their metadata can be accessed via multiple, unique access tokens. The advantage of this is two-fold: As different Users do not have to share the same token, access to one User can be denied easily – without removing access for the other Users. Moreover, the tokens can grant different levels of access, enabling the owner of a File to safely invite other Users to view -but not remove- their data.\\
+**Tip:** Files and their metadata can be accessed via multiple, unique access tokens. The advantage of this is two-fold: As different Users do not have to share the same token, access to one User can be denied easily – without removing access for the other Users. Moreover, the tokens can grant different levels of access, enabling the owner of a File to safely invite other Users to view -but not remove- their data.
 {% endhint %}
 
 ![](https://lh5.googleusercontent.com/DUFATZ5w5ColZ84RIH6uSgSDhCmWoNVwJJ4dxiWc3xg4rCtID7gvMduietkzLgRn8FmT\_5wtbbD4Gi9O240lTxqm37k2BFdt9It2bLnFMNzBzBRYTfKNdlfnoqtpLSLPdjv8rp8=s0)
