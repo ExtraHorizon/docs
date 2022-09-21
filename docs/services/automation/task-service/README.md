@@ -2,7 +2,7 @@
 
 Every medical application is different. Based on your application and requirements, the backend needs to provide some custom functionality and/or data processing. Within Extra Horizon, custom functionality can be easily added using the task service.
 
-The following examples give an idea of how you might use the task service:
+The following examples give an idea of how you can use the task service:
 
 * **Data Processing**\
   When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make 3th-party API calls to augment the measurement.
@@ -14,6 +14,22 @@ The following examples give an idea of how you might use the task service:
   Run a reporting task to aggregate data from the data service into a daily report.
 
 
+
+## Functions & Tasks
+
+The task service has two logical entities: functions and tasks.&#x20;
+
+A **function** contains the business logic, the code that you want to execute.&#x20;
+
+{% content-ref url="functions.md" %}
+[functions.md](functions.md)
+{% endcontent-ref %}
+
+A **task** is represents the execution of a function with a set of inputs.&#x20;
+
+{% content-ref url="tasks.md" %}
+[tasks.md](tasks.md)
+{% endcontent-ref %}
 
 ## FAQ
 

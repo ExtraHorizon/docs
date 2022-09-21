@@ -1,30 +1,41 @@
 # Functions
 
 {% hint style="success" %}
-Functions was added to the Task service from [v1.1.0](broken-reference)
+Available since [v1.1.0](broken-reference)
 {% endhint %}
 
-{% hint style="warning" %}
-Managing and uploading functions is scheduled to become available in the next release of the Task Service. Contact [requests@extrahorizon.com](mailto:requests@extrahorizon.com) if you have questions about this.
-{% endhint %}
+Functions in the task service enable you to define small pieces of business code that you can trigger manually or based on certain conditions in other Extra Horizon services. In this section you find more information on how to create and maintain functions.
 
-A task represents a planned or scheduled peace of code. This piece of code is called a function in Extra Horizon.
+## Create a new function
 
-### Creating a function
+Functions can be created through the CLI and the API. A function is uniquely defined by its name. You at least have to provide a `name`, `description`,`timeLimit`,`memoryLimit` and `environmentVariables`.
 
 {% tabs %}
-{% tab title="sdk" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
-{% endtab %}
-
-{% tab title="cli" %}
+{% tab title="CLI" %}
 ```
 exh tasks create <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+{% endtab %}
+
+{% tab title="API" %}
+`POST /tasks/v1/functions`
+
+```json
+{
+    "name": "test-task-service-function",
+    "code": "UEsDBAoAAAAAAIdEilMAAAAAAAAAAAAAAAAOABwAdGVzdC1mdW5jdGlvbi9VVAkAA20Ds2F4A7NhdXgLAAEE9QEAAAQUAAAAUEsDBAoAAAAAAGJEilNnlP2NHwAAAB8AAAAWABwAdGVzdC1mdW5jdGlvbi9pbmRleC5qc1VUCQADJwOzYW8Ds2F1eAsAAQT1AQAABBQAAABjb25zb2xlLmxvZygnaGVsbG8gZnJvbSBFeEgnKTsKUEsBAh4DCgAAAAAAh0SKUwAAAAAAAAAAAAAAAA4AGAAAAAAAAAAQAO1BAAAAAHRlc3QtZnVuY3Rpb24vVVQFAANtA7NhdXgLAAEE9QEAAAQUAAAAUEsBAh4DCgAAAAAAYkSKU2eU/Y0fAAAAHwAAABYAGAAAAAAAAQAAAKSBSAAAAHRlc3QtZnVuY3Rpb24vaW5kZXguanNVVAUAAycDs2F1eAsAAQT1AQAABBQAAABQSwUGAAAAAAIAAgCwAAAAtwAAAAAA",
+    "entryPoint": "index.handler",
+    "runtime": "nodejs14.x"
+}
+```
+{% endtab %}
+
+{% tab title="Required Permissions" %}
+```
+CREATE_TASK_FUNCTION
+```
 {% endtab %}
 {% endtabs %}
 
@@ -34,7 +45,7 @@ See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-V
 
 #### Supported runtimes
 
-Your task code will be executed in a code execution environment. Today, ExtraHorizon supports the following runtimes:&#x20;
+Extra Horizon currently supports the following runtimes:&#x20;
 
 |        | Runtime versions                |
 | ------ | ------------------------------- |
@@ -47,133 +58,81 @@ Your task code will be executed in a code execution environment. Today, ExtraHor
 
 When using NodeJS, our open-source [ExtraHorizon JavaScript SDK](https://extrahorizon.github.io/javascript-sdk/#/) can be used within the tasks to easily interface with other services.
 
-### Listing functions
+### Function Properties&#x20;
+
+#### `retryPolicy` - Automatically retry a task when it fails
+
+{% hint style="success" %}
+Available since v1.3.0
+{% endhint %}
+
+Using the `retryPolicy` property you can define what should happen when a task fails. If enabled, the policy is fixed and set to a maximum of 3 retries with an increasing timeout of 2, 5 and 10 seconds respectively. You can restrict the retry mechanism to a specific set of errors using the `errorsToRetry` property.
+
+The retry policy is disabled by default.
+
+
+
+<figure><img src="../../../.gitbook/assets/Group 1-2.png" alt=""><figcaption><p>Visual representation of the fixed retry policy</p></figcaption></figure>
+
+The following code snippet shows an example how to configure the policy:
+
+```json
+{
+  "retryPolicy": {
+    "enabled": false,
+    "errorsToRetry": [
+      "CONNECTION_ERROR",
+      "DATABASE_ERROR"
+    ]
+  }
+}
+```
+
+## List functions
 
 {% tabs %}
-{% tab title="sdk" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
-{% endtab %}
-
-{% tab title="cli" %}
+{% tab title="CLI" %}
 ```
 exh tasks list <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
-{% endtabs %}
 
-### Updating a function
-
-{% tabs %}
-{% tab title="sdk" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
+{% tab title="API" %}
+`GET /tasks/v1/functions`
 {% endtab %}
 
-{% tab title="cli" %}
+{% tab title="Required Permissions" %}
+```
+READ_TASK_FUNCTIONS
+```
+{% endtab %}
+{% endtabs %}
+
+## Update a function
+
+{% tabs %}
+{% tab title="CLI" %}
 ```
 exh tasks functions update <functionName> <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
-{% endtabs %}
 
-### Deleting a function
-
-{% tabs %}
-{% tab title="sdk" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
+{% tab title="API" %}
+`PUT /tasks/v1/functions/<function_name>`
 {% endtab %}
 
-{% tab title="cli" %}
+{% tab title="Required Permissions" %}
 ```
-exh tasks delete <options>
+UPDATE_TASK_FUNCTION
 ```
-
-See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
-{% hint style="success" %}
-If a function is removed from the task service the logs aren't removed and can still be retrieved
-{% endhint %}
-
-### Logs
-
-{% tabs %}
-{% tab title="sdk" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
-
-See the [API Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml) for more information.
-{% endtab %}
-{% endtabs %}
-
-
-
-### Tasks Service Functions API
-
-#### Function Definition
-
-A Function is uniquely identified within the Task Service by its name. It contains a number of attributes
-
-```javascript
-{
-  name: 'test-task-service-function',
-  code: 'UEsDBAoAAAAAAIdEilMAAAAAAAAAAAAAAAAOABwAdGVzdC1mdW5jdGlvbi9VVAkAA20Ds2F4A7NhdXgLAAEE9QEAAAQUAAAAUEsDBAoAAAAAAGJEilNnlP2NHwAAAB8AAAAWABwAdGVzdC1mdW5jdGlvbi9pbmRleC5qc1VUCQADJwOzYW8Ds2F1eAsAAQT1AQAABBQAAABjb25zb2xlLmxvZygnaGVsbG8gZnJvbSBFeEgnKTsKUEsBAh4DCgAAAAAAh0SKUwAAAAAAAAAAAAAAAA4AGAAAAAAAAAAQAO1BAAAAAHRlc3QtZnVuY3Rpb24vVVQFAANtA7NhdXgLAAEE9QEAAAQUAAAAUEsBAh4DCgAAAAAAYkSKU2eU/Y0fAAAAHwAAABYAGAAAAAAAAQAAAKSBSAAAAHRlc3QtZnVuY3Rpb24vaW5kZXguanNVVAUAAycDs2F1eAsAAQT1AQAABBQAAABQSwUGAAAAAAIAAgCwAAAAtwAAAAAA', // BASE64 encoded zip file containing the function code
-  entryPoint: 'index.handler', // the entry point where the function first gets called
-  runtime: 'nodejs14.x', // the execution runtime used for the function
-  description: 'Description of the Function',
-  timeLimit: 230,
-  memoryLimit: 256,
-  environmentVariables: {
-    Extra: {
-      value: 'Horizon'
-    }
-  }
-}
-```
-
-The complete list of the available runtime, memory, timeLimit values is defined in the Swagger endpoint documentation.
-
-#### Creating Task Function
-
-In order to **Create** a Task Function, you will need as a User to have the **CREATE\_TASK\_FUNCTION** permission.
-
-Then you can make a `POST` call to `<your_endpoint>/tasks/v1/functions` With body:
-
-```json
-{
-    "name": "test-task-service-function",
-    "code": "UEsDBAoAAAAAAIdEilMAAAAAAAAAAAAAAAAOABwAdGVzdC1mdW5jdGlvbi9VVAkAA20Ds2F4A7NhdXgLAAEE9QEAAAQUAAAAUEsDBAoAAAAAAGJEilNnlP2NHwAAAB8AAAAWABwAdGVzdC1mdW5jdGlvbi9pbmRleC5qc1VUCQADJwOzYW8Ds2F1eAsAAQT1AQAABBQAAABjb25zb2xlLmxvZygnaGVsbG8gZnJvbSBFeEgnKTsKUEsBAh4DCgAAAAAAh0SKUwAAAAAAAAAAAAAAAA4AGAAAAAAAAAAQAO1BAAAAAHRlc3QtZnVuY3Rpb24vVVQFAANtA7NhdXgLAAEE9QEAAAQUAAAAUEsBAh4DCgAAAAAAYkSKU2eU/Y0fAAAAHwAAABYAGAAAAAAAAQAAAKSBSAAAAHRlc3QtZnVuY3Rpb24vaW5kZXguanNVVAUAAycDs2F1eAsAAQT1AQAABBQAAABQSwUGAAAAAAIAAgCwAAAAtwAAAAAA",
-    "entryPoint": "index.handler",
-    "runtime": "nodejs14.x"
-}
-```
-
-The body above is the strict minimum for the creation of a function. You can provide the `description`,`timeLimit`,`memoryLimit` and `environmentVariables` as defined in the previous section.
-
-#### Listing Task Functions
-
-In order to **List** the Task Functions present, you will need as a User to have the **READ\_TASK\_FUNCTIONS** permission.
-
-Then you can make a `GET` call to `<your_endpoint>/tasks/v1/functions`.
-
-It will provide you a list of the functions in the given environment where the service is running.
-
-#### Updating a given Task Function
-
-In order to **Update** a Task Function, you will need as a User to have the **UPDATE\_TASK\_FUNCTION** permission.
-
-Then you can make a `PUT` call to `<your_endpoint>/tasks/v1/functions/<your_function_name>`.
+Then you can make a `PUT` call to `<your_endpoint>`.
 
 Every property except for the name can be updated, therefore all properties in the request are **optional**, but at least one needs to be :
 
@@ -185,8 +144,6 @@ Every property except for the name can be updated, therefore all properties in t
 }
 ```
 
-The body above is the strict minimum for the creation of a function. You can provide the `description`,`timeLimit`,`memoryLimit` and `environmentVariables` as defined in the previous section.
-
 The normal response when completed is:
 
 ```json
@@ -195,7 +152,29 @@ The normal response when completed is:
 }
 ```
 
-#### Deleting a given Task Function
+## Delete a function
+
+{% tabs %}
+{% tab title="CLI" %}
+```
+exh tasks delete <options>
+```
+
+See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+{% endtab %}
+
+{% tab title="API" %}
+{% hint style="warning" %}
+This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
+{% endhint %}
+{% endtab %}
+
+{% tab title="Untitled" %}
+
+{% endtab %}
+{% endtabs %}
+
+
 
 In order to **Delete** a Task Function, you will need as a User to have the **DELETE\_TASK\_FUNCTION** permission.
 
@@ -209,15 +188,25 @@ The normal response when completed is:
 }
 ```
 
-#### Viewing a given Task Function's Logs
+{% hint style="success" %}
+If a function is removed from the task service the logs aren't removed and can still be retrieved
+{% endhint %}
 
-In order to **List** a given Task Function's Logs, you will need as a User to have the **READ\_TASK\_FUNCTION\_LOGS** permission.
+## Function Logs
 
-Then you can make a `GET` call to `<your_endpoint>/tasks/v1/functions/<your_function_name>/logs?eventTimestamp>=2020-01-25T00:28:04.222Z&eventTimestamp<=2020-01-23T23:30:00.000Z`.
+{% tabs %}
+{% tab title="API" %}
+`GET /tasks/v1/functions/<your_function_name>/logs?eventTimestamp>=2020-01-25T00:28:04.222Z&eventTimestamp<=2020-01-23T23:30:00.000Z`&#x20;
+{% endtab %}
 
-It will provide you a list of the logs emitted by the given function within the time bracket provided. Note that the maximum number of events that can be returned is **100**, you can use move the time bracket in order to access different log events.
+{% tab title="Required Permissions" %}
+```
+READ_TASK_FUNCTION_LOGS
+```
+{% endtab %}
+{% endtabs %}
 
-The normal response when completed is:
+An example response when requesting logs:
 
 ```json
 {
