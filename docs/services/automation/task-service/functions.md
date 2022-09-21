@@ -4,7 +4,7 @@
 Available since [v1.1.0](broken-reference)
 {% endhint %}
 
-Functions in the task service enable you to define small pieces of business code that you can trigger manually or based on certain conditions in other Extra Horizon services. In this section you find more information on how to create and maintain functions.
+A task represents a planned or scheduled piece of code. The code definition is a function in Extra Horizon.
 
 ## Create a new function
 
@@ -17,25 +17,6 @@ exh tasks create <options>
 ```
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
-{% endtab %}
-
-{% tab title="API" %}
-`POST /tasks/v1/functions`
-
-```json
-{
-    "name": "test-task-service-function",
-    "code": "UEsDBAoAAAAAAIdEilMAAAAAAAAAAAAAAAAOABwAdGVzdC1mdW5jdGlvbi9VVAkAA20Ds2F4A7NhdXgLAAEE9QEAAAQUAAAAUEsDBAoAAAAAAGJEilNnlP2NHwAAAB8AAAAWABwAdGVzdC1mdW5jdGlvbi9pbmRleC5qc1VUCQADJwOzYW8Ds2F1eAsAAQT1AQAABBQAAABjb25zb2xlLmxvZygnaGVsbG8gZnJvbSBFeEgnKTsKUEsBAh4DCgAAAAAAh0SKUwAAAAAAAAAAAAAAAA4AGAAAAAAAAAAQAO1BAAAAAHRlc3QtZnVuY3Rpb24vVVQFAANtA7NhdXgLAAEE9QEAAAQUAAAAUEsBAh4DCgAAAAAAYkSKU2eU/Y0fAAAAHwAAABYAGAAAAAAAAQAAAKSBSAAAAHRlc3QtZnVuY3Rpb24vaW5kZXguanNVVAUAAycDs2F1eAsAAQT1AQAABBQAAABQSwUGAAAAAAIAAgCwAAAAtwAAAAAA",
-    "entryPoint": "index.handler",
-    "runtime": "nodejs14.x"
-}
-```
-{% endtab %}
-
-{% tab title="Required Permissions" %}
-```
-CREATE_TASK_FUNCTION
-```
 {% endtab %}
 {% endtabs %}
 
@@ -98,16 +79,6 @@ exh tasks list <options>
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
-
-{% tab title="API" %}
-`GET /tasks/v1/functions`
-{% endtab %}
-
-{% tab title="Required Permissions" %}
-```
-READ_TASK_FUNCTIONS
-```
-{% endtab %}
 {% endtabs %}
 
 ## Update a function
@@ -118,17 +89,7 @@ READ_TASK_FUNCTIONS
 exh tasks functions update <functionName> <options>
 ```
 
-See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
-{% endtab %}
-
-{% tab title="API" %}
-`PUT /tasks/v1/functions/<function_name>`
-{% endtab %}
-
-{% tab title="Required Permissions" %}
-```
-UPDATE_TASK_FUNCTION
-```
+See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -162,16 +123,6 @@ exh tasks delete <options>
 
 See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
-
-{% tab title="API" %}
-{% hint style="warning" %}
-This functionality has not yet been added to the SDK. You can implement this functionality using the sdk.raw methods.
-{% endhint %}
-{% endtab %}
-
-{% tab title="Untitled" %}
-
-{% endtab %}
 {% endtabs %}
 
 
@@ -191,20 +142,6 @@ The normal response when completed is:
 {% hint style="success" %}
 If a function is removed from the task service the logs aren't removed and can still be retrieved
 {% endhint %}
-
-## Function Logs
-
-{% tabs %}
-{% tab title="API" %}
-`GET /tasks/v1/functions/<your_function_name>/logs?eventTimestamp>=2020-01-25T00:28:04.222Z&eventTimestamp<=2020-01-23T23:30:00.000Z`&#x20;
-{% endtab %}
-
-{% tab title="Required Permissions" %}
-```
-READ_TASK_FUNCTION_LOGS
-```
-{% endtab %}
-{% endtabs %}
 
 An example response when requesting logs:
 

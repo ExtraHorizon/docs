@@ -1,15 +1,15 @@
 # Task Service
 
-Every medical application is different. Based on your application and requirements, the backend needs to provide some custom functionality and/or data processing. Within Extra Horizon, custom functionality can be easily added using the task service.
+Do you need some custom logic in your medical backend? Run custom code in a certified environment using the Task Service. The Task Service is well-integrated with the [Data Service](../../manage-data/data-service/#intro) to automatically act upon changes in your database. It can as well be used to run standalone business logic asynchronously, synchronous or on a schedule.
 
-The following examples give an idea of how you can use the task service:
+Some common use cases where you can leverage the Task Service include:
 
 * **Data Processing**\
-  When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make 3th-party API calls to augment the measurement.
+  When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make third-party API calls to augment the measurement.
 * **Data synchronisation**\
-  If you use other systems and want to synchronise data between Extra Horizon and the respective system, a task can be created to perform the synchronisation. This can happen on a scheduled basis (daily, weekly, ...) or based on events.
+  To synchronise data between ExtraHorizon other systems, a task can be created. This task can run on a schedule or can be triggered by an event.
 * **GDPR-compliant user management**\
-  When a user is deleted from the system, a task can be triggered that uses the API of a 3th-party system to delete the user's data in that system as well.
+  When a user is deleted from the system, a task can be triggered that uses the API of a third-party system to delete the user's data in that system as well.
 * **Daily reporting**\
   Run a reporting task to aggregate data from the data service into a daily report.
 
@@ -31,22 +31,22 @@ A **task** is represents the execution of a function with a set of inputs.&#x20;
 [tasks.md](tasks.md)
 {% endcontent-ref %}
 
-## FAQ
+### Functions and tasks
 
-### How to schedule a task at regular intervals?
+Functions and tasks are the two main concepts in this service.
 
-To repeat the same Task at regular intervals, create a recurring Task that triggers the scheduling of an identical Task with `startTimestamp = {previous startTimestamp + N}`.
+A **function** is the single unit of code that can be executed within the executable piece of code that an executable&#x20;
 
-### How to schedule multiple tasks at once?
+A **task** represents the execution of a specific function.
 
-![Execute multiple tasks at once](https://lh5.googleusercontent.com/MBbXkcRf4eh3FeHU34PhUDVURT5LFVnEWWCIxFSFCYH1-xVhJGtZTimJcqB0xZoSGK45E2gzRmK1eD\_x-eIPhvu1bB7Kk3AvT3NFR4L17BqgO0MtJjI9hShhlkCh\_MR4EvFNKtg=s0)
-
-To automate the execution of multiple repeating actions, set up a (recurring) task that triggers the scheduling of a collection of tasks.
-
-## Video Tutorials
+### 🔗 More Resources
 
 {% embed url="https://www.youtube.com/watch?v=uIuGQ_VZ4CM" %}
 
 ## Resources & References
 
-* [Task Service Swagger Specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml)
+* [Task service changelog](https://docs.extrahorizon.com/extrahorizon/api-reference/changelog-chronological/changelog-service#tasks-service)
+* [API Specifications](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs)
+
+##
+
