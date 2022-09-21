@@ -97,7 +97,7 @@ Once a staff member you can start attaching group roles to give the user additio
 
 ## Patient Enlistment
 
-You can enlist a user as a patient of a group. This will provide that user with some basic permissions in the User Service and other ExtraHorizon services.
+You can enlist a user as a patient of a group. This will provide that user with some basic permissions in the User Service and other Extra Horizon services.
 
 {% hint style="warning" %}
 You can not attach additional permissions to patients

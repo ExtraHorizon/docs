@@ -8,7 +8,7 @@ An Event object is uniquely identified by its id. The type attribute contains a 
 
 Optionally, the Event object stores a set of key-value pairs with information from the informing service in a content attribute. This data can be used by the receiving service to perform the required follow-up action(s).
 
-![](../../../.gitbook/assets/Screenshot\_20211018\_141452.png)
+![](<../../../.gitbook/assets/Screenshot\_20211018\_141452 (1).png>)
 
 
 

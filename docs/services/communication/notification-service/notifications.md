@@ -118,7 +118,7 @@ Tip: Push notification can contain action buttons, for example to accept a frien
 Note: Currently, the title of Notifications of the message and link Types is fixed to “FibriCheck”.
 {% endhint %}
 
-![](../../../.gitbook/assets/Screenshot\_20211018\_154407.png)
+![](<../../../.gitbook/assets/Screenshot\_20211018\_154407 (1).png>)
 
 {% hint style="info" %}
 Note: The JSON syntax in the Type objects is different from other services. The double brackets do not refer to a localization key (as used in the [Template Service](broken-reference)) but to the values provided in the [Create a Notification](notifications.md#create-a-notification) request. To include text snippets stored in the [Localization Service](broken-reference), the client application must first retrieve the snippets in the required language and subsequently include them as plain text in the request `title` or `body` parameter.

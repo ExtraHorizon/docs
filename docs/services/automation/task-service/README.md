@@ -7,7 +7,7 @@ The following examples give an idea of how you might use the task service:
 * **Data Processing**\
   When a new device measurement comes in, a task can be triggered to asynchronously process the measurement data. This task can make 3th-party API calls to augment the measurement.
 * **Data synchronisation**\
-  If you use other systems and want to synchronise data between ExtraHorizon and the respective system, a task can be created to perform the synchronisation. This can happen on a scheduled basis (daily, weekly, ...) or based on events.
+  If you use other systems and want to synchronise data between Extra Horizon and the respective system, a task can be created to perform the synchronisation. This can happen on a scheduled basis (daily, weekly, ...) or based on events.
 * **GDPR-compliant user management**\
   When a user is deleted from the system, a task can be triggered that uses the API of a 3th-party system to delete the user's data in that system as well.
 * **Daily reporting**\
