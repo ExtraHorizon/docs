@@ -1,37 +1,69 @@
 ---
-description: Get started with developing on the Extra Horizon platform.
+description: >-
+  This page provides the resources to start building your application on Extra
+  Horizon (ExH).
 ---
 
 # Getting Started
 
-The Extra Horizon platform consists of a number of services that together form the basis of your Medical Backend. Here are some resources that help you as a developer start building your application on Extra Horizon.
+This getting started guide assumes you received credentials for an Extra Horizon environment. If you don't have credentials yet, get in touch via our [contact form](https://www.extrahorizon.com/contact).
 
-* Developer Resources
-  * [JavaScript SDK](https://docs.extrahorizon.com/extrahorizon/for-developers/extrahorizon-sdk)
-  * [Service Documentation](https://docs.extrahorizon.com/extrahorizon/for-developers/services)
-  * [Resource Query Language (RQL) ](https://docs.extrahorizon.com/extrahorizon/for-developers/resource-query-language-rql)- the query language used throughout the API
-* Use Case Examples
-  * [Polysomnography Use Case](https://docs.extrahorizon.com/extrahorizon/use-cases/polysomnography-psg)
+## Access to Your Environment
 
-### Getting access to your dedicated environment
+Once your dedicated environment is set up, you will receive the information and credentials to connect to your environment:
 
-To access your dedicated environment you need the following information:
+| Variable                | Example                                      |
+| ----------------------- | -------------------------------------------- |
+| `HOST`                  | `api.customer.extrahorizon.io`               |
+| `OAUTH_CONSUMER_KEY`    | `bb6c5186acf8aca8ed64ef`4`ef49e08bb4484c7c4` |
+| `OAUTH_CONSUMER_SECRET` | `4808fbc315294aa7aeb2e40b76d84680c0b582ee`   |
+| `e-mail`                | `john.doe@extrahorizon.com`                  |
+| `password`              | `SomeDiff!UnguessableP8ssword`               |
 
-| Variable                | Example                                      | Notes                                       |
-| ----------------------- | -------------------------------------------- | ------------------------------------------- |
-| `HOST`                  | `api.customer.extrahorizon.io`               | The URL where your environment is hosted    |
-| `OAUTH_CONSUMER_KEY`    | `bb6c5186acf8aca8ed64ef`4`ef49e08bb4484c7c4` | oAuth credentials to connect to the cluster |
-| `OAUTH_CONSUMER_SECRET` | `4808fbc315294aa7aeb2e40b76d84680c0b582ee`   | oAuth credentials to connect to the cluster |
-| `e-mail`                | `john.doe@extrahorizon.com`                  | login e-mail                                |
-| `password`              | `SomeDiff!UnguessableP8ssword`               | login password                              |
-
-{% hint style="info" %}
-If you don't have access to an Extra Horizon environment yet, contact our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com)
+{% hint style="warning" %}
+If you received credentials to access the **sandbox** environment, please be aware that this is a **shared** environment only for testing purposes. Other **sandbox** users can view and modify your data. <mark style="color:red;">**Do not store any sensitive or PII data in the sandbox environment.**</mark>
 {% endhint %}
 
+Once you have the credentials, there are multiple methods to access your environment.
 
+### Use the Web-based Interface
 
+The web-based ExH Control Center interface, available at [app.extrahorizon.com](https://app.extrahorizon.com), is the easiest way to get familiar with your ExH environment. Through this interface, you can:
 
+* Create and manage users&#x20;
+* View existing data schemas and their properties
+* Query the data in the data service
+* View functions, task executions and task execution logs
 
+<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption><p>Login screen of the ExH Control Center</p></figcaption></figure>
 
+### Use the CLI Tool
+
+The [Extra Horizon CLI](https://github.com/ExtraHorizon/exh-cli) is an open-source tool to manage your environment through the command line. You can also use this tool to automate certain actions through scripts and CI/CD pipelines.
+
+<figure><img src=".gitbook/assets/Petrify 2022-11-02 at 11.31.11.png" alt=""><figcaption><p>Manage your environment using the ExH CLI</p></figcaption></figure>
+
+Visit the [CLI Documentation](https://docs.extrahorizon.com/cli/) for more information and examples.
+
+### Use the JavaScript SDK
+
+The [JavaScript SDK](https://github.com/ExtraHorizon/javascript-sdk) offers first-class TypeScript support and makes it easy to interface with your environment from code.&#x20;
+
+Visit the [SDK Documentation](https://docs.extrahorizon.com/javascript-sdk/) for more information and examples.&#x20;
+
+### Use the REST API
+
+The above mentioned methods to access your Extra Horizon environment all make use of the REST API. It is an HTTP interface to your environment and it uses standard HTTP headers and status codes.
+
+Visit the [OpenAPI specifications](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) to learn more about all the endpoints available in your ExH environment.
+
+## Documentation and Support
+
+Take a look at these resources for more information on how to build on Extra Horizon:
+
+* The [docs.extrahorizon.com](https://docs.extrahorizon.com/extrahorizon/) website
+* The [ExtraHorizon/examples ](https://github.com/ExtraHorizon/examples)GitHub repository
+* The [Extra Horizon 101](https://www.youtube.com/watch?v=uIuGQ\_VZ4CM\&list=PLPA2gPofpVsTqJSflf4PKtTC7NCYRKEQH) YouTube playlist, which contains short instructional videos on how the different services can be used.
+
+If you can't find the answers to your questions, reach out to our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com).&#x20;
 

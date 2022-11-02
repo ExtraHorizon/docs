@@ -10,7 +10,7 @@ description: >-
 
 The publicly facing HTTPS load balancer is the only component of the infrastructure that is publicly accessible. All other services are deployed in a private network that's shielded from the public internet.
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
 ## HTTPS-Only Communication
 

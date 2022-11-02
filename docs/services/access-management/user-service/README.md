@@ -43,7 +43,7 @@ Staff enlistments are used to register a staff member to a group. Depending on t
 
 Group roles are similar to global roles, with the notable difference that they relate to a group instead of the EXHZ services. Group roles determine the privilege levels of a _staff member_ within a _group_, and are not granted to a user directly but through a _staff enlistment_ with that group.
 
-![](<../../../.gitbook/assets/image (4).png>)
+![](<../../../.gitbook/assets/image (4) (2).png>)
 
 For example, a medical practice could have three different group roles: _lab researcher_, _physician_, and _practice owner_.\
 In this example, a **lab researcher** could be able to append the lab results of a sample to a patient's file, but not create or edit that file in any other way.\
