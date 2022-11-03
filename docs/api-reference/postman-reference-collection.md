@@ -2,9 +2,9 @@
 
 For your convenience we also provide the API specification as a Postman collection, to interact quickly and easily with the API.
 
-You can download the collection here:
+You can download the collection here
 
-{% file src="../.gitbook/assets/exh-postman-collections.json" %}
+{% file src="../.gitbook/assets/exh-postman-collections.zip" %}
 
 ## How to use the Postman Collection
 
