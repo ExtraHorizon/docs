@@ -59,6 +59,7 @@
 * [OpenAPI Specifications](api-specs.md)
 * [📦 Changelog](changelog-chronological.md)
   * [Per-service Changelog](changelog-service.md)
+* [Postman Reference Collection](api-reference/postman-reference-collection.md)
 
 ## Tools
 

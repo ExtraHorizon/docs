@@ -57,6 +57,35 @@ The above mentioned methods to access your Extra Horizon environment all make us
 
 Visit the [OpenAPI specifications](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) to learn more about all the endpoints available in your ExH environment.
 
+To quickly get started with the REST API, we also provide a [Postman Reference Collection](api-reference/postman-reference-collection.md).
+
+## Start Building Your Medical Backend
+
+### Add Additional Users and Roles
+
+1. Navigate to [https://app.extrahorizon.com](https://app.extrahorizon.com)
+2. Login with the admin credentials that you received
+3. Under the "Services" section, select "Users"
+4. You can now add new users and assign the appropriate roles to them
+
+### Create Your First Data Schema
+
+The first step in building your application is to create one or more data schema's that define the type of data you want to store.&#x20;
+
+Take a look at the Data Service documentation. There you can also find an instructional video that walks you through the steps of creating a data schema.
+
+{% content-ref url="services/manage-data/data-service/" %}
+[data-service](services/manage-data/data-service/)
+{% endcontent-ref %}
+
+### Create Your First Function
+
+After defining and creating data schema's, the next step is to build the business logic. In Extra Horizon, business logic is implemented in Functions.&#x20;
+
+{% content-ref url="services/automation/task-service/" %}
+[task-service](services/automation/task-service/)
+{% endcontent-ref %}
+
 ## Documentation and Support
 
 Take a look at these resources for more information on how to build on Extra Horizon:
@@ -64,6 +93,7 @@ Take a look at these resources for more information on how to build on Extra Hor
 * The [docs.extrahorizon.com](https://docs.extrahorizon.com/extrahorizon/) website
 * The [ExtraHorizon/examples ](https://github.com/ExtraHorizon/examples)GitHub repository
 * The [Extra Horizon 101](https://www.youtube.com/watch?v=uIuGQ\_VZ4CM\&list=PLPA2gPofpVsTqJSflf4PKtTC7NCYRKEQH) YouTube playlist, which contains short instructional videos on how the different services can be used.
+* Our [Postman Reference Collection](api-reference/postman-reference-collection.md) to quickly get started with the REST API.
 
 If you can't find the answers to your questions, reach out to our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com).&#x20;
 
