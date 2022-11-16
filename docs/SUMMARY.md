@@ -75,3 +75,4 @@
 ## ExH Platform
 
 * [Security](exh-platform/security.md)
+* [Usage and Performance](exh-platform/usage-and-performance.md)
