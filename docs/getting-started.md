@@ -92,7 +92,7 @@ Take a look at these resources for more information on how to build on Extra Hor
 
 * The [docs.extrahorizon.com](https://docs.extrahorizon.com/extrahorizon/) website
 * The [ExtraHorizon/examples ](https://github.com/ExtraHorizon/examples)GitHub repository
-* The [Extra Horizon 101](https://www.youtube.com/watch?v=uIuGQ\_VZ4CM\&list=PLPA2gPofpVsTqJSflf4PKtTC7NCYRKEQH) YouTube playlist, which contains short instructional videos on how the different services can be used.
+* The [Extra Horizon 101](https://www.youtube.com/playlist?list=PLRwWLxIAwCGlMWBWOPhV9trKwPZzONw89) YouTube playlist, which contains short instructional videos on how the different services can be used.
 * Our [Postman Reference Collection](api-reference/postman-reference-collection.md) to quickly get started with the REST API.
 
 If you can't find the answers to your questions, reach out to our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com).&#x20;

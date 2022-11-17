@@ -9,7 +9,7 @@ Data is managed using structured documents, written in JSON. These documents rel
 
 
 
-{% embed url="https://www.youtube.com/watch?v=EObnXBHkVcI" %}
+{% embed url="https://www.youtube.com/watch?v=YvjHxZC9hjo" %}
 ExH Explainer - Data Service Basics
 {% endembed %}
 

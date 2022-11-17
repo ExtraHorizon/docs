@@ -41,7 +41,7 @@ A **task** represents the execution of a specific function.
 
 ### 🔗 More Resources
 
-{% embed url="https://www.youtube.com/watch?v=uIuGQ_VZ4CM" %}
+{% embed url="https://www.youtube.com/watch?v=ncOFiA5lrRE" %}
 
 ## Resources & References
 
