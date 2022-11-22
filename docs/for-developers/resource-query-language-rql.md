@@ -59,6 +59,14 @@ This section contains examples on how you can use RQL on Extra Horizon.
 
 * To encode `Europe/Brussels` in the URL, use double encoding. `%252F` represents `%/`
 
+#### Events Service • List all events from a specific user <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
+
+Use `like` instead of `eq`
+
+```
+/events/v1/?like(content.user_id,569544b142cfbb000460aa61)
+```
+
 ## More Information <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
 
 For more information on RQL, visit [persvr/rql on GitHub](https://github.com/persvr/rql).
