@@ -119,3 +119,11 @@ DELETE /data/v1/{{schema}}/documents/${schemaId}/{{arrayName}}/{{objectId}}
 ```
 
 If the array items are simple values, like strings or numbers, you have to execute a `PUT` to the record endpoint and provide the full array (leaving out the value that you want to remove).
+
+
+
+## Permissions
+
+### What is the difference between creatorId and userIds in a document?
+
+The `creatorId` refers to the user that created the document, `userIds` is an array of users which have access to the document as set by the [document permissions](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas#access-modes). A simple use case is for example if you want to share a single document with multiple individual users which are not necessarily in the same group.
