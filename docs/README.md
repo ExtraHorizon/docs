@@ -12,7 +12,9 @@ Extra Horizon exists of a set of web services that the customer can use to compo
 
 Every Extra Horizon environment is deployed on dedicated cloud resources. There is **no infrastructure sharing between customers!** Each cluster has an Extra Horizon infrastructure layer on which a set of modules can be deployed. You can access your deployment through a tailored API. Each of these modules is built according to IEC62304 standards and meets regulatory compliance.
 
-{% embed url="https://youtu.be/eLaxim1Jfz0" %}
+
+
+{% embed url="https://www.youtube.com/watch?v=peVW49MFzrw" %}
 
 ## Available Modules
 
