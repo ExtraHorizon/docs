@@ -26,12 +26,14 @@ The Password Grant accepts your username and password, then returns an Access To
 
 {% tabs %}
 {% tab title="Javascript" %}
+{% code lineNumbers="true" %}
 ```javascript
 await sdk.auth.authenticate({
     username:'john.doe@example.com'
     password:'myPassword1234'
 });
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
