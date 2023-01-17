@@ -6,11 +6,13 @@ oAuth2.0 standard: [\[rfc6749\]](https://datatracker.ietf.org/doc/html/rfc6749)
 
 An example request to the User Service which is authenticated by OAuth2 looks like this:
 
+{% code lineNumbers="true" %}
 ```
 GET users/v1/me HTTP/1.1
 Host: api.<environment>.<​company>.extrahorizon.io
 Authorization: Bearer 93a4d85654c24bd5a59c9b41f94f49e7
 ```
+{% endcode %}
 
 The role of the `Bearer` prefix in the **Authorization header** specifies that a token value is expected, implying a token-based authentication. In the case of OAuth2, this token value is the Access Token.
 
@@ -47,6 +49,7 @@ When MFA is enabled for a user and you try to authenticate using the password gr
 
 {% tabs %}
 {% tab title="Javascript" %}
+{% code lineNumbers="true" %}
 ```javascript
 try {
   await sdk.auth.authenticate({
@@ -69,6 +72,7 @@ try {
   // handle other possible authentication errors
 }
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
@@ -80,17 +84,21 @@ You don't want them to handle your users credentials and will require these appl
 
 An example of such a webpage would look like this:
 
+{% code lineNumbers="true" %}
 ```
 /authorize/?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}
 ```
+{% endcode %}
 
 When the user is authenticated on that page he/she will be redirected back to the URI specified in the client registration and the query parameter. this redirect will contain an authorization code that you can then use in the SDK to obtain an authentication.
 
+{% code lineNumbers="true" %}
 ```javascript
 await sdk.auth.authenticate({
   code: '{yourAuthorizionCodeHere}',
 });
 ```
+{% endcode %}
 
 ### Refresh Token Grant
 
@@ -100,11 +108,13 @@ When an access token is expired the SDK will use the refresh token stored in mem
 
 When you want your user to stay authenticated when he reopens you app you will need to store the refreshToken and initiate the SDK authentication with the stored token.
 
+{% code lineNumbers="true" %}
 ```javascript
 await sdk.auth.authenticate({
   refreshToken: 'myRefreshToken',
 });
 ```
+{% endcode %}
 
 {% hint style="danger" %}
 Note that the refresh token changes every time a new access token is obtained. Therefore you will need to add a listener to the SDK to be notified when a new refresh token is received and for your app to safely and securely store it.
@@ -112,6 +122,7 @@ Note that the refresh token changes every time a new access token is obtained. T
 
 Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is called with the response. You can store this data in `localStorage` or any other persistant data store. When you restart your application, you can check the data store for a `refreshToken` and use that to authenticate with the SDK.
 
+{% code lineNumbers="true" %}
 ```javascript
 const sdk = createOAuth2Client({
   host: '',
@@ -121,6 +132,7 @@ const sdk = createOAuth2Client({
   },
 });
 ```
+{% endcode %}
 
 ## Tokens
 
@@ -128,18 +140,22 @@ const sdk = createOAuth2Client({
 
 You can retrieve a list of active tokens and the applications they correspond to.
 
+{% code lineNumbers="true" %}
 ```javascript
 await sdk.auth.oauth2.getAuthorizations({
     rql: //optional rql query
 });
 ```
+{% endcode %}
 
 ### Revoking tokens
 
 You can revoke tokens by use the deleteAuthorization function.
 
+{% code lineNumbers="true" %}
 ```javascript
 await sdk.auth.oauth2.deleteAuthorization('');
 ```
+{% endcode %}
 
 ##
