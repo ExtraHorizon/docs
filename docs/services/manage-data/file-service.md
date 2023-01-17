@@ -122,12 +122,6 @@ File token
 
 For debugging purposes, an additional endpoint can be used in combination with the global VIEW\_FILES permission. This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator to regain access to a File when tokens are lost.
 
-{% swagger method="get" path="/" baseUrl="" summary="Get all metadata objects" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
 {% hint style="warning" %}
 \*\*Warning: \*\*With the global `VIEW_FILES` permission, a user gets access to all attributes of each `FileMetadata` object in the system, including the tokens. The latter can be used to retrieve or remove the actual file, i.e. the binary data. Grant this permission to a specific Role with caution.
 {% endhint %}
