@@ -13,18 +13,18 @@ ExH Explainer - Data Service Basics
 
 ### Data Structure <a href="#data-structure" id="data-structure"></a>
 
-![](<../../../.gitbook/assets/Data Structure.png>)
-
 Schema validation is based on the open-source JSON schema specification. This allows you to create complex data structures that you can configure yourself. Besides defining field types, you can create complex fields with constraints like: minimum, maximum, regex, maxItems, minItems, …
+
+<figure><img src="../../../.gitbook/assets/Data Structure (2).png" alt=""><figcaption></figcaption></figure>
 
 ### States & Transitions <a href="#states-and-transitions" id="states-and-transitions"></a>
 
-![](../../../.gitbook/assets/States.png)
+The data service allows you to configure workflows that match your exact business need. You can mark your documents with specific states and create transitions between these states, these can be manual or automatic. For example, you can create an order and shipment workflow to keep track of all orders, connect your frontend applications, and trigger actions to inform stakeholders when needed.
 
-The document service allows you to configure workflows that match your exact business need. You can mark your documents with specific states and create transitions between these states, these can be manual or automatic.For example, you can create an order and shipment workflow to keep track of all orders, connect your frontend applications, and trigger actions to inform stakeholders when needed.
+<figure><img src="../../../.gitbook/assets/States &#x26; Transitions (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Conditions & Actions <a href="#conditions-and-actions" id="conditions-and-actions"></a>
 
 You can add conditions to a transition, meaning the transition can only be executed if all the conditions are met. E.g. you can make automated transitions only trigger under specific circumstances. (Field value, the person executing the transition, …)When a transition does trigger you can attach actions. These actions can range from sending events, sending text messages, push notifications, email, starting a script and so much more…
 
-![](../../../.gitbook/assets/Actions.png)
+<figure><img src="../../../.gitbook/assets/Conditions &#x26; Actions.png" alt=""><figcaption></figcaption></figure>
