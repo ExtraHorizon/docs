@@ -14,8 +14,6 @@ For each File with binary data, the File module stores a FileMetadata object and
 **Tip:** Files and their metadata can be accessed via multiple, unique access tokens. The advantage of this is two-fold: As different Users do not have to share the same token, access to one User can be denied easily – without removing access for the other Users. Moreover, the tokens can grant different levels of access, enabling the owner of a File to safely invite other Users to view -but not remove- their data.
 {% endhint %}
 
-![](https://lh5.googleusercontent.com/DUFATZ5w5ColZ84RIH6uSgSDhCmWoNVwJJ4dxiWc3xg4rCtID7gvMduietkzLgRn8FmT\_5wtbbD4Gi9O240lTxqm37k2BFdt9It2bLnFMNzBzBRYTfKNdlfnoqtpLSLPdjv8rp8=s0)
-
 ### Objects and Attributes
 
 #### FileMetadata
@@ -37,7 +35,7 @@ By default, the maximum file size is 8 MiB. Contact Extra Horizon support if mor
 When a user creates a new File, the File module generates one Token object granting full access and returns it in the response. The customer’s application must store the included token for future access to the File and FileMetadata. Subsequently, this (and any other) full-access token can be used by the customer’s application to generate additional full-access or read-only Token objects.
 
 {% hint style="info" %}
-**Tip:** The customer’s application can link these tokens to other entities that provide context to the Files. For example, Documents in the Data Service can have a reference to “attachment(s)” that are stored in the File Module. \\
+**Tip:** The customer’s application can link these tokens to other entities that provide context to the Files. For example, Documents in the Data Service can have a reference to “attachment(s)” that are stored in the File Module.
 {% endhint %}
 
 #### Common timestamp attributes
@@ -91,7 +89,7 @@ Managing the Tokens associated with a FileMetadata object requires a token that 
 {% endswagger %}
 
 {% hint style="info" %}
-\*\*Tip: \*\*In the request to delete a token, `token` and `tokenToDelete` can have the same value as long as at least one other Token object with full access remains associated with the FileMetaData. This prevents that a File becomes inaccessible.
+**Tip:** In the request to delete a token, `token` and `tokenToDelete` can have the same value as long as at least one other Token object with full access remains associated with the FileMetaData. This prevents that a File becomes inaccessible.
 {% endhint %}
 
 #### Viewing Files and their metadata
