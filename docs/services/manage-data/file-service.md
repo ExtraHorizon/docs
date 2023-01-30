@@ -54,13 +54,13 @@ When a new File is added, the File module generates an initial Token that grants
 
 Any User can add a File, but Files can only be removed by means of a token with a full access level. This action results in removing the binary data, the FileMetadata object, and all associated Tokens
 
-{% swagger method="post" path="/files/v1/" baseUrl="" summary="Add a new file" %}
+{% swagger method="post" path="/files/v1/" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Add a new file" %}
 {% swagger-description %}
 
 {% endswagger-description %}
 {% endswagger %}
 
-{% swagger method="delete" path="/files/v1/{token}" baseUrl="" summary="Delete a File" %}
+{% swagger method="delete" path="/files/v1/{token}" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Delete a File" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -78,13 +78,13 @@ File token
 
 Managing the Tokens associated with a FileMetadata object requires a token that grants full access to that specific File. This can be the initial token, or any full-access token created later on. The number of (read-only or full-access) Tokens that can be generated is unlimited. Deleting a Token object renders the token stored by the customer’s application invalid.
 
-{% swagger method="post" path="/files/v1/{token}/tokens" baseUrl="" summary="Generate a new Token for a File" %}
+{% swagger method="post" path="/files/v1/{token}/tokens" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Generate a new Token for a File" %}
 {% swagger-description %}
 
 {% endswagger-description %}
 {% endswagger %}
 
-{% swagger method="delete" path="/files/v1/{token}/tokens/{tokenToDelete}" baseUrl="" summary="Delete a Token" %}
+{% swagger method="delete" path="/files/v1/{token}/tokens/{tokenToDelete}" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Delete a Token" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -100,7 +100,7 @@ Files and their metadata can be viewed with either a read-only or full-access to
 
 When a user has read-only access, this module does not return the tokens attribute of the FileMetaData object.
 
-{% swagger method="get" path="/{token}/file" baseUrl="" summary="Retrieve a file" %}
+{% swagger method="get" path="/{token}/file" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Retrieve a file" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -110,7 +110,11 @@ File Token
 {% endswagger-parameter %}
 {% endswagger %}
 
-{% swagger method="get" path="/{token}/details" baseUrl="" summary="Retrieve file metadata" %}
+{% hint style="danger" %}
+The endpoint to retrieve a file is not authenticated. Everyone with the link can download the file.&#x20;
+{% endhint %}
+
+{% swagger method="get" path="/{token}/details" baseUrl="https://api.customer.extrahorizon.io/files/v1" summary="Retrieve file metadata" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -123,5 +127,5 @@ File token
 For debugging purposes, an additional endpoint can be used in combination with the global VIEW\_FILES permission. This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator to regain access to a File when tokens are lost.
 
 {% hint style="warning" %}
-\*\*Warning: \*\*With the global `VIEW_FILES` permission, a user gets access to all attributes of each `FileMetadata` object in the system, including the tokens. The latter can be used to retrieve or remove the actual file, i.e. the binary data. Grant this permission to a specific Role with caution.
+With the global `VIEW_FILES` permission, a user gets access to all attributes of each `FileMetadata` object in the system, including the tokens. The latter can be used to retrieve or remove the actual file, i.e. the binary data. Grant this permission to a specific Role with caution.
 {% endhint %}
