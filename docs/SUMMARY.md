@@ -74,5 +74,6 @@
 
 ## ExH Platform
 
+* [🙋 Support](exh-platform/support.md)
+* [⏱ Usage and Performance](exh-platform/usage-and-performance.md)
 * [Security](exh-platform/security.md)
-* [Usage and Performance](exh-platform/usage-and-performance.md)

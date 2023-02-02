@@ -1,4 +1,4 @@
-# Usage and Performance
+# ⏱ Usage and Performance
 
 The following are restrictions on data storage and operations in your Extra Horizon environment. We put these limits in place to maximise the stability of your environment.
 
@@ -13,9 +13,10 @@ The following are restrictions on data storage and operations in your Extra Hori
 
 ### Task Service
 
-| Operation      | Limit     | Description                                     |
-| -------------- | --------- | ----------------------------------------------- |
-| Task Execution | 5 minutes | A task exectution will timeout after 5 minutes. |
+| Operation        | Limit     | Description                                                                                   |
+| ---------------- | --------- | --------------------------------------------------------------------------------------------- |
+| Task execution   | 5 minutes | A task execution will timeout after 5 minutes.                                                |
+| Task concurrency | 5         | Number of tasks that can run at the same time. (Contact support if you need a limit increase) |
 
 ### File Service
 
