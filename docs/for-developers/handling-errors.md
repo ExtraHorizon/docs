@@ -22,6 +22,8 @@ When an error happens, the error response body is always a JSON object with the 
 
 | Error code | HTTP status | Name                   | Description                                   |
 | ---------: | ----------: | ---------------------- | --------------------------------------------- |
+|         12 |         400 | ID\_FORMAT\_EXCEPTION   | The provided unique identifier is of an invalid format. |
+|         16 |         404 | RESOURCE\_UNKNOWN\_EXCEPTION   | A resource linked to a unique identifier can not be found. |
 |         21 |         401 | LONG\_QUERY\_EXCEPTION | The query exceeds the maximum execution time. |
 
 ### Authentication Errors <a href="#markdown-header-authentication-errors" id="markdown-header-authentication-errors"></a>
