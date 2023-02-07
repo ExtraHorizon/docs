@@ -4,7 +4,7 @@ description: >-
   platform.
 ---
 
-# Security
+# 🔓 Security
 
 ## Dedicated Cloud Infrastructure
 
