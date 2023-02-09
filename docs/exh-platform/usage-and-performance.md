@@ -17,10 +17,10 @@ In case you want an increase on the limits described below. Please contact the E
 
 ### Task Service
 
-| Operation        | Limit     | Description                                                                                   |
-| ---------------- | --------- | --------------------------------------------------------------------------------------------- |
-| Task execution   | 5 minutes | A task execution will timeout after 5 minutes.                                                |
-| Task concurrency | 5         | Number of tasks that can run at the same time. (Contact support if you need a limit increase) |
+| Operation        | Limit     | Description                                    |
+| ---------------- | --------- | ---------------------------------------------- |
+| Task execution   | 5 minutes | A task execution will timeout after 5 minutes. |
+| Task concurrency | 5         | Number of tasks that can run at the same time. |
 
 ### File Service
 
