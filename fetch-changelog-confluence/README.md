@@ -1,0 +1,2 @@
+# Fetch Changelog Confluence (WIP)
+In our internal processes we use Confluence pages to manage the development and release of new versions of the different Extra Horizon services. This small script/tool helps in automating the copying of release notes from confluence to gitbook.
