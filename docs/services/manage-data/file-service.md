@@ -1,12 +1,12 @@
 ---
 description: >-
-  This service intended for blob storage and can store different files as binary
-  data and metadata.
+  This service is intended for blob storage and can store different files as
+  binary data and metadata.
 ---
 
 # File Service
 
-This service intended for blob storage and stores files as binary data together with metadata. You can use this service to store files like e.g. CT-scans, ECG recordings, pdf reports, log files, ... and much more. You can access them directly from within your frontend applications.
+This service is intended for blob storage and stores files as binary data together with metadata. You can use this service to store files like e.g. CT-scans, ECG recordings, pdf reports, log files, ... and much more. You can access uploaded files directly from within your frontend applications.
 
 {% hint style="info" %}
 **Tip:** If you need to store structured data we recommend that you take a look at our [Data Service](data-service/). This service has additional features to define actions when your data changes.
@@ -14,9 +14,9 @@ This service intended for blob storage and stores files as binary data together 
 
 ## Upload a new file
 
-Uploading new files to the file service is easy. You can use our Javascript SDK as described below or use our REST API by visiting our [api-specs.md](../../api-specs.md "mention")
+Uploading new files to the file service is easy. You can use our Javascript SDK and examples provided below or use our REST API by visiting our [api-specs.md](../../api-specs.md "mention")
 
-For each File you upload, the service will store MetaData and one or more associated Tokens. These tokens can be used afterwards to retrieve the file data and metadata.
+For each file you upload, the service will store metadata and one or more associated tokens. These tokens can be used afterwards to retrieve the file binary data and metadata.
 
 {% hint style="info" %}
 The size of the files you can upload is limited for performance and user experience reasons. Please visit our [usage-and-performance.md](../../exh-platform/usage-and-performance.md "mention") page for more information and what's needed in case you need a limit increase.
@@ -30,32 +30,28 @@ const fileMetaData = await sdk.files.create('myRepport.pdf',myBuffer,{
 });
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
-Once uploaded, you will receive a response representing the metadata of the file. The service generates one Token object granting full access. The customer’s application must store the included token for future access to the File and File Metadata. Subsequently, this (and any other) full-access token can be used by the customer’s application to generate additional full-access or read-only Token objects.
+You will receive a response representing the metadata of the file. The service generates one token object granting full access. The customer’s application must store the included token for future access to the file's binary data and metadata. Subsequently, this (and any other) full-access token can be used by the customer’s application to generate additional full-access or read-only token objects.
 
 {% hint style="info" %}
-**Tip:** The customer’s application can link these tokens to other entities that provide context to the Files. For example, Documents in the Data Service can have a reference to “attachment(s)” that are stored in the File Module.
+**Tip:** The customer’s application can link these tokens to other entities that provide context to the files. For example, documents in the Data Service can have a reference to “attachment(s)” that are stored in the File Service.
 {% endhint %}
 
 #### File Metadata
 
 {% tabs %}
 {% tab title="Table" %}
-| Field                 | Type      | Description                                                                                                                                                                                                 |
-| --------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **name**              | string    | The name of the file                                                                                                                                                                                        |
-| **mimeType**          | string    | An identifier existing of two parts used to represent the format of the file. E.g. "application/pdf" or "text/csv". The service derives the type from the user agent if not provided in the upload message. |
-| **creatorId**         | string    | The userId of the user who created or uploaded the file.                                                                                                                                                    |
-| **size**              | number    | The size of the file represented by the number of bytes.                                                                                                                                                    |
-| **tags**              | string\[] | A list of strings or tags that can be used to annotate a file.                                                                                                                                              |
-| **tokens**            | Token\[]  | A list of tokens attached to the file.                                                                                                                                                                      |
-| **creationTimestamp** | string    | A string in date-time notation of when the file was uploaded or created in the service.                                                                                                                     |
-| **updateTimestamp**   | string    | A string in date-time notation of when the file was last updated.                                                                                                                                           |
+| Field                 | Type      | Description                                                                                                                                                                                             |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **name**              | string    | The name of the file                                                                                                                                                                                    |
+| **mimeType**          | string    | An identifier existing of two parts used to represent the format of the file. E.g. "application/pdf" or "text/csv". The service derives the type from the user agent if not provided during the upload. |
+| **creatorId**         | string    | The userId of the user who created or uploaded the file.                                                                                                                                                |
+| **size**              | number    | The size of the file represented by the number of bytes.                                                                                                                                                |
+| **tags**              | string\[] | A list of strings or tags that can be used to annotate a file.                                                                                                                                          |
+| **tokens**            | Token\[]  | A list of tokens attached to the file.                                                                                                                                                                  |
+| **creationTimestamp** | string    | A string in date-time notation of when the file was uploaded or created in the service.                                                                                                                 |
+| **updateTimestamp**   | string    | A string in date-time notation of when the file was last updated.                                                                                                                                       |
 {% endtab %}
 
 {% tab title="Json" %}
@@ -96,18 +92,14 @@ Using a file token that is attached to the file you can retrieve the content of 
 This example will retrieve the file and will return to you a Buffer with the binary data.
 
 ```typescript
-const file = await sdk.files.retrieve('myAccessToken');
+const fileBuffer = await sdk.files.retrieve('myAccessToken');
 ```
 
 You can use the `retrieveStream` function in case you are working with streams.
 
 ```typescript
-const file:ReadStream = await sdk.files.retrieveStream('myAccessToken');
+const fileReadStream = await sdk.files.retrieveStream('myAccessToken');
 ```
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
 {% endtab %}
 {% endtabs %}
 
@@ -123,15 +115,11 @@ You can use the following function to retrieve the metadata of a file.
 const file = await sdk.files.getDetails('myAccessToken');
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## Deleting a file
 
-Any User can add a File, but Files can only be removed by means of a token with a full access level. This action results in removing the binary data, the FileMetadata object, and all associated Tokens
+Any user can add a file, but files can only be removed by means of a token with a full access level. This action results in removing the binary data, the FileMetadata object, and all associated tokens
 
 {% hint style="danger" %}
 Deleted files will permanently remove the file from our service. There will be no way to revive the file after this action is performed.
@@ -143,27 +131,23 @@ Deleted files will permanently remove the file from our service. There will be n
 await sdk.files.remove('myAccessToken');
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## File Tokens
 
 Files and their metadata can be accessed via multiple, unique access tokens. This provides you with two advantages:&#x20;
 
-* As different Users do not have to share the same token, access to one User can be denied easily – without removing access for the other Users.&#x20;
-* Tokens can grant different levels of access, enabling the owner of a File to safely invite other Users to view -but not remove- their data.
+* Different users do not have to share the same token, access to one user can be denied easily without removing access for the other users.&#x20;
+* Tokens can grant different levels of access, enabling the owner of a file to safely invite other users to view but not remove their data.
 
-Managing the Tokens associated with a FileMetadata object requires a token that grants full access to that specific File. This can be the initial token, or any full-access token created later on. The number of (read-only or full-access) Tokens that can be generated is unlimited. Deleting a Token object renders the token stored by the customer’s application invalid.
+Managing the tokens associated with a FileMetadata object requires a token that grants full access to that specific file. This can be the initial token, or any full-access token created later on. The number of (read-only or full-access) tokens that can be generated is unlimited. Deleting a token object renders the token stored by the customer’s application invalid.
 
 #### Token Object
 
-| Field       | Type   | Description                                                                                                               |
-| ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------- |
-| token       | string | The string token that can be used to access the file                                                                      |
-| accessLevel | string | The access level of the token. Can be <mark style="color:red;">`full`</mark> or <mark style="color:orange;">`read`</mark> |
+| Field           | Type   | Description                                                                                                               |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------------------------------- |
+| **token**       | string | The string token that can be used to access the file                                                                      |
+| **accessLevel** | string | The access level of the token. Can be <mark style="color:red;">`full`</mark> or <mark style="color:orange;">`read`</mark> |
 
 #### Permissions
 
@@ -188,10 +172,6 @@ const tokenObject = await sdk.files.generateToken('myAccessToken',{
 });
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ### Removing tokens
@@ -205,10 +185,6 @@ Requires a token with full a full access level
 ```typescript
 await sdk.files.deleteToken('myAccessToken','tokenToDelete');
 ```
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
 {% endtab %}
 {% endtabs %}
 
@@ -245,10 +221,6 @@ When your query is intended to find one file you can ask the SDK to return the f
 ```typescript
 const file = await sdk.files.findFirst({rql:myRql});
 ```
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
 {% endtab %}
 {% endtabs %}
 
