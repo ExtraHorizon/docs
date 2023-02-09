@@ -1,15 +1,15 @@
 ---
 description: >-
-  This service intended for blob storage. This services stores files as binary
-  data together with metadata
+  This service intended for blob storage and can store different files as binary
+  data and metadata.
 ---
 
 # File Service
 
-This service intended for blob storage and stores files as binary data together with metadata. You can use this service to store and acces files like CT-scans, ECG recordings, pdf reports, log files, ... and much more and use them directly from within your frontend applications.
+This service intended for blob storage and stores files as binary data together with metadata. You can use this service to store files like e.g. CT-scans, ECG recordings, pdf reports, log files, ... and much more. You can access them directly from within your frontend applications.
 
 {% hint style="info" %}
-**Tip:** If you have structured data to store we recommend that you take a look at our [Data Service](data-service/). This module has more features to define additional logic on data changes.
+**Tip:** If you need to store structured data we recommend that you take a look at our [Data Service](data-service/). This service has additional features to define actions when your data changes.
 {% endhint %}
 
 ## Upload a new file
