@@ -8,11 +8,10 @@ In case you want an increase on the limits described below. Please contact the E
 
 ## Gateway Limits
 
-| Operation                          | Limit      | Description                                                                                               |
-| ---------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------- |
-| API Call                           | 60 seconds | Any single API call can run for 60 seconds before timing out.                                             |
-| Max body size                      | 10MB       | The size of the body of any API request, except for file uploads in the file service, is limited to 10MB. |
-| Max body size for the file service | 100MB      | The size of the body for file uploads in the file service, is limited to 100MB.                           |
+| Operation     | Limit      | Description                                                                           |
+| ------------- | ---------- | ------------------------------------------------------------------------------------- |
+| API Call      | 60 seconds | Any single API call can run for 60 seconds before timing out.                         |
+| Max body size | 10MB       | The size of the body of any API request, except for file uploads in the file service. |
 
 ## Service-specific limits
 
