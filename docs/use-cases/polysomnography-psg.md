@@ -10,7 +10,7 @@ description: >-
 
 Polysomnography, also called a sleep study, is a comprehensive test used to diagnose sleep disorders. Polysomnography records your brain waves, the oxygen level in your blood, heart rate, and breathing, as well as eye and leg movements during the study. Polysomnography may be done at a sleep disorders unit within a hospital, a sleep center, or at home. A polysomnography records raw, multichannel time series data from channels such as EEG, EMG, ECG, PulseOx,… at a sampling rate of ±256Hz
 
-![Example of a polysomnography record](<../.gitbook/assets/image (2) (1).png>)
+<figure><img src="../.gitbook/assets/rsz_1psg_extra_horizon-min.png" alt="Example of a polysomnography record"><figcaption><p>Example of a polysomnography record</p></figcaption></figure>
 
 ## Objective <a href="#objective" id="objective"></a>
 
@@ -20,7 +20,7 @@ The objective of this demo configuration is to ingest, process, store and annota
 
 ## Extra Horizon introduction
 
-The following [image](https://miro.com/app/board/o9J\_lC-X3Us=/?moveToWidget=3074457359254632780\&cot=14) shows a conceptual overview of Extra Horizon. On the left, you’ll find client interfacing applications such as a web front-end and mobile app. These clients connect to the customer's API.
+The following image shows a conceptual overview of Extra Horizon. On the left, you’ll find client interfacing applications such as a web front-end and mobile app. These clients connect to the customer's API.
 
 ![microservices](<../.gitbook/assets/Overview infrastructure.png>)
 
