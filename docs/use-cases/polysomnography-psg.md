@@ -22,7 +22,7 @@ The objective of this demo configuration is to ingest, process, store and annota
 
 The following image shows a conceptual overview of Extra Horizon. On the left, you’ll find client interfacing applications such as a web front-end and mobile app. These clients connect to the customer's API.
 
-![microservices](<../.gitbook/assets/Overview infrastructure.png>)
+![Microservices Architecture](../.gitbook/assets/PSG.png)
 
 ### Access management
 
