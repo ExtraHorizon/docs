@@ -370,4 +370,4 @@ response = requests.get(url=url, auth=auth)
 
 Once an EDF file is stored into the File module and consequently the signals have been uploaded into the Data module, the data is easily accessible for further applications. One example is to annotate the signals. The following figure shows an annotator tool developed by FibriCheck. The data are retrieved from the data service, annotated and annotations are stored back to the data service. A demo is available here
 
-![Fibricheck Annotator Tool](https://pages.fibricheck.com/demo/psg/assets/img/annotator\_tool.da0dae2d.png)
+![Fibricheck Annotator Tool](<../.gitbook/assets/PSG FibriCheck.png>)
