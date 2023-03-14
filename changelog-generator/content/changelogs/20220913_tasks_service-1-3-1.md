@@ -1,5 +1,5 @@
 ---
-service: task-service
+service: tasks-service
 version: 1.3.1
 date: 2022-09-13
 ---
