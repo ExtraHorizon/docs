@@ -1,5 +1,32 @@
 
+## Authentication Service
+
+### 2.0.5 (2022-09-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.0.5/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+
+**🐞 Bugs Fixed**
+- Applications with an invalid type can not be created anymore
+</details>
+
+
 ## Configurations Service
+
+### 2.0.4 (2022-09-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
 
 ### 2.0.3 (2022-06-28)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
@@ -12,6 +39,34 @@
 
 
 ## Data Service
+
+### 1.2.0 (2022-11-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* RQL support for update array item end point
+    * It is now possible to filter array items by RQL when doing an update or deletion.
+
+**⚒️ Improvements**
+* Documentation improvements
+
+**🐞 Bugs Fixed**
+* Unique index is not created on array items to avoid long database lock up
+</details>
+
+
+### 1.1.1 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
 
 ### 1.1.0 (2022-02-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.0/openapi.yaml)
@@ -33,7 +88,57 @@
 </details>
 
 
+## Dispatchers Service
+
+### 1.0.5 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.0.5/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
+
+## Events Service
+
+### 1.0.7 (2022-09-23)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.0.7/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+</details>
+
+
+## Files Service
+
+### 1.0.2 (2022-09-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
+
 ## Groups Service
+
+### 1.1.6 (2022-09-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.6/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
 
 ### 1.1.5 (2022-04-15)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.5/openapi.yaml)
@@ -56,6 +161,17 @@
 
 ## Localizations Service
 
+### 1.1.8 (2022-09-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.8/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
+
 ### 1.1.7 (2022-06-28)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.7/openapi.yaml)
 <details>
@@ -73,7 +189,31 @@
 </details>
 
 
+## Notifications Service v1
+
+### 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
+
 ## Payments Service
+
+### 1.3.2 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
 
 ### 1.3.1 (2022-08-03)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.1/openapi.yaml)
@@ -118,6 +258,27 @@
 
 ## Prescriptions Service
 
+### 1.1.19 (2023-01-19)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.19/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Events are now fired after the relevant state is updated
+</details>
+
+
+### 1.1.18 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.18/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+</details>
+
+
 ### 1.1.17 (2022-04-29)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.17/openapi.yaml)
 <details>
@@ -128,6 +289,32 @@
 * The PeriodExpiryCheckStartJob scheduler stopped after a while
 * Users with some languages could not use the service correctly
 
+</details>
+
+
+## Profiles Service
+
+### 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service:
+  - Service discovery is now based on DNS and more reliable.
+</details>
+
+
+## Reports Service
+
+### 1.0.13 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
 </details>
 
 
@@ -201,7 +388,59 @@
 </details>
 
 
+## Template Service
+
+### 1.0.15 (2022-09-23)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.15/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+</details>
+
+
 ## Users Service
+
+### 1.1.12 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.12/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Requests can now take up to 10 seconds
+    * Queries for GET requests are no longer restricted by the 3 seconds timeout. The timeout is now configurable on our side and is set to 10 seconds by default.(previously also implemented in 1.1.11)
+
+**🐞 Bugs Fixed**
+* Trying to add a non existing role to a user no longer affects the user
+* (Regression) The RQL select operation no longer affects updates
+</details>
+
+
+### 1.1.11 (2022-11-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.11/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Requests can now take up to 10 seconds
+</details>
+
+
+### 1.1.10 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.10/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+
+**🐞 Bugs Fixed**
+* Expiry field set incorrectly in patient enlistments
+</details>
+
 
 ### 1.1.9 (2022-03-10)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.9/openapi.yaml)
