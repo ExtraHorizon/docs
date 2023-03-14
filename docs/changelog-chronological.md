@@ -1,6 +1,6 @@
 
-## <no value> 1.3.1 (2022-09-13)
-[Documentation](<no value>) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/task-service/1.3.1/openapi.yaml)
+## Tasks Service 1.3.1 (2022-09-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>

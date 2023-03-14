@@ -133,6 +133,18 @@
 
 ## Tasks Service
 
+### 1.3.1 (2022-09-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- Increased the stability of the service
+  - Service discovery is now based on DNS and more reliable.
+
+</details>
+
+
 ### 1.3.0 (2022-08-09)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.0/openapi.yaml)
 <details>
