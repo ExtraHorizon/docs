@@ -94,6 +94,11 @@ params:
       docsUrl: https://docs.extrahorizon.com/
       basePath: "/reports/v1"
       defaultVersion: 1.0.12
+    logs-service:
+      name: Logs Service
+      docsUrl: https://docs.extrahorizon.com/
+      basePath: "/logs/v1"
+      defaultVersion: 1.0.0
     
     
     
