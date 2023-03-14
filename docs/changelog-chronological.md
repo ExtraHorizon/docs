@@ -10,8 +10,8 @@
 </details>
 
 
-## <no value> 1.0.0 (2022-11-18)
-[Documentation](<no value>) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
+## Logs Service 1.0.0 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>

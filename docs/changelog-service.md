@@ -189,6 +189,19 @@
 </details>
 
 
+## Logs Service
+
+### 1.0.0 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* View the API access logs
+  * View and query the API access logs from the comfort of your ExH cluster.
+</details>
+
+
 ## Notifications Service v1
 
 ### 1.0.9 (2022-09-21)
