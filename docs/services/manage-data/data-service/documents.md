@@ -59,7 +59,7 @@ const documents = await sdk.data.documents.find(schema.id, {
 Note that all custom properties defined in the schema will be under the `data` property of the document. You can query both on document properties and custom properties by using the dot notation in the RQL builder.
 
 {% hint style="warning" %}
-When queries take more than X milliseconds. The document service will stop the running query and respond with an error indicating the query took longer than the allowed limit.
+When queries take more than X milliseconds the document service will stop the running query and respond with an error indicating the query took longer than the allowed limit.
 
 To resolve this it is advised to add indexes on fields you use often in queries.
 {% endhint %}
@@ -75,12 +75,12 @@ await sdk.data.documents.update(schema.id, document.id, {
 ```
 
 {% hint style="info" %}
-As a good practice you can also add an RQL query when updating a document. This way you can guarantee you document is in a specific status or a fields holds a specific value and let the update fail it this is not the case.
+As a good practice you can also add an RQL query when updating a document. This way you can guarantee your document is in a specific status or a field holds a specific value and let the update fail if this is not the case.
 {% endhint %}
 
 ## Permanent delete
 
-While in many cases you will want to implement a `deleted` status to keep records of removed documents. In other cases you will want to remove a document from existence.
+While in many cases you will want to implement a `deleted` status to keep records of removed documents, in other cases you will want to remove a document from existence.
 
 ```javascript
 await sdk.data.documents.remove(schema.id,document.id);
@@ -106,11 +106,11 @@ When executing a transition you will need to provide the id of the transition th
 **Important!** If you set properties in `data` that correspond to properties in the document, the transition will update the record with the values from the `data` property.
 {% endhint %}
 
-## updating access
+## Updating access
 
-Access rules are defined in the schema and in many cases are dependent on the userIds and groupIds properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
+Access rules are defined in the schema and in many cases are dependent on the `userIds` and `groupIds` properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
 
-You can use the following functions to add or remove userIds and or groupIds from the document.
+You can use the following functions to add or remove userIds and / or groupIds from the document.
 
 {% tabs %}
 {% tab title="Linking Users" %}

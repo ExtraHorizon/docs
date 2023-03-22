@@ -4,7 +4,7 @@
 
 ### How can I validate that an array does not contain a certain value in a transition condition?
 
-If it is an array of strings, you can use regex expressions. In the following schema definition, you can find an example of a validation where the tag important\_tag should not be present.
+If it is an array of strings, you can use regex expressions. In the following schema definition, you can find an example of a validation where the tag `important_tag` should not be present.
 
 The relevant regex expression is `^(?!important_tag$).+$`
 
@@ -115,7 +115,7 @@ Each code snippet shows the code in the condition configuration part of the sche
 If the array items are objects, you can remove an object by executing the following HTTP call:
 
 ```
-DELETE /data/v1/{{schema}}/documents/${schemaId}/{{arrayName}}/{{objectId}}
+DELETE /data/v1/{{schemaIdOrName}}/documents/${documentId}/{{arrayName}}/{{objectId}}
 ```
 
 If the array items are simple values, like strings or numbers, you have to execute a `PUT` to the record endpoint and provide the full array (leaving out the value that you want to remove).
