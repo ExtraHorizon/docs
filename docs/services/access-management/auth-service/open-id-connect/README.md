@@ -171,12 +171,6 @@ Extra Horizon provides you with the ability to disable providers. When a provide
 When the authentication communication between Extra Horizon and Extra Horizon fails a \`OidcProviderResponseError\` is returned. Make sure your application catches error and informs the user in a correct way.&#x20;
 {% endhint %}
 
-## Support <a href="#edge-cases-and-errors-to-consider" id="edge-cases-and-errors-to-consider"></a>
-
-### Link the authenticated user to an OIDC provider
-
-### Unlink a user from openID connect
-
 
 
 
