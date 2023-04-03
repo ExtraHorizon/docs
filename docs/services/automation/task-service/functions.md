@@ -16,7 +16,7 @@ Functions can be created through the CLI and the API. A function is uniquely def
 exh tasks create <options>
 ```
 
-See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [extrahorizon cli documentation](http://localhost:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -77,7 +77,7 @@ The following code snippet shows an example how to configure the policy:
 exh tasks list <options>
 ```
 
-See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [extrahorizon cli documentation](http://localhost:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -89,7 +89,7 @@ See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-V
 exh tasks functions update <functionName> <options>
 ```
 
-See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [Extra Horizon CLI documentation](http://localhost:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -121,7 +121,7 @@ The normal response when completed is:
 exh tasks delete <options>
 ```
 
-See the [extrahorizon cli documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [extrahorizon cli documentation](http://localhost:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
