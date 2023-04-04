@@ -1,6 +1,6 @@
 ---
 description: >-
-  With the openID connect capabilities of Extra Horizon you can create a single
+  With the OpenID connect capabilities of Extra Horizon you can create a single
   sign on experience in your applications
 ---
 
@@ -12,21 +12,21 @@ The OpenID Connect (OIDC) authentication protocol enables users to securely log 
 
 ## Getting started <a href="#getting-started" id="getting-started"></a>
 
-To start making use of the openID connect functionality we need tot take the following steps:
+To start making use of the OpenID Connect functionality we need tot take the following steps:
 
-1. [Register with an openID connect provider.](./#register-with-an-openid-connect-provider)
+1. [Register with an OpenID Connect provider.](./#register-with-an-openid-connect-provider)
 2. [Add the Provider to your Extra Horizon cluster](./#add-the-provider-to-your-extra-horizon-cluster)
 
 ### Register with an OpenID Connect provider <a href="#register-with-an-openid-connect-provider" id="register-with-an-openid-connect-provider"></a>
 
-First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID connect protocol. We have added a tutorial for registering with some of the most common directory systems:
+First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID Connect protocol. We have added a tutorial for registering with some of the most common directory systems:
 
 * [Registering with Google Cloud](google-cloud.md)
 * [Register with Azure ADFS](azure-adfs.md)
 
-Registering with other platform's or tools is also possible. After registering you will receive the credentials for your application which consist of a `clientId` and `clientSecret`. You will need them later to add the provider to Extra Horizon.
+Registering with other platforms or tools is also possible. After registering you will receive the credentials for your application which consist of a `clientId` and `clientSecret`. You will need them later to add the provider to Extra Horizon.
 
-In the OpenID Connect provider documentation you should be able to find the following URL's:
+In the OpenID Connect provider documentation you should be able to find the following URLs:
 
 | Field                   | Description                                                                                                                                                                                                                            |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -95,9 +95,9 @@ const newProvider = await exh.auth.oidc.createProvider({
 {% endtab %}
 {% endtabs %}
 
-## Adding OpenID connect to your app <a href="#adding-openid-connect-to-your-app" id="adding-openid-connect-to-your-app"></a>
+## Adding OpenID Connect to your app <a href="#adding-openid-connect-to-your-app" id="adding-openid-connect-to-your-app"></a>
 
-Once your openID connect provider is added to your environment. You can start modifying your applications in order for users to login using OpenID Connect. In order to support Singel Sign On over OpenID connect you application will need to support the following flow:
+Once your OpenID Connect provider is added to your environment. You can start modifying your applications in order for users to login using OpenID Connect. In order to support Singel Sign On (SSO) over OpenID Connect you application will need to support the following flow:
 
 * **Step 1:** Add login with SSO as an option to the user
 * **Step 2:** Generate an authenticationUrl and redirect the user
@@ -168,7 +168,7 @@ Extra Horizon provides you with the ability to disable providers. When a provide
 {% hint style="danger" %}
 #### Provider misconfiguration
 
-When the authentication communication between Extra Horizon and Extra Horizon fails a \`OidcProviderResponseError\` is returned. Make sure your application catches error and informs the user in a correct way.&#x20;
+When the authentication communication between Extra Horizon and the OpenID Provider fails a \`OidcProviderResponseError\` is returned. Make sure your application catches error and informs the user in a correct way.&#x20;
 {% endhint %}
 
 
