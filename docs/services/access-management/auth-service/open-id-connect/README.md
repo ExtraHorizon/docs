@@ -39,7 +39,7 @@ In the OpenID Connect provider documentation you should be able to find the foll
 
 {% tabs %}
 {% tab title="Control Center" %}
-You can use the Extra Horizon control center to configure your OpenID Connect provider. First log in into your cluster on [app.extrahorizon.com](https://app.extrahorizon.com).&#x20;
+You can use the Extra Horizon control center to configure your OpenID Connect provider. First log in into your cluster on [app.extrahorizon.com](https://app.extrahorizon.com).
 
 {% hint style="info" %}
 Make sure the identity authenticating has the needed permissions:
@@ -49,8 +49,6 @@ Make sure the identity authenticating has the needed permissions:
 * `UPDATE_OIDC_PROVIDER`
 * `DELETE_OIDC_PROVIDER`
 {% endhint %}
-
-
 
 Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.<img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 13.38.58.png" alt="" data-size="original">
 
@@ -66,7 +64,7 @@ When ready, press **"Create".**
 {% endtab %}
 
 {% tab title="JavaScript" %}
-You can also add a provider by using the [Extra Horizon JavaScript SDK](https://docs.extrahorizon.com/javascript-sdk/).&#x20;
+You can also add a provider by using the [Extra Horizon JavaScript SDK](https://docs.extrahorizon.com/javascript-sdk/).
 
 {% hint style="info" %}
 Make sure the identity executing the function has the needed permissions:
@@ -126,10 +124,10 @@ A state parameter can be added to the URL. Supply the `state` property to this f
 {% endhint %}
 
 {% hint style="info" %}
-You can use the `state` to include information about the provider. This way your application can verify and use the authorization for the correct provider in [step 3.](./#handle-the-redirect-and-parameters)&#x20;
+You can use the `state` to include information about the provider. This way your application can verify and use the authorization for the correct provider in [step 3.](./#handle-the-redirect-and-parameters)
 {% endhint %}
 
-### &#x20;**3.** Implement a redirect url and retrieve the oAuth2 token <a href="#handle-the-redirect-and-parameters" id="handle-the-redirect-and-parameters"></a>
+### **3.** Implement a redirect url and retrieve the oAuth2 token <a href="#handle-the-redirect-and-parameters" id="handle-the-redirect-and-parameters"></a>
 
 The user will be redirected to the redirect url configured with the provider once the authentication is successful. Your application will need to capture the authorization code that is provided as a parameter in the redirect url.
 
@@ -142,36 +140,63 @@ const token = await exh.auth.authenticateWithOidc('google',{
 ```
 
 {% hint style="warning" %}
-#### First time users
+**First time users**
 
 Extra Horizon copies the basic user information _(email, first name, lastname)_ from the SSO provider once when the user registers in Extra Horizon. After that this information can be edited independently of the SSO provider in Extra Horizon.
 
-#### No profile <a href="#no-profile-will-be-created-for-users-that-register-through-an-sso-provider" id="no-profile-will-be-created-for-users-that-register-through-an-sso-provider"></a>
+**No profile**
 
 For users that register through an SSO provider, a profile will not be created automatically. If necessary a profile should be created manually.
 {% endhint %}
 
 {% hint style="danger" %}
-#### Already registered Error
+**Already registered Error**
 
-An \`EmailUsedError\` will be thrown if a user tries to register a new account by using SSO for an email that already exists. Make sure your application catches error and informs the user in a correct way.&#x20;
+An \`EmailUsedError\` will be thrown if a user tries to register a new account by using SSO for an email that already exists. Make sure your application catches error and informs the user in a correct way.
 
-If a user wants to switch from an email based account to an SSO based account your application needs to implement the ability to link an SSO provider. [More info here](./#link-the-authenticated-user-to-an-oidc-provider)
+If a user wants to switch from an email based account to an SSO based account your application needs to implement the ability to link an SSO provider. [More info here](./#link-the-authenticated-user-to-a-provider)
 {% endhint %}
 
 {% hint style="danger" %}
-#### Disabled providers
+**Disabled providers**
 
-Extra Horizon provides you with the ability to disable providers. When a provider is disabled authentication attempts will trigger a \`IllegalStateError\`. Make sure your application catches error and informs the user in a correct way.&#x20;
+Extra Horizon provides you with the ability to disable providers. When a provider is disabled authentication attempts will trigger a \`IllegalStateError\`. Make sure your application catches error and informs the user in a correct way.
 {% endhint %}
 
 {% hint style="danger" %}
-#### Provider misconfiguration
+**Provider misconfiguration**
 
-When the authentication communication between Extra Horizon and the OpenID Connect Provider fails a \`OidcProviderResponseError\` is returned. Make sure your application catches this error and informs the user in a correct way.&#x20;
+When the authentication communication between Extra Horizon and the OpenID Connect Provider fails a \`OidcProviderResponseError\` is returned. Make sure your application catches this error and informs the user in a correct way.
 {% endhint %}
 
+## Support
 
+### Link the authenticated user to a provider
 
+When an email-password based user wants to connect to a provider your application will need to support that kind of functionality.
 
+Similar to the flow [above](./#adding-openid-connect-to-your-app) you will need to generate an authenticationUrl and redirect the user:
 
+```typescript
+const oidcAuthenticationUrl = await exh.auth.generateOidcAuthenticationUrl('google',{
+    state: 'some-randomly-generated-string'
+});
+```
+
+You can use the following function in the sdk to link an authenticated user to an existing provider. Note that the user will need to log in first via email and password before you can execute this function.
+
+```typescript
+await exh.auth.oidc.linkUserToOidcProvider('gooogle',{
+    authorizationCode: 'abcd********1234'
+});
+```
+
+### Unlink a user from a provider
+
+In some cases users might want to detach a provider from their account and return to a email-password based account.
+
+For this an administrator intervention is required by a user with the `UNLINK_USER_FROM_OIDC` permission. You can unlink an existing user from a provider by using the following function:
+
+```typescript
+await exh.auth.oidc.unlinkUserFromOidc(':userId');
+```
