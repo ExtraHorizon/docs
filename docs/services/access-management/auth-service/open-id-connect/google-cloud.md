@@ -32,7 +32,7 @@
 
 Select `OAuth Client ID`
 
-Select Web Application in the drop down on the following page
+Select Web Application in the dropdown on the following page
 
 <figure><img src="../../../../.gitbook/assets/Screenshot 2023-03-30 at 10.16.43.png" alt=""><figcaption></figcaption></figure>
 
