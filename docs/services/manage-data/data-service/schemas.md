@@ -98,7 +98,7 @@ The following table lists the relevant permissions for the data service:
 | <p><code>CREATE_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                | A user with this permission can create comments in any document **in any schema**        |
 | <p><code>CREATE_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0 </mark><em><mark style="background-color:yellow;"></mark></em> <mark style="background-color:red;">deprecated</mark> </p> | A user with this permission can create comments in any document in schema `schemaName`   |
 | <p><code>VIEW_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                  | A user with this permission can view comments in any document **in any schema**          |
-| <p><code>IEW_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark> </p>                                                            | A user with this permission can view comments in any document in schema `schemaName`     |
+| <p><code>VIEW_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark> </p>                                                            | A user with this permission can view comments in any document in schema `schemaName`     |
 | <p><code>UPDATE_DOCUMENT_COMMENTS</code><br><code></code> <mark style="background-color:red;">deprecated</mark> </p>                                                                                                                                | A user with this permission can update any document comments **in any schema**           |
 | <p><code>UPDATE_DOCUMENT_COMMENTS:{schemaName}</code><br><code></code> <mark style="background-color:yellow;">since 1.1.0</mark>  <mark style="background-color:red;">deprecated</mark> </p>                                                        | A user with this permission can update any document comments in schema `schemaName`      |
 | `UPDATE_ACCESS_TO_DOCUMENT`                                                                                                                                                                                                                         | A user with this permission can update the access to any document **in any schema**      |
@@ -125,7 +125,7 @@ const myNewSchema = await sdk.data.schemas.create({
 
 ## Properties
 
-A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields which should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).
+A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields that should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).
 
 ![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg\_WiBjiuzqgpFDjYJL1ker6l4fM\_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
 
@@ -335,7 +335,7 @@ All attributes required to compose the type configurations, can be found in the 
 
 ## Statuses
 
-A document can be perceived as a finite-state machine, which remains in a state/status until a transition occurs. You can define a set of statuses for you document based on the expected workflow you want to build.
+A document can be perceived as a finite-state machine, which remains in a state/status until a transition occurs. You can define a set of statuses for your document based on the expected workflow you want to build.
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -375,7 +375,7 @@ Currently the only supported transition type is `manual`. Other types may be add
 
 When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.
 
-A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the fromStatuses object, and the Status the Transition leads to is determined in the toStatus attribute.
+A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the `fromStatuses` object, and the Status the Transition leads to is determined in the `toStatus` attribute.
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -454,6 +454,8 @@ When executing a transition on a document you can require the API client to prov
 the example above would require the API client to provide the address.inhabited property. otherwise the transition will not trigger.
 {% endtab %}
 
+<!-- Remaining examples are redundant or not filled out -->
+
 {% tab title="document" %}
 ```javascript
   await sdk.data.transitions.create(newSchema.id, {
@@ -511,7 +513,7 @@ You can attach actions to transitions. This way when a transition is executed an
 To access an element in an array or embedded documents, use the dot notation.
 {% endhint %}
 
-### **Modifying document access**
+#### **Modifying document access**
 
 Each document has a `userIds` and `groupIds` field. These field are part of determining the access policy towards that specific document depending on the general collection schema configuration.
 
@@ -552,7 +554,7 @@ await sdk.data.transitions.create(newSchema.id, {
   actions: [
     {
       type: 'linkUserFromData',
-      userIdField: '{UserIdField}', // Field in dot notation.The root is data
+      userIdField: '{UserIdField}', // Field in dot notation. The root is data
     }
   ],
   ...
@@ -566,7 +568,7 @@ await sdk.data.transitions.create(newSchema.id, {
   ...,
   actions: [
     {
-      type: 'LinkEnlistedGroups',
+      type: 'linkEnlistedGroups',
       onlyActive: true, // Optional, defaults to false
     }
   ],
@@ -582,7 +584,7 @@ await sdk.data.transitions.create(newSchema.id, {
   actions: [
     {
       type: 'linkGroupFromData',
-      groupIdField: 'my_group_id', // Field in dot notation.The root is data
+      groupIdField: 'my_group_id', // Field in dot notation. The root is data
     }
   ],
   ...
@@ -615,14 +617,13 @@ await sdk.data.transitions.create(newSchema.id, {
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## Indexes
 
 The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
+
+<!-- Some attributes are not described -->
 
 | Attribute  | Description                                                   |
 | ---------- | ------------------------------------------------------------- |
@@ -705,7 +706,7 @@ await sdk.data.schemas.enable('{yourSchemaId}');
 
 ### **Enabling/disabling a schema**
 
-As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allow to existing documents.
+As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allowed to existing documents.
 
 ```javascript
 await sdk.data.schemas.disable('{yourSchemaId}');

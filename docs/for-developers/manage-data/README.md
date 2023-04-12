@@ -51,7 +51,7 @@ While structured data is handled by the [Data Service](../../services/manage-dat
 
 #### Files <a href="#markdown-header-files" id="markdown-header-files"></a>
 
-The `files service` provides a way of storing data without imposing a structure on it by way of schemas. This means the `files service` allows the storage of a variety of file types with an unstructured content, such as images and streams. Storing a file with this service will return a _file token_, which can be used as a reference to that file for further interaction. The `files service` stores uploaded files together with metadata that describes the file, such as the name of the file, the file size and the file type.
+The `files service` provides a way of storing data without imposing a structure on it by way of schemas. This means the `files service` allows the storage of a variety of file types with unstructured content, such as images and streams. Storing a file with this service will return a _file token_, which can be used as a reference to that file for further interaction. The `files service` stores uploaded files together with metadata that describes the file, such as the name of the file, the file size and the file type.
 
 {% content-ref url="../../services/manage-data/file-service.md" %}
 [file-service.md](../../services/manage-data/file-service.md)
