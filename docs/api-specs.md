@@ -1,6 +1,6 @@
 | Service | Base Path | Version | Older Versions |
 | ----| ---- | ---- | ---- |
-| Authentication Service | `/auth/v2` | [2.0.5](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.0.5/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=auth-service) |
+| Authentication Service | `/auth/v2` | [2.1.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=auth-service) |
 | Configurations Service | `/configurations/v2` | [2.0.4](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=configurations-service) |
 | Data Service | `/data/v1` | [1.2.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=data-service) |
 | Dispatchers Service | `/dispatchers/v1` | [1.0.5](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.0.5/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=dispatchers-service) |
@@ -17,4 +17,4 @@
 | Reports Service | `/reports/v1` | [1.0.13](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=reports-service) |
 | Tasks Service | `/tasks/v1` | [1.3.1](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.1/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=tasks-service) |
 | Template Service | `/templates/v1` | [1.0.15](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.15/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=templates-service) |
-| Users Service | `/users/v1` | [1.1.12](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.12/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=users-service) |
+| Users Service | `/users/v1` | [1.2.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=users-service) |
