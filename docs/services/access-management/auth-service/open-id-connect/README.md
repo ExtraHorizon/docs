@@ -50,7 +50,7 @@ Make sure the identity authenticating has the needed permissions:
 * `DELETE_OIDC_PROVIDER`
 {% endhint %}
 
-Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.<img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 13.38.58.png" alt="" data-size="original">
+Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](../../../../.gitbook/assets/image.png)
 
 Here you can find a list of currently registered SSO Providers.
 
@@ -58,7 +58,7 @@ Here you can find a list of currently registered SSO Providers.
 
 Go to **"Add new"** to register a new provider and fill in the required information. It should look something like this:
 
-<figure><img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 14.11.54.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 When ready, press **"Create".**
 {% endtab %}
