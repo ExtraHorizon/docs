@@ -50,7 +50,7 @@ Make sure the identity authenticating has the needed permissions:
 * `DELETE_OIDC_PROVIDER`
 {% endhint %}
 
-Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](../../../../.gitbook/assets/image.png)
+Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](<../../../../.gitbook/assets/image (12).png>)
 
 Here you can find a list of currently registered SSO Providers.
 
@@ -183,13 +183,24 @@ const oidcAuthenticationUrl = await exh.auth.generateOidcAuthenticationUrl('goog
 });
 ```
 
-You can use the following function in the sdk to link an authenticated user to an existing provider. Note that the user will need to log in first via email and password before you can execute this function.
+To link an authenticated user to an existing provider using the SDK, use the following function. However, note that the user must first log in with their email and password to generate a presenceToken using the `auth.confirmPresence` function. Once you have the presenceToken, you can execute the function to link the user to the provider
 
 ```typescript
 await exh.auth.oidc.linkUserToOidcProvider('gooogle',{
+    presenceToken: '3e9a8***224c'
     authorizationCode: 'abcd********1234'
 });
 ```
+
+After the linking process is completed successfully, the user will be automatically logged out from all applications. To access the application again, the user will need to log in using the linked provider's credentials.
+
+{% hint style="warning" %}
+If a user is already linked to a provider, they must first be unlinked before they can be linked to another provider. Each user can only be linked to one provider at a time.
+{% endhint %}
+
+{% hint style="warning" %}
+When a user is linked to a provider, their password is removed from their account. As a result, they will no longer be able to log in using their password and email combination.
+{% endhint %}
 
 ### Unlink a user from a provider
 
