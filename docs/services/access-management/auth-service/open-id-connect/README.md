@@ -50,7 +50,7 @@ Make sure the identity authenticating has the needed permissions:
 * `DELETE_OIDC_PROVIDER`
 {% endhint %}
 
-Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](../../../../.gitbook/assets/image.png)
+Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](<../../../../.gitbook/assets/image (12).png>)
 
 Here you can find a list of currently registered SSO Providers.
 
@@ -132,7 +132,11 @@ A guide with and some tips and examples can be found in [this Auth0 article](htt
 
 ### **3.** Implement a redirect url and retrieve the oAuth2 token <a href="#handle-the-redirect-and-parameters" id="handle-the-redirect-and-parameters"></a>
 
-The user will be redirected to the redirect url configured with the provider once the authentication is successful. Your application will need to capture the authorization code that is provided as a parameter in the redirect url.
+Once the authentication is successful, the user will be redirected to the redirect URL that you have configured with the OpenID Connect provider. Your application must capture the authorization code that is provided as a query parameter called `code` in the redirect URL.
+
+{% hint style="warning" %}
+The authorization code may be URL encoded, so your application should decode it before using it.
+{% endhint %}
 
 Next you can use the `authenticateWithOidc` function to exchange the authorization code for tokens:
 
