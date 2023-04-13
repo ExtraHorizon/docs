@@ -23,7 +23,7 @@
     * [oAuth2](services/access-management/auth-service/oauth2.md)
     * [oAuth1](services/access-management/auth-service/oauth1.md)
     * [MFA](services/access-management/auth-service/mfa.md)
-    * [Open ID Connect](services/access-management/auth-service/open-id-connect/README.md)
+    * [OpenID Connect](services/access-management/auth-service/open-id-connect/README.md)
       * [Google Cloud](services/access-management/auth-service/open-id-connect/google-cloud.md)
       * [Azure ADFS](services/access-management/auth-service/open-id-connect/azure-adfs.md)
 * [Data Management](for-developers/manage-data/README.md)

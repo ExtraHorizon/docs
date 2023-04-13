@@ -1,10 +1,10 @@
 ---
 description: >-
-  With the OpenID connect capabilities of Extra Horizon you can create a single
+  With the OpenID Connect capabilities of Extra Horizon you can create a single
   sign on experience in your applications
 ---
 
-# Open ID Connect
+# OpenID Connect
 
 From our personal experience we know that the success of many medical applications largely depend on how well they are able to integrate into the day-to-day workflow of hospitals, physicians, nurses,… Therefore, as an application builder you want to put an extra focus on designing apps with a low barrier of entry and easy accessibility.
 
@@ -141,6 +141,8 @@ Once the authentication is successful, the user will be redirected to the redire
 {% hint style="warning" %}
 The authorization code may be URL encoded, so your application should decode it before using it.
 {% endhint %}
+
+At this point, if the state was provided in [step 2](./#retrieve-the-authentication-url), the `state` query parameter should be used to check for CSRF attacks and identify the correct provider.
 
 Next you can use the `authenticateWithOidc` function to exchange the authorization code for tokens:
 
