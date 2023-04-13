@@ -47,3 +47,28 @@ When a user has 50 failed login attempts this can be reset to 0 by any user with
 ```
 POST /{userId}/reset_failed_login_attempts
 ```
+
+### Email templates <a href="#logins" id="logins"></a>
+
+For certain actions the User Service sends an email. The user service allows you to customize these emails by linking to email templates.
+
+The types of emails the User Service send:
+
+* Activation email
+* Reactivation email
+* Password reset email
+* OIDC Unlink email
+
+The content of email templates are configured in the [Template Service](../../other/template-service/#e-mail-templates).
+
+#### OIDC Unlink email
+
+The OIDC Unlink email serves to inform the user they are unlinked from their OIDC provider and should configure a password for their account.
+
+The template will receive a password reset hash with which the user can update its password from within your application.
+
+Setting the email template:
+
+```typescript
+await exh.users.setEmailTemplates({ oidcUnlinkEmailTemplateId: 'template-id' })
+```

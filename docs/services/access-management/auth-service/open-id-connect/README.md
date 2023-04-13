@@ -50,7 +50,7 @@ Make sure the identity authenticating has the needed permissions:
 * `DELETE_OIDC_PROVIDER`
 {% endhint %}
 
-Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](<../../../../.gitbook/assets/image (12).png>)
+Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is located under User Management.![](../../../../.gitbook/assets/image.png)
 
 Here you can find a list of currently registered SSO Providers.
 
@@ -186,6 +186,8 @@ const oidcAuthenticationUrl = await exh.auth.generateOidcAuthenticationUrl('goog
 });
 ```
 
+You can use the following function in the SDK to link an authenticated user to an existing provider. Note that the user will need to log in first via email and password before you can execute this function.
+
 To link an authenticated user to an existing provider using the SDK, use the following function. However, note that the user must first log in with their email and password to generate a presenceToken using the `auth.confirmPresence` function. Once you have the presenceToken, you can execute the function to link the user to the provider
 
 ```typescript
@@ -207,10 +209,21 @@ When a user is linked to a provider, their password is removed from their accoun
 
 ### Unlink a user from a provider
 
-In some cases users might want to detach a provider from their account and return to a email-password based account.
+In some cases users might want to detach a provider from their account and return to a email-password based account. Administrator intervention is required to unlink users by a user with the `UNLINK_USER_FROM_OIDC` permission.
 
-For this an administrator intervention is required by a user with the `UNLINK_USER_FROM_OIDC` permission. You can unlink an existing user from a provider by using the following function:
+Before being able to unlink users from an OpenID Connect providers admins need to set the OIDC Unlink email template. [This is described in the User Service](../../user-service/configuration.md#oidc-unlink-email).
+
+The admin can unlink the existing user from a provider by using the following function:
 
 ```typescript
 await exh.auth.oidc.unlinkUserFromOidc(':userId');
 ```
+
+Once the unlinking process is successfully completed, the user will be logged out of all applications. They will receive the OIDC Unlink email confirming their unlinking from OpenID Connect. Once the user completes the password reset process, they will be able to log in again.
+
+{% hint style="warning" %}
+**In order to reset their password, a user must be activated**
+
+If the user's email address is correctly set, they can request a new activation email themselves. However, if their email address is not correctly set, an admin will need to intervene to correct the issue.
+{% endhint %}
+
