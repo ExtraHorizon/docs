@@ -26,6 +26,10 @@ First you will need to register with an OpenID Connect provider. The provider ca
 
 Registering with other platforms or tools is also possible. After registering you will receive the credentials for your application which consist of a `clientId` and `clientSecret`. You will need them later to add the provider to Extra Horizon.
 
+{% hint style="warning" %}
+Although registering other providers than the ones listed above is definitely possible, be aware that only those in the list above are tested. Other providers might behave differently and therefor not work as expected with ExtraHorizon.  &#x20;
+{% endhint %}
+
 In the OpenID Connect provider documentation you should be able to find the following URLs:
 
 | Field                   | Description                                                                                                                                                                                                                            |
