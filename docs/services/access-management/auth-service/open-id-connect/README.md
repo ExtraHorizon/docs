@@ -19,7 +19,7 @@ To start making use of the OpenID Connect functionality we need tot take the fol
 
 ### Register with an OpenID Connect provider <a href="#register-with-an-openid-connect-provider" id="register-with-an-openid-connect-provider"></a>
 
-First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID Connect protocol. We have added a tutorial for registering with some of the most common directory systems:
+First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID Connect protocol with [client\_secret\_basic client authentication](https://openid.net/specs/openid-connect-core-1\_0.html#ClientAuthentication). We have added a tutorial for registering with some of the most common directory systems:
 
 * [Registering with Google Cloud](google-cloud.md)
 * [Register with Azure ADFS](azure-adfs.md)
