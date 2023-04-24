@@ -5,12 +5,10 @@ import fetch from 'node-fetch';
 
 
 export async function confluenceReq (url: string) {
-  console.log(process.env.PASSWORD);
-  console.log("blabla")
   const res = await  fetch(url, {
     method: 'GET',
     headers: {
-      'Authorization' : 'Basic ' + Buffer.from(process.env.USERNAME + ":" + process.env.PASSWORD).toString('base64'),
+      'Authorization' : 'Basic ' + Buffer.from(process.env.API_USERNAME + ":" + process.env.API_PASSWORD).toString('base64'),
       'Accept': 'application/json'
     }
   })
@@ -20,9 +18,9 @@ export async function confluenceReq (url: string) {
 
 export async function getChildPages(ancestorId: string){
 
-  const resData: any = await confluenceReq(`https://${process.env.HOST}/wiki/rest/api/content/${ancestorId}/descendant/page?depth=1&expand=body.storage,metadata.labels&limit=100`)
+  const resData: any = await confluenceReq(`https://${process.env.API_HOST}/wiki/rest/api/content/${ancestorId}/descendant/page?depth=1&expand=body.storage,metadata.labels&limit=100`)
 
-  // Filter on data with release note label
+  // Filter for pages with the `releasenotes` label
   let parsedData = resData.results.filter((item: any) => {
     
     const labelResults = item.metadata.labels.results;
