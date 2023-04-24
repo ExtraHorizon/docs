@@ -242,6 +242,28 @@
 </details>
 
 
+## Mail Service
+
+### 1.2.0 (2022-10-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Increased the stability of the service**  
+  Service discovery is now based on DNS and more reliable.
+- **Internationalized email address support**  
+  Email addresses using non ascii characters, such as `二ノ宮@黒川.日本`, are now supported via updating our validation to be based on [RFC 6530](https://datatracker.ietf.org/doc/html/rfc6530).
+
+
+**🐞 Bugs Fixed**
+
+- Inconsistencies in querying on certain fields (`template_id`, `updateTimestamp`, …) with RQL have been resolved.
+
+</details>
+
+
 ## Notifications Service v1
 
 ### 1.0.9 (2022-09-21)
