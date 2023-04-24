@@ -32,7 +32,7 @@ After the creation of a Schema, a document can be created which adheres to the S
 {% endtab %}
 {% endtabs %}
 
-### Create
+## Create
 
 Below you can find an example of how you can create a document. You need to specify the schema and the properties you want to provide when creating the document.
 
@@ -45,7 +45,7 @@ const document = await sdk.data.documents.create(schema.id,{
 
 The creation transition and the schema will determine what properties will be required and the conditions that both the input fields and the permissions the creator will need to successfully create the document.
 
-### Querying
+## Querying
 
 Using [RQL](../../../for-developers/resource-query-language-rql.md) you can build queries on any field in the document service. The Extra Horizon SDK contains an RQL builder that allows you to easily build queries and explore the different query functions supported.
 
@@ -59,12 +59,12 @@ const documents = await sdk.data.documents.find(schema.id, {
 Note that all custom properties defined in the schema will be under the `data` property of the document. You can query both on document properties and custom properties by using the dot notation in the RQL builder.
 
 {% hint style="warning" %}
-When queries take more than X milliseconds. The document service will stop the running query and respond with an error indicating the query took longer than the allowed limit.
+When queries take more than X milliseconds the document service will stop the running query and respond with an error indicating the query took longer than the allowed limit.
 
 To resolve this it is advised to add indexes on fields you use often in queries.
 {% endhint %}
 
-### Update
+## Update
 
 When permitted by the settings in the schema and the permissions assigned to you, you will be able to update any field in a document.
 
@@ -75,12 +75,12 @@ await sdk.data.documents.update(schema.id, document.id, {
 ```
 
 {% hint style="info" %}
-As a good practice you can also add an RQL query when updating a document. This way you can guarantee you document is in a specific status or a fields holds a specific value and let the update fail it this is not the case.
+As a good practice you can also add an RQL query when updating a document. This way you can guarantee your document is in a specific status or a field holds a specific value and let the update fail if this is not the case.
 {% endhint %}
 
-### Permanent delete
+## Permanent delete
 
-While in many cases you will want to implement a `deleted` status to keep records of removed documents. In other cases you will want to remove a document from existence.
+While in many cases you will want to implement a `deleted` status to keep records of removed documents, in other cases you will want to remove a document from existence.
 
 ```javascript
 await sdk.data.documents.remove(schema.id,document.id);
@@ -88,7 +88,7 @@ await sdk.data.documents.remove(schema.id,document.id);
 
 The schema configuration will determine who can execute a permanent delete of a document.
 
-### Triggering transitions
+## Triggering transitions
 
 Transitions allow you to move documents from one state to another. While automatic transitions will be triggered when the documents ends up in transitions `fromState`, manual transitions will need to be triggered by an API call.
 
@@ -106,11 +106,11 @@ When executing a transition you will need to provide the id of the transition th
 **Important!** If you set properties in `data` that correspond to properties in the document, the transition will update the record with the values from the `data` property.
 {% endhint %}
 
-### updating access
+## Updating access
 
-Access rules are defined in the schema and in many cases are dependent on the userIds and groupIds properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
+Access rules are defined in the schema and in many cases are dependent on the `userIds` and `groupIds` properties in the document root. These fields indicate to whom this specific document belongs to or has specific permissions over the document.
 
-You can use the following functions to add or remove userIds and or groupIds from the document.
+You can use the following functions to add or remove userIds and / or groupIds from the document.
 
 {% tabs %}
 {% tab title="Linking Users" %}

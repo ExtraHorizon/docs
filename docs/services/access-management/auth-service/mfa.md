@@ -16,4 +16,3 @@ Follow the steps below to enable MFA for the first time for a user.
 
 The recovery codes should be shown to the user with an indication to store them in a safe place. They are needed to reset the MFA in case they lose access to the MFA device.\
 Recovery codes can be generated using the `/mfa/users/{userId}/methods` endpoint of the Authentication service.\
-****

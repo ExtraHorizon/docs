@@ -192,7 +192,7 @@ In the request to delete a token, `token` and `tokenToDelete` can have the same 
 
 ## List uploaded files
 
-This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator, for example to regain access to a File when tokens are lost. This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator to regain access to a File when tokens are lost.
+This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator, for example to regain access to a File when tokens are lost. 
 
 {% hint style="warning" %}
 Retrieving a list of uploaded files is only intended for Administrator use. Only users with the global VIEW\_FILES permission can use the following functions.

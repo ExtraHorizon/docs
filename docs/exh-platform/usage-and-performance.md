@@ -17,10 +17,11 @@ In case you want an increase on the limits described below. Please contact the E
 
 ### Task Service
 
-| Operation        | Limit     | Description                                    |
-| ---------------- | --------- | ---------------------------------------------- |
-| Task execution   | 5 minutes | A task execution will timeout after 5 minutes. |
-| Task concurrency | 5         | Number of tasks that can run at the same time. |
+| Operation        | Limit     | Description                                                                                           |
+| ---------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| Task execution   | 5 minutes | A task execution will timeout after 5 minutes.                                                        |
+| Task concurrency | 5         | Number of tasks that can run at the same time.                                                        |
+| Task data size   | 250KB     | The size of the data supplied to a task should not exceed this threshold. (measured as a JSON string) |
 
 ### File Service
 

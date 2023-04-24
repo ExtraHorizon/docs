@@ -35,7 +35,7 @@ Create a new Postman environment that contains the following variables:&#x20;
 
 **Don't forget to save the environment!**
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Environment view in Postman</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>Environment view in Postman</p></figcaption></figure>
 
 
 
