@@ -1,6 +1,6 @@
 # Schemas
 
-A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name and description. A schema description can contain 100 characters.\
+A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name (3-50 characters) and description (max 100 characters). \
 A schema is based on:
 
 * Permissions that determine who can access what documents,
