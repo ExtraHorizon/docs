@@ -1,7 +1,6 @@
 # Schemas
 
-A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name (3-50 characters) and description (max 100 characters). \
-A schema is based on:
+A schema defines both the data contained and the behavior (in the form of a state machine) of the documents it holds. A Schema object is identified within the Data Service by a unique identifier (id) and contains a name (3-50 characters) and description (max 100 characters). A schema is based on:
 
 * Permissions that determine who can access what documents,
 * Statuses which define the state of the document,
@@ -501,10 +500,10 @@ You can attach actions to transitions. This way when a transition is executed an
 
 | Action Type   | Description                          |
 | ------------- | ------------------------------------ |
-| `Set`         | Change the value of a specific field |
-| `Unset`       | Remove one or multiple fields        |
-| `AddItems`    | Add values to an array field         |
-| `RemoveItems` | Removes values from an array field   |
+| `set`         | Change the value of a specific field |
+| `unset`       | Remove one or multiple fields        |
+| `addItems`    | Add values to an array field         |
+| `removeItems` | Removes values from an array field   |
 
 {% hint style="info" %}
 To access an element in an array or embedded documents, use the dot notation.
@@ -518,10 +517,10 @@ Using actions you can modify these fields and therefore the access of the docume
 
 | Action Type          | Description                                                                                                   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `LinkCreator`        | Add the creatorId to the userIds of the document                                                              |
-| `LinkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                    |
-| `LinkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document |
-| `LinkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                            |
+| `linkCreator`        | Add the creatorId to the userIds of the document                                                              |
+| `linkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                    |
+| `linkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document |
+| `linkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                            |
 
 {% hint style="info" %}
 If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](schemas.md#updating-access "mention")
@@ -530,7 +529,7 @@ If you like to modify the access to documents from outside the data service you 
 **code examples**
 
 {% tabs %}
-{% tab title="LinkCreator" %}
+{% tab title="linkCreator" %}
 ```typescript
 await sdk.data.transitions.create(newSchema.id, {
   ...,
@@ -544,7 +543,7 @@ await sdk.data.transitions.create(newSchema.id, {
 ```
 {% endtab %}
 
-{% tab title="LinkUserFromData" %}
+{% tab title="linkUserFromData" %}
 ```typescript
 await sdk.data.transitions.create(newSchema.id, {
   ...,
@@ -559,7 +558,7 @@ await sdk.data.transitions.create(newSchema.id, {
 ```
 {% endtab %}
 
-{% tab title="LinkEnlistedGroups" %}
+{% tab title="linkEnlistedGroups" %}
 ```typescript
 await sdk.data.transitions.create(newSchema.id, {
   ...,
@@ -619,12 +618,12 @@ await sdk.data.transitions.create(newSchema.id, {
 
 The Index object is identified by an id and a name. An index is set on a specific property in a Schema. This property is defined in the Fields object by the name and type attribute. The index is tailored with the following attributes:
 
-| Attribute  | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| background | A boolean value to determine whether the index must be        |
-| unique     | A boolean value to determine whether the index must be unique |
-| sparse     | A boolean value to determine whether the index must be sparse |
-| system     | A boolean value to determine whether the index must be        |
+| Attribute  | Description                                                                                                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| background | A boolean value to determine whether the index must be built in the background; meaning it will take longer but active read and write operations are prioritized. |
+| unique     | A boolean value to determine whether the index must be unique                                                                                                     |
+| sparse     | A boolean value to determine whether the index must be sparse                                                                                                     |
+| system     | A boolean value to determine whether the index must be                                                                                                            |
 
 ## Other settings
 
