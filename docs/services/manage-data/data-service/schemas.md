@@ -167,6 +167,8 @@ References:
 }
 ```
 
+Note that the `items`- property is required.
+
 References:
 
 * [JSON Schema: Keywords for Applying Subschemas to Arrays](https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.9.3.1)
