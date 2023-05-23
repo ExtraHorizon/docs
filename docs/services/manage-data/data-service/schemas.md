@@ -371,6 +371,8 @@ sdk.data.transitions.updateCreation(newSchema.id,{
 
 Currently the only supported transition type is `manual`. Other types may be added in the future.
 
+
+
 ## Transitions
 
 When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.
@@ -615,6 +617,10 @@ await sdk.data.transitions.create(newSchema.id, {
 ```
 {% endtab %}
 {% endtabs %}
+
+### After Actions
+
+`afterActions` can be used to execute an action once a transition is completed. This is helpful when you want to look at the result of transition itself; compared to the normal actions that are executed during the transition.&#x20;
 
 ## Indexes
 
