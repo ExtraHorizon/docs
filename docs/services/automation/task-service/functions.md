@@ -140,35 +140,5 @@ The normal response when completed is:
 ```
 
 {% hint style="success" %}
-If a function is removed from the task service the logs aren't removed and can still be retrieved
+If a function is removed from the task service its executions (tasks) and the logs aren't removed and can still be retrieved
 {% endhint %}
-
-An example response when requesting logs:
-
-```json
-{
-  "page": {
-      "total": 4,
-      "offset": 0,
-      "limit": 0
-  },
-  "data": [
-    {
-      "message": "START RequestId: 2c69e412-346b-4698-b8e3-6086dd7d821a Version: $LATEST\n",
-      "eventTimestamp": "2021-12-10T08:01:03.926Z"
-    },
-    {
-      "message": "2021-12-10T08:01:05.721Z\tundefined\tERROR\t(node:9) Some Log message\n",
-      "eventTimestamp": "2021-12-10T08:01:05.722Z"
-    },
-    {
-      "message": "END RequestId: 2c69e412-346b-4698-b8e3-6086dd7d821a\n",
-      "eventTimestamp": "2021-12-10T08:01:05.862Z"
-    },
-    {
-      "message": "REPORT RequestId: 2c69e412-346b-4698-b8e3-6086dd7d821a\tDuration: 1934.38 ms\tBilled Duration: 1935 ms\tMemory Size: 128 MB\tMax Memory Used: 12 MB\t\n",
-      "eventTimestamp": "2021-12-10T08:01:05.862Z"
-    },
-  ]
-}
-```
