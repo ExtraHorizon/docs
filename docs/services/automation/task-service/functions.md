@@ -1,7 +1,7 @@
 # Functions
 
 {% hint style="success" %}
-Available since [v1.1.0](broken-reference)
+Available since v1.1.0
 {% endhint %}
 
 A task represents a planned or scheduled piece of code. The code definition is a function in Extra Horizon.
