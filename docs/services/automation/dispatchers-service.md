@@ -1,102 +1,95 @@
+---
+description: >-
+  Whereas the Event Service is in charge of communicating the occurrence of
+  specific types of events, the Dispatcher Service gives you the ability to act
+  on them. Learn how to configure dispatchers.
+---
+
 # Dispatchers Service
 
-Whereas the [Event Service](broken-reference) is in charge of communicating the occurrence of specific types of actions, the Dispatcher Service makes sure the required follow-up actions are performed. This can either be the sending of a template-based email via the [Mail Service](broken-reference) or the execution of a Task via the [Task Service](broken-reference). For each type of Event, a different dispatcher can be configured, with different actions that are triggered.
-
-![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
+Whereas the Event Service is in charge of communicating the occurrence of specific types of events, the Dispatcher Service gives you the ability to act on them. Learn how to configure dispatchers.
 
 #### Example
 
-When a User object is removed in the User Service, the customer must guarantee that all personally identifiable information of the user disappears from all services. A dispatcher for the user\_deleted Event type must therefore create a Task which eliminates the PII in, for example, the Data Service.
+When a User object is removed in the User Service, the customer must guarantee that all personally identifiable information of the user disappears from all services. A dispatcher for the `user_deleted` Event type must therefore create a Task which eliminates the PII in, for example, the Data Service.
 
-## Information Model
+## Create your first dispatcher
 
-Configurators of the customer’s application can create multiple **Dispatchers** to monitor the different types of Events and to trigger **MailActions** and/or **TaskActions**.
+Dispatching an action based on an event is easy. First you need to choose the action type. The dispatcher service currently supports two types of actions (a mail and task action).
 
-![](https://lh5.googleusercontent.com/HWx1d8raCgb4krRTMaQXf87qrTNs1REe2KJTTrz1zZwSNbgrQIvOo7jhSTDDHOdujlccumzLal1gCDPHzAgWghYKjqrYJfoClSXRmrgzQhq15GUNhUchJmwY80LfIsrzz-oaU9Q=s0)
+{% tabs %}
+{% tab title="Task Action" %}
+The TaskAction contains the (optional) parameters for the Create a Task request to the Task Service:
 
-## Objects and Attributes
-
-### Dispatchers
-
-A Dispatcher object is uniquely identified by its `id`. Each Dispatcher can only monitor Events of one `eventType` but it can trigger multiple `actions` to send template-based emails and/or create Tasks.
-
-### Actions
-
-Action objects are uniquely identified by their `id` and contain a `mail` or `task` type attribute.
-
-#### MailActions
-
-A MailAction object contains part of the parameters required for the Send an email request to the [Mail Service](broken-reference). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
-
-The fixed components include the recipients of the email and the templateId which is needed to compose the email subject and body text fields.
-
-{% hint style="info" %}
-Note: Only template-based emails can be sent via the Dispatcher Service.
-{% endhint %}
-
-#### TaskActions
-
-The TaskAction object contains the (optional) parameters for the Create a Task request to the Task Service:
+```typescript
+await exh.dispatchers.create({
+  eventType: 'user_created',
+  actions:[
+    {
+      type: ActionType.TASK,
+      functionName: 'myHelloWorldFunction',
+      data: {
+        customStringField: 'myStringHere',
+        customNumberField: 42
+      },
+      startTimestamp: new Date(),
+      tags:["tag1"]
+    }
+  ]
+});
+```
 
 * `functionName`: The name of the AWS function to invoke,
 * `data`: The key-value pairs the AWS function expects as input,
-* `startimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed, and
+* `starTimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed, and
 * `tags`: Descriptive keywords that are stored in the Task object.
 
-The values for the above attributes can be variables that refer to the content attribute of the captured Event object.
+{% hint style="info" %}
+The dispatcher service will append the original event data as a property called event and pass it tot the task service. Setting the an event property yourself will be overridden.
+{% endhint %}
+{% endtab %}
 
-#### Common timestamp attributes <a href="#docs-internal-guid-2bab1c3c-7fff-eacb-5ca1-4c989f84ba8f" id="docs-internal-guid-2bab1c3c-7fff-eacb-5ca1-4c989f84ba8f"></a>
+{% tab title="Mail Action" %}
+A MailAction contains part of the parameters required for the Send an email request to the [Mail Service](broken-reference). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
 
-All Extra Horizon Services keep track of the time of creation (`creationTimestamp`) and of the most recent update (`updateTimestamp)` of their stored objects.
+The fixed components include the recipients of the email and the templateId which is needed to compose the email subject and body text fields.
+
+```typescript
+await exh.dispatchers.create({
+  eventType: 'user_created',
+  actions:[{
+    type: ActionType.MAIL,
+    recipients:{
+      to:["john.doe@example.com"],
+      cc:["jane.doe@example.com"],
+      bcc: ["bcc@example.com"]
+    },
+    templateId:'abcdef0123456789abcdef013456789ab'
+  }]
+});
+```
 
 {% hint style="info" %}
-Note: The timestamp attributes in the Dispatcher Service have a number format, whereas other services use a string(`$date-time`) format.
+The dispatcher service will add the original event data as a property called event and pass it tot the mail and template service.
 {% endhint %}
 
-## Actions
+{% hint style="warning" %}
+Only template-based emails can be sent via the Dispatcher Service. You must create an email template before you can send an email via a dispatcher action.
+{% endhint %}
+{% endtab %}
+{% endtabs %}
 
-This section gives an overview of the available Dispatcher Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API reference documentation.
+Events can originate from any service and the dispatcher service will put listeners based on the dispatchers configured.
 
-### Managing Dispatchers
 
-Configurators, with the correct permissions, can create Dispatchers for the different Event types that they have set up in other services. Each Dispatcher can contain multiple Actions.
 
-{% swagger method="post" path="/" baseUrl=" " summary="Create a Dispatcher" %}
-{% swagger-description %}
+![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
 
-{% endswagger-description %}
-{% endswagger %}
+## Retrieving a list of dispatchers
 
-{% swagger method="get" path="/" baseUrl=" " summary="List all Dispatchers" %}
-{% swagger-description %}
+You can retrieve a paginated list of dispatchers via the Extra Horizon SDK.
 
-{% endswagger-description %}
-{% endswagger %}
+```typescript
+const dispatchers = await exh.dispatchers.find();
+```
 
-{% swagger method="delete" path="/{dispatcherId}" baseUrl=" " summary="Delete a Dispatcher" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
-### Managing Actions
-
-Once a Dispatcher is created, its `eventType` can no longer be changed. However, the included Actions can be managed via the following endpoints.
-
-{% swagger method="post" path="/{dispatcherId}/actions" baseUrl=" " summary="Add an Action to a Dispatcher" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
-{% swagger method="put" path="/{dispatcherId}/actions/{actionId}" baseUrl=" " summary="Update an Action from a Dispatcher" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
-{% swagger method="delete" path="/{dispatcherId}/actions/{actionId}" baseUrl=" " summary="Delete an action from a Dispatcher" %}
-{% swagger-description %}
-I\
-{% endswagger-description %}
-{% endswagger %}
