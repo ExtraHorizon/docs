@@ -69,12 +69,12 @@ Visit the [CLI documentation ](https://docs.extrahorizon.com/cli/features/templa
 ```typescript
 import { createOAuth2Client } from "@extrahorizon/javascript-sdk";
 
-const sdk = createOAuth2Client({
+const exh = createOAuth2Client({
   host: "",
   clientId: "",
 });
 
-await sdk.auth.authenticate({
+await exh.auth.authenticate({
   password: "",
   username: "",
 });
@@ -96,10 +96,10 @@ const schemaDefinition = {
 }
 
 // Example To Update
-await sdk.templates.update("<ID>", schemaDefinition);
+await exh.templates.update("<ID>", schemaDefinition);
 
 // Example to Create
-await sdk.templates.create(schemaDefinition);
+await exh.templates.create(schemaDefinition);
 ```
 {% endtab %}
 {% endtabs %}
@@ -133,18 +133,18 @@ Our template is now resolved into a message that makes sense.
 ```javascript
 import { createOAuth2Client } from "@extrahorizon/javascript-sdk";
 
-const sdk = createOAuth2Client({
+const exh = createOAuth2Client({
   host: "",
   clientId: "",
 });
 
-await sdk.auth.authenticate({
+await exh.auth.authenticate({
   password: "",
   username: "",
 });
 
 // Example To Update
-const resolvedTemplate = await sdk.templates.resolveAsJson("{TEMPLATE_ID}",{
+const resolvedTemplate = await exh.templates.resolveAsJson("{TEMPLATE_ID}",{
   firstName: "John"
 });
 ```
