@@ -37,7 +37,7 @@ After the creation of a Schema, a document can be created which adheres to the S
 Below you can find an example of how you can create a document. You need to specify the schema and the properties you want to provide when creating the document.
 
 ```javascript
-const document = await sdk.data.documents.create(schema.id,{
+const document = await exh.data.documents.create(schema.id,{
     fieldA: "value",
     fieldB: 123456
 });
@@ -51,7 +51,7 @@ Using [RQL](../../../for-developers/resource-query-language-rql.md) you can buil
 
 ```javascript
 const myRql = rqlBuilder().eq('data.fieldA', 'myValue').gt('creationTimestamp', '2021-01-21').build();
-const documents = await sdk.data.documents.find(schema.id, {
+const documents = await exh.data.documents.find(schema.id, {
   rql: myRql,
 });
 ```
@@ -69,7 +69,7 @@ To resolve this it is advised to add indexes on fields you use often in queries.
 When permitted by the settings in the schema and the permissions assigned to you, you will be able to update any field in a document.
 
 ```javascript
-await sdk.data.documents.update(schema.id, document.id, {
+await exh.data.documents.update(schema.id, document.id, {
     fieldB: 4321,
 });
 ```
@@ -83,7 +83,7 @@ As a good practice you can also add an RQL query when updating a document. This 
 While in many cases you will want to implement a `deleted` status to keep records of removed documents, in other cases you will want to remove a document from existence.
 
 ```javascript
-await sdk.data.documents.remove(schema.id,document.id);
+await exh.data.documents.remove(schema.id,document.id);
 ```
 
 The schema configuration will determine who can execute a permanent delete of a document.
@@ -94,7 +94,7 @@ Transitions allow you to move documents from one state to another. While automat
 
 ```javascript
 const transitionId = schema.findTransitionIdByName('myTransition');
-await sdk.data.documents.transition(schema.id, document.id, {
+await exh.data.documents.transition(schema.id, document.id, {
   id: transitionId,
   data: {...},
 });
@@ -115,7 +115,7 @@ You can use the following functions to add or remove userIds and / or groupIds f
 {% tabs %}
 {% tab title="Linking Users" %}
 ```javascript
-await sdk.data.documents.linkUsers('{yourSchemaId}', '{yourDocumentId}', {
+await exh.data.documents.linkUsers('{yourSchemaId}', '{yourDocumentId}', {
     userIds: ['{userIdToLink}'],
 });
 ```

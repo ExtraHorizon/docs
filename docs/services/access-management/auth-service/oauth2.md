@@ -30,7 +30,7 @@ The Password Grant accepts your username and password, then returns an Access To
 {% tab title="Javascript" %}
 {% code lineNumbers="true" %}
 ```javascript
-await sdk.auth.authenticate({
+await exh.auth.authenticate({
     username:'john.doe@example.com'
     password:'myPassword1234'
 });
@@ -52,7 +52,7 @@ When MFA is enabled for a user and you try to authenticate using the password gr
 {% code lineNumbers="true" %}
 ```javascript
 try {
-  await sdk.auth.authenticate({
+  await exh.auth.authenticate({
     password: '',
     username: '',
   });
@@ -63,7 +63,7 @@ try {
     // Your logic to request which method the user want to use in case of multiple methods
     const methodId = mfa.methods[0].id;
 
-    await sdk.auth.confirmMfa({
+    await exh.auth.confirmMfa({
       token: mfa.token,
       methodId,
       code: '', // code from ie. Google Authenticator
@@ -94,7 +94,7 @@ When the user is authenticated on that page he/she will be redirected back to th
 
 {% code lineNumbers="true" %}
 ```javascript
-await sdk.auth.authenticate({
+await exh.auth.authenticate({
   code: '{yourAuthorizionCodeHere}',
 });
 ```
@@ -110,7 +110,7 @@ When you want your user to stay authenticated when he reopens you app you will n
 
 {% code lineNumbers="true" %}
 ```javascript
-await sdk.auth.authenticate({
+await exh.auth.authenticate({
   refreshToken: 'myRefreshToken',
 });
 ```
@@ -124,7 +124,7 @@ Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is calle
 
 {% code lineNumbers="true" %}
 ```javascript
-const sdk = createOAuth2Client({
+const exh = createOAuth2Client({
   host: '',
   clientId: '',
   freshTokensCallback: tokenData => {
@@ -142,7 +142,7 @@ You can retrieve a list of active tokens and the applications they correspond to
 
 {% code lineNumbers="true" %}
 ```javascript
-await sdk.auth.oauth2.getAuthorizations({
+await exh.auth.oauth2.getAuthorizations({
     rql: //optional rql query
 });
 ```
@@ -154,7 +154,7 @@ You can revoke tokens by use the deleteAuthorization function.
 
 {% code lineNumbers="true" %}
 ```javascript
-await sdk.auth.oauth2.deleteAuthorization('');
+await exh.auth.oauth2.deleteAuthorization('');
 ```
 {% endcode %}
 

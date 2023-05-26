@@ -25,7 +25,7 @@ The size of the files you can upload is limited for performance and user experie
 {% tabs %}
 {% tab title="JavaScript" %}
 ```typescript
-const fileMetaData = await sdk.files.create('myRepport.pdf',myBuffer,{
+const fileMetaData = await exh.files.create('myRepport.pdf',myBuffer,{
     tags:['ecg-report']
 });
 ```
@@ -92,13 +92,13 @@ Using a file token that is attached to the file you can retrieve the content of 
 This example will retrieve the file and will return to you a Buffer with the binary data.
 
 ```typescript
-const fileBuffer = await sdk.files.retrieve('myAccessToken');
+const fileBuffer = await exh.files.retrieve('myAccessToken');
 ```
 
 You can use the `retrieveStream` function in case you are working with streams.
 
 ```typescript
-const fileReadStream = await sdk.files.retrieveStream('myAccessToken');
+const fileReadStream = await exh.files.retrieveStream('myAccessToken');
 ```
 {% endtab %}
 {% endtabs %}
@@ -112,7 +112,7 @@ When a user has read-only access, this function does not return the tokens attri
 You can use the following function to retrieve the metadata of a file.
 
 ```typescript
-const file = await sdk.files.getDetails('myAccessToken');
+const file = await exh.files.getDetails('myAccessToken');
 ```
 {% endtab %}
 {% endtabs %}
@@ -128,16 +128,16 @@ Deleted files will permanently remove the file from our service. There will be n
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-await sdk.files.remove('myAccessToken');
+await exh.files.remove('myAccessToken');
 ```
 {% endtab %}
 {% endtabs %}
 
 ## File Tokens
 
-Files and their metadata can be accessed via multiple, unique access tokens. This provides you with two advantages:&#x20;
+Files and their metadata can be accessed via multiple, unique access tokens. This provides you with two advantages:
 
-* Different users do not have to share the same token, access to one user can be denied easily without removing access for the other users.&#x20;
+* Different users do not have to share the same token, access to one user can be denied easily without removing access for the other users.
 * Tokens can grant different levels of access, enabling the owner of a file to safely invite other users to view but not remove their data.
 
 Managing the tokens associated with a FileMetadata object requires a token that grants full access to that specific file. This can be the initial token, or any full-access token created later on. The number of (read-only or full-access) tokens that can be generated is unlimited. Deleting a token object renders the token stored by the customer’s application invalid.
@@ -167,7 +167,7 @@ Requires a token with full a full access level
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-const tokenObject = await sdk.files.generateToken('myAccessToken',{
+const tokenObject = await exh.files.generateToken('myAccessToken',{
     accessLevel:TokenPermission.READ
 });
 ```
@@ -183,7 +183,7 @@ Requires a token with full a full access level
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-await sdk.files.deleteToken('myAccessToken','tokenToDelete');
+await exh.files.deleteToken('myAccessToken','tokenToDelete');
 ```
 {% endtab %}
 {% endtabs %}
@@ -192,7 +192,7 @@ In the request to delete a token, `token` and `tokenToDelete` can have the same 
 
 ## List uploaded files
 
-This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator, for example to regain access to a File when tokens are lost. 
+This request provides a list of the available FileMetadata objects, including the corresponding tokens. It can be used by an administrator, for example to regain access to a File when tokens are lost.
 
 {% hint style="warning" %}
 Retrieving a list of uploaded files is only intended for Administrator use. Only users with the global VIEW\_FILES permission can use the following functions.
@@ -207,19 +207,19 @@ const myRql = rqlBuilder()
     .eq('tags', 'myFirstTag')
     .build();
 
-const file = await sdk.files.find({rql:myRql});
+const file = await exh.files.find({rql:myRql});
 ```
 
 If you need to find a file with a specific fileName you can use the findByName function.
 
 ```typescript
-const fileDetails = await sdk.files.findByName('filename.ext');
+const fileDetails = await exh.files.findByName('filename.ext');
 ```
 
 When your query is intended to find one file you can ask the SDK to return the first result.
 
 ```typescript
-const file = await sdk.files.findFirst({rql:myRql});
+const file = await exh.files.findFirst({rql:myRql});
 ```
 {% endtab %}
 {% endtabs %}

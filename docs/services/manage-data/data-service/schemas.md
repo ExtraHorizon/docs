@@ -12,7 +12,7 @@ A schema defines both the data contained and the behavior (in the form of a stat
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-const myNewSchema = await sdk.data.schemas.create({
+const myNewSchema = await exh.data.schemas.create({
     name: 'myNewSchema',
     description: 'This is my new schema',
 });
@@ -111,7 +111,7 @@ For more information how to add permissions to roles and roles to users, take a 
 You can provide the permissions parameters upon creation of you new schema:
 
 ```javascript
-const myNewSchema = await sdk.data.schemas.create({
+const myNewSchema = await exh.data.schemas.create({
     name: 'myNewSchema',
     description: 'This is my new schema',
     createMode: 'default',
@@ -427,7 +427,7 @@ There is an additional condition which applies to all Transitions:
 When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them
 
 ```javascript
-  await sdk.data.transitions.create(newSchema.id, {
+  await exh.data.transitions.create(newSchema.id, {
     type: 'manual',
     toStatus: 'secondStatus',
     fromStatuses: ['initialStatus'],
@@ -535,7 +535,7 @@ If you like to modify the access to documents from outside the data service you 
 {% tabs %}
 {% tab title="linkCreator" %}
 ```typescript
-await sdk.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(newSchema.id, {
   ...,
   actions: [
     {
@@ -604,7 +604,7 @@ await sdk.data.transitions.create(newSchema.id, {
 {% tabs %}
 {% tab title="Task" %}
 ```typescript
-await sdk.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(newSchema.id, {
   ...,
   actions: [
     {
@@ -666,7 +666,7 @@ To give doctors access to the results, set the `groupSyncMode` to `linkedUsersPa
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-const myNewSchema = await sdk.data.schemas.create({
+const myNewSchema = await exh.data.schemas.create({
     ...
     groupSyncMode:'creatorPatientEnlistments'
     ...
@@ -687,7 +687,7 @@ The defaultLimit and maximumLimit refer to the number of documents that are retu
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-const myNewSchema = await sdk.data.schemas.update(mySchema.id,{
+const myNewSchema = await exh.data.schemas.update(mySchema.id,{
     ...
     defaultLimit:20,
     maximumLimit:200,
@@ -702,7 +702,7 @@ const myNewSchema = await sdk.data.schemas.update(mySchema.id,{
 You can only remove disabled schema's. Removing a schema removes all documents in that schema collection. Removed documents are non retrievable.
 
 ```javascript
-await sdk.data.schemas.enable('{yourSchemaId}');
+await exh.data.schemas.enable('{yourSchemaId}');
 ```
 
 ### **Enabling/disabling a schema**
@@ -710,13 +710,13 @@ await sdk.data.schemas.enable('{yourSchemaId}');
 As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allowed to existing documents.
 
 ```javascript
-await sdk.data.schemas.disable('{yourSchemaId}');
+await exh.data.schemas.disable('{yourSchemaId}');
 ```
 
 You can enable a disabled schema the same way:
 
 ```javascript
-await sdk.data.schemas.enable('{yourSchemaId}');
+await exh.data.schemas.enable('{yourSchemaId}');
 ```
 
 ##
