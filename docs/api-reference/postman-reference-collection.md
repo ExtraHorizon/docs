@@ -25,13 +25,7 @@ The Extra Horizon API offers oAuth1 and oAuth2 authenthication mechanisms. The P
 
 Create a new Postman environment that contains the following variables:&#x20;
 
-|                  | Value                                         |
-| ---------------- | --------------------------------------------- |
-| `baseUrl`        | `https://api.dev.exh-sandbox.extrahorizon.io` |
-| `consumerKey`    | 27a4353c3a950a494a6fd58a6g3c0cff4affc953      |
-| `consumerSecret` | 7470a5bc2d42346988c5418420ac27cfe6ae5e8b      |
-| `email`          | `john.doe@extrahorizon.com`                   |
-| `password`       | `SomeVeryDifficultP@ss`                       |
+<table><thead><tr><th width="238"></th><th>Value</th></tr></thead><tbody><tr><td><code>baseUrl</code></td><td><code>https://api.dev.exh-sandbox.extrahorizon.io</code></td></tr><tr><td><code>consumerKey</code></td><td>27a4353c3a950a494a6fd58a6g3c0cff4affc953</td></tr><tr><td><code>consumerSecret</code></td><td>7470a5bc2d42346988c5418420ac27cfe6ae5e8b</td></tr><tr><td><code>email</code></td><td><code>john.doe@extrahorizon.com</code></td></tr><tr><td><code>password</code></td><td><code>SomeVeryDifficultP@ss</code></td></tr></tbody></table>
 
 **Don't forget to save the environment!**
 
