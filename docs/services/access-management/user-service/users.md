@@ -4,7 +4,7 @@
 
 ```javascript
 const rql = rqlBuilder().eq('email', 'john.doe@example.com').build();
-await sdk.users.find({
+await exh.users.find({
   rql,
 });
 ```
@@ -100,7 +100,7 @@ You can use the Extra Horizon SDK to create new users from your application. Thi
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-const myNewSchema = await sdk.users.createAccount({
+const myNewSchema = await exh.users.createAccount({
     firstName: 'John',
     lastName: 'Doe',
     email: 'john.doe@example.com',
@@ -127,7 +127,7 @@ As an application, you have the ability to check if an email is available or alr
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.isEmailAvailable('jane.doe@example.com');
+await exh.users.isEmailAvailable('jane.doe@example.com');
 ```
 {% endtab %}
 {% endtabs %}
@@ -175,7 +175,7 @@ When you make an application where email verification is a prerequisite, or when
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.requestEmailActivation('john.doe@example.com');
+await exh.users.requestEmailActivation('john.doe@example.com');
 ```
 {% endtab %}
 {% endtabs %}
@@ -191,7 +191,7 @@ By performing the steps mentioned higher, you can send your user an email with a
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.validateEmailActivation({
+await exh.users.validateEmailActivation({
     hash: '6ca1691b4c5b4dbfa5def4c49b910657',
 });
 ```
@@ -205,7 +205,7 @@ When a user is logged in, he can change the email of his or another user's accou
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.updateEmail('abcdef0123456789abcdef01', 'jane.doe@example.com');
+await exh.users.updateEmail('abcdef0123456789abcdef01', 'jane.doe@example.com');
 ```
 {% endtab %}
 {% endtabs %}
@@ -221,7 +221,7 @@ Similar to the email verification flow, the password reset flow provides you wit
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.requestPasswordReset('john.doe@example.com');
+await exh.users.requestPasswordReset('john.doe@example.com');
 ```
 {% endtab %}
 {% endtabs %}
@@ -237,7 +237,7 @@ By performing the steps mentioned higher, you can provide your user with an emai
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.validatePasswordReset({
+await exh.users.validatePasswordReset({
     hash: 'be7ab8ebe9094588ac3693cd6ec9d5b7',
     newPassword: 'myNewSecret1234',
 });
@@ -252,7 +252,7 @@ When authenticated you can also implement password change functionality in your 
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.changePassword({
+await exh.users.changePassword({
     oldPassword: 'password123',
     newPassword: 'newPassword123',
 });
@@ -267,7 +267,7 @@ Removing a user requires the global DELETE\_USER permission. This will also trig
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.remove('abcdef0123456789abcdef01');
+await exh.users.remove('abcdef0123456789abcdef01');
 ```
 {% endtab %}
 {% endtabs %}

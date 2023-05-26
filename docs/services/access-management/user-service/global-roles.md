@@ -7,7 +7,7 @@ Creating a system-wide role requires the `CREATE_ROLE` permission on a system le
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-const myNewRole = await sdk.users.globalRoles.create({
+const myNewRole = await exh.users.globalRoles.create({
   name: 'myRole',
   description: 'myNewRoleDescription',
 });
@@ -21,7 +21,7 @@ const myNewRole = await sdk.users.globalRoles.create({
 {% tab title="JavaScript" %}
 ```javascript
 const rql = rqlBuilder().eq('id', myNewRole.id).build();
-await sdk.users.globalRoles.addPermissions(rql, {
+await exh.users.globalRoles.addPermissions(rql, {
   permissions: [GlobalPermissionName.ADD_PATIENT],
 });
 ```
@@ -34,7 +34,7 @@ await sdk.users.globalRoles.addPermissions(rql, {
 {% tab title="JavaScript" %}
 ```javascript
 const rql = rqlBuilder().eq('email', 'john.doe@example.com').build();
-await sdk.users.globalRoles.addToUsers(rql, {
+await exh.users.globalRoles.addToUsers(rql, {
   roles: [myNewRole.id],
 });
 ```
@@ -47,7 +47,7 @@ await sdk.users.globalRoles.addToUsers(rql, {
 {% tab title="JavaScript" %}
 ```javascript
 const rql = rqlBuilder().eq('email', 'john.doe@example.com').build();
-await sdk.users.globalRoles.removeFromUser(rql, {
+await exh.users.globalRoles.removeFromUser(rql, {
   roles: [myNewRole.id],
 });
 ```

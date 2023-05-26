@@ -26,7 +26,7 @@ Group roles give the ability to provide specific users with specific permissions
 {% tab title="JavaScript" %}
 ```javascript
 //step1: create a new role
-const myNewGroupRole = await sdk.users.groupRoles.add(
+const myNewGroupRole = await exh.users.groupRoles.add(
     '841e55106a2a40c39ed6359b2c137a19',
     {
         name: 'myGroupRole',
@@ -36,7 +36,7 @@ const myNewGroupRole = await sdk.users.groupRoles.add(
 
 //step2: attach permissions to the new group role
 const rql = rqlBuilder().eq('id', myNewGroupRole.id).build();
-await sdk.users.groupRoles.addPermissions(
+await exh.users.groupRoles.addPermissions(
     myNewGroupRole.groupId,
     {
         permissions: ['UPDATE_GROUP_ROLE'],
@@ -86,7 +86,7 @@ You can enlist a user as a staff member of a group. This provides that user with
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.groupRoles.addUsersToStaff({
+await exh.users.groupRoles.addUsersToStaff({
     groups: ['841e55106a2a40c39ed6359b2c137a19'],
 });
 ```
@@ -115,7 +115,7 @@ You can not attach additional permissions to patients
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await sdk.users.addPatientEnlistment('{userId}', {
+await exh.users.addPatientEnlistment('{userId}', {
     groupId: '841e55106a2a40c39ed6359b2c137a19',
     expiryTimestamp: 1234567890,
 });
