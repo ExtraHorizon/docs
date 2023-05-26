@@ -1,10 +1,3 @@
----
-description: >-
-  Whereas the Event Service is in charge of communicating the occurrence of
-  specific types of events, the Dispatcher Service gives you the ability to act
-  on them. Learn how to configure dispatchers.
----
-
 # Dispatchers Service
 
 Whereas the Event Service is in charge of communicating the occurrence of specific types of events, the Dispatcher Service gives you the ability to act on them. Learn how to configure dispatchers.
@@ -86,6 +79,10 @@ Events can originate from any service and the dispatcher service will put listen
 ![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
 
 ## Retrieving a list of dispatchers
+
+{% embed url="https://extrahorizon.atlassian.net/browse/SVCS-41" %}
+
+
 
 You can retrieve a paginated list of dispatchers via the Extra Horizon SDK.
 

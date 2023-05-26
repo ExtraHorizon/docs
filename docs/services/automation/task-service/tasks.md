@@ -71,20 +71,63 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 
 ### Queuing
 
-When many tasks need to be executed within a short timeframe, the Tasks are queued chronologically by the value of their startTimestamp attribute. However, in a queue, the `priority` attribute takes precedence over the `startTimestamp` attribute. Tasks with a higher `priority` value will be executed first.
+When many tasks need to be executed within a short timeframe, the Tasks are queued chronologically by the value of their `startTimestamp` attribute. However, in a queue, the `priority` attribute takes precedence over the `startTimestamp` attribute. Tasks with a higher `priority` value will be executed first.
 
 ### Execution status
 
-![](https://lh6.googleusercontent.com/af5KNmsUUbeSMWvMsNd27lX2m1O5sQlQq4UyIZFC6pYtUlNFJioAG6OiDVidT52T8nt1iClUDsmaDveT71ej6QkVmRQGrgkxt8CztZTOkcw0IBrACEQhEYf5jw\_wEMKNmZabTac=s0)
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
-The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: new) can be revoked via the Cancel a Task endpoint (canceled).
+The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: `new`) can be revoked via the Cancel a Task endpoint (status: `canceled`).
 
-Once the Task Service invokes the specified AWS Lambda function, the Task receives the inProgress status and the execution of the code cannot be halted via Extra Horizon.
+Once the Task Service invokes the specified AWS Lambda function, the Task receives the `inProgress` status and the execution of the code cannot be halted via Extra Horizon.
 
-Upon (un)successful execution of the code, AWS Lambda reports back to the Task Service and the Task status is updated accordingly to `complete` or `failed`
+Upon successful execution of the code, AWS Lambda reports back to the Task Service and the Task status is updated to `complete`.
 
-If AWS Lambda does not report anything within 5 minutes, the associated task status is set to `failed`.
+#### Retries
 
-{% hint style="warning" %}
-There is no automatic retrying for a failed task. To rerun a failed Task, create a new Task with the same parameters
+{% hint style="success" %}
+Available since v1.3.0
 {% endhint %}
+
+If an error occurs while executing a Task, the Task Service will check if the function has defined a retry policy of the function.
+
+When a retry policy is applicable the Task status is set to `retried` and a new Task is created with the same properties. The new Task will include a `retryForTaskIds` field containing the id of the original Task. In turn, the original task will receive a `retriedByTaskId` field holding the id of the new Task.
+
+See the [Functions section](functions.md#retrypolicy-automatically-retry-a-task-when-it-fails) to learn more about retry policies.
+
+#### Task failures
+
+If an error occurs while no restart policy is defined or the maximum number of tries have been reached the Task status is set to `failed`.
+
+If AWS Lambda does not report anything within 5 minutes, the associated Task status is also set to `failed`.
+
+#### The Task Failed Event
+
+{% hint style="success" %}
+Available since v1.4.0
+{% endhint %}
+
+When a Task reaches the `failed` status, a `task_failed` event is published.
+
+The event can be used to react to Task failures. This could for instance be used for monitoring, alerting or implementing custom retry logic.
+
+A `task_failed` event contains the following attributes:
+
+```json
+{
+    "type": "task_failed",
+    "content": {
+        "id": "757f191a810c19729de860ae",
+        "functionName": "testFunction",
+        "error": {
+            "type": "runtime",
+            "name": "TypeError",
+            "message": "Cannot read property 'x' of undefined"
+        }
+    }
+}
+```
+
+* `content.id` - the id of the failed Task.
+* `content.functionName` - the name of the function the failed Task was trying to execute.
+* `content.error` - the error that led to the failure of the Task.
