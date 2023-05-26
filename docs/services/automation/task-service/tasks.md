@@ -15,7 +15,7 @@ When configuring your application's data model, it's possible to attach an [acti
 In JavaScript/TypeScript environments, our open source [Extra Horizon SDK ](broken-reference)offers a convenient wrapper around the API.
 
 ```typescript
-await sdk.tasks.create({
+await exh.tasks.create({
     functionName: 'yourFunctionName',
     data: {...yourData},
     priority: 1,
@@ -33,12 +33,10 @@ See the [Tasks Service API Reference](https://developers.extrahorizon.io/swagger
 {% tabs %}
 {% tab title="sdk" %}
 ```typescript
-await sdk.tasks.find();
+await exh.tasks.find();
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 A Task object is uniquely identified within the Task Service by its id. It contains a number of attributes
 
