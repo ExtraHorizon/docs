@@ -7,7 +7,7 @@ date: 2023-05-31
 
 
 **🎁 Features**
-* Functions can be used as a HTTP(s) endpoint
+* Functions can be used as an HTTP(s) endpoint
   * API Functions can be used to create your own endpoints.
 * Send a task failed event
   * When a task fails, task fails event is triggered.
