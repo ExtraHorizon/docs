@@ -10,7 +10,7 @@ date: 2023-05-31
 * Functions can be used as an HTTP(s) endpoint
   * API Functions can be used to create your own endpoints.
 * Send a task failed event
-  * When a task fails, task fails event is triggered.
+  * When a task fails, a `task_failed` event is triggered.
 
 **⚒️ Improvements**
 * Allow empty body in the execute endpoint.
