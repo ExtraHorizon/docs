@@ -395,6 +395,30 @@
 
 ## Tasks Service
 
+### 1.4.0 (2023-05-31)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.4.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+
+
+**🎁 Features**
+* Functions can be used as an HTTP(s) endpoint
+  * API Functions can be used to create your own endpoints.
+* Send a task failed event
+  * When a task fails, a `task_failed` event is triggered.
+
+**⚒️ Improvements**
+* Allow empty body in the execute endpoint.
+  * The execute endpoint can now be called with an empty body whereas previously, an empty objects had to be provided.
+
+**🐞 Bugs Fixed**
+* Task logs with a timestamp equal to the end marker are now shown
+* RQL is now correctly marked as required in the OpenAPI documentation
+
+</details>
+
+
 ### 1.3.2 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
 <details>
