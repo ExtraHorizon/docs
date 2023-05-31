@@ -7,8 +7,10 @@ date: 2023-05-31
 
 
 **🎁 Features**
-* Functions can be used as a HTTP(s) endpointAPI Functions can be used to create your own endpoints.
-  * Send a task failed eventWhen a task fails, task fails event is triggered.
+* Functions can be used as a HTTP(s) endpoint
+  * API Functions can be used to create your own endpoints.
+* Send a task failed event
+  * When a task fails, task fails event is triggered.
 
 **⚒️ Improvements**
 * Allow empty body in the execute endpoint.
@@ -16,4 +18,4 @@ date: 2023-05-31
 
 **🐞 Bugs Fixed**
 * Task logs with a timestamp equal to the end marker are now shown
-  * RQL is now correctly marked as required in the OpenAPI documentation
+* RQL is now correctly marked as required in the OpenAPI documentation
