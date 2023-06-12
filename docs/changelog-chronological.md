@@ -1,6 +1,6 @@
 
-## <no value> 1.5.0 (2023-06-06)
-[Documentation](<no value>) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.5.0/openapi.yaml)
+## API Gateway 1.5.0 (2023-06-06)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.5.0/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>

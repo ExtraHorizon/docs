@@ -1,4 +1,20 @@
 
+## API Gateway
+
+### 1.5.0 (2023-06-06)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.5.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+
+
+**⚒️ Improvements**
+* Added DNS Caching
+  * DNS Caching was added in the gateway to speed up requests and improve the stability of the API Gateway.
+
+</details>
+
+
 ## Authentication Service
 
 ### 2.1.0 (2023-04-12)
