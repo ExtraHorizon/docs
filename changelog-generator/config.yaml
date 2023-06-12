@@ -99,9 +99,14 @@ params:
       docsUrl: https://docs.extrahorizon.com/
       basePath: "/logs/v1"
       defaultVersion: 1.0.0
-    
-    
-    
+    api-gateway:
+      name: API Gateway
+      docsUrl: https://docs.extrahorizon.com/
+      basePath: "/"
+      defaultVersion: 1.5.0
+
+
+      
 mediaTypes:
   text/markdown:
     suffixes:
