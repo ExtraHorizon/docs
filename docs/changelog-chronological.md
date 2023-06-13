@@ -1,19 +1,4 @@
 
-## API Gateway 1.5.0 (2023-06-06)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.5.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-
-
-**⚒️ Improvements**
-* Added DNS Caching
-  * DNS Caching was added in the gateway to speed up requests and improve the stability of the API Gateway.
-
-</details>
-
-
 ## Tasks Service 1.4.0 (2023-05-31)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.4.0/openapi.yaml)
 
@@ -75,6 +60,21 @@
 </details>
 
 
+## Users Service 1.2.0 (2023-04-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* OpenID Connect is added as a authentication method.
+  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
+  * Other endpoints for users with a password are blocked for OpenID Connect users.
+
+</details>
+
+
 ## Authentication Service 2.1.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml)
 
@@ -91,21 +91,6 @@
 * Validation from the application logo is removed
   * Users can now add anything they want as the application logo.
   * This used to be only hashes that were used by the image service.
-</details>
-
-
-## Users Service 1.2.0 (2023-04-12)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* OpenID Connect is added as a authentication method.
-  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
-  * Other endpoints for users with a password are blocked for OpenID Connect users.
-
 </details>
 
 
