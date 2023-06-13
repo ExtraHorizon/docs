@@ -14,7 +14,7 @@ date: 2023-05-31
 
 **⚒️ Improvements**
 * Allow empty body in the execute endpoint.
-  * The execute endpoint can now be called with an empty body whereas previously, an empty objects had to be provided.
+  * The execute-endpoint can now be called with an empty body whereas previously, an empty objects had to be provided.
 
 **🐞 Bugs Fixed**
 * Task logs with a timestamp equal to the end marker are now shown
