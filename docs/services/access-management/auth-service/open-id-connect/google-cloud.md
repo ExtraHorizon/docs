@@ -2,7 +2,7 @@
 
 * Go to the credentials page: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-03-30 at 10.01.45 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Screenshot 2023-03-30 at 10.01.45.png" alt=""><figcaption></figcaption></figure>
 
 * Press `create project` or select a project with the dropdown on top
 

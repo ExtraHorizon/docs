@@ -1,0 +1,1179 @@
+openapi: 3.0.0
+
+info:
+  title: Tasks Service
+  version: 1.4.0
+  description: Create functions to execute custom logic, schedule tasks to define when to run them.
+
+tags:
+  - name: Tasks
+
+paths:
+  /:
+    get:
+      tags:
+        - Tasks
+      summary: View a list of tasks
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASKS` | `global` | **Required** for this endpoint
+      parameters:
+        - $ref: "#/components/parameters/rqlOptional"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResult'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Task'
+
+    post:
+      tags:
+        - Tasks
+      summary: Schedule a task
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `CREATE_TASKS` | `global` | **Required** for this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                functionName:
+                  type: string
+                  description: Name of the function
+                  example: testFunction
+                data:
+                  type: object
+                  example: { "key": "value" }
+                startTimestamp:
+                  $ref: '#/components/schemas/Timestamp'
+                priority:
+                  type: number
+                  example: 1
+                tags:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - functionName
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+
+  /{taskId}/cancel:
+    parameters:
+      - in: path
+        name: taskId
+        description: The id of the targeted task
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+
+    post:
+      tags:
+        - Tasks
+      summary: Cancel a task
+      description: |
+        The targeted task **MUST** be in the `new` status.
+
+        Permission | Scope | Effect
+        - | - | -
+        `CANCEL_TASKS` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '27: ILLEGAL_STATE_EXCEPTION':
+                  value:
+                    code: 27
+                    name: 'ILLEGAL_STATE_EXCEPTION'
+                    message: You are trying to manipulate to an not allowed state
+                  description: |
+                    The targeted task was not in the `new` status
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified task does not exists
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /{taskId}/logs:
+    parameters:
+      - in: path
+        name: taskId
+        description: The id of the targeted task
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+
+    get:
+      tags:
+        - Tasks
+      summary: Get the logs of a task
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASK_LOGS` | `global` | **Required** for this endpoint
+      parameters:
+        - $ref: "#/components/parameters/rqlOptionalTaskLogs"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResultNoTotal'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/TaskLog'
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '27: ILLEGAL_STATE_EXCEPTION':
+                  value:
+                    code: 27
+                    name: 'ILLEGAL_STATE_EXCEPTION'
+                    message: This task has not run yet, logs are only available after the task has ran
+                '1408: NO_TASK_LOGS_FOUND':
+                  value:
+                    code: 1409
+                    name: 'NO_TASK_LOGS_FOUND'
+                    message: There are no logs found for this task, it might take a few minutes before they appear.
+
+
+  /functions:
+    get:
+      tags:
+        - Functions
+      summary: View a list of functions
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASK_FUNCTIONS` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResult'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Function'
+    post:
+      tags:
+        - Functions
+      summary: Create a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `CREATE_TASK_FUNCTION` | `global` | **Required** for this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunctionCreationData'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionDetails'
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '1401: INVALID_FUNCTION_CODE_EXCEPTION':
+                  value:
+                    code: 1401
+                    name: 'INVALID_FUNCTION_CODE_EXCEPTION'
+                    message: There was an error while attempting to unzip the function code
+                    description: |
+                      This error is thrown when:
+                      - AWS returns that the provided Zip file is empty
+                      - The code provided value could not be decoded into a proper zip file
+
+                '1402: INVALID_FUNCTION_CONFIGURATION_EXCEPTION':
+                  value:
+                    code: 1402
+                    name: 'INVALID_FUNCTION_CONFIGURATION_EXCEPTION'
+                    message: One function parameter provided was invalid.
+                    description: |
+                      - A function Environment Variables object must not exceed 4096 bytes in total
+
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /functions/{functionName}:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted function
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Functions
+      summary: View the detailed information of a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASK_FUNCTION_DETAILS` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResult'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/FunctionDetails'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Functions
+      summary: Update a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `UPDATE_TASK_FUNCTION` | `global` | **Required** for this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunctionUpdateData'
+
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '1401: INVALID_FUNCTION_CODE_EXCEPTION':
+                  value:
+                    code: 1401
+                    name: 'INVALID_FUNCTION_CODE_EXCEPTION'
+                    message: There was an error while attempting to unzip the function code
+                    description: |
+                      This error is thrown when:
+                      - AWS returns that the provided Zip file is empty
+                      - The code provided value could not be decoded into a proper zip file
+
+                '1402: INVALID_FUNCTION_CONFIGURATION_EXCEPTION':
+                  value:
+                    code: 1402
+                    name: 'INVALID_FUNCTION_CONFIGURATION_EXCEPTION'
+                    message: One function parameter provided was invalid.
+                    description: |
+                      - A function Environment Variables object must not exceed 4096 bytes in total
+
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      tags:
+        - Functions
+      summary: Delete a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `DELETE_TASK_FUNCTION` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /functions/{functionName}/enable:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted function
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - Functions
+      summary: Enable a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `UPDATE_TASK_FUNCTION` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /functions/{functionName}/disable:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted function
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - Functions
+      summary: Disable a function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `UPDATE_TASK_FUNCTION` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /functions/{functionName}/execute:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted function
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - Functions
+      summary: Execute a function directly
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        none |  | Only functions in the permission mode `public` or `allUsers` can be executed directly.
+        `EXECUTE_TASK_FUNCTION:{FUNCTION_NAME}` | `global` | Functions in the permission mode `public` or `allUsers` and the function specified by `FUNCTION_NAME` can be executed directly.
+        `EXECUTE_TASK_FUNCTION` | `global` | All functions can be executed directly.
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteFunctionData'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskWithResult'
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '1403: CONCURRENT_EXECUTION_LIMIT_EXCEPTION':
+                  value:
+                    code: 1403
+                    name: 'CONCURRENT_EXECUTION_LIMIT_EXCEPTION'
+                    message: The function can not be executed because the limit of concurrent executions is reached.
+                  description: |
+                    - The maximum number of direct functions is already being executed. Wait until one is done before starting another one.
+                '1404: TIME_LIMIT_EXCEEDS_DIRECT_EXECUTION_MAXIMUM_EXCEPTION':
+                  value:
+                    code: 1404
+                    name: 'TIME_LIMIT_EXCEEDS_DIRECT_EXECUTION_MAXIMUM_EXCEPTION'
+                    message: The function can not be executed through this endpoint because the configured time limit exceeds the maximum allowed value of 30 seconds
+                  description: |
+                    - Since the execution has to happen within a http call. The time limit of direct functions is limited. If the time limit set on the function is higher than the treshold. This error is returned.
+                '1405: LAMBDA_INVOCATION_EXCEPTION':
+                  value:
+                    code: 1405
+                    name: 'LAMBDA_INVOCATION_EXCEPTION'
+                    message: Invoking the lambda function failed.
+                  description: |
+                    - The lambda function couldn't be correctly invoked with the current settings.
+                '1406: LAMBDA_RUNTIME_EXCEPTION':
+                  value:
+                    code: 1406
+                    name: 'LAMBDA_RUNTIME_EXCEPTION'
+                    message: Invoking the Lambda function resulted in a runtime error.
+                    taskId: '62334a967fed6bf46e1ee7ab'
+                    runtimeError:
+                      name: 'Runtime.HandlerNotFound'
+                      message: 'index.handler is undefined or not exported'
+                  description: |
+                    - A runtime error occured while executing the lambda function
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/{functionName}/*:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted API function
+        required: true
+        schema:
+          type: string
+
+    get: &ApiFunctionRequest
+      tags: &ApiFunctionRequestTags
+        - API Functions
+      summary: &ApiFunctionRequestSummary |
+        Execute an API function
+      description: &ApiFunctionRequestDescription |
+        The API function will receive all details of the request, including extra segments added to the path and the query parameters.
+
+        Permission | Scope | Effect
+        - | - | -
+        none |  | Only API functions in the permission mode `public` or `allUsers` can be executed.
+        `EXECUTE_API_FUNCTION:{FUNCTION_NAME}` | `global` | API functions in the permission mode `public` or `allUsers` and the API function specified by `FUNCTION_NAME` can be executed.
+        `EXECUTE_API_FUNCTION` | `global` | All API functions can be executed.
+      responses: &ApiFunctionRequestResponses
+        default:
+          description: The response is fully defined by the API function response
+          content:
+            "*/*":
+              schema:
+                example: "Hello world"
+        400:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '1405: LAMBDA_INVOCATION_EXCEPTION':
+                  value:
+                    code: 1405
+                    name: 'LAMBDA_INVOCATION_EXCEPTION'
+                    message: Invoking the lambda function failed.
+                  description: |
+                    - The lambda function couldn't be correctly invoked with the current settings.
+                '1406: LAMBDA_RUNTIME_EXCEPTION':
+                  value:
+                    code: 1406
+                    name: 'LAMBDA_RUNTIME_EXCEPTION'
+                    message: Invoking the Lambda function resulted in a runtime error.
+                    taskId: '62334a967fed6bf46e1ee7ab'
+                    runtimeError:
+                      name: 'Runtime.HandlerNotFound'
+                      message: 'index.handler is undefined or not exported'
+                  description: |
+                    - A runtime error occurred while executing the lambda function
+                '1409: INVALID_API_FUNCTION_RESULT':
+                  value:
+                    code: 1409
+                    name: 'INVALID_API_FUNCTION_RESULT'
+                    message: The returned value from the api function is invalid.
+                  description: |
+                    - An api function should return an object with a status code included.
+                    - A base64Encoded body is expected to be a string.
+                    - The status code is expected to be a number.
+                    - The status code is expected to be a number between 100 and 499.
+                    - The isBase64Encoded field is expected to be a boolean.
+                    - The returned headers are expected to be an object with the names as key and the value as value.
+                    - Header names are expected to be a string.
+                    - Header values are expected to be a string.
+                    - Header values are expected to be a string only including the following characters: a-zA-Z0-9_ :;.,/"'?!(){}[]@<>=-+*#$&`|~^%.
+                    - Header names are expected to be a string only including the following characters: a-zA-Z0-9_-.
+                '1411: API_FUNCTION_MAXIMUM_TIME_LIMIT':
+                  value:
+                    code: 1411
+                    name: 'API_FUNCTION_MAXIMUM_TIME_LIMIT'
+                    message: The function can not be executed through this endpoint because the configured time limit exceeds the maximum allowed value of 30 seconds
+                  description: |
+                    - Since the execution has to happen within a http call. The time limit of api functions is limited. If the time limit set on the function is higher than the treshold. This error is returned.
+                '1412: CONCURRENT_API_FUNCTION_LIMIT_EXCEPTION':
+                  value:
+                    code: 1412
+                    name: 'CONCURRENT_API_FUNCTION_LIMIT_EXCEPTION'
+                    message: The function can not be executed because the limit of concurrent api functions executions is reached.
+                  description: |
+                    - The maximum number of api functions is already being executed. Wait until one is done before starting another one.
+
+    post: &ApiFunctionRequestWithBody
+      tags: *ApiFunctionRequestTags
+      summary: *ApiFunctionRequestSummary
+      description: *ApiFunctionRequestDescription
+      responses: *ApiFunctionRequestResponses
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              description: The data to be forwarded to the API function
+              example: "Hello world"
+
+    put: *ApiFunctionRequestWithBody
+    delete: *ApiFunctionRequest
+    patch: *ApiFunctionRequestWithBody
+    options: *ApiFunctionRequestWithBody
+    head: *ApiFunctionRequest
+
+
+  /functions/{functionName}/logs:
+    parameters:
+      - in: path
+        name: functionName
+        description: The name of the targeted function
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: RQL
+        required: true
+        schema:
+           type: string
+        example: ?eventTimestamp>=2021-12-10T12:28:04.222Z&eventTimestamp<=2021-12-10T23:30:00.000Z
+        description: |
+          It is required to add a filter based on `eventTimestamp`. The filter should include a `>=` and a `<=` to mark a selected period.
+          The maximum allowed length of that period is 24 hours.
+
+    get:
+      tags:
+        - Functions Logs
+      summary: View the logs for a given function
+      deprecated: true
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASK_FUNCTION_LOGS` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResult'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/FunctionLog'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified function does not exist
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedules:
+    get:
+      tags:
+        - Schedules
+      summary: View a list of schedules
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `VIEW_TASK_SCHEDULES` | `global` | **Required** for this endpoint
+      parameters:
+        - $ref: "#/components/parameters/rqlOptional"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResult'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Schedule'
+
+    post:
+      tags:
+        - Schedules
+      summary: Create a recurring execution schedule for a given function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `CREATE_TASK_SCHEDULE` | `global` | **Required** for this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                interval:
+                  type: number
+                  example: 86400
+                  description: Time interval in seconds defining a period for which the function defined will be executed recurrently (in this example, the task will run every day)
+                functionName:
+                  type: string
+                  description: Name of the function
+                  example: testFunction
+                data:
+                  type: object
+                  example: { "key": "value" }
+                priority:
+                  type: number
+                  example: 1
+                startTimestamp:
+                  description: Date from which the schedule will become active
+                  $ref: '#/components/schemas/Timestamp'
+              required:
+                - interval
+                - functionName
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+  /schedules/{scheduleId}:
+    parameters:
+      - in: path
+        name: scheduleId
+        description: The id of the targeted schedule
+        required: true
+        schema:
+          type: string
+
+    delete:
+      tags:
+        - Schedules
+      summary: Delete a recurring execution schedule for a given function
+      description: |
+        Permission | Scope | Effect
+        - | - | -
+        `DELETE_TASK_SCHEDULE` | `global` | **Required** for this endpoint
+      responses:
+        200:
+          $ref: '#/components/responses/OperationSuccessful'
+        404:
+          description: Error response
+          content:
+            application/json:
+              examples:
+                '16: RESOURCE_UNKNOWN_EXCEPTION':
+                  value:
+                    code: 16
+                    name: 'RESOURCE_UNKNOWN_EXCEPTION'
+                    message: Requested resource is unknown
+                  description: |
+                    - The specified schedule does not exists
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        statusChangedTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        functionName:
+          type: string
+          example: testFunction
+          description: Function name
+        data:
+          type: object
+          description: Data send to the function
+          example: { key: 'value' }
+        startTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        tags:
+          type: array
+          items:
+            type: string
+        priority:
+          type: number
+          example: 1
+        creationTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        updateTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        createdByApplicationId:
+          description: The application that created the task
+          $ref: '#/components/schemas/ObjectId'
+        createdByUserId:
+          description: The user that created the task
+          $ref: '#/components/schemas/ObjectId'
+        retriedByTaskId:
+          description: The task that is the retry of the current one
+          $ref: '#/components/schemas/ObjectId'
+        retryForTaskIds:
+          description: The forgoing tasks that were retried to result in this one
+          type: array
+          items:
+              $ref: '#/components/schemas/ObjectId'
+
+    TaskWithResult:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        statusChangedTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        functionName:
+          type: string
+          example: testFunction
+          description: Function name
+        data:
+          type: object
+          description: Data send to the function
+          example: { key: 'value' }
+        startTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        tags:
+          type: array
+          items:
+            type: string
+        priority:
+          type: number
+          example: 1
+        creationTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        updateTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        createdByApplicationId:
+          description: The application that created the task
+          $ref: '#/components/schemas/ObjectId'
+        createdByUserId:
+          description: The user that created the task
+          $ref: '#/components/schemas/ObjectId'
+        result:
+          type: object
+          description: Data returned from the function
+          example: { key: 'value' }
+
+    TaskStatus:
+      type: string
+      enum:
+        - new
+        - inProgress
+        - complete
+        - retried
+        - failed
+        - canceled
+
+    PagedResult:
+      type: object
+      properties:
+        query:
+          type: string
+          example: "{}"
+        page:
+          type: object
+          properties:
+            total:
+              type: number
+              example: 1
+            offset:
+              type: number
+              example: 0
+            limit:
+              type: number
+              example: 20
+
+    PagedResultNoTotal:
+      type: object
+      properties:
+        page:
+          type: object
+          properties:
+            offset:
+              type: number
+              example: 0
+            limit:
+              type: number
+              example: 100
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: 'SERVER_EXCEPTION'
+        message:
+          type: string
+          example: There was an internal server error, please try again!
+
+    Timestamp:
+      type: string
+      format: date-time
+
+    ObjectId:
+      type: string
+      example: '757f191a810c19729de860ae'
+
+    Function:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        updateTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+
+    FunctionDetails:
+      type: object
+      properties:
+        description:
+          type: string
+          example: This is an example of a test Lambda function
+        name:
+          type: string
+          example: test-lambda-function
+        enabled:
+          type: boolean
+          description: Defines whether the given function is able to be executed
+          example: true
+        entryPoint:
+          type: string
+          example: index.handler
+          description: Entry point for execution of the task function
+        runtime:
+          $ref: '#/components/schemas/Runtime'
+          description: Runtime language and version executing the task function
+        timeLimit:
+          type: number
+          example: 60
+          minimum: 3
+          maximum: 300
+          description: Maximum execution time (seconds) of the function
+        memoryLimit:
+          type: number
+          example: 256
+          minimum: 128
+          maximum: 10240
+          description: Execution memory (MegaBytes) provided for the function
+        environmentVariables:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                type: string
+        executionOptions:
+          $ref: '#/components/schemas/ExecutionOptions'
+        retryPolicy:
+          $ref: '#/components/schemas/RetryPolicy'
+        updateTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+
+    ExecutionOptions:
+      type: object
+      properties:
+        permissionMode:
+          type: string
+          description: |
+            - `permissionRequired`: to execute this function directly the user needs the EXECUTE_TASK_FUNCTION permission
+            - `allUsers`: every logged in user can execute this function directly.
+            - `public`: the function can be executed even by unauthenticated requests.
+          default: permissionRequired
+          enum:
+            - permissionRequired
+            - allUsers
+            - public
+
+    RetryPolicy:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          default: false
+        errorsToRetry:
+          type: array
+          items:
+            type: string
+          example: ['CONNECTION_ERROR', 'DATABASE_ERROR']
+          description:
+            An array including the names of the errors that trigger a retry.
+            If the array is empty, all errors will trigger a retry.
+
+    ExecuteFunctionData:
+      type: object
+      properties:
+        data:
+          type: object
+          description: Data send to the function
+          example: { key: 'value' }
+
+    FunctionUpdateData:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Some description of the function
+          example: This is a description of what the function does
+        code:
+          type: string
+          description: Base64 Encoded binary value of the compressed (.zip) function code
+        entryPoint:
+          type: string
+          example: index.handler
+          description: Entry point for execution of the task function
+        runtime:
+          $ref: '#/components/schemas/Runtime'
+          description: Runtime language and version executing the task function
+        timeLimit:
+          type: number
+          example: 60
+          minimum: 3
+          maximum: 300
+          description: Maximum execution time (seconds) of the function
+        memoryLimit:
+          type: number
+          example: 256
+          minimum: 128
+          maximum: 10240
+          description: Execution memory (MegaBytes) provided for the function
+        environmentVariables:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                type: string
+        executionOptions:
+          $ref: '#/components/schemas/ExecutionOptions'
+        retryPolicy:
+          $ref: '#/components/schemas/RetryPolicy'
+
+    FunctionCreationData:
+      allOf:
+        - type: object
+          properties:
+            name:
+              type: string
+              description: Name of the function
+              example: testFunction
+        - $ref: '#/components/schemas/FunctionUpdateData'
+        - required:
+            - name
+            - code
+            - entryPoint
+            - runtime
+
+    Schedule:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectId'
+        interval:
+          type: number
+          example: 86400
+        functionName:
+          type: string
+          example: testFunction
+          description: Function name
+        startTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        updateTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        creationTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+        nextTimestamp:
+          description: The next time when is a task creation for this schedule is due
+          $ref: '#/components/schemas/Timestamp'
+        data:
+          type: object
+          description: Data sent to the function
+          example: { key: 'value' }
+        priority:
+          type: number
+          example: 1
+
+    TaskLog:
+      type: object
+      properties:
+        message:
+          type: string
+          example: 2021-08-18T15:27:47.916Z\t37805408-11aa-4139-b34c-8927d14fa8f2\tINFO\t--> 2021-08-18T15:27:47.915Z This is a log message
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+          description: Timestamp on which the event logged has happened
+
+    FunctionLog:
+      type: object
+      properties:
+        message:
+          type: string
+          example: 2021-08-18T15:27:47.916Z\t37805408-11aa-4139-b34c-8927d14fa8f2\tINFO\t--> 2021-08-18T15:27:47.915Z This is a log message
+        eventTimestamp:
+          $ref: '#/components/schemas/Timestamp'
+          description: Timestamp on which the event logged has happened
+
+    Runtime:
+      type: string
+      enum:
+        - nodejs12.x
+        - nodejs14.x
+        - python3.7
+        - python3.8
+        - python3.9
+        - ruby2.7
+        - java8
+        - java11
+        - go1.x
+        - dotnetcore3.1
+
+  responses:
+
+    OperationSuccessful:
+      description: Operation successful
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              affectedRecords:
+                type: number
+                example: 1
+                description: The number of affected records in the operation
+
+  parameters:
+    rqlOptional:
+      schema:
+        type: string
+      in: query
+      name: RQL
+      description: Add filters to the requested list.
+
+    rqlOptionalTaskLogs:
+      schema:
+        type: string
+      in: query
+      name: RQL
+      description: Filter the logs **only** with ge or >= operator on the timestamp
+      example:
+        ?timestamp>=2021-12-10T23:30:00.000Z

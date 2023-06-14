@@ -36,6 +36,7 @@
   * [Task Service](services/automation/task-service/README.md)
     * [Functions](services/automation/task-service/functions.md)
     * [Tasks](services/automation/task-service/tasks.md)
+    * [API Functions](services/automation/task-service/api-functions.md)
     * [FAQ](services/automation/task-service/faq.md)
   * [Dispatchers Service](services/automation/dispatchers-service.md)
   * [Event Service](services/automation/event-service.md)

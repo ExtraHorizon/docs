@@ -130,9 +130,8 @@ Our template is now resolved into a message that makes sense.
 
 {% tabs %}
 {% tab title="JS SDK" %}
-```javascript
-import { createOAuth2Client } from "@extrahorizon/javascript-sdk";
-
+<pre class="language-javascript"><code class="lang-javascript"><strong>import { createOAuth2Client } from "@extrahorizon/javascript-sdk";
+</strong>
 const exh = createOAuth2Client({
   host: "",
   clientId: "",
@@ -147,7 +146,7 @@ await exh.auth.authenticate({
 const resolvedTemplate = await exh.templates.resolveAsJson("{TEMPLATE_ID}",{
   firstName: "John"
 });
-```
+</code></pre>
 {% endtab %}
 
 {% tab title="HTTP API" %}

@@ -59,7 +59,7 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 }
 ```
 
-* `functionName` - the name of the AWS Lambda function that should be executed. This function must be created in the same AWS account as the ExtraHorizon deployment.
+* `functionName` - the name of the AWS Lambda function that should be executed. This function must be created in the same AWS account as the Extra Horizon deployment.
 * `data` - \[optional] A key-value object where input to the function is provided
 * `tags` - \[optional] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
 * `status` - Task status, see below for more information
@@ -79,7 +79,7 @@ When many tasks need to be executed within a short timeframe, the Tasks are queu
 
 ### Execution status
 
-<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 The `status` and `statusChangedTimestamp` attributes are updated according to the Task’s execution progress. A newly created Task (status: `new`) can be revoked via the Cancel a Task endpoint (status: `canceled`).
 
