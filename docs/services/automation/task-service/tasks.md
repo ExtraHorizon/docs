@@ -67,6 +67,10 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 * `priority` - define which tasks should get precedence in a queue
 * `startTimestamp` - set when the task should start
 
+{% hint style="info" %}
+If you define a function schedule, you will only see the next scheduled task execution at the moment when it starts.
+{% endhint %}
+
 ## Task Lifecycle
 
 ### Queuing

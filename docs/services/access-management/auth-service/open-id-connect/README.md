@@ -58,7 +58,7 @@ Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is loc
 
 Here you can find a list of currently registered SSO Providers.
 
-<figure><img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 14.04.33 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 14.04.33.png" alt=""><figcaption></figcaption></figure>
 
 Go to **"Add new"** to register a new provider and fill in the required information. It should look something like this:
 

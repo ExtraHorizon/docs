@@ -6,17 +6,17 @@ This document serves as a guide and proof-of-concept on how Retool can be used t
 
 First off, we need to create a Retool application. Once you’re logged into retool, click on the `create new` button in the top right of the screen and select `Create a blank application`.
 
-![](../.gitbook/assets/1.png)
+![](<../.gitbook/assets/1 (1).png>)
 
 Pick a name for your application and click `create app`. This will create a blank application from which we can start building.
 
-![](../.gitbook/assets/2.png)
+![](<../.gitbook/assets/2 (1).png>)
 
 ### Connecting the Extra Horizon API to Retool as a resource <a href="#connecting-the-extrahorizon-api-to-retool-as-a-resource" id="connecting-the-extrahorizon-api-to-retool-as-a-resource"></a>
 
 In order to be able to fetch data from the Extra Horizon API we’ll need to set it up as a resource within Retool. To do this, click the menu button in the top left of the screen and click on `Resources`.
 
-![](../.gitbook/assets/3.png)
+![](<../.gitbook/assets/3 (1).png>)
 
 Next, click on `create new` to create a new resource.
 
@@ -78,7 +78,7 @@ The refresh token is the refresh token we received earlier.
 
 Next add a new step to store our access token into the OAUTH2\_TOKEN environment variable of Retool.
 
-![](<../.gitbook/assets/retoolguide14 (1).png>)
+![](../.gitbook/assets/retoolguide14.png)
 
 To finish of, we’ll test our configuration by clicking the `Test auth workflow` and `Test refresh auth workflow` buttons. If all went well, we should be all set to start building our actual application.
 
@@ -90,7 +90,7 @@ Under `Resource`, we’ll select `FibriCheck dev (restapi)` since that is the re
 
 Under `Action type` we'll select a GET request, and we'll specify the endpoint as `users/v1/`, since that contains the information we want to display. We can now click the blue `Run` button in the top right corner to execute our query.
 
-![](<../.gitbook/assets/retoolguide15 (1).png>)
+![](../.gitbook/assets/retoolguide15.png)
 
 Now that we've made our query, we can add a table into our UI. We can do this by dragging a table element from the components tab on the right to our "worksheet".
 
