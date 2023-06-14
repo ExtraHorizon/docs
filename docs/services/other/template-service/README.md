@@ -172,7 +172,7 @@ To define e-mail templates there are additional requirements on the `fields` tha
 * `subject` - the content of this field will be used as e-mail subject
 
 {% hint style="info" %}
-For more info how to send e-mails using templates, take a look in the [mail service documentation](https://docs.extrahorizon.com/mail-service/)
+For more info how to send e-mails using templates, take a look in the [mail service documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service)
 {% endhint %}
 
 
