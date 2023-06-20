@@ -1,6 +1,20 @@
 
 ## API Gateway
 
+### 1.6.0 (2023-06-16)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.6.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+
+
+**🎁 Features**
+* Add the possibility to redirect requests from one service to another
+  * It is now possible to redirect all traffic from one service to another service or another version of the service by setting environment variables.
+
+</details>
+
+
 ### 1.5.0 (2023-06-06)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.5.0/openapi.yaml)
 <details>
