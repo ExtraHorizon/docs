@@ -1,6 +1,19 @@
 
 ## API Gateway
 
+### 1.6.1 (2023-06-23)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.6.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+
+
+**🐞 Bugs Fixed**
+* The gateway can start up without configuring a service to be redirected
+
+</details>
+
+
 ### 1.6.0 (2023-06-16)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.6.0/openapi.yaml)
 <details>
