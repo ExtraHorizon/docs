@@ -1,7 +1,7 @@
 ---
 description: >-
-  Depending on your needs. Your clusters can be deployed in several parts of the
-  world.
+  Depending on your requirements. Your clusters can be deployed in several parts
+  of the world.
 ---
 
 # 🗺 Regions
