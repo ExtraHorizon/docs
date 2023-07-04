@@ -103,7 +103,7 @@ See the [Functions section](functions.md#retrypolicy-automatically-retry-a-task-
 
 If an error occurs while no restart policy is defined or the maximum number of tries have been reached the Task status is set to `failed`.
 
-If AWS Lambda does not report anything within 5 minutes, the associated Task status is also set to `failed`.
+If the system cannot determine the outcome of the Task execution, the Task status is also set to `failed`. In such cases, an error named `zombieTaskCleaned` will be included in the Task.
 
 #### The Task Failed Event
 
