@@ -108,14 +108,14 @@ The `entryPoint` property refers to the method in the Function code that is exec
 
 The `runtime` property currently supports the following values:&#x20;
 
-| Runtime | Version                               |
-| ------- | ------------------------------------- |
-| NodeJs  | `nodejs14.x`                          |
-| Python  | `python3.7`, `python3.8`, `python3.9` |
-| Ruby    | `ruby2.7`                             |
-| Java    | `java8`, `java11`                     |
-| Go      | `go1.x`                               |
-| .Net    | `dotnetcore3.1`                       |
+| Runtime | Version                                             |
+| ------- | --------------------------------------------------- |
+| NodeJs  | `nodejs18.x`, `nodejs16.x`, `nodejs14.x`            |
+| Python  | `python3.10`, `python3.9`, `python3.8`, `python3.7` |
+| Ruby    | `java17`, `java11`, `java8`, `java8.al2`            |
+| Java    | `ruby3.2`, `ruby2.7`                                |
+| Go      | `go1.x`                                             |
+| .Net    | `dotnet7`, `dotnet6`                                |
 
 ### timeLimit
 
