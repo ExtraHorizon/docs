@@ -45,13 +45,10 @@ API functions can be executed by making requests to the `/tasks/v1/api/<function
 
 {% tabs %}
 {% tab title="JavaScript" %}
-```javascript
-const response = await exh.raw({
-  method: 'GET',
-  url: '/tasks/v1/api/my-function/'
-});
-// response = { hello: 'The request method was: GET' }
-```
+<pre class="language-javascript"><code class="lang-javascript">const response = await exh.tasks.api.get('my-function', '/');
+<strong>
+</strong><strong>// response = { hello: 'The request method was: GET' }
+</strong></code></pre>
 {% endtab %}
 {% endtabs %}
 
@@ -100,7 +97,7 @@ The `rawPath` field refers to the path portion of the URL that comes after the F
 
 For the following URL:
 
-<pre class="language-url"><code class="lang-url"><strong>/tasks/v1/my-function/hello/world?param1=value
+<pre class="language-url"><code class="lang-url"><strong>/tasks/v1/api/my-function/hello/world?param1=value
 </strong></code></pre>
 
 The `rawPath` value would be `/hello/world`
@@ -111,7 +108,7 @@ The `rawQueryString` field represents the unprocessed query string of the incomi
 
 For the following URL:
 
-<pre class="language-url"><code class="lang-url"><strong>/tasks/v1/my-function/hello/world?param1=value
+<pre class="language-url"><code class="lang-url"><strong>/tasks/v1/api/my-function/hello/world?param1=value
 </strong></code></pre>
 
 The `rawQueryString` value will be `?param1=value`
@@ -326,6 +323,158 @@ module.exports.handler = serverless(app);
 Please note that we are not affiliated with any of the specific packages mentioned above.
 {% endhint %}
 
+### Creating an API Function with the CLI
+
+The full folder structure of an API Function in TypeScript can be easily created with the Extra Horizon CLI:
+
+{% tabs %}
+{% tab title="CLI" %}
+```bash
+exh tasks create-repo my-function-folder --repo https://github.com/ExtraHorizon/template-api-function
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+Please refer to the [CLI documentation](https://docs.extrahorizon.com/cli/) for further information on setting up the CLI.
+{% endhint %}
+
+## Monitoring
+
+{% hint style="success" %}
+Available since v1.5.0
+{% endhint %}
+
+Every request made to an API Function is logged as an API Request, similar to how normal Function executions are saved as Tasks. These API Requests provide valuable information about the executed requests. The logs that an API Function generates during its execution are saved as API Request Logs.
+
+### API Requests
+
+API Requests are a summary of the requests made to API Functions. They can be helpful to monitor and debug API Function calls.
+
+[The SDK](https://docs.extrahorizon.com/javascript-sdk/) can be used list API Requests using the following example:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const response = await exh.tasks.apiRequests.find();
+```
+{% endtab %}
+{% endtabs %}
+
+#### **Example of an API Request**
+
+<pre class="language-json"><code class="lang-json">{ // Replace with the thingies from above
+<strong>    "id": "64a2bb9a45f2a4622e065558",
+</strong>    "functionName": "my-function",
+    "method": "POST",
+    "path": "/my/path",
+    "userId": "61fbe2a352faff0008aaf1e2",
+    "applicationId": "58074811b2148f3b28ad75bd",
+    "timestamp": "2023-07-03T12:14:17.511Z",
+    "statusCode": 400,
+    "error": {
+        "type": "response",
+        "name": "INVALID_API_FUNCTION_RESULT",
+        "message": "The status code is expected to be a number between 200 and 499. Returned value: 500"
+    },
+    "duration": 1.098
+}
+</code></pre>
+
+**API Request Properties**
+
+#### **functionName**
+
+The `functionName` refers to the name of the API Function that was invoked in the request.
+
+#### **method**
+
+The `method` field represents the HTTP method used to target the API function.
+
+#### **path**
+
+The `path` field refers to the portion of the URL that comes after the Function name. The query string will be included in the path.&#x20;
+
+For the following URL:
+
+<pre class="language-url"><code class="lang-url"><strong>/tasks/v1/api/my-function/hello/world?param1=value
+</strong></code></pre>
+
+The `path` value would be `hello/world?param1=value`
+
+#### userId
+
+The `userId` field refers to the id of the Extra Horizon user that has performed the request.
+
+#### applicationId
+
+The `applicationId` field refers to the id of the Extra Horizon oAuth application that has performed the request.
+
+#### statusCode
+
+The `statusCode` field refers to the status code of the API Function's response or of a thrown error during its lifecycle
+
+#### timestamp
+
+The `timestamp` field refers to the time the API Function was executed.
+
+#### duration
+
+The `duration` field is the duration of the API Function execution in seconds.
+
+#### error
+
+When an error occurs during an API Function Request the error object is logged.
+
+`error.type`
+
+The error type defines where the error occurred during the API Function lifecycle and can have one of the following values:&#x20;
+
+* `invocation`: errors that occur before invoking the API Function&#x20;
+* `runtime`: errors that occurred during the execution of the API Function&#x20;
+* `response`: errors that occur during the response validation after the API Function has been executed
+
+`error.name`
+
+The name of the caught error
+
+`error.message`
+
+The message of the caught error
+
+### API Request Logs
+
+API Functions may include logging statements during execution. These logs are saved as API Request Logs.
+
+[The SDK](https://docs.extrahorizon.com/javascript-sdk/) can be used list API Request Logs using the following example:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const response = await exh.tasks.apiRequests.logs.find(apiRequestId);
+```
+{% endtab %}
+{% endtabs %}
+
+#### **Example of an API Request Log**
+
+```json
+{
+    "message": "2023-07-03T12:24:36.474Z\tc8f9dc92-8df1-4cf9-a4a6-02abd2301ae7\tINFO\thello world!\n",
+    "timestamp": "2023-07-03T12:24:36.474Z"
+}
+```
+
+**API Request Log Properties**
+
+#### timestamp
+
+The `timestamp` field refers to the time the log was printed.
+
+#### message
+
+The `message` property contains the message being printed.
+
 ## Limitations
 
 #### Request and response size
@@ -347,3 +496,11 @@ Using an HTTP method that is not listed will result in an `ENDPOINT_EXCEPTION`
 #### Status Codes
 
 Currently the API Functions only support the status codes between 200 and 499.
+
+#### RQL on the API Requests Logs endpoint
+
+The RQL that can be used on the API Requests Logs endpoint is limited to only the `ge` operator in combination with the `timestamp` field.&#x20;
+
+**Missing API Requests**
+
+We prioritize providing the API Function result over saving the API Request. In the rare case that saving an API Request fails, no error message will be provided and the API Request record will be missing.&#x20;
