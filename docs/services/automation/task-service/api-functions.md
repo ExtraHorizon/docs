@@ -363,7 +363,7 @@ const response = await exh.tasks.apiRequests.find();
 
 #### **Example of an API Request**
 
-<pre class="language-json"><code class="lang-json">{ // Replace with the thingies from above
+<pre class="language-json"><code class="lang-json">{
 <strong>    "id": "64a2bb9a45f2a4622e065558",
 </strong>    "functionName": "my-function",
     "method": "POST",
