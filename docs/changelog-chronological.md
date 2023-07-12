@@ -1,4 +1,35 @@
 
+## Tasks Service 1.5.0 (2023-07-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.5.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+
+
+**🎁 Features**
+* Added API Requests
+  * API Requests are a summary of the requests made to API Functions. They can be helpful to monitor and debug API Function calls.
+* Add functionality to consult logs of API Requests
+  * API Functions may now include logging statements during execution. These logs are saved as API Request Logs.
+  
+**⚒️ Improvements**
+* Increased performance of API Functions and Direct Function Execution
+* Improve the error message for tasks of which the output could not be determined
+* Updated the function runtimes
+  * The new runtimes are documented in the [public documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service/functions#runtime).
+  
+**🐞 Bugs Fixed**
+* The last task log line sometimes did not show up
+* Trying to add Node12 as a runtime resulted in an error
+* Retrieving the task logs for a non-existing task resulted in a SERVER_EXCEPTION
+* Retrieving the logs for a new function right after the first run could result in a SERVER_EXCEPTION
+* Returning a number from an API function as body resulted in a SERVER_EXCEPTION
+
+
+</details>
+
+
 ## API Gateway 1.6.1 (2023-06-23)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.6.1/openapi.yaml)
 
@@ -80,8 +111,8 @@
 </details>
 
 
-## Files Service 1.0.3 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
+## Tasks Service 1.3.2 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -92,8 +123,8 @@
 </details>
 
 
-## Tasks Service 1.3.2 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
+## Files Service 1.0.3 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -149,18 +180,6 @@
 </details>
 
 
-## Logs Service 1.0.0 (2022-11-18)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-* View the API access logs
-  * View and query the API access logs from the comfort of your ExH cluster.
-</details>
-
-
 ## Users Service 1.1.12 (2022-11-18)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.12/openapi.yaml)
 
@@ -174,6 +193,18 @@
 **🐞 Bugs Fixed**
 * Trying to add a non existing role to a user no longer affects the user
 * (Regression) The RQL select operation no longer affects updates
+</details>
+
+
+## Logs Service 1.0.0 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* View the API access logs
+  * View and query the API access logs from the comfort of your ExH cluster.
 </details>
 
 
