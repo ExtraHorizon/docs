@@ -79,6 +79,33 @@ You will receive a response representing the metadata of the file. The service g
 {% endtab %}
 {% endtabs %}
 
+### Monitoring a file upload
+
+\
+While utilizing the SDK to upload a file, developers have the capability to monitor the upload progress. This can be achieved by creating an upload progress callback within the host application and passing it as an option to the SDK.
+
+The upload progress callback should receive an object with two properties: `loaded` and `total`. These parameters represent the amount of data that has been uploaded and the total size of the file being uploaded, respectively. Both values are measured in Bytes. Developers can then calculate the upload percentage based on these input parameters, according to their specific requirements.
+
+{% hint style="warning" %}
+The upload progress callback is supported for browser applications only
+{% endhint %}
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+function uploadProgressCallback(event) {
+    const progress = (event.loaded / event.total) * 100;
+    // ... Do something with the progress value
+}
+  
+const fileMetaData = await exh.files.create('myRepport.pdf', myBuffer, {
+    onUploadProgress: uploadProgressCallback,
+    tags: ['ecg-report']
+});
+```
+{% endtab %}
+{% endtabs %}
+
 ## Retrieving a file
 
 Files and their metadata can be retrieved with either a read-only or full-access token.
