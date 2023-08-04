@@ -12,7 +12,13 @@ During your onboarding as a new Extra Horizon customer, you will get access to o
 
 If you are an existing Extra Horizon customer and have not gained access yet, please reach out to your **account manager** or contact us via [**support@extrahorizon.com**](mailto:support@extrahorizon.com).
 
+{% hint style="info" %}
+Our teams can provide support in English, French and Dutch.
 
+Nos équipes peuvent fournir une assistance en anglais, en français et en néerlandais.
+
+Onze teams kunnen support bieden in Engels, Frans en Nederlands.
+{% endhint %}
 
 ## About the support portal
 
