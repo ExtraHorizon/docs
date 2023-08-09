@@ -25,8 +25,8 @@ The size of the files you can upload is limited for performance and user experie
 {% tabs %}
 {% tab title="JavaScript" %}
 ```typescript
-const fileMetaData = await exh.files.create('myRepport.pdf',myBuffer,{
-    tags:['ecg-report']
+const fileMetaData = await exh.files.create('myRepport.pdf', myBuffer, {
+  tags: ['ecg-report']
 });
 ```
 {% endtab %}
@@ -94,13 +94,13 @@ The upload progress callback is supported for browser applications only
 {% tab title="JavaScript" %}
 ```javascript
 function uploadProgressCallback(event) {
-    const progress = (event.loaded / event.total) * 100;
-    // ... Do something with the progress value
+  const progress = (event.loaded / event.total) * 100;
+  // ... Do something with the progress value
 }
   
 const fileMetaData = await exh.files.create('myRepport.pdf', myBuffer, {
-    onUploadProgress: uploadProgressCallback,
-    tags: ['ecg-report']
+  onUploadProgress: uploadProgressCallback,
+  tags: ['ecg-report']
 });
 ```
 {% endtab %}
@@ -194,8 +194,8 @@ Requires a token with full a full access level
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-const tokenObject = await exh.files.generateToken('myAccessToken',{
-    accessLevel:TokenPermission.READ
+const tokenObject = await exh.files.generateToken('myAccessToken', {
+  accessLevel: TokenPermission.READ
 });
 ```
 {% endtab %}
@@ -210,7 +210,7 @@ Requires a token with full a full access level
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-await exh.files.deleteToken('myAccessToken','tokenToDelete');
+await exh.files.deleteToken('myAccessToken', 'tokenToDelete');
 ```
 {% endtab %}
 {% endtabs %}
@@ -231,10 +231,10 @@ Using [resource-query-language-rql.md](../../for-developers/resource-query-langu
 
 ```typescript
 const myRql = rqlBuilder()
-    .eq('tags', 'myFirstTag')
-    .build();
+  .eq('tags', 'myFirstTag')
+  .build();
 
-const file = await exh.files.find({rql:myRql});
+const file = await exh.files.find({ rql: myRql });
 ```
 
 If you need to find a file with a specific fileName you can use the findByName function.
@@ -246,7 +246,7 @@ const fileDetails = await exh.files.findByName('filename.ext');
 When your query is intended to find one file you can ask the SDK to return the first result.
 
 ```typescript
-const file = await exh.files.findFirst({rql:myRql});
+const file = await exh.files.findFirst({ rql: myRql });
 ```
 {% endtab %}
 {% endtabs %}
@@ -254,3 +254,61 @@ const file = await exh.files.findFirst({rql:myRql});
 {% hint style="warning" %}
 With the global `VIEW_FILES` permission, a user gets access to all attributes of each `FileMetadata` object in the system, including the tokens. The latter can be used to retrieve or remove the actual file, i.e. the binary data. Grant this permission to a specific Role with caution.
 {% endhint %}
+
+## Settings
+
+{% hint style="success" %}
+Available since v1.1.0
+{% endhint %}
+
+The File Service has some general settings that can be used to change the behaviour of the service.
+
+### Example settings
+
+```json
+{
+  "disableForceDownloadForMimeTypes": [
+    "image/png",
+    "image/jpeg"
+  ],
+  "updateTimestamp": "2023-08-03T12:13:41.716Z"
+}
+```
+
+### Properties
+
+#### disableForceDownloadForMimeTypes
+
+By default the File Service enforces files to be downloaded rather than displayed in a browser, preventing potential [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site\_scripting).
+
+You can allow specific MIME types to be displayed in a browser by adding them to the `disableForceDownloadForMimeTypes` setting.&#x20;
+
+{% hint style="warning" %}
+The value `"*/*"` can be used to allow any file to be displayed by browsers, but we strongly advise against it.
+{% endhint %}
+
+### Retrieve the settings
+
+{% tabs %}
+{% tab title="Javascript" %}
+```typescript
+const settings = await exh.files.settings.get();
+```
+{% endtab %}
+{% endtabs %}
+
+### Update the settings
+
+{% tabs %}
+{% tab title="Javascript" %}
+```typescript
+await exh.files.settings.update({
+  disableForceDownloadForMimeTypes: [
+    'image/png',
+    'image/jpeg'
+  ],
+});
+```
+{% endtab %}
+{% endtabs %}
+
