@@ -10,14 +10,9 @@ date: 2023-08-09
 
 
 **⚒️ Improvements**
-* Error messages
-  * Improved the error message for creating a file without a request body
+* Improved the error message for creating a file without a request body
 
 
 **🐞 Bugs Fixed**
-
-* File Tags
-    * An empty string is now a valid value in an array of tags
-
-* Files Query
-  * Fixed an RQL issue that would not consider the use of the limit operator
+ * An empty string is now a valid value in an array of tags
+* Fixed an RQL issue that would not consider the use of the limit operator
