@@ -14,5 +14,5 @@ date: 2023-08-09
 
 
 **🐞 Bugs Fixed**
- * An empty string is now a valid value in an array of tags
+* An empty string is now a valid value in an array of tags
 * Fixed an RQL issue that would not consider the use of the limit operator
