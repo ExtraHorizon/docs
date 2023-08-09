@@ -1,4 +1,26 @@
 
+## Files Service 1.1.0 (2023-08-09)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.1.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added File Service settings
+  * A new settings property `disableForceDownloadForMimeTypes` may be configured to override the File Service’s default behavior of enforcing file downloads and enable viewing of files directly in the browser for selected mime types.
+
+
+**⚒️ Improvements**
+* Improved the error message for creating a file without a request body
+
+
+**🐞 Bugs Fixed**
+* An empty string is now a valid value in an array of tags
+* Fixed an RQL issue that would not consider the use of the limit operator
+
+</details>
+
+
 ## Tasks Service 1.5.0 (2023-07-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.5.0/openapi.yaml)
 
@@ -99,6 +121,18 @@
 </details>
 
 
+## Files Service 1.0.3 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Updated how we authenticate with our external services
+
+</details>
+
+
 ## Logs Service 1.0.1 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.1/openapi.yaml)
 
@@ -113,18 +147,6 @@
 
 ## Tasks Service 1.3.2 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Updated how we authenticate with our external services
-
-</details>
-
-
-## Files Service 1.0.3 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -180,6 +202,18 @@
 </details>
 
 
+## Logs Service 1.0.0 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* View the API access logs
+  * View and query the API access logs from the comfort of your ExH cluster.
+</details>
+
+
 ## Users Service 1.1.12 (2022-11-18)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.12/openapi.yaml)
 
@@ -193,18 +227,6 @@
 **🐞 Bugs Fixed**
 * Trying to add a non existing role to a user no longer affects the user
 * (Regression) The RQL select operation no longer affects updates
-</details>
-
-
-## Logs Service 1.0.0 (2022-11-18)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-* View the API access logs
-  * View and query the API access logs from the comfort of your ExH cluster.
 </details>
 
 

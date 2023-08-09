@@ -177,6 +177,27 @@
 
 ## Files Service
 
+### 1.1.0 (2023-08-09)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.1.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added File Service settings
+  * A new settings property `disableForceDownloadForMimeTypes` may be configured to override the File Service’s default behavior of enforcing file downloads and enable viewing of files directly in the browser for selected mime types.
+
+
+**⚒️ Improvements**
+* Improved the error message for creating a file without a request body
+
+
+**🐞 Bugs Fixed**
+* An empty string is now a valid value in an array of tags
+* Fixed an RQL issue that would not consider the use of the limit operator
+
+</details>
+
+
 ### 1.0.3 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
 <details>
