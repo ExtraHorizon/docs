@@ -188,6 +188,15 @@ References:
 }
 ```
 
+{% hint style="warning" %}
+When the format is set to `date-time`, input is expected to be [valid ISO 8601](https://en.wikipedia.org/wiki/ISO\_8601) string (e.g.`2012 or 2012‐08‐22T14:16:05.677+02:00`).
+
+This value is stored as an UTC Date Time String (e.g. `2012‐08‐22T12:16:05.677Z`).&#x20;
+
+[Input conditions](schemas.md#input-condition) will operate on the input (e.g.`2012 or 2012‐08‐22T14:16:05.677+02:00`).\
+[Document conditions](schemas.md#document-condition) will operate on the stored date, thus the UTC Date Time String (e.g. `2012‐08‐22T12:16:05.677Z`).
+{% endhint %}
+
 References:
 
 * [JSON Schema Validation: Validation Keywords for Strings](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.6.3)
@@ -406,92 +415,166 @@ A Transition object is identified by its name (name) and has a specific type ass
 
 ### Transition conditions
 
-Conditions need to be met before a transition can occur. There are three types of conditions which apply on the CreationTransition and manual Transitions:
+Conditions need to be met before a transition can occur. There are three types of conditions which apply to the `creationTransition` and Transitions with the type `manual`:
 
-| Type                                | Description                                                                                                                                                      |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `input`                             | The transition data must match a desired form, as specified by the type configurations in the configuration attribute (inputCondition)                           |
-| `initiatorHasRelationToUserInData`  | The initiator of the Transition has a specified relation (as determined in relation) to a user (as determined in userIdField) mentioned in the transition data   |
-| `initiatorHasRelationToGroupInData` | The initiator of the Transition has a specified relation (as determined in relation) to a group (as determined in groupIdField) mentioned in the transition data |
+<table><thead><tr><th>Type</th><th>Description</th><th data-hidden></th></tr></thead><tbody><tr><td><code>input</code></td><td>The transition data must match a desired form, as specified by the type configurations in the <code>configuration</code> attribute.</td><td></td></tr><tr><td><code>initiatorHasRelationToUserInData</code></td><td>The initiator of the Transition has a specified relation (as determined in <code>relation</code>) to a user (as determined in <code>userIdField</code>) mentioned in the transition data</td><td></td></tr><tr><td><code>initiatorHasRelationToGroupInData</code></td><td>The initiator of the Transition has a specified relation (as determined in <code>relation</code>) to a group (as determined in <code>groupIdField</code>) mentioned in the transition data</td><td></td></tr></tbody></table>
 
 There is an additional condition which applies to all Transitions:
 
-| Type       | Description                                                                                                                 |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `document` | The content of a document must match a desired form, as specified by the type configurations in the configuration attribute |
+| Type       | Description                                                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `document` | The content of a document must match a desired form, as specified by the type configurations in the `configuration` attribute |
 
-#### **Examples**
+
+
+#### Input Condition
+
+The transition data must match a desired form, as specified by the type configurations in the `configuration` attribute.&#x20;
+
+This Condition only applies to the `creationTransition` and Transitions with type `manual`.
+
+**Example**
+
+The following code creates a manual transition requiring:
+
+* The name in the input to be a string
+* The name in the input to exist
 
 {% tabs %}
-{% tab title="inputCondition" %}
-When executing a transition on a document you can require the API client to provide a set of fields that are described in the properties of the schema and put additional restrictions on them
-
+{% tab title="JavaScript" %}
 ```javascript
-  await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(newSchema.id, {
     type: 'manual',
-    toStatus: 'secondStatus',
-    fromStatuses: ['initialStatus'],
     name: 'firstTransition',
+    fromStatuses: ['initialStatus'],
+    toStatus: 'secondStatus',
     conditions: [
       {
         type: 'input',
         configuration: {
           type: 'object',
           properties: {
-            address: {
-              type: 'object',
-              properties: {
-                inhabited: { type: 'boolean' },
-              },
-              required: ['inhabited'],
+            name: {
+              type: 'string',
             },
           },
-          required: ['address'],
+          required: ['name'],
         },
       },
     ],
   });
 ```
-
-the example above would require the API client to provide the address.inhabited property. otherwise the transition will not trigger.
 {% endtab %}
+{% endtabs %}
 
-{% tab title="document" %}
+#### **initiatorHasRelationToUserInData** Condition
+
+The initiator of the Transition has a specified relation (as determined in `relation`) to a user (as determined in `userIdField`) mentioned in the transition data.&#x20;
+
+This Condition only applies to the `creationTransition` and Transitions with type `manual`.
+
+**Example**
+
+The following code creates a manual transition requiring:
+
+* The initiator of the transition to be staff of the user with id `5e9fff9d90135a2a9a718e2f`.
+
+{% tabs %}
+{% tab title="JavaScript" %}
 ```javascript
-  await sdk.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(newSchema.id, {
     type: 'manual',
-    toStatus: 'secondStatus',
-    fromStatuses: ['initialStatus'],
     name: 'firstTransition',
+    fromStatuses: ['initialStatus'],
+    toStatus: 'secondStatus',
     conditions: [
       {
-        type: 'input',
+        type: 'initiatorHasRelationToUserInData',
+        userIdField: '5e9fff9d90135a2a9a718e2f',
+        relation: 'isStaffOfTargetPatient'
+      },
+    ],
+  });
+```
+{% endtab %}
+{% endtabs %}
+
+#### initiatorHasRelationToGroupInData Condition
+
+The initiator of the Transition has a specified relation (as determined in `relation`) to a group (as determined in `groupIdField`) mentioned in the transition data.&#x20;
+
+This Condition only applies to the `creationTransition` and Transitions with type `manual`.
+
+**Example**
+
+The following code creates a manual transition requiring:
+
+* The initiator of the transition to be a staff member of the group with id `5e9fff9d90135a2a9a718e2f`.
+* The initiator of the transition to have the `MY_OWN_PERMISSION` group permission.&#x20;
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+    type: 'manual',
+    name: 'firstTransition',
+    fromStatuses: ['initialStatus'],
+    toStatus: 'secondStatus',
+    conditions: [
+      {
+        type: 'initiatorHasRelationToGroupInData',
+        groupIdField: '5e9fff9d90135a2a9a718e2f',
+        relation: 'staff',
+        requiredPermission: 'MY_OWN_PERMISSION'
+      },
+    ],
+  });
+```
+{% endtab %}
+{% endtabs %}
+
+#### Document Condition
+
+The content of the existing document must match a desired form, as specified by the type configurations in the `configuration` attribute.&#x20;
+
+This Condition applies to all transitions.
+
+**Example**
+
+The following code creates a manual transition requiring:
+
+* The name in the document data to be a string
+* The name in the document data to exist
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+    type: 'manual',
+    name: 'firstTransition',
+    fromStatuses: ['initialStatus'],
+    toStatus: 'secondStatus',
+    conditions: [
+      {
+        type: 'document',
         configuration: {
           type: 'object',
           properties: {
-            address: {
+            data: {
               type: 'object',
               properties: {
-                inhabited: { type: 'boolean' },
+                name: {
+                  type: 'string',
+                },
               },
-              required: ['inhabited'],
+              required: ['name'],
             },
           },
-          required: ['address'],
+          required: ['data'],
         },
       },
     ],
   });
-```
-{% endtab %}
-
-{% tab title="initiatorHasRelationToUserInData" %}
-```javascript
-```
-{% endtab %}
-
-{% tab title="initiatorHasRelationToGroupInData" %}
-```javascript
 ```
 {% endtab %}
 {% endtabs %}
