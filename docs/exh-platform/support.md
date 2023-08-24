@@ -61,3 +61,26 @@ For each ticket, you access all past communication for that ticket. If you need 
 #### Email notifications
 
 Whenever certain actions are performed linked to a ticket, you will receive an email notification to update you right away. This way, you will never miss a thing related to your tickets.
+
+#### Ticket statuses
+
+Below you can find an overview of the different statuses your ticket can transition into.&#x20;
+
+* <mark style="background-color:blue;">**Waiting for support**</mark>\
+  Your ticket has been added to our queue and is waiting to be picked up by our support agent.\
+
+* <mark style="background-color:blue;">**Waiting for customer**</mark>\
+  Your ticket has been picked up by our support agent but in order to proceed we need further input from your side.\
+
+* <mark style="background-color:blue;">**In product backlog**</mark>\
+  We have added a ticket to our backlog to fix the issue or add improved/new functionality. At this point in time there is no timeline yet as to when it can be picked up.\
+
+* <mark style="background-color:blue;">**Planned for current product cycle**</mark>\
+  We have added a ticket to our current product cycle. A product cycle at Extra Horizon takes 6 weeks. Our support agent will provide more detailed information on exact planning in your ticket.\
+
+* <mark style="background-color:blue;">**Resolved**</mark>\
+  **Issues:** We have implemented and released the fix to address your issue.\
+  **Improvements or feature requests:** We have implemented and released a new version of our product containing this functionality.\
+
+* <mark style="background-color:blue;">**Won't do**</mark>\
+  After further investigation, we have determined that we will not take any further action upon this ticket.
