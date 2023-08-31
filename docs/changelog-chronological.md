@@ -1,4 +1,22 @@
 
+## Data Service 1.2.1 (2023-08-29)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Improved error thrown when multiple text indexes are created
+
+
+**🐞 Bugs Fixed**
+* Input conditions on date-time fields now working correctly
+* Allowed removing broken indexes
+* If creating an index fails, the index is not added to the schema anymore
+
+</details>
+
+
 ## Files Service 1.1.0 (2023-08-09)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.1.0/openapi.yaml)
 
@@ -343,8 +361,8 @@
 </details>
 
 
-## Notifications Service v1 1.0.9 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+## Profiles Service 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -355,8 +373,8 @@
 </details>
 
 
-## Profiles Service 1.1.4 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+## Notifications Service v1 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>

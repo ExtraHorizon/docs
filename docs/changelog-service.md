@@ -101,6 +101,23 @@
 
 ## Data Service
 
+### 1.2.1 (2023-08-29)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Improved error thrown when multiple text indexes are created
+
+
+**🐞 Bugs Fixed**
+* Input conditions on date-time fields now working correctly
+* Allowed removing broken indexes
+* If creating an index fails, the index is not added to the schema anymore
+
+</details>
+
+
 ### 1.2.0 (2022-11-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.0/openapi.yaml)
 <details>
