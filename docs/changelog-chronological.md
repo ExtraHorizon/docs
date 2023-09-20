@@ -1,4 +1,23 @@
 
+## Dispatchers Service 1.1.0 (2023-09-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.1.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added a `PUT` endpoint for updating Dispatchers
+* Added name, description and tags fields to Dispatchers
+  * Name is unique against all Dispatchers
+* Added name and description fields to Actions
+  * Name is unique against Actions within a Dispatcher
+
+**⚒️ Improvements**
+* Updated validation for Dispatchers and Actions
+
+</details>
+
+
 ## Data Service 1.2.1 (2023-08-29)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.2.1/openapi.yaml)
 
