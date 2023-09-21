@@ -194,6 +194,21 @@
 </details>
 
 
+## Users Service 1.2.0 (2023-04-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* OpenID Connect is added as a authentication method.
+  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
+  * Other endpoints for users with a password are blocked for OpenID Connect users.
+
+</details>
+
+
 ## Authentication Service 2.1.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml)
 
@@ -210,21 +225,6 @@
 * Validation from the application logo is removed
   * Users can now add anything they want as the application logo.
   * This used to be only hashes that were used by the image service.
-</details>
-
-
-## Users Service 1.2.0 (2023-04-12)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* OpenID Connect is added as a authentication method.
-  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
-  * Other endpoints for users with a password are blocked for OpenID Connect users.
-
 </details>
 
 
@@ -380,8 +380,8 @@
 </details>
 
 
-## Profiles Service 1.1.4 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+## Notifications Service v1 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -392,8 +392,8 @@
 </details>
 
 
-## Notifications Service v1 1.0.9 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+## Profiles Service 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -724,24 +724,6 @@
 * Two endpoints where added to support configuration of the password policy.
   * GET /password_policy
   * PUT /password_policy
-
-</details>
-
-
-## <no value> <no value> (<no value>)
-[Documentation](<no value>) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/<no value>/<no value>/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-</details>
-
-
-## <no value> <no value> (<no value>)
-[Documentation](<no value>) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/<no value>/<no value>/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
 
 </details>
 
