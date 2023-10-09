@@ -2,7 +2,7 @@
 
 Whereas the Event Service is in charge of communicating the occurrence of specific types of events, the Dispatcher Service gives you the ability to act on them. Learn how to configure dispatchers.
 
-#### Example
+#### Example use case
 
 When a User object is removed in the User Service, the customer must guarantee that all personally identifiable information of the user disappears from all services. A dispatcher for the `user_deleted` Event type must therefore create a Task which eliminates the PII in, for example, the Data Service.
 
@@ -16,25 +16,38 @@ The TaskAction contains the (optional) parameters for the Create a Task request 
 
 ```typescript
 await exh.dispatchers.create({
-  eventType: 'user_created',
+  eventType: 'my-event-type',
+  name: 'my-unique-dispatcher-name',
+  description: 'A Dispatcher that handles my-event-type',
   actions:[
     {
+      name: 'my-unique-action-name'
+      description: 'An Action that handles my-event-type',
       type: ActionType.TASK,
-      functionName: 'myHelloWorldFunction',
+      functionName: 'my-function-name',
       data: {
         customStringField: 'myStringHere',
         customNumberField: 42
       },
       startTimestamp: new Date(),
-      tags:["tag1"]
+      tags:[
+        'tag1',
+        'tag2'
+      ]
     }
+  ],
+  tags: [
+    'tag1',
+    'tag2'
   ]
 });
 ```
 
-* `functionName`: The name of the AWS function to invoke,
-* `data`: The key-value pairs the AWS function expects as input,
-* `starTimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed, and
+* `name`: The unique name of the Action. - (optional)
+* `description`: A brief description for the Action. - (optional)
+* `functionName`: The name of the Task Service Function to invoke.
+* `data`: The key-value pairs the Task Service Function expects as input.
+* `starTimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed.
 * `tags`: Descriptive keywords that are stored in the Task object.
 
 {% hint style="info" %}
@@ -49,18 +62,33 @@ The fixed components include the recipients of the email and the templateId whic
 
 ```typescript
 await exh.dispatchers.create({
-  eventType: 'user_created',
-  actions:[{
-    type: ActionType.MAIL,
-    recipients:{
-      to:["john.doe@example.com"],
-      cc:["jane.doe@example.com"],
-      bcc: ["bcc@example.com"]
-    },
-    templateId:'abcdef0123456789abcdef013456789ab'
-  }]
+  eventType: 'my-event-type',
+  name: 'my-unique-dispatcher-name',
+  description: 'A Dispatcher that handles my-event-type',
+  actions:[
+    {
+      type: ActionType.MAIL,
+      name: 'my-unique-action-name'
+      description: 'An Action that handles my-event-type',
+      recipients:{
+        to:["john.doe@example.com"],
+        cc:["jane.doe@example.com"],
+        bcc: ["bcc@example.com"]
+      },
+      templateId:'abcdef0123456789abcdef013456789ab'
+    }
+  ],
+  tags: [
+    'tag1',
+    'tag2'
+  ]
 });
 ```
+
+* `name`: The unique name of the Action - (optional)
+* `description`: A brief description for the Action - (optional)
+* `recipients`: The recipients list of the mail, including `to`, `cc` and `bcc`
+* `templateId`: The id of the mail template to be consumed
 
 {% hint style="info" %}
 The dispatcher service will add the original event data as a property called event and pass it tot the mail and template service.
@@ -78,15 +106,63 @@ Events can originate from any service and the dispatcher service will put listen
 
 ![](../../.gitbook/assets/Screenshot\_20211018\_164704.png)
 
-## Retrieving a list of dispatchers
+## List Dispatchers
 
-{% embed url="https://extrahorizon.atlassian.net/browse/SVCS-41" %}
+In order to list dispatchers a user is required to have the `VIEW_DISPATCHERS` permission.
 
-
-
-You can retrieve a paginated list of dispatchers via the Extra Horizon SDK.
-
-```typescript
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
 const dispatchers = await exh.dispatchers.find();
 ```
+{% endtab %}
+{% endtabs %}
 
+## Update a Dispatcher
+
+In order to update a Dispatcher a user is required to have the `UPDATE_DISPATCHERS` permission.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.dispatchers.update(
+    dispatcherId, 
+    {
+        eventType: 'my-event-type',
+        name: 'my-unique-dispatcher-name',
+        description: 'A Dispatcher that handles my-event-type',
+        "tags": [
+          "tag1",
+          "tag2"
+        ]
+    }
+);
+```
+{% endtab %}
+{% endtabs %}
+
+## Dispatcher Properties
+
+### eventType
+
+The type of event the Dispatcher will respond to e.g `user_deleted`
+
+### name
+
+The unique name of the Dispatcher - (Optional)
+
+### description
+
+A brief description for the Dispatcher - (Optional)
+
+### actions
+
+The actions the Dispatcher shall execute
+
+### tags
+
+A list of string identifiers that can be attached to a Dispatcher
+
+{% hint style="info" %}
+When managing Dispatchers using the CLI `EXH_CLI_MANAGED` will be appended to the tags array
+{% endhint %}

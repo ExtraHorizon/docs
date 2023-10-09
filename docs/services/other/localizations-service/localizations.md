@@ -19,7 +19,7 @@ With `key` being a unique string to identify the localization, and `text` being 
 
 ### Usage <a href="#usage" id="usage"></a>
 
-***
+
 
 The `localization service` allows for the basic CRUD operations on localizations, as wel as retrieving available languages. For more information consult the API Reference (opens new window).
 
