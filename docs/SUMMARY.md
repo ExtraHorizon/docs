@@ -48,6 +48,7 @@
 * [Other](for-developers/other/README.md)
   * [Localizations Service](services/other/localizations-service/README.md)
     * [Localizations](services/other/localizations-service/localizations.md)
+    * [Language Code](services/other/localizations-service/language-code.md)
   * [Template Service](services/other/template-service/README.md)
     * [Localizations](services/other/template-service/localizations.md)
   * [Payments Service](services/other/payments-service/README.md)

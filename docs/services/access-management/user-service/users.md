@@ -73,21 +73,22 @@ When you receive a **Staff** the `staffEnlistments` property will only hold the 
 
 **Property overview**
 
-| Attribute               | Description                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------------------------------- |
-| `id`                    | The identifier of the user.                                                                        |
-| `first_name`            | First name of the user.                                                                            |
-| `last_name`             | Last name of the user.                                                                             |
-| `email`                 | email address of the user.                                                                         |
-| `phone_number`          | phone number of the user.                                                                          |
-| `activation`            | Boolean indicating the email address has been activated true or false.                             |
-| `roles`                 | Array containing a description of the roles this user has obtained.                                |
-| `staff_enlistments`     | Array containing a description of the staff enlistments this user has within one or more groups.   |
-| `patient_enlistments`   | Array containing a description of the patient enlistments this user has within one or more groups. |
-| `last_failed_timestamp` | Epoch timestamp Information about when the last password login attempt failed.                     |
-| `failed_count`          | The number of consecutive password login attempts.                                                 |
-| `creation_timestamp`    | Epoch timestamp when the user was created.                                                         |
-| `update_timestamp`      | Epoch timestamp when this user object was last updated.                                            |
+| Attribute               | Description                                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `id`                    | The identifier of the user.                                                                                            |
+| `first_name`            | First name of the user.                                                                                                |
+| `last_name`             | Last name of the user.                                                                                                 |
+| `language`              | A supported language code see [Localization service documentation](../../other/localizations-service/language-code.md) |
+| `email`                 | email address of the user.                                                                                             |
+| `phone_number`          | phone number of the user.                                                                                              |
+| `activation`            | Boolean indicating the email address has been activated true or false.                                                 |
+| `roles`                 | Array containing a description of the roles this user has obtained.                                                    |
+| `staff_enlistments`     | Array containing a description of the staff enlistments this user has within one or more groups.                       |
+| `patient_enlistments`   | Array containing a description of the patient enlistments this user has within one or more groups.                     |
+| `last_failed_timestamp` | Epoch timestamp Information about when the last password login attempt failed.                                         |
+| `failed_count`          | The number of consecutive password login attempts.                                                                     |
+| `creation_timestamp`    | Epoch timestamp when the user was created.                                                                             |
+| `update_timestamp`      | Epoch timestamp when this user object was last updated.                                                                |
 
 {% hint style="info" %}
 When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other Extra Horizon Services in the future.
