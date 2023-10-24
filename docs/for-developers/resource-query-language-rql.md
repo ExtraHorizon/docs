@@ -79,29 +79,52 @@ GET /users/v1/?and(eq(first_name,Adam),select(first_name))
 
 <table data-full-width="true"><thead><tr><th width="393.0083026218489" align="center">Function</th><th width="532.416149068323">Note</th></tr></thead><tbody><tr><td align="center"><code>or(&#x3C;condition>,&#x3C;condition>,...)</code></td><td>Returns records that satisfy at least one of the specified conditions.</td></tr><tr><td align="center"><code>and(&#x3C;condition>,&#x3C;condition>,...)</code></td><td>Returns records that satisfy all specified conditions.</td></tr><tr><td align="center"><code>eq(&#x3C;property>,&#x3C;value>)</code></td><td><p>Filters records where <code>&#x3C;property></code> exactly matches <code>&#x3C;value></code>. If <code>&#x3C;property></code> is an array, it must contain <code>&#x3C;value></code>.<br></p><p>Note: Object comparisons are not supported.</p></td></tr><tr><td align="center"><code>ne(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> does not match <code>&#x3C;value></code>. If <code>&#x3C;property></code> is an array, it should not contain <code>&#x3C;value></code>.<br><br>Note: Object comparisons are not supported.</td></tr><tr><td align="center"><code>gt(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> is greater than <code>&#x3C;value></code>.</td></tr><tr><td align="center"><code>ge(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> is greater than or equal to <code>&#x3C;value></code>.</td></tr><tr><td align="center"><code>lt(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> is less than <code>&#x3C;value></code>.</td></tr><tr><td align="center"><code>le(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> is less than or equal to <code>&#x3C;value></code>.</td></tr><tr><td align="center"><code>in(&#x3C;property>,&#x3C;value>,&#x3C;value>,...)</code></td><td>Filters records where <code>&#x3C;property></code> matches any of the listed <code>value</code>s. If <code>&#x3C;property></code> is an array, only one element needs to match.</td></tr><tr><td align="center"><code>out(&#x3C;property>,&#x3C;value>,&#x3C;value>,...)</code></td><td>Filters records where <code>&#x3C;property></code> matches none of the listed <code>value</code>s. If <code>&#x3C;property></code> is an array, no element can match any of the listed <code>&#x3C;value></code>s.</td></tr><tr><td align="center"><code>contains(&#x3C;property>)</code><br><code>contains(&#x3C;property>,&#x3C;expression>)</code></td><td>Filters records where <code>&#x3C;property></code>, assumed to be an array of objects, contains at least one object that satisfies <code>&#x3C;expression></code>.<br><br>When <code>&#x3C;expression></code> is not provided, objects which contain <code>&#x3C;property></code> are returned. </td></tr><tr><td align="center"><code>excludes(&#x3C;property>)</code><br><code>excludes(&#x3C;property>,&#x3C;expression>)</code></td><td>Filters records where <code>&#x3C;property></code>, assumed to be an array of objects, does not contain any object that satisfies <code>&#x3C;expression></code>.<br><br>When <code>&#x3C;expression></code> is not provided, objects which do not have <code>&#x3C;property></code> are returned. </td></tr><tr><td align="center"><code>like(&#x3C;property>,&#x3C;value>)</code></td><td>Filters records where <code>&#x3C;property></code> contains <code>&#x3C;value></code> as a substring. This applies to strings or arrays of strings.<br><br>Unsupported data types will yield no records.</td></tr><tr><td align="center"><code>limit(&#x3C;limit>,&#x3C;offset>)</code></td><td><p>Limits the number of returned records and optionally offsets the starting position in the result set.</p><ul><li><code>limit(1)</code> returns only <code>1</code> record: </li><li><code>limit(2,0)</code> returns the two resources in positions 0 and 1</li><li><code>limit(10)</code> returns up to 10 resources starting from position 0</li><li><code>limit(2,2)</code> returns the two resources in positions 2 and 3</li></ul></td></tr><tr><td align="center"><code>sort(&#x3C;property>)</code><br><code>sort(-&#x3C;property>)</code></td><td>Sorts the returned records by <code>&#x3C;property></code>. Ascending sort is the default. For descending order, prepend <code>-</code> to <code>&#x3C;property></code>.</td></tr><tr><td align="center"><code>select(&#x3C;property>,&#x3C;property>,...)</code></td><td>Trims the returned records to only include the specified properties.</td></tr></tbody></table>
 
-## RQL Implementation Details on Extra Horizon <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
 
-This section contains examples on how you can use RQL on Extra Horizon.
 
-#### Users Service • Query users that are not in a specific timezone
+## Limitations <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
 
-```
-/users/v1/?contains(time_zone)&out(time_zone,Europe%252FBrussels)
-```
+Every tool has its constraints, and RQL is no exception. Understanding these limitations helps you use RQL more effectively.
 
-* To encode `Europe/Brussels` in the URL, use double encoding. `%252F` represents `%/`
+### Double Encoding of Special Characters
 
-#### Events Service • List all events from a specific user <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
+Imagine a scenario where you need to filter records based on a description that includes the string `a)a`:
 
-Use `like` instead of `eq`
-
-```
-/events/v1/?like(content.user_id,569544b142cfbb000460aa61)
+```http
+GET /data/v1/?like(description,a)a)
 ```
 
-## More Information <a href="#markdown-header-more-information" id="markdown-header-more-information"></a>
+Executing the above query without any modifications results in an `INVALID_RQL_EXCEPTION`. The problem lies with the special character `)`. RQL can't discern whether the `)` marks the end of the argument list or is part of the string value `a)a`.
 
-For more information on RQL, visit [persvr/rql on GitHub](https://github.com/persvr/rql).
+You might think of solving this by URL encoding the special character `)` as `%29`:
 
+```http
+GET /data/v1/?like(description,a%29a)
+```
 
+Unfortunately, this approach still triggers an `INVALID_RQL_EXCEPTION`. The reason lies in RQL's automatic decoding of incoming requests, a design choice to accommodate HTTP clients that perform automatic URL encoding. Consequently the encoded `%29` gets decoded back to `)`, leaving us with the initial problem.
 
+To effectively handle special characters, RQL mandates double encoding for such string values. This means that the special character should be encoded twice. Here's how you would apply double encoding to the initial query:
+
+```http
+GET /data/v1/?like(description,a%2529a)
+```
+
+It is highly recommended to use our SDK if you are building a JavaScript or Typescript application. Our SDK will automatically double encode string values.
+
+{% hint style="info" %}
+Double encoding is not limited to parentheses. RQL requires all special characters to be double encoded:
+
+* Simple symbols like `/`, `(`, `]`, `"`.
+* Accents such as `é`, `à`, `ö`.
+* Whitespace characters including spaces, newlines, and tabs.&#x20;
+{% endhint %}
+
+### Event Service • List all events from a specific user
+
+When querying for IDs within the Event Service, the operator `like` is needed instead of `eq`.
+
+For example, to search for the content user ID, you must use:
+
+```
+GET /events/v1/?like(content.user_id,569544b142cfbb000460aa61)
+```
