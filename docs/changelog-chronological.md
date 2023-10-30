@@ -1,4 +1,21 @@
 
+## Data Service 1.3.0 (2023-10-27)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.3.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added a skipCount() RQL function that instructs the listing function not to execute and return the total count.
+
+
+**🐞 Bugs Fixed**
+* Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+* The `<` and `>` characters may now be used in RQL when [double encoded](https://docs.extrahorizon.com/extrahorizon/additional-resources/resource-query-language-rql#double-encoding-of-special-characters).
+
+</details>
+
+
 ## Dispatchers Service 1.1.0 (2023-09-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.1.0/openapi.yaml)
 
@@ -353,18 +370,6 @@
 </details>
 
 
-## Reports Service 1.0.13 (2022-09-22)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Increased the stability of the service:
-  * Service discovery is now based on DNS and more reliable.
-</details>
-
-
 ## Users Service 1.1.10 (2022-09-22)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.10/openapi.yaml)
 
@@ -377,6 +382,18 @@
 
 **🐞 Bugs Fixed**
 * Expiry field set incorrectly in patient enlistments
+</details>
+
+
+## Reports Service 1.0.13 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
 </details>
 
 
