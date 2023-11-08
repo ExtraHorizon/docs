@@ -658,6 +658,27 @@
 
 ## Users Service
 
+### 1.3.0 (2023-11-03)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.3.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added a `skip_count()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+* Staff enlistment roles can now be queried correctly with the RQL `contains` operator
+* Deleted users referenced in an Activation or New Password Request now cause a `USER_UNKNOWN_EXCEPTION` to be thrown
+* Empty strings are no longer accepted for permissions
+* RQL
+  * Using the `contains` operator inside an `or` operator now works as expected
+  * The `ne` operator now behaves as expected
+  * Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+
+</details>
+
+
 ### 1.2.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
 <details>
