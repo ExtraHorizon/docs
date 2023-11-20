@@ -215,6 +215,26 @@
 
 ## Events Service
 
+### 1.1.0 (2023-11-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.1.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added a `skip_count()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+* RQL
+  * Using the `contains` operator inside an `or` operator now works as expected
+  * The `ne` operator now behaves as expected
+  * Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Sorting on id now behaves as expected
+  * Querying on `content.<name>_id` now works as expected
+
+</details>
+
+
 ### 1.0.7 (2022-09-23)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.0.7/openapi.yaml)
 <details>

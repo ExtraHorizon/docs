@@ -1,4 +1,25 @@
 
+## Events Service 1.1.0 (2023-11-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.1.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* Added a `skip_count()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+* RQL
+  * Using the `contains` operator inside an `or` operator now works as expected
+  * The `ne` operator now behaves as expected
+  * Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Sorting on id now behaves as expected
+  * Querying on `content.<name>_id` now works as expected
+
+</details>
+
+
 ## Users Service 1.3.0 (2023-11-03)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.3.0/openapi.yaml)
 
@@ -209,8 +230,8 @@
 </details>
 
 
-## Logs Service 1.0.1 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.1/openapi.yaml)
+## Tasks Service 1.3.2 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -221,8 +242,8 @@
 </details>
 
 
-## Tasks Service 1.3.2 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
+## Logs Service 1.0.1 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -380,18 +401,6 @@
 </details>
 
 
-## Prescriptions Service 1.1.18 (2022-09-22)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.18/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Increased the stability of the service:
-  * Service discovery is now based on DNS and more reliable.
-</details>
-
-
 ## Users Service 1.1.10 (2022-09-22)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.10/openapi.yaml)
 
@@ -409,6 +418,18 @@
 
 ## Reports Service 1.0.13 (2022-09-22)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+</details>
+
+
+## Prescriptions Service 1.1.18 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.18/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
