@@ -127,3 +127,4 @@ Services currently supporting the skip count operator:
 
 * Users Service
 * Data Service
+* Events Service
