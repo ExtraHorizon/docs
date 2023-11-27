@@ -119,16 +119,6 @@ Double encoding is not limited to parentheses. RQL requires all special characte
 * Whitespace characters including spaces, newlines, and tabs.&#x20;
 {% endhint %}
 
-### Event Service • List all events from a specific user
-
-When querying for IDs within the Event Service, the operator `like` is needed instead of `eq`.
-
-For example, to search for the content user ID, you must use:
-
-```
-GET /events/v1/?like(content.user_id,569544b142cfbb000460aa61)
-```
-
 ### Services with the skip count RQL operator
 
 The skip count RQL operator is currently supported in select services, and efforts are underway to make it available for all services in the near future. Attempting to use the skip count on a service that does not yet support it may result in an `INVALID_RQL_EXCEPTION`.
