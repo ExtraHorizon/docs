@@ -6,14 +6,14 @@ The following are restrictions on data storage and operations in your Extra Hori
 In case you want an increase on the limits described below. Please contact the Extra Horizon Team through your dedicated slack channel or via support@extrahorizon.com.
 {% endhint %}
 
-## Gateway Limits
+## Gateway limits
 
-| Operation     | Limit      | Description                                                                           |
-| ------------- | ---------- | ------------------------------------------------------------------------------------- |
-| API Call      | 60 seconds | Any single API call can run for 60 seconds before timing out.                         |
-| Max body size | 10MB       | The size of the body of any API request, except for file uploads in the file service. |
+| Operation     | Limit      | Description                                                                                           |
+| ------------- | ---------- | ----------------------------------------------------------------------------------------------------- |
+| API Call      | 60 seconds | Any single API call can run for 60 seconds before timing out.                                         |
+| Max body size | 10MB       | The size of the body of any API request. Except for file uploads, see the limits of the File Service. |
 
-## Service-specific limits
+## Service specific limits
 
 ### Task Service
 
@@ -25,11 +25,11 @@ In case you want an increase on the limits described below. Please contact the E
 
 ### File Service
 
-| Operation    | Limit | Description                                                  |
-| ------------ | ----- | ------------------------------------------------------------ |
-| File uploads | 8MB   | File uploads to the file service are limited to files of 8MB |
+| Operation    | Limit | Description                                                    |
+| ------------ | ----- | -------------------------------------------------------------- |
+| File uploads | 8MB\* | File uploads to the file service are limited to files of 8MB\* |
 
-You as an application builder need to be aware of the performance impact and user experience in the  applications you are building. Theoretically the file service can handle files up to 5 TB. However, uploading large files can take a long time and when internet connections fail it can result in a bad user experience. Therefore when you are expecting your application to process large files, please have a chat with our Solution Architecture Team, we are here to help.&#x20;
+_\* The limit can be increased, but you as an application builder need to be aware of the performance impact and user experience in the applications you are building. Theoretically the file service can handle files up to 5 TB. However, uploading large files can take a long time and when internet connections fail it can result in a bad user experience. Therefore when you are expecting your application to process large files, please have a chat with our Solution Architecture Team, we are here to help._&#x20;
 
 Please contact the Extra Horizon Team through your dedicated slack channel or via support@extrahorizon.com
 
