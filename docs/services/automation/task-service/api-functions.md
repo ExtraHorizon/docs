@@ -60,6 +60,10 @@ Please refer to the [SDK documentation](https://docs.extrahorizon.com/javascript
 
 The API Function receives the HTTP request as its input. The request is transformed to the standardized [AWS API Gateway request format](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.proxy-format) (version 2.0). By using this standardized format, we ensure that the API Functions can handle HTTP requests consistently across different programming languages.
 
+{% hint style="info" %}
+Depending on your cluster configuration, Extra Horizon will handle [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for you. Therefore, some `OPTIONS` requests might not reach your API Function and additional headers could be added to the response you've generated.
+{% endhint %}
+
 ### Example API Function input
 
 Here is an example of a request object received by an API Function as its input:
