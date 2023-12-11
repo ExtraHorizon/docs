@@ -19,7 +19,7 @@ exh tasks sync --name=my-function \
   --runtime="nodejs14.x"
 ```
 
-See the [Extra Horizon CLI documentation](http://127.0.0.1:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -39,7 +39,7 @@ The [JavaScript SDK](https://extrahorizon.github.io/javascript-sdk/#/) may be us
 exh tasks list <options>
 ```
 
-See the [Extra Horizon CLI documentation](http://127.0.0.1:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -53,7 +53,7 @@ In order to **Delete** a Task Function, you will need as a User to have the **DE
 exh tasks delete <options>
 ```
 
-See the [Extra Horizon CLI documentation](http://127.0.0.1:5000/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
+See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/xoM7jW7vVT9Wk3ulEGgO/) for more information.
 {% endtab %}
 {% endtabs %}
 

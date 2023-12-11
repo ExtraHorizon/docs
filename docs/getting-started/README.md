@@ -30,26 +30,26 @@ Once you have the credentials, there are multiple methods to access your environ
 
 The web-based ExH Control Center interface, available at [app.extrahorizon.com](https://app.extrahorizon.com), is the easiest way to get familiar with your ExH environment. Through this interface, you can:
 
-* Create and manage users&#x20;
+* Create and manage users
 * View existing data schemas and their properties
 * Query the data in the data service
 * View functions, task executions and task execution logs
 
-<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption><p>Login screen of the ExH Control Center</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (3).png" alt=""><figcaption><p>Login screen of the ExH Control Center</p></figcaption></figure>
 
 ### Use the CLI Tool
 
 The [Extra Horizon CLI](https://github.com/ExtraHorizon/exh-cli) is an open-source tool to manage your environment through the command line. You can also use this tool to automate certain actions through scripts and CI/CD pipelines.
 
-<figure><img src=".gitbook/assets/Petrify 2022-11-02 at 11.31.11.png" alt=""><figcaption><p>Manage your environment using the ExH CLI</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Petrify 2022-11-02 at 11.31.11.png" alt=""><figcaption><p>Manage your environment using the ExH CLI</p></figcaption></figure>
 
 Visit the [CLI Documentation](https://docs.extrahorizon.com/cli/) for more information and examples.
 
 ### Use the JavaScript SDK
 
-The [JavaScript SDK](https://github.com/ExtraHorizon/javascript-sdk) offers first-class TypeScript support and makes it easy to interface with your environment from code.&#x20;
+The [JavaScript SDK](https://github.com/ExtraHorizon/javascript-sdk) offers first-class TypeScript support and makes it easy to interface with your environment from code.
 
-Visit the [SDK Documentation](https://docs.extrahorizon.com/javascript-sdk/) for more information and examples.&#x20;
+Visit the [SDK Documentation](https://docs.extrahorizon.com/javascript-sdk/) for more information and examples.
 
 ### Use the REST API
 
@@ -57,7 +57,7 @@ The above mentioned methods to access your Extra Horizon environment all make us
 
 Visit the [OpenAPI specifications](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) to learn more about all the endpoints available in your ExH environment.
 
-To quickly get started with the REST API, we also provide a [Postman Reference Collection](api-reference/postman-reference-collection.md).
+To quickly get started with the REST API, we also provide a [Postman Reference Collection](../api-reference/postman-reference-collection.md).
 
 ## Start Building Your Medical Backend
 
@@ -70,20 +70,20 @@ To quickly get started with the REST API, we also provide a [Postman Reference C
 
 ### Create Your First Data Schema
 
-The first step in building your application is to create one or more data schema's that define the type of data you want to store.&#x20;
+The first step in building your application is to create one or more data schema's that define the type of data you want to store.
 
 Take a look at the Data Service documentation. There you can also find an instructional video that walks you through the steps of creating a data schema.
 
-{% content-ref url="services/manage-data/data-service/" %}
-[data-service](services/manage-data/data-service/)
+{% content-ref url="../services/manage-data/data-service/" %}
+[data-service](../services/manage-data/data-service/)
 {% endcontent-ref %}
 
 ### Create Your First Function
 
-After defining and creating data schema's, the next step is to build the business logic. In Extra Horizon, business logic is implemented in Functions.&#x20;
+After defining and creating data schema's, the next step is to build the business logic. In Extra Horizon, business logic is implemented in Functions.
 
-{% content-ref url="services/automation/task-service/" %}
-[task-service](services/automation/task-service/)
+{% content-ref url="../services/automation/task-service/" %}
+[task-service](../services/automation/task-service/)
 {% endcontent-ref %}
 
 ## Documentation and Support
@@ -93,7 +93,6 @@ Take a look at these resources for more information on how to build on Extra Hor
 * The [docs.extrahorizon.com](https://docs.extrahorizon.com/extrahorizon/) website
 * The [ExtraHorizon/examples ](https://github.com/ExtraHorizon/examples)GitHub repository
 * The [Extra Horizon 101](https://www.youtube.com/playlist?list=PLRwWLxIAwCGlMWBWOPhV9trKwPZzONw89) YouTube playlist, which contains short instructional videos on how the different services can be used.
-* Our [Postman Reference Collection](api-reference/postman-reference-collection.md) to quickly get started with the REST API.
+* Our [Postman Reference Collection](../api-reference/postman-reference-collection.md) to quickly get started with the REST API.
 
-If you can't find the answers to your questions, reach out to our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com).&#x20;
-
+If you can't find the answers to your questions, reach out to our support team at [support@extrahorizon.com](mailto:support@extrahorizon.com).

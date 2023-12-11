@@ -1,10 +1,26 @@
 # Table of contents
 
 * [Extra Horizon Documentation](README.md)
-* [Getting Started](getting-started.md)
-* [Demo's and tutorials](use-cases/README.md)
-  * [Polysomnography (PSG)](use-cases/polysomnography-psg.md)
-  * [Building dashboards with Retool](use-cases/building-dashboards-with-retool.md)
+* [Getting Started](getting-started/README.md)
+  * [Start familiarizing yourself with](getting-started/start-familiarizing-yourself-with.md)
+* [Tutorials](use-cases/README.md)
+  * [Medical Device Tutorial](use-cases/medical-device-tutorial/README.md)
+    * [Preparation](use-cases/medical-device-tutorial/preparation.md)
+    * [Build your first prototype](use-cases/medical-device-tutorial/build-your-first-prototype/README.md)
+      * [Define a data model](use-cases/medical-device-tutorial/build-your-first-prototype/define-a-data-model.md)
+      * [Configure your workflows](use-cases/medical-device-tutorial/build-your-first-prototype/configure-your-workflows/README.md)
+        * [Workflow 1: Analyze a measurement](use-cases/medical-device-tutorial/build-your-first-prototype/configure-your-workflows/workflow-1-analyze-a-measurement.md)
+        * [Workflow 2: Create & store a PDF report](use-cases/medical-device-tutorial/build-your-first-prototype/configure-your-workflows/workflow-2-create-and-store-a-pdf-report.md)
+        * [Workflow 3: Send an e-mail](use-cases/medical-device-tutorial/build-your-first-prototype/configure-your-workflows/workflow-3-send-an-e-mail.md)
+      * [Define your permissions](use-cases/medical-device-tutorial/build-your-first-prototype/define-your-permissions/README.md)
+        * [Update your schema with user permissions](use-cases/medical-device-tutorial/build-your-first-prototype/define-your-permissions/update-your-schema-with-user-permissions.md)
+        * [Update your schema with group permissions](use-cases/medical-device-tutorial/build-your-first-prototype/define-your-permissions/update-your-schema-with-group-permissions.md)
+      * [Build the Front-End](use-cases/medical-device-tutorial/build-your-first-prototype/build-the-front-end/README.md)
+        * [Set up oAuth in your backend](use-cases/medical-device-tutorial/build-your-first-prototype/build-the-front-end/set-up-oauth-in-your-backend.md)
+        * [Demo login page](use-cases/medical-device-tutorial/build-your-first-prototype/build-the-front-end/demo-login-page.md)
+    * [Summary & Wrap up](use-cases/medical-device-tutorial/summary-and-wrap-up.md)
+  * [Polysomnography (PSG) Tutorial](use-cases/polysomnography-psg.md)
+  * [Retool - Building dashboards Tutorial](use-cases/building-dashboards-with-retool.md)
 
 ## FAQ
 

@@ -8,7 +8,7 @@ In addition to role base access controls this service also provides registration
 
 The structure of the user service, as is depicted in the graph below, relies on three core concepts; _Users_, _roles_, and _groups_. These concepts are explained in greater detail in the paragraphs below.
 
-![](<../../../.gitbook/assets/image (5).png>)
+![](<../../../.gitbook/assets/image (5) (2).png>)
 
 #### Users
 
@@ -18,7 +18,7 @@ The Extra Horizon user service provides standard user management features. For e
 
 A user's _role_ determines what actions a user is or is not allowed to perform, based on the permissions associated with that role. Roles that are granted to a user directly are called _global roles_. Global Roles determine the privileges a user has with respect to the EXHZ services; such as the services a user has access to, whether or not a user can view a resource, if the user can edit that resource, etc.
 
-![](<../../../.gitbook/assets/image (2).png>)
+![](<../../../.gitbook/assets/image (2) (2).png>)
 
 #### Groups
 
@@ -29,7 +29,7 @@ A user can be connected to a group either as a patient or as a staff member. Sin
 The relationship between a user and a group is referred to as an _enlistment_. Patients are connected to a group through a _patient enlistment_, and staff members through a _staff enlistment_.\
 Evidently, numerous users can be enlisted to a single group; Likewise, a single user can be enlisted to multiple groups.
 
-![](<../../../.gitbook/assets/image (3).png>)
+![](<../../../.gitbook/assets/image (3) (1).png>)
 
 **Patient enlistment**
 
