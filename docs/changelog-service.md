@@ -504,6 +504,31 @@
 
 ## Profiles Service
 
+### 1.2.0 (2024-01-02)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added a `skip_count()` RQL operator. Would instruct the listing endpoints not to execute/return the total count to increase performance.
+
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Using the `contains` operator inside an `or` operator now works as expected
+  * The `ne` operator now behaves as expected
+  * Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+
+* Removing fields
+  * `patient_id` can now be removed from profile groups
+  * An empty list of fields to remove is now correctly handled
+  * Attempts to remove an id or timestamp field are now correctly handled
+
+</details>
+
+
 ### 1.1.4 (2022-09-21)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 <details>
@@ -529,6 +554,25 @@
 
 
 ## Tasks Service
+
+### 1.6.0 (2024-01-02)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Double encoding the `<` and `>` characters when searching for them now works.
+
+</details>
+
 
 ### 1.5.0 (2023-07-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.5.0/openapi.yaml)
