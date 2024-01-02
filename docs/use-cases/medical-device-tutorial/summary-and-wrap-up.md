@@ -11,7 +11,7 @@ You have learned how to create and configure schemas, functions and permissions 
 * Setup **oAuth** in the backend and connect it a demo frontend login page
 * Make use of the **Extra Horizon CLI and SDK** throughout your development process
 
-## Continue practicing & lean more
+## Continue practicing & learn more
 
 * Extend and create new data schemas
 * Explore the usage of [API functions](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service/api-functions) for your workflows
