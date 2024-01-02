@@ -701,9 +701,7 @@ await exh.data.transitions.create(newSchema.id, {
 {% endtab %}
 {% endtabs %}
 
-### After Actions
 
-`afterActions` can be used to execute an action once a transition is completed. This is helpful when you want to look at the result of transition itself; compared to the normal actions that are executed during the transition.&#x20;
 
 ## Indexes
 
