@@ -125,6 +125,9 @@ The skip count RQL operator is currently supported in select services, and effor
 
 Services currently supporting the skip count operator:
 
-* Users Service
 * Data Service
 * Events Service
+* Profiles Service
+* Tasks Service
+* Users Service
+
