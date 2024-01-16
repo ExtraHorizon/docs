@@ -130,5 +130,4 @@ Services currently supporting the skip count operator:
 * Profiles Service
 * Tasks Service
 * Users Service
-* Notifications service
 
