@@ -29,7 +29,7 @@ The service endpoints that a user is allowed to use depend on the required permi
 The required permissions for each endpoint can be found in the corresponding API reference documentation (Swagger)
 
 {% hint style="info" %}
-**Example:** To enable a user to trigger a task within the Task service, looking at the [API specification](https://developers.extrahorizon.io/swagger-ui/?url=https://developers.extrahorizon.io/services/tasks-service/1.0.4/openapi.yaml#/Tasks/post\_) they need to have the `CREATE_TASKS` permission&#x20;
+**Example:** To enable a user to trigger a task within the Task service, looking at the [API specification](https://swagger.extrahorizon.com/listing/?service=tasks-service\&redirectToVersion=1) they need to have the `CREATE_TASKS` permission&#x20;
 {% endhint %}
 
 {% content-ref url="../../services/access-management/user-service/" %}
