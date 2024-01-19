@@ -1,4 +1,4 @@
-# Start familiarizing yourself with
+# Start familiarizing yourself
 
 ## Start familiarising yourself with the Extra Horizon Platform
 
@@ -15,9 +15,9 @@
 
 This example shows how to:
 
-* create an oAuth1 client in the SDK
-* authenticate that client in the sdk
-* do a .me call in the SDK
+* Create an oAuth1 client in the SDK
+* Authenticate that client in the SDK
+* Do a `exh.users.me` call in the SDK
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -30,15 +30,15 @@ retrieveMyUser();
 async function retrieveMyUser() {
     // Create an OAuth1 client to connect to Extra Horizon
     const exh = createOAuth1Client({
-        host: '<your_exh_host>', //TODO: FOUND AT
-        consumerKey: '<your_consumer_key>', //TODO: FOUND AT
-        consumerSecret: '<your_consumer_secret>', //TODO: FOUND AT
+        host: '<your_exh_host>', 
+        consumerKey: '<your_consumer_key>',
+        consumerSecret: '<your_consumer_secret>',
     });
 
     // Authenticate the client with your user credentials, this will generate new OAuth1 tokens
     await exh.auth.authenticate({
-        email: '<your_user_email>', //TODO: FOUND AT
-        password: '<your_user_password>', //TODO: FOUND AT
+        email: '<your_user_email>', 
+        password: '<your_user_password>',
     });
 
     // Use the client to fetch your user information

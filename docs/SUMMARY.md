@@ -2,7 +2,7 @@
 
 * [Extra Horizon Documentation](README.md)
 * [Getting Started](getting-started/README.md)
-  * [Start familiarizing yourself with](getting-started/start-familiarizing-yourself-with.md)
+  * [Start familiarizing yourself](getting-started/start-familiarizing-yourself-with.md)
 * [Tutorials](use-cases/README.md)
   * [Medical Device Tutorial](use-cases/medical-device-tutorial/README.md)
     * [Preparation](use-cases/medical-device-tutorial/preparation.md)
