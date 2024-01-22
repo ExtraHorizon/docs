@@ -35,7 +35,7 @@ exports.handler = async function (request) {
 
 ### Deploy
 
-Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](https://app.gitbook.com/s/xoM7jW7vVT9Wk3ulEGgO/features/tasks/hello-world-task) example.
+Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](https://app.gitbook.com/s/xoM7jW7vVT9Wk3ulEGgO/commands/tasks/hello-world-task) example.
 
 ### Execute
 

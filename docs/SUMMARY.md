@@ -53,6 +53,10 @@
     * [Functions](services/automation/task-service/functions.md)
     * [Tasks](services/automation/task-service/tasks.md)
     * [API Functions](services/automation/task-service/api-functions.md)
+    * [Examples](services/automation/task-service/examples/README.md)
+      * [Hello world (JS)](services/automation/task-service/examples/hello-world-js.md)
+      * [Hello world (Py)](services/automation/task-service/examples/hello-world-py.md)
+      * [Hello world (Docker)](services/automation/task-service/examples/hello-world-docker.md)
     * [FAQ](services/automation/task-service/faq.md)
   * [Dispatchers Service](services/automation/dispatchers-service.md)
   * [Event Service](services/automation/event-service.md)
@@ -90,6 +94,7 @@
 * [Resource Query Language (RQL)](for-developers/resource-query-language-rql.md)
 * [Handling Errors](for-developers/handling-errors.md)
 * [GitHub](https://github.com/ExtraHorizon)
+* [API interaction (Python)](additional-resources/api-interaction-python.md)
 
 ## ExH Platform
 
