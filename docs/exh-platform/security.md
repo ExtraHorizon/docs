@@ -21,6 +21,7 @@ To make sure that all your data is secure in transit, only HTTPS communication i
 **Supported protocols:**
 
 * TLS v1.2
+* TLS v1.3
 
 **Supported cipher suites:**
 
@@ -28,6 +29,8 @@ To make sure that all your data is secure in transit, only HTTPS communication i
 * ECDHE-RSA-AES128-GCM-SHA256
 * ECDHE-ECDSA-AES256-GCM-SHA384
 * ECDHE-RSA-AES256-GCM-SHA384
+* TLS-AES-128-GCM-SHA256
+* TLS-AES-256-GCM-SHA384
 
 {% hint style="info" %}
 The above-mentioned list of protocols and cipher suites holds for **new environments**. We are currently in the process of migrating all existing environments to reflect the protocols and cipher suites mentioned here.
