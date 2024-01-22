@@ -12,25 +12,25 @@ Dispatching an action based on an event is easy. First you need to choose the ac
 
 {% tabs %}
 {% tab title="Task Action" %}
-The TaskAction contains the (optional) parameters for the Create a Task request to the Task Service:
+The Task Action contains the (optional) parameters for the Create a Task request to the Task Service:
 
 ```typescript
 await exh.dispatchers.create({
   eventType: 'my-event-type',
   name: 'my-unique-dispatcher-name',
   description: 'A Dispatcher that handles my-event-type',
-  actions:[
+  actions: [
     {
+      type: 'task',
       name: 'my-unique-action-name'
       description: 'An Action that handles my-event-type',
-      type: ActionType.TASK,
       functionName: 'my-function-name',
       data: {
         customStringField: 'myStringHere',
         customNumberField: 42
       },
       startTimestamp: new Date(),
-      tags:[
+      tags: [
         'tag1',
         'tag2'
       ]
@@ -46,17 +46,17 @@ await exh.dispatchers.create({
 * `name`: The unique name of the Action. - (optional)
 * `description`: A brief description for the Action. - (optional)
 * `functionName`: The name of the Task Service Function to invoke.
-* `data`: The key-value pairs the Task Service Function expects as input.
-* `starTimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed.
-* `tags`: Descriptive keywords that are stored in the Task object.
+* `data`: The key-value pairs the Task Service Function expects as input. - (optional)
+* `starTimestamp`: The moment at which the Task is to be executed. If no time is specified, the Task will be immediately performed. - (optional)
+* `tags`: Descriptive keywords that are stored in the Task object. - (optional)
 
 {% hint style="info" %}
-The dispatcher service will append the original event data as a property called event and pass it tot the task service. Setting the an event property yourself will be overridden.
+The dispatcher service will append the original event data as a property called event and pass it to the task service. Setting the event property yourself will be overridden.
 {% endhint %}
 {% endtab %}
 
 {% tab title="Mail Action" %}
-A MailAction contains part of the parameters required for the Send an email request to the [Mail Service](broken-reference). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
+A Mail Action contains part of the parameters required for the Send an email request to the [Mail Service](broken-reference). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
 
 The fixed components include the recipients of the email and the templateId which is needed to compose the email subject and body text fields.
 
@@ -65,17 +65,17 @@ await exh.dispatchers.create({
   eventType: 'my-event-type',
   name: 'my-unique-dispatcher-name',
   description: 'A Dispatcher that handles my-event-type',
-  actions:[
+  actions: [
     {
-      type: ActionType.MAIL,
+      type: 'mail',
       name: 'my-unique-action-name'
       description: 'An Action that handles my-event-type',
-      recipients:{
-        to:["john.doe@example.com"],
-        cc:["jane.doe@example.com"],
+      recipients: {
+        to: ["john.doe@example.com"],
+        cc: ["jane.doe@example.com"],
         bcc: ["bcc@example.com"]
       },
-      templateId:'abcdef0123456789abcdef013456789ab'
+      templateId: 'abcdef0123456789abcdef013456789ab'
     }
   ],
   tags: [
