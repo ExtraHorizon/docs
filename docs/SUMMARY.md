@@ -88,6 +88,7 @@
 
 * [SDK](https://docs.extrahorizon.com/javascript-sdk/)
 * [CLI](https://docs.extrahorizon.com/extrahorizon-cli/)
+* [Control Center](https://app.extrahorizon.com/login/)
 
 ## Additional Resources
 
