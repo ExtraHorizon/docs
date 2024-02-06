@@ -401,6 +401,35 @@
 
 ## Notifications Service v1
 
+### 1.1.0 (2024-02-01)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added support for Firebase HTTP V1 notifications 
+  * Starting from the 20th of June the old Legacy HTTP Protocol for notifications will stop working.
+* The total count in the listing endpoints can now be disabled
+  * Added a `skip_count()` RQL operator. Would instruct the listing endpoints not to execute/return the total count to increase performance.
+
+**⚒️ Improvements**
+
+* Improved Swagger documentation 
+  * Swagger documentation was heavily extended
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Using the `contains` operator inside an `or` operator now works as expected
+  * The `ne` operator now behaves as expected
+  * Known `SERVICE_EXCEPTION`s thrown on RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+*  Updating the settings without a body now throws a correct `EMPTY_BODY_ERROR`
+*  The Link Notification Type name now correctly shows `link` instead of `message`
+
+</details>
+
+
 ### 1.0.9 (2022-09-21)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 <details>
