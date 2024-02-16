@@ -1,4 +1,19 @@
 
+## Notifications Service v1 1.1.1 (2024-02-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Unusable Firebase tokens are removed automatically
+  * Tokens reported by Firebase as valid but not (or no longer) usable, are automatically removed.
+  * Invalid formatted tokens are ignored as proper detection is currently not feasible.
+
+</details>
+
+
 ## Notifications Service v1 1.1.0 (2024-02-01)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.0/openapi.yaml)
 
@@ -453,8 +468,8 @@
 </details>
 
 
-## Events Service 1.0.7 (2022-09-23)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.0.7/openapi.yaml)
+## Template Service 1.0.15 (2022-09-23)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.15/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -465,8 +480,8 @@
 </details>
 
 
-## Template Service 1.0.15 (2022-09-23)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.15/openapi.yaml)
+## Events Service 1.0.7 (2022-09-23)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.0.7/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
