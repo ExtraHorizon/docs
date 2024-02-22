@@ -585,16 +585,83 @@ You can attach actions to transitions. This way when a transition is executed an
 
 #### **Modifying the document**
 
-| Action Type   | Description                          |
-| ------------- | ------------------------------------ |
-| `set`         | Change the value of a specific field |
-| `unset`       | Remove one or multiple fields        |
-| `addItems`    | Add values to an array field         |
-| `removeItems` | Removes values from an array field   |
+| Action Type   | Description                           |
+| ------------- | ------------------------------------- |
+| `set`         | Change the value of a specific field. |
+| `unset`       | Remove one or multiple fields.        |
+| `addItems`    | Add values to an array field.         |
+| `removeItems` | Removes values from an array field    |
 
 {% hint style="info" %}
 To access an element in an array or embedded documents, use the dot notation.
 {% endhint %}
+
+**code examples**
+
+{% tabs %}
+{% tab title="set" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'set',
+      field: 'data.myField',
+      value: 'myValue'
+    }
+  ],
+  ...
+})
+```
+{% endtab %}
+
+{% tab title="unset" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'unset',
+      fields: ['data.myField', 'otherField']
+    }
+  ],
+  ...
+})
+```
+{% endtab %}
+
+{% tab title="addItems" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'addItems',
+      field: 'data.myField',
+      values: ['item1', 'item2']
+    }
+  ],
+  ...
+})
+```
+{% endtab %}
+
+{% tab title="removeItems" %}
+```javascript
+await exh.data.transitions.create(newSchema.id, {
+  ...,
+  actions: [
+    {
+      type: 'removeItems',
+      field: 'data.myField',
+      values: ['item1', 'item2']
+    }
+  ],
+  ...
+})
+```
+{% endtab %}
+{% endtabs %}
 
 #### **Modifying document access**
 
@@ -686,9 +753,8 @@ await sdk.data.transitions.create(newSchema.id, {
 
 {% tabs %}
 {% tab title="Task" %}
-```typescript
-await exh.data.transitions.create(newSchema.id, {
-  ...,
+<pre class="language-typescript"><code class="lang-typescript"><strong>await exh.data.transitions.create(newSchema.id, {
+</strong>  ...,
   actions: [
     {
       type: 'task',
@@ -697,7 +763,7 @@ await exh.data.transitions.create(newSchema.id, {
   ],
   ...
 })
-```
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
