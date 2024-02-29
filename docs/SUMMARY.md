@@ -100,6 +100,6 @@
 ## ExH Platform
 
 * [🙋 Support](exh-platform/support.md)
-* [⏱ Usage and Performance](exh-platform/usage-and-performance.md)
+* [⏱️ Usage and Performance](exh-platform/usage-and-performance.md)
 * [🔓 Security](exh-platform/security.md)
-* [🗺 Regions](exh-platform/regions.md)
+* [🗺️ Regions](exh-platform/regions.md)
