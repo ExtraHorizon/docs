@@ -106,16 +106,10 @@ The `entryPoint` property refers to the method in the Function code that is exec
 
 ### runtime
 
-The `runtime` property currently supports the following values:&#x20;
+The `runtime` property selects the runtime (or environment) the Function will be running in. The Task Service utilizes AWS Lambda to run Functions. Any runtime supported by AWS Lambda is supported by the Task Service.
 
-| Runtime | Version                                             |
-| ------- | --------------------------------------------------- |
-| NodeJs  | `nodejs18.x`, `nodejs16.x`, `nodejs14.x`            |
-| Python  | `python3.10`, `python3.9`, `python3.8`, `python3.7` |
-| Ruby    | `java17`, `java11`, `java8`, `java8.al2`            |
-| Java    | `ruby3.2`, `ruby2.7`                                |
-| Go      | `go1.x`                                             |
-| .Net    | `dotnet7`, `dotnet6`                                |
+See the AWS Lambda documentation for a list of supported runtimes:\
+[https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
 
 ### timeLimit
 
