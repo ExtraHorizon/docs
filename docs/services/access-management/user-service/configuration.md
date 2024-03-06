@@ -10,7 +10,7 @@ The password policy enforces new passwords to adhere to its requirements. The po
 
 #### Example <a href="#example-2" id="example-2"></a>
 
-```
+```json
 {
   "minimum_length": 8,
   "maximum_length": 128,
@@ -23,12 +23,12 @@ The password policy enforces new passwords to adhere to its requirements. The po
 
 #### Fields <a href="#fields" id="fields"></a>
 
-* minimum\_length: the minimum amount of characters that a password must contain.
-* maximum\_length: the maximum amount of characters that a password must contain.
-* upper\_case\_required: if set to true, the password must contain an uppercase character: `A-Z`.
-* lower\_case\_required: if set to true, the password must contain a lowercase character: `a-z`.
-* symbol\_required: if set to true, the password must contain a special character: ``~!`@#$%^&*()_-+={[}]|\\:;\"'<,>.?/.``
-* number\_required: if set to true, the password must contain a digit: `0-9`.
+* `minimum_length`: the minimum amount of characters that a password must contain.
+* `maximum_length`: the maximum amount of characters that a password must contain.
+* `upper_case_required`: if set to true, the password must contain an uppercase character: `A-Z`.
+* `lower_case_required`: if set to true, the password must contain a lowercase character: `a-z`.
+* `symbol_required`: if set to true, the password must contain a special character: ``~@#$%^&*(){}[]_<>-+=|\/:;"'`,.?!``
+* `number_required`: if set to true, the password must contain a digit: `0-9`.
 
 ### Logins <a href="#logins" id="logins"></a>
 
