@@ -206,7 +206,9 @@ When a user is logged in, he can change the email of his or another user's accou
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await exh.users.updateEmail('abcdef0123456789abcdef01', 'jane.doe@example.com');
+await exh.users.updateEmail('abcdef0123456789abcdef01', {
+  email: 'jane.doe@example.com',
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -273,3 +275,74 @@ await exh.users.remove('abcdef0123456789abcdef01');
 {% endtab %}
 {% endtabs %}
 
+## Using pin codes for email verification
+
+The pin code mode is an **alternative mode for the account activation and forgot password flows**. The mode is targeted to use cases where the end user might need to manually input the secret in the application.&#x20;
+
+By default Extra Horizon uses the hash mode, this sends an email with a hash (a string of 40 hexadecimal characters) to the user. When the pin code mode is enabled and used, **a pin code of 8 digits** is send instead.
+
+### Setting up pin code mode
+
+By default the pin code mode is disabled, it can be enabled with the Extra Horizon SDK:
+
+```javascript
+await exh.users.settings.updateVerificationSettings({
+  enablePinCodeActivationRequests: true,
+  enablePinCodeForgotPasswordRequests: true,
+});
+```
+
+It is supported that both the hash mode and pin code mode are be used for different parts of your application, so different [email templates](../../other/template-service/#e-mail-templates) are used to send pin codes to end users. Rather then the `content.activation_hash` or `content.reset_hash`, a `content.pin_code` field will be available to the pin code email templates. The templates can be set like this:
+
+```javascript
+await exh.users.setEmailTemplates({
+  activationPinEmailTemplateId: '642ffe4388742725cc5cb1e2',
+  reactivationPinEmailTemplateId: '642b0899443c9874f8c41bc7',
+  passwordResetPinEmailTemplateId: '65325e4a18bf0c1e3b1f5c7e',
+});
+```
+
+After enabling the pin code mode and setting the email templates, pin codes can now be used in the activation and forgot password flows.
+
+### Using the pin code mode in the account activation flow
+
+When enabled the pin code mode can be used when initiating the activation flow, during account creation, changing the email address of a user and when (re-)requesting the account activation email.&#x20;
+
+For example, the pin code mode is used by setting `activationMode` when creating an account:
+
+```javascript
+await exh.users.createAccount({
+  activationMode: 'pin_code',
+  // Account details ...
+});
+```
+
+The user receives an email showing the pin code, which the user should be able to give to your application. Then the pin code can be used to complete the activation:
+
+```javascript
+await exh.users.validateEmailActivation({
+  email: 'john.doe@example.com',
+  pinCode: '88703459',
+});
+```
+
+### Using the pin code mode in the forgot password flow
+
+If the pin code mode is enabled for the forgot password flow, `mode` can be used when requesting a forgot password email:
+
+```javascript
+await exh.users.requestPasswordReset({
+  email: 'john.doe@example.com',
+  mode: 'pin_code',
+});
+```
+
+The user receives an email showing the pin code, which the user should be able to give to your application. Then the pin code can be used to change the password:
+
+```javascript
+await exh.users.validatePasswordReset({
+  email: 'john.doe@example.com',
+  pinCode: '88703459',
+  newPassword: 'MyV3ryS3cr3tP4a$$w0rd'
+});
+```

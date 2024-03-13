@@ -1,9 +1,9 @@
-# ⏱ Usage and Performance
+# ⏱️ Usage and Performance
 
 The following are restrictions on data storage and operations in your Extra Horizon environment. We put these limits in place to maximize the stability of your environment.
 
 {% hint style="warning" %}
-In case you want an increase on the limits described below. Please contact the Extra Horizon Team through your dedicated slack channel or via support@extrahorizon.com.
+In case you want an increase on the limits described below. Please contact the Extra Horizon Team through your dedicated Slack channel or via support@extrahorizon.com.
 {% endhint %}
 
 ## Gateway limits
@@ -31,7 +31,29 @@ In case you want an increase on the limits described below. Please contact the E
 
 _\* The limit can be increased, but you as an application builder need to be aware of the performance impact and user experience in the applications you are building. Theoretically the file service can handle files up to 5 TB. However, uploading large files can take a long time and when internet connections fail it can result in a bad user experience. Therefore when you are expecting your application to process large files, please have a chat with our Solution Architecture Team, we are here to help._&#x20;
 
-Please contact the Extra Horizon Team through your dedicated slack channel or via support@extrahorizon.com
+### User Service
+
+#### Restrictions for account activation requests
+
+| Restriction               | Limit      | Description                                                                                                                |
+| ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Hash lifetime             | 60 minutes | The time an activation request is valid, using the default hash mode.                                                      |
+| Hash mode initiations     | 5          | The maximum amount of times the activation flow can be initiated without a successful attempt using the default hash mode. |
+| Pin code lifetime         | 15 minutes | The time an activation request is valid, using the pin code mode.                                                          |
+| Pin code attempts         | 3          | The maximum attempts per initiation with a pin code.                                                                       |
+| Pin code mode initiations | 3          | The maximum amount of times the activation flow can be initiated without a successful attempt using the pin code mode.     |
+| Time between initiations  | 5 minutes  | The minimum time required between activation flow initiations.                                                             |
+
+#### Restrictions for forgot password requests
+
+| Restriction               | Limit      | Description                                                                                                                     |
+| ------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Hash lifetime             | 60 minutes | The time a forgot password request is valid, using the default hash mode.                                                       |
+| Hash mode initiations     | 5          | The maximum amount of times the forgot password flow can be initiated without a successful attempt using the default hash mode. |
+| Pin code lifetime         | 15 minutes | The time a forgot password request is valid, using the pin code mode.                                                           |
+| Pin code attempts         | 3          | The maximum attempts per initiation with a pin code.                                                                            |
+| Pin code mode initiations | 3          | The maximum amount of times the forgot password flow can be initiated without a successful attempt using the pin code mode.     |
+| Time between initiations  | 5 minutes  | The minimum time required between forgot password flow initiations.                                                             |
 
 \
 \

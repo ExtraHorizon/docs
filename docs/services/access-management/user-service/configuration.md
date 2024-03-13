@@ -1,6 +1,6 @@
 # Configuration
 
-### Password Policy <a href="#password-policy" id="password-policy"></a>
+## Password Policy <a href="#password-policy" id="password-policy"></a>
 
 {% hint style="success" %}
 Password policy configuration was added in v.1.1.8
@@ -30,7 +30,7 @@ The password policy enforces new passwords to adhere to its requirements. The po
 * `symbol_required`: if set to true, the password must contain a special character: ``~@#$%^&*(){}[]_<>-+=|\/:;"'`,.?!``
 * `number_required`: if set to true, the password must contain a digit: `0-9`.
 
-### Logins <a href="#logins" id="logins"></a>
+## Logins <a href="#logins" id="logins"></a>
 
 Users can log in with an e-mail/password combination.
 
@@ -48,7 +48,7 @@ When a user has 50 failed login attempts this can be reset to 0 by any user with
 POST /{userId}/reset_failed_login_attempts
 ```
 
-### Email templates <a href="#logins" id="logins"></a>
+## Email templates <a href="#logins" id="logins"></a>
 
 For certain actions the User Service sends an email. The user service allows you to customize these emails by linking to email templates.
 
@@ -59,7 +59,16 @@ The types of emails the User Service send:
 * Password reset email
 * OIDC Unlink email
 
-The content of email templates are configured in the [Template Service](../../other/template-service/#e-mail-templates).
+The content of email templates are configured in the [Template Service](../../other/template-service/#e-mail-templates). The ids of the templates to be used by the User Service can be configured via the SDK:
+
+```javascript
+await exh.users.setEmailTemplates({
+  activationEmailTemplateId: '65e8328bdeac6337e1e5f6f7',
+  reactivationEmailTemplateId: '65e8328adeac631d37e5f6f6',
+  passwordResetEmailTemplateId: '65e8328fdeac634842e5f6f9',
+  oidcUnlinkEmailTemplateId: '65e83298deac633d2ae5f6fa',
+});
+```
 
 #### OIDC Unlink email
 
@@ -72,3 +81,33 @@ Setting the email template:
 ```typescript
 await exh.users.setEmailTemplates({ oidcUnlinkEmailTemplateId: 'template-id' })
 ```
+
+#### Pin code email variants
+
+The email templates mentioned above are the default emails used. Alternatively pin code mode can be enabled and used for these flows. The pin code mode has its own set of email templates which can be configured:
+
+```javascript
+await exh.users.setEmailTemplates({
+  activationPinEmailTemplateId: '642ffe4388742725cc5cb1e2',
+  reactivationPinEmailTemplateId: '642b0899443c9874f8c41bc7',
+  passwordResetPinEmailTemplateId: '65325e4a18bf0c1e3b1f5c7e',
+  oidcUnlinkPinEmailTemplateId: '65325d8f18bf0c1e3b1f5c7c',
+});
+```
+
+See "[Using pin codes for email verification](users.md#using-pin-codes-for-email-verification)" for more information.
+
+## Verification Settings
+
+The behavior of the activation and forgot password flows can be customized by the verification settings.
+
+For example, the pin code mode can be enabled using the Extra Horizon SDK:
+
+```javascript
+await exh.users.settings.updateVerificationSettings({
+  enablePinCodeActivationRequests: true,
+  enablePinCodeForgotPasswordRequests: true,
+});
+```
+
+See "[Using pin codes for email verification](users.md#using-pin-codes-for-email-verification)" for more information.
