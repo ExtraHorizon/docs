@@ -10,12 +10,6 @@ The `notification service` as well as the `template service` are aware of the `l
 
 The Localization Service provides a database to store text snippets in multiple languages that can be retrieved on demand by using a `localization key`. These keys can be included in the Template Service to automatically provide the text messages in the preferred language.
 
-#### Example: Template Service message with localization keys
-
-![](https://lh4.googleusercontent.com/0MWrt1Xuj7PkzYIt\_Mj2z9fYLH0MErNmL6aNvXNw6kzHEaO6bNnw\_o8SCNVR7meIv2m\_tnoywnkdPxu4a0xwEqdga1h0-D8z50MLF2iBLEtmrBpraj3F2Jy\_5jHEgrjvo1tNulM=s1600)
-
-\\
-
 ## Objects and attributes
 
 ### LocalizationSets
