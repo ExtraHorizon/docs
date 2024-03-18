@@ -18,4 +18,4 @@ But there are ways around it and that is where **CORS headers** come into play. 
 
 Unfortunately, managing these CORS headers is not something that our customers are able to do themselves _yet_. So if you need to have those headers changed, please contact Extra horizon [support](../exh-platform/support.md) through the appropriate channels and we'll expedite this change for you.&#x20;
 
-Please state clearly which uri you want to add, including protocol, host and port. For example, if you're developing your frontend application on http, host localhost and port 3000, the full url to supply would be `http://localhost:300`. For deployed applications it might be `https://myportal.mycompany.com`
+Please state clearly which uri you want to add, including protocol, host and port. For example, if you're developing your frontend application on http, host localhost and port 3000, the full url to supply would be `http://localhost:3000`. For deployed applications it might be `https://myportal.mycompany.com`
