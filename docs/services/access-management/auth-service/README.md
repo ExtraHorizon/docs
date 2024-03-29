@@ -10,7 +10,7 @@ The `skipTokenCheck` saves \~300ms by skipping validation on your `token` and `t
 import { createOAuth1Client } from '@extrahorion/javascript-sdk';
 
 const exh = createOAuth1Client({
-  host: 'dev.fibricheck.com',
+  host: 'sandbox.extrahorizon.io',
   consumerKey: '',
   consumerSecret: '',
 });

@@ -4,7 +4,7 @@ description: >-
   environment to support a polysomnography application.
 ---
 
-# Polysomnography (PSG)
+# Polysomnography (PSG) Tutorial
 
 ## Background
 
@@ -81,7 +81,7 @@ To upload a new file to the files service, a post request is needed:
 ```python
 filename = 'example.edf' 
 files = {'file': (filename, open(filename, 'rb'), 'multipart/form-data')} 
-data = {'tags[]': 'psg'} url = 'https://files.fibricheck.com/v1/' 
+data = {'tags[]': 'psg'} url = 'https://api.sandbox.extrahorizon.io/files/v1/' 
 response = requests.post(url=url, files=files, data=data, auth=auth) 
 print(response.text)
 ```
@@ -113,7 +113,7 @@ Example response:
 To retrieve a file from the files service, a get request is used
 
 ```python
-url = 'https://files.fibricheck.com/v1/{token}/file/'
+url = 'https://api.sandbox.extrahorizon.io/files/v1/{token}/file/'
 response = requests.get(url=url, auth=auth)
 ```
 
@@ -353,7 +353,7 @@ To write a new document in a collection of the data service, a post request is u
 
 ```python
 data = { 'signals': { 'EKG': { 'data': [0,1,2,3]}}} 
-url = 'https://data.fibricheck.com/v1/{schemaId}/documents/' 
+url = 'https://api.sandbox.extrahorizon.io/data/v1/{schemaId}/documents/' 
 response = requests.post(url=url, json=data, auth=auth)
 ```
 
@@ -362,7 +362,7 @@ response = requests.post(url=url, json=data, auth=auth)
 To read a document from a specified collection of the data service:
 
 ```python
-url = 'https://data.fibricheck.com/v1/{schemaId}/documents/?id=0123456789abcdef' 
+url = 'https://api.sandbox.extrahorizon.io/data/v1/{schemaId}/documents/?id=0123456789abcdef' 
 response = requests.get(url=url, auth=auth)
 ```
 
