@@ -101,7 +101,7 @@ You can use the Extra Horizon SDK to create new users from your application. Thi
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-const myNewSchema = await exh.users.createAccount({
+const user = await exh.users.createAccount({
     firstName: 'John',
     lastName: 'Doe',
     email: 'john.doe@example.com',
