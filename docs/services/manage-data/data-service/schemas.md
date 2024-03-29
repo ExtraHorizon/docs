@@ -241,7 +241,7 @@ References:
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await sdk.data.properties.create(newSchema.id, { name: 'myFirstProperty',
+await exh.data.properties.create(newSchema.id, { name: 'myFirstProperty',
     configuration: {
       type: 'string',
       enum: ['firstValue', 'secondValue'],
@@ -258,7 +258,7 @@ You can update a specific property of a schema by providing the schema Id, the p
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await sdk.data.properties.update(mySchema.id,'myObjectField.myStringField',{
+await exh.data.properties.update(mySchema.id,'myObjectField.myStringField',{
     type:"string"
 });
 ```
@@ -272,7 +272,7 @@ You can remove a specific property of a schema by providing the schema Id, the p
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await sdk.data.properties.remove(mySchema.id,'myObjectField.myStringField',{
+await exh.data.properties.remove(mySchema.id,'myObjectField.myStringField',{
     type:"string"
 });
 ```
@@ -286,7 +286,7 @@ you can also make more complex objects and array's of objects.
 {% tabs %}
 {% tab title="Object example" %}
 ```javascript
-await sdk.data.properties.create(newSchema.id, 
+await exh.data.properties.create(newSchema.id, 
   {
     name: 'address',
     configuration: {
@@ -305,7 +305,7 @@ await sdk.data.properties.create(newSchema.id,
 
 {% tab title="Array example" %}
 ```javascript
-await sdk.data.properties.create(newSchema.id, 
+await exh.data.properties.create(newSchema.id, 
   {
     name: 'relatives',
     configuration: {
@@ -325,7 +325,7 @@ await sdk.data.properties.create(newSchema.id,
 
 {% tab title="Date-time" %}
 ```javascript
-await sdk.data.properties.create(newSchema.id, 
+await exh.data.properties.create(newSchema.id, 
   {
     name: 'birthdate',
     configuration: {
@@ -349,7 +349,7 @@ A document can be perceived as a finite-state machine, which remains in a state/
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await sdk.data.statuses.create(newSchema.id, {
+await exh.data.statuses.create(newSchema.id, {
     name: 'initialStatus',
 });
 ```
@@ -367,7 +367,7 @@ When you create new schema, by default the data service will include a **NEW** s
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-sdk.data.transitions.updateCreation(newSchema.id,{
+exh.data.transitions.updateCreation(newSchema.id,{
     type: 'manual',
     toStatus: 'initialStatus',
     conditions: {...},
@@ -391,7 +391,7 @@ A Transition occurs from one Status to another. The Statuses a Transition starts
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-sdk.data.transitions.updateCreation(newSchema.id,{
+exh.data.transitions.updateCreation(newSchema.id,{
     name: 'firsTransition'
     type: 'manual',
     fromStatuses: ['initialStatus'],

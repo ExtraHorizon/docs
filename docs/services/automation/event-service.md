@@ -32,7 +32,7 @@ You can search and list events that occurred within your cluster.
 {% tabs %}
 {% tab title="Javascript" %}
 ```typescript
-const events = await sdk.events.find();
+const events = await exh.events.find();
 ```
 {% endtab %}
 {% endtabs %}
