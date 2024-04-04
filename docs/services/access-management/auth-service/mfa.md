@@ -84,7 +84,7 @@ try {
   await exh.auth.authenticate(tokenOrPassword);
 } catch (error) {
   if (error instanceof MfaRequiredError) {
-    const { mfa } = error.response;
+    const { mfa } = error;
     
     // Your logic to select which method the user want to use in case of multiple methods
     // As an example we simply always select the TOTP method here
