@@ -401,6 +401,19 @@
 
 ## Notifications Service v1
 
+### 1.1.2 (2024-04-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Firebase internal server errors are retried
+  * When Firebase Cloud Messaging returns an internal server error  while sending a push notification, we now retry to up to 2 times
+
+</details>
+
+
 ### 1.1.1 (2024-02-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.1/openapi.yaml)
 <details>
