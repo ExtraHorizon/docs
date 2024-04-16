@@ -399,7 +399,7 @@
 </details>
 
 
-## Notifications Service v1
+## Notifications Service
 
 ### 1.1.2 (2024-04-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.2/openapi.yaml)
