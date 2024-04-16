@@ -35,7 +35,7 @@ params:
       basePath: "/mail/v1"
       defaultVersion: 1.1.0
     notifications-service:
-      name: Notifications Service v1
+      name: Notifications Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service
       basePath: "/notifications/v1"
       defaultVersion: 1.0.8
