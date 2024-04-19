@@ -43,7 +43,7 @@ readMode defines the permissions needed to read a document in a schema collectio
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `default`                | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document. |
 | `allUsers`               | All users will have the permission to read the documents in the schema collection.                                                                                             |
-| `enlistedInLinkedGroups` | Every user in default mode and all users that have a patient enlistment in a group that is in the list of groupIds of the document.                                            |
+| `enlistedInLinkedGroups` | All users that have a staff enlistment or a patient enlistment in a group that is in the list of groupIds of the document.                                                     |
 
 {% hint style="info" %}
 Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}`permission attached to a global role will be able to read any document regardless of the setting above.
