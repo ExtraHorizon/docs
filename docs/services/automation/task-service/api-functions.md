@@ -35,7 +35,7 @@ exports.handler = async function (request) {
 
 ### Deploy
 
-Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](https://app.gitbook.com/s/xoM7jW7vVT9Wk3ulEGgO/commands/tasks/hello-world-task) example.
+Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](broken-reference) example.
 
 ### Execute
 
@@ -127,6 +127,8 @@ Following headers are added by Extra Horizon when invoking the API Function:
 
 * `x-exh-requesting-user-id` contains the id of the user making the request.
 * `x-exh-requesting-application-id` contains the application id of the oAuth application
+
+These `x-exh-requesting-` headers are guarded by the platform and can be trusted to be correct.
 
 The following HTTP request will create the resultant header object:
 
