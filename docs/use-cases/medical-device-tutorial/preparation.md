@@ -17,8 +17,7 @@ This tutorial will be based on code located in the GitHub repository at [https:/
 git clone git@github.com:ExtraHorizon/medical-device-tutorial.git
 ```
 
-3. In the repository, edit the `.npmrc` file and replace the `GITHUB_TOKEN` placeholder with your own personal Github token. See [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) for more information.
-4. In the repository, do
+3. In the repository, do
 
 ```sh
 npm install
@@ -26,7 +25,7 @@ npm install
 
 This will install all the repository dependencies, including the [Extra Horizon SDK](https://docs.extrahorizon.com/javascript-sdk/) and [CLI](https://docs.extrahorizon.com/cli/). The SDK will be used by our tutorial application to interact with the Extra Horizon API, while we'll use the CLI to set up & manage our Extra Horizon configuration.
 
-5. Now we'll need to authenticate the CLI to the Extra Horizon backend so that we can use the CLI to manage our configuration. Using the credentials mentioned at the top of this page, do
+4. Now we'll need to authenticate the CLI to the Extra Horizon backend so that we can use the CLI to manage our configuration. Using the credentials mentioned at the top of this page, do
 
 <pre class="language-bash"><code class="lang-bash"><strong>npx exh login --host=https://&#x3C;Host URL> --email=&#x3C;email> 
 </strong>    --password=&#x3C;password> --consumerKey=&#x3C;consumer key> 
