@@ -1,23 +1,5 @@
 # Auth Service
 
-### Other settings
+The Auth Service provides support for multiple authentication methods and protocols to your cluster.
 
-#### Token authentication with optional skip
-
-The `skipTokenCheck` saves \~300ms by skipping validation on your `token` and `tokenSecret`.
-
-```javascript
-import { createOAuth1Client } from '@extrahorion/javascript-sdk';
-
-const exh = createOAuth1Client({
-  host: 'sandbox.extrahorizon.io',
-  consumerKey: '',
-  consumerSecret: '',
-});
-
-await exh.auth.authenticate({
-  token: '',
-  tokenSecret: '',
-  skipTokenCheck: true,
-});
-```
+The protocols Extra Horizon provides for authentication are **OAuth 1** and **OAuth 2**. Next to those, **Multi-Factor Authentication** (MFA) and **OpenID Connect** add an extra layer of security and flexibility to your users authentication process.&#x20;
