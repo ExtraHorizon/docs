@@ -4,7 +4,7 @@ Extra Horizon supports multiple multifactor authentication methods. To obtain Ex
 
 Currently Extra Horizon supports two MFA methods: **Recovery codes** and **Google Authenticator**.
 
-## First-time setup&#x20;
+## Setting up MFA&#x20;
 
 Follow the steps below to enable MFA for the first time for a user.
 
@@ -13,7 +13,11 @@ Follow the steps below to enable MFA for the first time for a user.
 The following endpoints require a presence token to prove the correct user is currently present. Ask for the users password and perform following request to retrieve the presence token.
 
 ```javascript
-const { token: presenceToken } = await exh.auth.confirmPresence({ password });
+const presence = await exh.auth.confirmPresence({
+  password: 'myPassword1234'
+});
+
+const presenceToken = presence.token;
 ```
 
 ### Step 2 - Generate recovery codes for the user
@@ -75,7 +79,7 @@ The user is now ready to start using MFA on their account. Enable MFA for the us
 await exh.auth.users.enableMfa(auth.user.id, { presenceToken });
 ```
 
-### Step 6 - Using MFA on authenticate&#x20;
+## Using MFA during authentication&#x20;
 
 When a user authenticates with an email address and password and MFA is enabled, an error will be returned. You will need to catch that error and provide the One Time Password (which is a recovery code or a code given by Google Authenticator) as follows:
 
