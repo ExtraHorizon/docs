@@ -29,7 +29,7 @@ def handler(event, context):
     print(result.content)
 </code></pre>
 
-There are 2 methods of make authenticated calls: OAUTH1 & OAUTH2. The easiest way for a task to interact with the API is through the use of OAUTH1 tokens. These tokens can be generated offline and do not expire unless you regenerate them. This saves you from having to refresh & store tokens, which is the case with OAUTH2.\\
+There are 2 methods of make authenticated calls: OAUTH1 & OAUTH2. The easiest way for a task to interact with the API is through the use of OAUTH1 tokens. These tokens can be generated offline and do not expire unless you regenerate them. This saves you from having to refresh & store tokens, which is the case with OAUTH2.
 
 #### Getting credentials
 
@@ -40,33 +40,15 @@ There are 2 methods of make authenticated calls: OAUTH1 & OAUTH2. The easiest wa
     exhTokenSecret = os.environ['API_OAUTH_TOKEN_SECRET']
 ```
 
-There are 4 different credentials passed to the task through environment variables. Of these, `CONSUMER_KEY` & `CONSUMER_SECRET` are system-wide credentials identifying the OAUTH1 application. These are usually communicated by Extra horizon after commissioning.
+There are 4 different credentials passed to the task through environment variables. Of these, consumer key & consumer secret are system-wide credentials identifying the OAUTH1 application. These are usually communicated by Extra horizon after commissioning.
 
-`ACCESS_TOKEN` & `TOKEN_SECRET` are personal tokens which you need to generate. This is fairly straightforware using the Extra horizon API. Using the terminal and curl, you can do:
+The token & token secret are personal tokens which you need to generate. This is fairly straightforward using the [Extra horizon Control Center](https://app.extrahorizon.com/auth/applications):&#x20;
 
-{% code overflow="wrap" %}
-```bash
-curl -X POST https://<your.extrahorizon.url>/auth/v2/oauth1/tokens  -H 'Content-Type: application/json' -d '{ "email": "<youremail>", "password": "<yourpassword>" }'
-```
-{% endcode %}
-
-Note: replace `<your.extrahorizon.url>` , `<youremail>`, `<yourpassword>` with your actual values.
-
-which will return something of the form
-
-```json
-{
-    "applicationId":"16574811b2148f3b28ab34bd",
-    "userId":"58ff75ab34ddfd0005f80951",
-    "token":"9977939d4101ddee14357267f5dabf1f3b3b3d15e",
-    "tokenSecret":"7badabc98348d8b9c5d7c9b7addfac3152f540",
-    "updateTimestamp":"2023-09-18T14:59:23.676Z",
-    "creationTimestamp":"2023-09-18T14:59:23.676Z",
-    "id":"650865cbef5f2da9295bcef7"
-}
-```
-
-Get the `token` & `tokenSecret` values and pass them to your task as `ACCESS_TOKEN` & `TOKEN_SECRET`.
+* Navigate to the **Authentication** section
+* On the **OAuth Applications** page, select or create the oAuth1 application you want to use
+* Create or find the version you want to use and click on **Generate**
+* You are prompted to fill in your email and password are then able to click **Generate**
+* The credentials will be received as a **credentials.txt** file&#x20;
 
 #### Setting up an OAUTH1 session
 
