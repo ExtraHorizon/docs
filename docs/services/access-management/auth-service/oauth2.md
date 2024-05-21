@@ -1,4 +1,4 @@
-# oAuth2
+# OAuth2
 
 oAuth2.0 standard: [\[rfc6749\]](https://datatracker.ietf.org/doc/html/rfc6749)
 
@@ -120,15 +120,15 @@ await exh.auth.authenticate({
 Note that the refresh token changes every time a new access token is obtained. Therefore you will need to add a listener to the SDK to be notified when a new refresh token is received and for your app to safely and securely store it.
 {% endhint %}
 
-Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is called with the response. You can store this data in `localStorage` or any other persistant data store. When you restart your application, you can check the data store for a `refreshToken` and use that to authenticate with the SDK.
+Each time the SDK refreshes the `accessToken` the `freshTokensCallback` is called with the response. You can store this data in `localStorage` or any other persistent data store. When you restart your application, you can check the data store for a `refreshToken` and use that to authenticate with the SDK.
 
 {% code lineNumbers="true" %}
 ```javascript
 const exh = createOAuth2Client({
   host: '',
   clientId: '',
-  freshTokensCallback: tokenData => {
-    localStorage.setItem('tokenData', tokenData);
+  freshTokensCallback: (tokenData) => {
+    localStorage.setItem('refreshToken', tokenData.refreshToken);
   },
 });
 ```
