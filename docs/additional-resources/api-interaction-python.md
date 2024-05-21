@@ -14,10 +14,10 @@ Have a look at the following example which simply prints your user information. 
 </strong>import os
 
 def handler(event, context):
-    exhConsumerKey = os.environ['CONSUMER_KEY']
-    exhConsumerSecret = os.environ['CONSUMER_SECRET']
-    exhAccessToken = os.environ['ACCESS_TOKEN']
-    exhTokenSecret = os.environ['TOKEN_SECRET']
+    exhConsumerKey = os.environ['API_OAUTH_CONSUMER_KEY']
+    exhConsumerSecret = os.environ['API_OAUTH_CONSUMER_SECRET']
+    exhAccessToken = os.environ['API_OAUTH_TOKEN']
+    exhTokenSecret = os.environ['API_OAUTH_TOKEN_SECRET']
 
     oauth = OAuth1Session(client_key=exhConsumerKey,
                           client_secret=exhConsumerSecret,
@@ -34,10 +34,10 @@ There are 2 methods of make authenticated calls: OAUTH1 & OAUTH2. The easiest wa
 #### Getting credentials
 
 ```python
-    exhConsumerKey = os.environ['CONSUMER_KEY']
-    exhConsumerSecret = os.environ['CONSUMER_SECRET']
-    exhAccessToken = os.environ['ACCESS_TOKEN']
-    exhTokenSecret = os.environ['TOKEN_SECRET']
+    exhConsumerKey = os.environ['API_OAUTH_CONSUMER_KEY']
+    exhConsumerSecret = os.environ['API_OAUTH_CONSUMER_SECRET']
+    exhAccessToken = os.environ['API_OAUTH_TOKEN']
+    exhTokenSecret = os.environ['API_OAUTH_TOKEN_SECRET']
 ```
 
 There are 4 different credentials passed to the task through environment variables. Of these, `CONSUMER_KEY` & `CONSUMER_SECRET` are system-wide credentials identifying the OAUTH1 application. These are usually communicated by Extra horizon after commissioning.
