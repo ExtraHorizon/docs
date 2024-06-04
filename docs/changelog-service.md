@@ -379,6 +379,19 @@
 
 ## Mail Service
 
+### 1.2.1 (2024-06-04)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Emails can be blocked from actually being sent
+  * Behind the scenes we can block emails being sent to certain domains/email addresses when needed. Only to be used on request if you want to protect your email sending reputation.
+
+</details>
+
+
 ### 1.2.0 (2022-10-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.0/openapi.yaml)
 <details>

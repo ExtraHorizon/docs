@@ -1,4 +1,18 @@
 
+## Mail Service 1.2.1 (2024-06-04)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Emails can be blocked from actually being sent
+  * Behind the scenes we can block emails being sent to certain domains/email addresses when needed. Only to be used on request if you want to protect your email sending reputation.
+
+</details>
+
+
 ## Notifications Service 1.1.2 (2024-04-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.2/openapi.yaml)
 
@@ -789,17 +803,6 @@
 </details>
 
 
-## Configurations Service 2.0.3 (2022-06-28)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Internal improvements that make the service less dependent on changes in other services.
-</details>
-
-
 ## Localizations Service 1.1.7 (2022-06-28)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.7/openapi.yaml)
 
@@ -815,6 +818,17 @@
 
 **🚨 Deprecation Warnings**
 * `GET /languages` is now deprecated
+</details>
+
+
+## Configurations Service 2.0.3 (2022-06-28)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Internal improvements that make the service less dependent on changes in other services.
 </details>
 
 
