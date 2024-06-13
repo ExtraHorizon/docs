@@ -44,6 +44,25 @@
 
 ## Authentication Service
 
+### 2.2.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Logout the user on password reset completion or user deletion
+  * When a user completes a password reset or a user is deleted, the tokens belonging to the user are removed.
+  * The tokens which are removed include all tokens related to oAuth1, oAuth2, MFA and SSO.
+
+
+**⚒️ Improvements**
+
+* Dependencies updated
+
+</details>
+
+
 ### 2.1.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml)
 <details>
@@ -214,6 +233,20 @@
 
 
 ## Events Service
+
+### 1.2.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Event subscriptions can be marked as retriable
+  * When services subscribe to events, they now can indicate the subscription is retriable.
+  * When sending an event to a retriable subscription fails, it will be retried up to 3 times.
+
+</details>
+
 
 ### 1.1.0 (2023-11-17)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.1.0/openapi.yaml)
@@ -790,6 +823,22 @@
 
 
 ## Users Service
+
+### 1.5.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* An event is triggered when a password reset is completed
+  * The `password_reset_completed` event is triggered when a user completes a password reset.
+
+* Clean up on user deletion
+  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
+
+</details>
+
 
 ### 1.4.0 (2024-03-13)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.4.0/openapi.yaml)

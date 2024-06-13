@@ -1,4 +1,56 @@
 
+## Authentication Service 2.2.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Logout the user on password reset completion or user deletion
+  * When a user completes a password reset or a user is deleted, the tokens belonging to the user are removed.
+  * The tokens which are removed include all tokens related to oAuth1, oAuth2, MFA and SSO.
+
+
+**⚒️ Improvements**
+
+* Dependencies updated
+
+</details>
+
+
+## Events Service 1.2.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Event subscriptions can be marked as retriable
+  * When services subscribe to events, they now can indicate the subscription is retriable.
+  * When sending an event to a retriable subscription fails, it will be retried up to 3 times.
+
+</details>
+
+
+## Users Service 1.5.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* An event is triggered when a password reset is completed
+  * The `password_reset_completed` event is triggered when a user completes a password reset.
+
+* Clean up on user deletion
+  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
+
+</details>
+
+
 ## Mail Service 1.2.1 (2024-06-04)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.1/openapi.yaml)
 
@@ -380,6 +432,18 @@
 </details>
 
 
+## Tasks Service 1.3.2 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Updated how we authenticate with our external services
+
+</details>
+
+
 ## Files Service 1.0.3 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
 
@@ -404,33 +468,6 @@
 </details>
 
 
-## Tasks Service 1.3.2 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Updated how we authenticate with our external services
-
-</details>
-
-
-## Users Service 1.2.0 (2023-04-12)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* OpenID Connect is added as a authentication method.
-  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
-  * Other endpoints for users with a password are blocked for OpenID Connect users.
-
-</details>
-
-
 ## Authentication Service 2.1.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml)
 
@@ -447,6 +484,21 @@
 * Validation from the application logo is removed
   * Users can now add anything they want as the application logo.
   * This used to be only hashes that were used by the image service.
+</details>
+
+
+## Users Service 1.2.0 (2023-04-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* OpenID Connect is added as a authentication method.
+  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
+  * Other endpoints for users with a password are blocked for OpenID Connect users.
+
 </details>
 
 
@@ -563,6 +615,21 @@
 </details>
 
 
+## Users Service 1.1.10 (2022-09-22)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.10/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Increased the stability of the service:
+  * Service discovery is now based on DNS and more reliable.
+
+**🐞 Bugs Fixed**
+* Expiry field set incorrectly in patient enlistments
+</details>
+
+
 ## Prescriptions Service 1.1.18 (2022-09-22)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.18/openapi.yaml)
 
@@ -587,23 +654,8 @@
 </details>
 
 
-## Users Service 1.1.10 (2022-09-22)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.10/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Increased the stability of the service:
-  * Service discovery is now based on DNS and more reliable.
-
-**🐞 Bugs Fixed**
-* Expiry field set incorrectly in patient enlistments
-</details>
-
-
-## Notifications Service 1.0.9 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+## Profiles Service 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -614,8 +666,8 @@
 </details>
 
 
-## Profiles Service 1.1.4 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+## Notifications Service 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -689,8 +741,8 @@
 </details>
 
 
-## Dispatchers Service 1.0.5 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.0.5/openapi.yaml)
+## Payments Service 1.3.2 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -701,8 +753,8 @@
 </details>
 
 
-## Payments Service 1.3.2 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
+## Dispatchers Service 1.0.5 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.0.5/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -803,6 +855,17 @@
 </details>
 
 
+## Configurations Service 2.0.3 (2022-06-28)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Internal improvements that make the service less dependent on changes in other services.
+</details>
+
+
 ## Localizations Service 1.1.7 (2022-06-28)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.7/openapi.yaml)
 
@@ -818,17 +881,6 @@
 
 **🚨 Deprecation Warnings**
 * `GET /languages` is now deprecated
-</details>
-
-
-## Configurations Service 2.0.3 (2022-06-28)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Internal improvements that make the service less dependent on changes in other services.
 </details>
 
 
