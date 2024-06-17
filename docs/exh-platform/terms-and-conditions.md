@@ -6,7 +6,7 @@ description: Extra Horizon platform terms and conditions
 
 Last updated on 13 June 2024
 
-EXTRA HORIZON TERMS AND CONDITIONS
+## EXTRA HORIZON TERMS AND CONDITIONS
 
 Extra Horizon (as defined hereafter) is a software company specialized in software development of medical device software according to the required standards. Furthermore, Extra Horizon is EN ISO 13485:2016-certified with a quality management system for medical devices; ISO 27001:2017 certified for its information security management system and ISO 27701:2019 certified for its privacy information management system. Extra Horizon offers a cloud infrastructure that enables faster development of medical grade software applications, which software is licensed in accordance with the current terms and conditions (the “Terms and Conditions”) to the Client (as defined hereafter).
 
@@ -14,7 +14,7 @@ These Terms and Conditions apply to all contracts and Work Orders (as defined he
 
 The designated person, officer, director, employee, or any other person who represents or acts on behalf of the Client, is deemed to have the necessary mandate to legally bind the Client.
 
-1\.              DEFINITIONS
+### 1.              DEFINITIONS
 
 The following definitions (and additional definitions provided below) will apply to these Terms and Conditions:
 
@@ -108,7 +108,7 @@ The following definitions (and additional definitions provided below) will apply
 
 “Work Order” means a duly executed work order pertaining to the Extra Horizon Software and/or any Services, setting out, at a minimum, the scope, assumptions and License Fees, and, if applicable, Service Fees of Implementation Services and/or Professional Services to be delivered by Extra Horizon to the Client pursuant to these Terms and Conditions, and which incorporates by reference the terms of these Terms and Conditions.
 
-2\.              LICENSE.
+### 2.              LICENSE.
 
 2.1           Subject to these Terms and Conditions and timely payment of the License Fees, Extra Horizon hereby grants to the Client a personal, restricted, non-exclusive, non-transferable, non-assignable license, without the right to sublicense (except to Client’s contractors and agents for which the use of this license is essential in the course of their services for Client) , for the duration of the Term, to use the Licensed Products in accordance with the purposes set out in the Terms and Conditions, the Documentation or Work Orders.
 
@@ -120,7 +120,7 @@ The following definitions (and additional definitions provided below) will apply
 
 2.5           From time to time, Extra Horizon may make Beta Services available in the Extra Horizon Software at no charge. Beta Services are made available “as is” and “as available”, and the Support Services shall not apply with respect to Beta Services, and Extra Horizon shall have no liability for any harm or damage arising out of or arising out of or in connection with the Beta Services. The Client may choose to try such Beta Services at its sole discretion, yet only in non-production environments. If the Client elects to use Beta Services for purposes other than internal evaluation, or in production environments, or with any Personal Data, then the Client assumes all of the risks of doing so. The Client must treat the Beta Service as Confidential Information. Extra Horizon may discontinue the Beta Services at any time in its sole discretion and may never make them generally available.
 
-3\.              SERVICES.
+### 3.              SERVICES.
 
 3.1           Implementation Services.
 
@@ -154,7 +154,7 @@ The following definitions (and additional definitions provided below) will apply
 
 (ii)             If the Extra Horizon Software fails to perform in accordance with the Acceptance Criteria during the acceptance testing, the Client shall promptly (and in any event within fifteen (15) Business Days of the end of such acceptance testing) deliver to Extra Horizon a written notice listing all deficiencies in reasonable detail. Extra Horizon will then, at its own expense, modify the Extra Horizon Software until Extra Horizon determines that the Extra Horizon Software meets the Acceptance Criteria. Extra Horizon will then deliver to the Client notice of its determination that the modified Extra Horizon Software meets the Acceptance Criteria.  Following its receipt of such notice, the Client will as promptly as practicable (and in any event within such period as may be agreed between the Parties) recommence acceptance testing of the Extra Horizon Software. The Client will be deemed to have accepted the modified Extra Horizon Software without reservation if (i) during the acceptance testing the Client completes a successful registration, (ii) the Client uses the Extra Horizon Software in a production environment, (iii) the Extra Horizon Software performs in accordance with the Acceptance Criteria during the acceptance testing, (iv) the Client notifies Extra Horizon that it accepts the Extra Horizon Software, (v) the Client has not completed acceptance testing of the Extra Horizon Software within reasonable period (but in any event within a period of thirty (30) days),  after the date of receipt of the notice from Extra Horizon or (vi) the Client has failed to issue a notice of acceptance or non-acceptance within a reasonable period after the date of receipt of the notice from Extra Horizon.
 
-4\.              FEES.
+### 4.              FEES.
 
 4.1           Service Fees and License Fees.
 
@@ -184,7 +184,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 4.4.1       In the event the Client disputes any portion of an invoice, the Client shall notify Extra Horizon of such disputed amount and the basis for the Client’s dispute within ten (10) Business Days from the invoice date, together with any appropriate information supporting the Client’s position, and the undisputed portion shall be paid as provided herein, failure of which shall result in the invoice being deemed accepted by the Client.
 
-5\.              INTELLECTUAL PROPERTY RIGHTS.
+### 5.              INTELLECTUAL PROPERTY RIGHTS.
 
 5.1           Licensed Products.
 
@@ -204,7 +204,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 5.3.3       The Client acknowledges that Extra Horizon provides professional services for other parties and agrees that nothing herein will be deemed or construed to prevent Extra Horizon from carrying on such services. Extra Horizon will have the right to use techniques, methodologies, processes, tools, ideas, concepts and other know-how gained during the performance of the Professional Services in the furtherance of its own business and to perfect all other Intellectual Property Rights related thereto.
 
-6\.              CONFIDENTIALITY.
+### 6.              CONFIDENTIALITY.
 
 6.1.1       Each Party agrees, during the Term and for a period of five (5) years thereafter, to hold in strictest confidence, and not to use, except for the benefit of the other Party, or to disclose to any person, firm, or corporation without the prior written authorization of the other Party, any Confidential Information of other Party.
 
@@ -214,11 +214,11 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 6.1.4       The Parties’ confidentiality obligations as set forth herein shall survive termination of the Agreement. Upon termination of the Agreement or a disclosing Party’s earlier written request, the receiving Party shall promptly return to the disclosing Party all Confidential Information of the disclosing Party in its possession or under its control.
 
-7\.              DATA PRIVACY.
+### 7.              DATA PRIVACY.
 
 7.1           To the extent any Personal Data is processed by Extra Horizon pursuant to the Agreement, such processing shall be done in accordance with the applicable data protection legislation, such as amongst others, the GDPR, and the provisions of the Data Processing Agreement.
 
-8\.              COMPLIANCE WITH LAW AND POLICIES.
+### 8.              COMPLIANCE WITH LAW AND POLICIES.
 
 8.1           In all developments related to medical devices, unless otherwise communicated, Extra Horizon shall comply with the following international standards: ISO13485, ISO27001, HIPAA, MDR.
 
@@ -226,7 +226,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 8.3           Extra Horizon will at all times fully cooperate with requests of the Notified Body, Regulatory Authority, or the Client or other competent authorities and will be available for audits. Assistance in case of such audit or any other type of regulatory consultancy will be charged at the daily rates set forth in the Work Order, except if the audit reveals a breach or serious assumptions of non-conformity of the Services by Extra Horizon pursuant to the Agreement.
 
-9\.              TERM AND TERMINATION.
+### 9.              TERM AND TERMINATION.
 
 9.1           Term
 
@@ -282,7 +282,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 9.6.4       For the sole purpose of the access to the source code as provided for under art. 9.6.3, Extra Horizon will deposit the access credentials to the source code repository (the “Source Code Repository”) at a Belgian notary public, or any other independent third party acceptable to both Parties. Extra Horizon guarantees that the Source Code Repository contains the then current version of the Licensed Products, its source code and all relevant documentation.
 
-10\.           REPRESENTATIONS AND WARRANTIES.
+### 10.           REPRESENTATIONS AND WARRANTIES.
 
 10.1         Representations and warranties of Extra Horizon.
 
@@ -306,7 +306,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 10.2.1     The Client represents and warrants to Extra Horizon that the Client is a corporation duly organized, validly existing and in good standing under the laws of its incorporation and has all requisite power and authority to execute and deliver the Agreement, to perform its obligations hereunder and to engage in the transactions contemplated thereby. The execution, delivery and performance of the Agreement have been duly authorized by all requisite action on the part of the Client and the Agreement constitute the legal, valid and binding obligation on the Client, enforceable in accordance with its terms.
 
-11\.           INDEMNIFICATION AND LIMITATIONS ON LIABILITY.
+### 11.           INDEMNIFICATION AND LIMITATIONS ON LIABILITY.
 
 11.1         Indemnification.
 
@@ -328,7 +328,7 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 11.2.4     Nothing in the Agreement shall operate to exclude or limit either Party’s liability for (i) fraud or willful misconduct, (ii) death or personal injuries caused by its negligence, (iii) any damages relating to the confidentiality obligations as set out in article 6,indemnification of third party claims as set out in article 11.1.1 of these Terms and Conditions or the applicable data protection laws, including but not limited to the GDPR.\[Cambrian14]&#x20;
 
-12\.           MISCELLANEOUS.
+### 12.           MISCELLANEOUS.
 
 12.1         Independent contractor.
 
@@ -370,24 +370,19 @@ A negative index shall have no impact on the Fees. Extra Horizon has no obligati
 
 12.9         Governing Law.
 
-12.9.1     The Agreement shall be exclusively governed by and construed in accordance with the laws of Belgium without regard to its conflict of law principles. Any dispute arising hereunder which cannot be amicably settled between the Parties within a reasonable period from the dispute arising, shall be submitted to the exclusive jurisdiction of Antwerp.
-
-\
-
-
-&#x20;
+12.9.1     The Agreement shall be exclusively governed by and construed in accordance with the laws of Belgium without regard to its conflict of law principles. Any dispute arising hereunder which cannot be amicably settled between the Parties within a reasonable period from the dispute arising, shall be submitted to the exclusive jurisdiction of Antwerp.&#x20;
 
 **EXHIBIT 1**
 
-DATA PROCESSING AGREEMENT - DPA
+## DATA PROCESSING AGREEMENT - DPA
 
-1\.         Introduction.
+### 1.         Introduction.
 
 This Exhibit 1 to the Terms and Conditions describes specific terms in respect of the Processing of Client Personal Data by Extra Horizon (the “Processor”) in connection with use of the Licensed Products and the provision of Services under the Agreement (collectively the “Services”) as may be provided to the Client (the “Controller”) by Extra Horizon in connection with the Agreement, the terms of which are incorporated herein by reference. In the event of a conflict between the Agreement and any provision of this Exhibit, the latter shall govern. Capitalized terms not otherwise defined herein, shall have the meaning specified in the Agreement.
 
 By making use of the Services, the Client acknowledges and agrees to be bound by this Exhibit. This Exhibit supersedes all previous understandings, agreements, and communications, whether oral or written, regarding the subject matter herein. Extra Horizon may amend this Exhibit at any time and is expressly committed to ensuring that any amendment complies with applicable ethical principles and legislation; provided, however, that Extra Horizon will provide the Client with thirty (30) days’ written notice prior to the proposed effective date of the amendment(s). The Client shall have the right during this 30-day notice period to object to the amendment(s) in writing, in which case the Parties shall negotiate the objected to amendment(s) in good faith, failing which the Client shall have the right to terminate the Agreement with immediate effect. If the Client does not make an objection during the 30-day notice period, the Client will be considered to have tacitly accepted the changes following the conclusion of the 30-day period.
 
-2\.         Definitions
+### 2.         Definitions
 
 2.1.          For the purpose of this Data Processing Agreement, the following definitions apply:
 
@@ -425,7 +420,7 @@ By making use of the Services, the Client acknowledges and agrees to be bound by
 
 “Supervisory Authority” shall mean an independent public authority or regulatory authority, including an authority that is established by a member state pursuant to Article 51 of the GDPR, or any equivalent authority or body established or designated under any other Data Protection Legislation, responsible for overseeing and/or enforcing any Data Protection Legislation;
 
-3\.         Subject-matter of the Data Processing Agreement.
+### 3.         Subject-matter of the Data Processing Agreement.
 
 3.1.          As between the Parties, the Controller shall be the Party that determines the purposes and means of the Processing of Client Personal Data.
 
@@ -457,15 +452,15 @@ Nonetheless, the Controller acknowledges and agrees that it retains the primary 
 
 3.9.          Without limiting any other obligations set out in this Data Processing Agreement, both Parties shall undertake to adopt appropriate measures to ensure that the Client Personal Data are not used improperly or acquired by an unauthorized third party.
 
-4\.         Duration of the Processing.
+### 4.         Duration of the Processing.
 
 4.1.          This Data Processing Agreement shall continue to be in force for as long as the Processor Processes Client Personal Data.
 
-5\.         Controllers’ instructions.
+### 5.         Controllers’ instructions.
 
 5.1.          The Parties agree that this Data Processing Agreement, the Agreement and any written instructions set forth by Controller in execution and/or in connection with this Data Processing Agreement or Agreement constitute Controller’s documented instructions regarding Processor’s Processing of Client Personal Data (“Documented Instructions”). Processor will Process Client Personal Data only in accordance with Documented Instructions. Additional instructions outside the scope of the Documented Instructions (if any) require prior written agreement between Processor and Controller, including agreement on any additional fees payable by Controller to Processor for carrying out such instructions, except to the extent such instructions are required for Controller to comply with its obligations under Data Protection Legislation.
 
-6\.         Assistance to the Controller.
+### 6.         Assistance to the Controller.
 
 6.1.          Compliance with legislation. The Processor shall comply with Data Protection Legislation, and shall assist the Controller in ensuring compliance with its obligations pursuant to Data Protection Legislation, taking into account the nature of Processing and the information available to the Processor.
 
@@ -497,11 +492,11 @@ The Processor shall provide regular updates to the Controller as additional info
 
 6.8.          Data Processing Impact Assessment. The Processor shall assist the Controller as he carries out privacy, security, data protection and/or transfer impact assessments, including in accordance with article 35 of the GDPR.
 
-7\.         Information obligations.
+### 7.         Information obligations.
 
 7.1.          The Processor shall provide the Controller with all information the Controller requires in relation to the Processing of Client Personal Data and which is reasonably in line with the requirements under the Data Protection Legislation. At all times, the Processor shall respond to such a request as soon as possible.
 
-8\.         Processors’ obligations.
+### 8.         Processors’ obligations.
 
 8.1.          The Processor shall handle all reasonable requests of the Controller concerning the Processing of Client Personal Data related to this Data Processing Agreement, immediately or within a reasonable time (depending on the legal obligations defined in the Data Protection Legislation) and in a proper manner.
 
@@ -521,7 +516,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 (iii)           undergo (or to have undergone) appropriate background verifications, the results of which are sufficient to provide the Processor with comfort as to the suitability of the performance of their duties in connection with the Processing of Client Personal Data.
 
-9\.         Controllers’ obligations.
+### 9.         Controllers’ obligations.
 
 9.1.          The Controller shall not issue any instructions, directions or requests to the Processor that do not comply with the provisions of the Data Protection Legislation.
 
@@ -529,7 +524,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 9.3.          The Controller shall not issue instructions, directions or requests to the Processor that it knows would require the Processor and/or its Subprocessor(s) to violate any obligations imposed by applicable mandatory national law to which the Processor and/or its Subprocessor(s) are subject.
 
-10\.        The use of Subprocessors.
+### 10.        The use of Subprocessors.
 
 10.1.       Controller gives by means of this Data Processing Agreement his general permission to Processor to work with Subprocessors in accordance with this article 10 and any additional obligations set out under Annex 2.
 
@@ -549,7 +544,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 10.7.       The Processor shall relay the purposes determined and instructions issued by the Controller in an accurate and prompt manner to the Subprocessor(s) when and where these purposes and instructions pertain to the part of the Processing in which the Subprocessor(s) is(are) involved.
 
-11\.        Rights of the Data Subjects.
+### 11.        Rights of the Data Subjects.
 
 11.1.       Taking into account the nature of the Processing, the Processor shall assist the Controller by making available appropriate technical and organizational measures for the fulfillment of the Controller’s obligation to respond to complaints or requests for exercising the Data Subject’s rights under the Data Protection Legislation.
 
@@ -561,7 +556,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 (iii)           The Processor shall ensure that both he and its Subprocessor(s) have the technical and organizational capabilities required to access Client Personal Data, block access to Client Personal Data and to physically destroy Client Personal Data with no means of recuperation if and when such request is made by the Controller. The Controller shall be given the ability to exercise all these requests themselves without the need of the Processor.
 
-12\.        Security Measures.
+### 12.        Security Measures.
 
 12.1.       Throughout the term of this Data Processing Agreement the Processor shall have in place, maintain and adhere to appropriate physical, technical and organizational measures in such a manner that Processing will meet the requirements of the Data Protection Legislation and ensure the protection of the rights of the Data Subject.
 
@@ -575,7 +570,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 12.6.       The Processor has implemented, amongst others, but not limited to, the general physical, logical, technical and organizational security measures as described in Annex 1 hereto.
 
-13\.        Audit.
+### 13.        Audit.
 
 13.1.       The Processor acknowledges that the Controller is under the supervision of several/a Supervisory Authority/ies. The Processor acknowledges that any involved Supervisory Authority will have the right to perform an audit at any time, and in any case during the normal office hours of the Processor, during the term of this Data Processing Agreement to assess whether the Processor is compliant with Data Protection Legislation and the provisions of this Data Processing Agreement. The Processor shall provide the necessary cooperation.
 
@@ -589,17 +584,17 @@ The Processor shall provide regular updates to the Controller as additional info
 
 13.6.       The Controller will bear the costs of any performed audit in the meaning of article 13.3, unless the audit has revealed that the Processor is manifestly not compliant with the Data Protection Legislation and/or the provisions of this Data Processing Agreement, in which case the Processor shall bear the costs of such an audit.
 
-14\.        Transfer to Third Parties.
+### 14.        Transfer to Third Parties.
 
 14.1.       The transfer of Client Personal Data to (which, for the avoidance of doubt, includes any permitting of access to or other Processing by) third parties in any manner possible is prohibited, unless it is legally required or in case the Processor has obtained the prior and explicit consent of the Controller to do so. In case a legal obligation applies to transfer Client Personal Data to a third party, the Processor shall fully comply with article 16.
 
-15\.        International transfer.
+### 15.        International transfer.
 
 15.1.       The Parties agree that Client Personal Data Processed within the European Economic Area (‘EEA’) can only be transferred to and/or kept with the recipient outside the EEA in a country that falls under an adequacy decision issued by the European Commission, unless by exception and only if necessary to comply with the obligations of this Data Processing Agreement or with a non-EU entity for which binding corporate rules or standard contractual clauses have been entered into. Such transfer shall be governed by the terms of a data transfer agreement containing standard contractual clauses as published in the Decision of the European Commission of June 4, 2021 (Decision 2021/914/EC), or by other mechanisms foreseen by the applicable data protection law or in any law or legal binding text amending these standard contractual clauses.
 
 15.2.       The Processor shall prior to the international transfer inform the Controller about the particular measures taken to guarantee the protection of the Client Personal Data of the Data Subject in accordance with the GDPR.
 
-16\.        Conduct in relation to national governmental and judicial authorities.
+### 16.        Conduct in relation to national governmental and judicial authorities.
 
 16.1.       The Processor shall notify the Controller promptly of any request, order, demand, warrant, inquiry, subpoena or other communication by a competent national governmental or judicial authority directed at the Processor or its Subprocessor which entails the communication of Client Personal Data Processed by the Processor or a Subprocessor for and on behalf of the Controller or any data and/or information associated with such Processing, unless and only to the extent such notification is prohibited by law applicable to the Processor.
 
@@ -615,15 +610,15 @@ The Processor shall provide regular updates to the Controller as additional info
 
 16.4.       The Processor represents, to the best of its knowledge as of the Effective Date, that no obligations of applicable statutory law exist that would preclude its ability to adhere to the obligations stipulated in this Data Processing Agreement, including Article 16.1.
 
-17\.        Confidentiality.
+### 17.        Confidentiality.
 
 17.1.       The Processor commits itself to handle the Client Personal Data and its Processing with utter confidentiality. The Processor shall guarantee confidentiality with measures that are not less restrictive than the measures he uses to protect his own confidential material, including Personal Data.
 
-18\.        Intellectual Property rights
+### 18.        Intellectual Property rights
 
 18.1.       Nothing in this Agreement shall constitute a transfer of any Intellectual Property Rights from the Controller to the Processor, or vice versa, unless otherwise contractually agreed upon between the Parties.
 
-19\.        Liability.
+### 19.        Liability.
 
 19.1.       The Controller involved in processing shall be liable for the damage caused by Processing which infringes the Data Protection Legislation. The Processor shall be liable for the damage caused by Processing only where it has not complied with obligations of the Data Protection Legislation specifically directed to the Processor or where it has acted outside or contrary to lawful instructions of the Controller, including by failing to comply with any of its obligations under this Data Processing Agreement.
 
@@ -635,11 +630,11 @@ The Processor shall provide regular updates to the Controller as additional info
 
 19.5.       This article 19 is without prejudice to article 11.2 of the Agreement but in case of conflict, the liability regime of this article 19 shall prevail.
 
-20\.        Contact Details.
+### 20.        Contact Details.
 
 20.1.       For all questions or support related to the Data Processing Agreement, please contact [support@extrahorizon.com.](mailto:support@extrahorizon.com)
 
-21\.        Mediation and jurisdiction.
+### 21.        Mediation and jurisdiction.
 
 21.1.       The relevant and applicable Data Protection Legislation shall be fully applicable to this Data Processing Agreement.
 
@@ -653,7 +648,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 21.4.       Any dispute between the Parties regarding the terms of this Data Processing Agreement shall be brought before the competent courts as determined in the Agreement.
 
-22\.        Termination of this Data Processing Agreement.
+### 22.        Termination of this Data Processing Agreement.
 
 22.1.       This Data Processing Agreement shall apply as long as the Processor Processes Client Personal Data.
 
@@ -663,12 +658,7 @@ The Processor shall provide regular updates to the Controller as additional info
 
 22.4.       In the event the Controller transfers or deletes all data (including the Client Personal Data) (or requires the Processor to support him in this), the Controller acknowledges that, as of such moment of transfer or deletion, the Processor’s compliance with the law or its contractual obligations in relation to the deleted or transferred data (including Client Personal Data) and the operation of the Processor’s systems pertaining thereto will be evidenced by the Processor’s policies and log of actions taken.
 
-\
-
-
-&#x20;
-
-**DPA - ANNEX 1**
+### **DPA - ANNEX 1**
 
 Technical and Organizational Measures
 
@@ -686,7 +676,7 @@ The IT security standards at Processor contain a set of fundamental provisions f
 
 Therefore following technical and organizational measurements has been taken:
 
-1\.              Admission Control.
+#### 1.              Admission Control.
 
 By applying the following measures, Processor prevents the entrance of non-authorized persons to data-processing installations in which Data are processed or used:
 
@@ -696,7 +686,7 @@ Data is collected and processed by Processor on two locations:
 
 ·                For testing, staging and production purposes on the Amazon Web Services (AWS) cloud computing platform, standard in the Frankfurt region (eu-central-1) and Ireland region (eu-west-1) though the Controller can request another AWS region as preferred: “_Physical access is controlled both at the perimeter and at building ingress points by professional security staff utilizing video surveillance, intrusion detection systems and other electronic means. All entrances to AWS data centers, including the main entrance, the loading dock, and any roof doors/hatches, are secured with intrusion detection devices that sound alarms and create an alarm in AWS centralized physical security monitoring too if a door is forced open or held open. In addition to electronic mechanisms, AWS data centers utilize trained security guards 24×7, who are stationed in and around the building. All alarms are investigated by a security guard with root cause documented for all incidents. All alarms are set to auto-escalate if response does not occur within SLA time. Physical access points to server locations are recorded by closed circuit television cameras (CCTV) as defined in the AWS Data Center Physical Security Policy. Images are retained for 90 days, unless limited to 30 days by legal or contractual obligations. AWS Physical Security Mechanisms are reviewed by independent external auditors during audits for our SOC, PCI DSS, ISO 27001 and FedRAMPsm compliance._” For the most updated information, please consult: [https://aws.amazon.com/compliance/data-center/controls/](https://aws.amazon.com/compliance/data-center/controls/) at all times.
 
-2\.              System Access Control.
+#### 2.              System Access Control.
 
 By applying the following measures, Processor prevents the access of data processing systems by non-authorized persons:
 
@@ -712,7 +702,7 @@ o   Direct access to computing resources is protected by secure connections. Acc
 
 ·                Hosted database as a service MongoDB Atlas. Access to database management is restricted by MongoDB’s role based access controls, that are at least matching the TOM of Processor.
 
-3\.              Data access control.
+#### 3.              Data access control.
 
 By applying the following measures, Processor ensures that persons authorized to use a data-processing system will only have access to those data that they have been authorized for and that, neither during the processing nor after storage, Data can be read, copied, altered or removed without a respective authorization:
 
@@ -726,7 +716,7 @@ By applying the following measures, Processor ensures that persons authorized to
 
 ·                Multiple attempts to gain access to the initiated clusters on behalf of the Controller with incorrect credentials will result in a period of inaccessibility. Automatic turn-off of the account is in place when several erroneous passwords are entered, requiring a manual intervention to unlock.
 
-4\.              Transmission control.
+#### 4.              Transmission control.
 
 By applying the following measures, Processor ensures that personal data cannot be read, copied, altered or removed during electronic data transmission without authorization and that it is possible to check and determine at which points a transmission of personal data by means of data transmission installations is intended:
 
@@ -736,13 +726,13 @@ By applying the following measures, Processor ensures that personal data cannot 
 
 ·                All actions performed against, on Controllers behalf, initiated clusters are logged
 
-5\.              Input control.
+#### 5.              Input control.
 
 By applying the following measures, Processor ensures that it is possible to subsequently check and establish whether and by whom personal data have been input into, modified in, or removed from, data processing systems:
 
 ·                All actions performed against the, on Controllers behalf, initiated clusters are logged and are identifiable on a user basis.
 
-6\.              Job control.
+#### 6.              Job control.
 
 By applying the following measures, the Processor ensures that personal data are processed strictly in accordance with the instructions of the Controller.
 
@@ -780,20 +770,17 @@ By applying the following measures, Processor ensures that data collected for di
 
 ·                Each client has his own dedicated microservice cluster. Meaning both data processing systems and databases are completely separated from one another
 
-\
 
 
-&#x20;
-
-**DPA - ANNEX 2**
+### **DPA - ANNEX 2**
 
 Specific Data Protection Provisions
 
-1\.              Introduction
+#### 1.              Introduction
 
 This Annex 2 forms an integral part of the Data Processing Agreement and has been created to address the specific data protection and privacy principles and requirements associated with the specific Data Protection Legislation applicable in the present context of this Agreement. In cases where there is any inconsistency between this Annex 2 and the main Data Processing Agreement, the provisions of this Annex 2 shall prevail.
 
-2\.              Overview of Specific Data Protection Legislation
+#### 2.              Overview of Specific Data Protection Legislation
 
 This Annex 2 has been created to incorporate specific requirements pursuant to the following regional-specific Data Protection Legislation:
 
@@ -801,13 +788,13 @@ This Annex 2 has been created to incorporate specific requirements pursuant to t
 
 o   Personal Information Protection and Electronic Documents Act (“PIPEDA”) and Provincial privacy and data protection laws and regulations, including all public and private sector and health sector laws and regulations, such as Quebec’s Act respecting the protection of personal information in the private sector, CQLR c P-39.1, British Columbia’s Personal Information Protection Act, SBC 2003, c 63, Alberta’s Personal Information Protection Act, SA 2003, c P-6.5, Ontario’s Personal Health Information Protection Act, 2004, SO 2004, c 3, Sch A and Alberta’s Health Information Act, RSA 2000, c H-5
 
-3\.              Specific Definitions
+#### 3.              Specific Definitions
 
 For the purpose of this Annex 2, the following specific terms shall have the following meaning:
 
 ·                “Canadian Client Personal Data” means the Client Personal Data of Data Subjects whose Personal Data is collected in Canada or in connection with a service received in Canada.
 
-4\.              Specific Provisions
+#### 4.              Specific Provisions
 
 4.1      Except as set out under clause 4.2 below or as otherwise agreed to in writing by the Controller, the Processor shall only transfer, access, store or otherwise Process Canadian Client Personal Data in Canada.
 
@@ -843,16 +830,13 @@ For the purpose of this Annex 2, the following specific terms shall have the fol
 
 4.8       The Processor shall not (i) send or cause or permit to be sent any commercial electronic messages (“CEMs”), as such term is defined under Canada’s Anti-Spam Legislation (Statutes of Canada 2010, c 23) and its associated regulations (collectively, “CASL”), or (ii) install or cause to be installed a computer program, as defined under CASL, on another person’s computer system (including any updates or upgrades to computer programs), on behalf of the Controller or otherwise in connection with this Data Processing Agreement without the prior written consent of the Controller. The Controller will only provide such consent after the Processor and the Controller mutually agree on written protocols governing the sending of CEMs. If the Controller provides such consent, the Processor will fully comply, and will cause its Subprocessors to fully comply, with all applicable consent, notice, unsubscribe and other requirements under CASL
 
-\
 
-
-&#x20;
 
 **EXHIBIT 2**
 
-**SERVICE LEVEL AGREEMENT – SLA**
+## **SERVICE LEVEL AGREEMENT – SLA**
 
-1\.         Introduction.
+### 1.         Introduction.
 
 This Exhibit 2 to the Terms and Conditions describes specific terms in respect of Support Services as will be provided to the Client by Extra Horizon in connection with the Licensed Products in production, the terms of which are incorporated herein by reference, and sets forth the amount of time that Extra Horizon guarantees the Extra Horizon Software to be available to the Client and contains the conditions under which Remedial Maintenance and General Support will be provided by Extra Horizon. Extra Horizon shall at all times during the term of the Agreement provide the Support Services to meet or exceed the service levels as set forth herein. In the event of a conflict between the Agreement and any provision of this Exhibit, the latter shall govern. Capitalized terms not otherwise defined herein, shall have the meaning specified in the Agreement.
 
@@ -866,7 +850,7 @@ The objectives of this SLA are to:
 
 For the avoidance of doubt, it is specified that the Support Services do not apply to any Deliverable, unless explicitly otherwise agreed in writing between the Parties, in a Work Order or in a separate support and maintenance agreement.
 
-2\.         Definitions
+### 2.         Definitions
 
 The following expressions shall have the following meanings in this SLA, unless the context otherwise requires:
 
@@ -914,7 +898,7 @@ Errors may be categorized by Extra Horizon as Incidents or Problems;
 
 “Update” means a modification which corrects faults, adds new features or functionality, or otherwise improves, amends or updates the existing features and functionality of the Extra Horizon Software and any technically feasible changes necessary to enable the Extra Horizon Software to operate in conjunction with new versions or releases of the Systems.
 
-3\.         System Availability.
+### 3.         System Availability.
 
 3.1.          Uptime Commitment.
 
@@ -960,7 +944,7 @@ In the event of any known and verified Unscheduled Downtime, Extra Horizon will 
 
 Unscheduled Downtime is not recorded and no Service Credits will be issued if the server is rebooted per the Client’s request, during scheduled or emergency system maintenance.
 
-4\.         Remedial Maintenance.
+### 4.         Remedial Maintenance.
 
 4.1.          Bug fixing.
 
@@ -1022,7 +1006,7 @@ During the Term, the Client shall (i) make all reasonable efforts to determine w
 
 The costs for Remedial Maintenance are included in the License Fees, except as specified otherwise.
 
-5\.         Minor Updates and Major Updates.
+### 5.         Minor Updates and Major Updates.
 
 Extra Horizon will upon release of a Minor Update notify Client of its availability. Minor Updates will be provided to Client by Extra Horizon at no additional cost over and above the applicable fees. Minor Updates are licensed to Client under the same terms and conditions as the Extra Horizon Software to Client in accordance with the Agreement.
 
@@ -1030,7 +1014,7 @@ Upon release of a Major Update, Extra Horizon will notify Client of its availabi
 
 In the event Extra Horizon notifies the Client that it will no longer support a major version of the Extra Horizon Software, the Client shall have the opportunity during a period of four (4) months to upgrade to the Current Major Version. After such four (4) month period, Extra Horizon shall no longer be obliged to host the relevant older version of the Extra Horizon Software.
 
-6\.         General Support
+### 6.         General Support
 
 Any service that is performed under this SLA by Extra Horizon but which is not included in the Remedial Maintenance mentioned in article 4 of this SLA shall be considered as ‘out of scope services’ (i.e. not included as Remedial Maintenance in the License Fees) and shall be charged at the daily rates set forth in Exhibit 1.
 
@@ -1054,7 +1038,7 @@ General Support includes (non-exhaustive list):
 
 Prior to the provision of such out-of-scope services, Extra Horizon will notify Client about the out-of-scope character of these services and the fee estimate of the total rates applicable for such services.
 
-7\.         Procedure for requesting Support Services.
+### 7.         Procedure for requesting Support Services.
 
 7.1.          Support Desk.
 
@@ -1066,7 +1050,7 @@ Extra Horizon shall notify the Client of any changes to those contact details.
 
 The Client shall appoint one or more representatives that are authorized to contact the Support Desk to request Remedial Maintenance and/or General Support. The Client may replace its authorized representative from time to time by prior written notice to Extra Horizon (including by e-mail to the designated email address). Whenever the Client requires Extra Horizon to perform either Remedial Maintenance or General Support pursuant to the provisions of this SLAB, the Client shall submit a request by means of its authorized representative.
 
-8\.         Service Credits.
+### 8.         Service Credits.
 
 Based on monthly availability reports, Extra Horizon shall offer the Client service credits in the form of a discount calculated based on the license fees applicable to the month in which the system availability targets are not achieved (“Service Credits”):
 
@@ -1084,7 +1068,7 @@ Service Credits will be credited against the next future invoice after request t
 
 Should the Client disagree or otherwise challenge a measurement of uptime, the support provided by the Support Desk, or the Service Credits offered by Extra Horizon, it must inform Extra Horizon thereof in writing within sixty (60) calendar days following the relevant incident and address the specific incident in dispute. In the event no amicable agreement can be reached between the Parties within a period of sixty (60) calendar days following the aforementioned written notice, the dispute shall be settled in accordance with article 12.9 of the Terms and Conditions.
 
-9\.         Effect of termination.
+### 9.         Effect of termination.
 
 Upon expiration or termination of the Agreement for whatever reason, Extra Horizon shall be entitled to promptly cease to provide all Remedial Maintenance and General Support to the Client
 
