@@ -4,7 +4,7 @@ description: Extra Horizon platform terms and conditions
 
 # 📜 Terms and Conditions
 
-Last updated on 13 June 2024
+Version: June 1st, 2024
 
 ## EXTRA HORIZON TERMS AND CONDITIONS
 
