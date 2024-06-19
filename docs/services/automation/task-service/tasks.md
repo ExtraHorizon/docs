@@ -8,11 +8,11 @@ Tasks represent a scheduled or planned function. Tasks can give you insights in 
 
 #### By data service transitions
 
-When configuring your application's data model, it's possible to attach an [action](broken-reference) to a transition. Triggering the scheduling of a task is one of the available actions. Read more about how to implement this functionality in the [Documents Service section](broken-reference)
+When configuring your application's data model, it's possible to attach an [action](../../manage-data/data-service/schemas.md#other-actions) to a transition. Triggering the scheduling of a task is one of the available actions. Read more about how to implement this functionality in the [Data Service documentation](../../manage-data/data-service/schemas.md#other-actions).
 
 #### Scheduling via the SDK
 
-In JavaScript/TypeScript environments, our open source [Extra Horizon SDK ](broken-reference)offers a convenient wrapper around the API.
+In JavaScript/TypeScript environments, our open source [Extra Horizon SDK ](https://docs.extrahorizon.com/javascript-sdk)offers a convenient wrapper around the API.
 
 ```typescript
 await exh.tasks.create({
@@ -43,29 +43,33 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 ```javascript
 {
   "id": "757f191a810c19729de860ae",
+  "functionName": "testFunction",
   "status": "new",
   "statusChangedTimestamp": "2021-09-29T15:17:07.051Z",
-  "functionName": "testFunction",
   "data": {
-    "key": "value"
+    "my_key": "My Value"
   },
-  "startTimestamp": "2021-09-29T15:17:07.051Z",
   "tags": [
-    "string"
+    "my_tag"
   ],
+  "startTimestamp": "2021-09-29T15:17:07.051Z",
   "priority": 1,
+  "createdByApplicationId": "6672ede774a7bd291fb0bea4",
+  "createdByUserId": "58ff75ad4cedfd0005f80951",
   "creationTimestamp": "2021-09-29T15:17:07.051Z",
   "updateTimestamp": "2021-09-29T15:17:07.051Z"
 }
 ```
 
 * `functionName` - the name of the AWS Lambda function that should be executed. This function must be created in the same AWS account as the Extra Horizon deployment.
-* `data` - \[optional] A key-value object where input to the function is provided
-* `tags` - \[optional] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
 * `status` - Task status, see below for more information
 * `statusChangedTimestamp` - timestamp when the status was last updated
-* `priority` - define which tasks should get precedence in a queue
+* `data` - \[optional] A key-value object where input to the function is provided
+* `tags` - \[optional] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
 * `startTimestamp` - set when the task should start
+* `priority` - define which tasks should get precedence in a queue
+* `createdByApplicationId` - The application which created the task&#x20;
+* `createdByUserId` - The user who created the task
 
 {% hint style="info" %}
 If you define a function schedule, you will only see the next scheduled task execution at the moment when it starts.
