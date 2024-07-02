@@ -248,6 +248,10 @@ await exh.users.validatePasswordReset({
 {% endtab %}
 {% endtabs %}
 
+{% hint style="warning" %}
+Completing a password reset will log out the target user. This action will terminate all active sessions by invalidating all authentication tokens, including OAuth1, OAuth2, and Multi-Factor Authentication (MFA) tokens for the user.
+{% endhint %}
+
 ## Password Change
 
 When authenticated you can also implement password change functionality in your application. Changing the password requires you to resend the current password together with the new password.
