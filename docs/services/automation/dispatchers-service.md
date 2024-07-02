@@ -56,7 +56,7 @@ The dispatcher service will append the original event data as a property called 
 {% endtab %}
 
 {% tab title="Mail Action" %}
-A Mail Action contains part of the parameters required for the Send an email request to the [Mail Service](broken-reference). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
+A Mail Action contains part of the parameters required for the Send an email request to the [Mail Service](../communication/mail-service.md). These components are fixed for the email that must be send in response to the type of Event that is monitored by the Dispatcher. The variable parameters are derived from the content attribute of the captured Event object.
 
 The fixed components include the recipients of the email and the templateId which is needed to compose the email subject and body text fields.
 
