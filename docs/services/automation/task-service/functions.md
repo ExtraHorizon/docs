@@ -1,9 +1,5 @@
 # Functions
 
-{% hint style="success" %}
-Available since v1.1.0
-{% endhint %}
-
 A Task represents a planned or scheduled piece of code. The code definition is a Function in Extra Horizon.
 
 ## Deploying a Function
@@ -25,10 +21,10 @@ See the [Extra Horizon CLI documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-
 
 ### Tutorial
 
-A step-by-step guide on how to deploy a Function is available in the [hello world](https://docs.extrahorizon.com/extrahorizon-cli/tasks/hello-world-task) example.
+A step-by-step guide on how to deploy a Function is available in the [hello world](examples/hello-world-js.md) example.
 
 {% hint style="info" %}
-The [JavaScript SDK](https://extrahorizon.github.io/javascript-sdk/#/) may be used within a Function to easily interface with Extra Horizon services.
+The [JavaScript SDK](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/Bt0pZnRCbxX0i98gudUO/) may be used within a Function to easily interface with Extra Horizon services.
 {% endhint %}
 
 ## List functions
