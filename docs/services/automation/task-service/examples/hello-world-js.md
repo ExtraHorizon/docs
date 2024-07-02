@@ -34,7 +34,7 @@ To create a function we need to provide:
 
 <figure><img src="../../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
-You can see a hello-world function has been created in the task service. Visit the [Task service documentation](https://app.gitbook.com/o/-MkCjSW-Ht0-VBM7yuP9/s/-Mi5veV04lYlkS769Dcp/) on how to create a task and run it.
+You can see a hello-world function has been created in the task service. See the [Tasks](../tasks.md) page on how to create a task and run it.
 
 ### Tips
 
