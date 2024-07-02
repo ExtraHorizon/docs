@@ -35,7 +35,7 @@ exports.handler = async function (request) {
 
 ### Deploy
 
-Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](broken-reference) example.
+Similar to traditional Functions, API Functions can be deployed by referring to the documentation provided in the [Extra Horizon CLI: hello world (JS)](examples/hello-world-js.md) example.
 
 ### Execute
 
@@ -45,10 +45,11 @@ API functions can be executed by making requests to the `/tasks/v1/api/<function
 
 {% tabs %}
 {% tab title="JavaScript" %}
-<pre class="language-javascript"><code class="lang-javascript">const response = await exh.tasks.api.get('my-function', '/');
-<strong>
-</strong><strong>// response = { hello: 'The request method was: GET' }
-</strong></code></pre>
+```javascript
+const response = await exh.tasks.api.get('my-function', '/');
+
+// response = { hello: 'The request method was: GET' }
+```
 {% endtab %}
 {% endtabs %}
 
@@ -369,9 +370,10 @@ const response = await exh.tasks.apiRequests.find();
 
 #### **Example of an API Request**
 
-<pre class="language-json"><code class="lang-json">{
-<strong>    "id": "64a2bb9a45f2a4622e065558",
-</strong>    "functionName": "my-function",
+```json
+{
+    "id": "64a2bb9a45f2a4622e065558",
+    "functionName": "my-function",
     "method": "POST",
     "path": "/my/path",
     "userId": "61fbe2a352faff0008aaf1e2",
@@ -385,7 +387,7 @@ const response = await exh.tasks.apiRequests.find();
     },
     "duration": 1.098
 }
-</code></pre>
+```
 
 **API Request Properties**
 
