@@ -6,7 +6,9 @@ Certain types of actions that are performed in one module require follow-up acti
 
 When a User object is removed, the User module creates an Event to notify other services. Only the services that are subscribed to this type of Events will be notified. The customer can configure follow-up actions via the Dispatcher module, e.g. deleting all personally identifiable information (PII) of the removed user.
 
-![](../../.gitbook/assets/Screenshot\_20211018\_141014.png)
+![](../../../.gitbook/assets/Screenshot\_20211018\_141014.png)
+
+For a list of events produced by the Extra Horizon platform, see the [System Events](system-events.md) page.
 
 ## Create a custom event
 
