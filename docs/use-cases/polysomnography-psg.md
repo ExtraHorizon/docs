@@ -26,31 +26,31 @@ The following image shows a conceptual overview of Extra Horizon. On the left, y
 
 ### Access management
 
-Access management in Extra Horizon services relies on two modules: the [Authentication module ](broken-reference)and the [User module](broken-reference) for user management.
+Access management in Extra Horizon relies on two services: the [Authentication service ](../services/access-management/auth-service/)and the [User service](../services/access-management/user-service/) for user management.
 
 #### Security
 
-Security is an important feature of every web-based application. Authorization is a requirement for all of our services. Authorization with Extra Horizon services is done through the `auth service`, which will grant a token that can be used to validate requests to other services.
+Security is an important feature of every web-based application. Authorization is a requirement for all of our services. Authorization with Extra Horizon services is done through the Authentication service, which will grant a token that can be used to validate requests to other services.
 
 #### Users
 
-The ExH User module manages standard user interaction like registering new users, activating prescriptions and resetting passwords. It also provides special features such as using _roles_ to manage user privileges and _groups_ to connect/aggregate any number of patients and staff members.
+The ExH User service manages standard user interaction like registering new users, activating prescriptions and resetting passwords. It also provides special features such as using _roles_ to manage user privileges and _groups_ to connect/aggregate any number of patients and staff members.
 
 ![Relationship between groups and users](<../.gitbook/assets/PSG User Flow Extara Horizon.png>)
 
-As is illustrated above, the `user service` allows to control a user's privileges by medium of _roles_. Users can also be connected to a _group_, wherein privilege levels are controlled through _group roles_. Group roles determine a user's permissions within a group, provided they are enlisted to that group as a staff member.
+As is illustrated above, the User service allows to control a user's privileges by medium of _roles_. Users can also be connected to a _group_, wherein privilege levels are controlled through _group roles_. Group roles determine a user's permissions within a group, provided they are enlisted to that group as a staff member.
 
 ### Data Management
 
-Next to storing data in structured documents, the Data module allows configuring the structure and behavior of these documents using **data schemas**. With this feature, the behavior of the data can be programmed.
+Next to storing data in structured documents, the [Data service](../services/manage-data/data-service/) allows configuring the structure and behavior of these documents using **data schemas**. With this feature, the behavior of the data can be programmed.
 
 ### Automation <a href="#automation" id="automation"></a>
 
-The [Task module](broken-reference) provides a way to execute code on demand by scheduling tasks. Tasks do not contain code themselves, but instead contain the information necessary to invoke code that is stored elsewhere, such as an AWS Lambda function. Tasks can either be queued to be executed as soon as possible, or scheduled for execution at a later moment.
+The [Task service](../services/automation/task-service/) provides a way to execute code on demand by scheduling tasks. Tasks do not contain code themselves, but instead contain the information necessary to invoke code that is stored elsewhere, such as an AWS Lambda function. Tasks can either be queued to be executed as soon as possible, or scheduled for execution at a later moment.
 
 ### Communication <a href="#communication" id="communication"></a>
 
-The [Notification module](broken-reference) makes it easy to send notifications to users and checking if they've been received. The [Mail module](broken-reference) allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization module](broken-reference).
+The [Notification service](../services/communication/notification-service/) makes it easy to send notifications to users and checking if they've been received. The [Mail service ](../services/communication/mail-service.md)allows more formal communication with users and works based on mail templates. E-mails and notifications can be sent in multiple languages by using the [Localization service](../services/other/localizations-service/).
 
 ## Example configuration <a href="#demo-process" id="demo-process"></a>
 
@@ -64,19 +64,19 @@ The figure illustrates the data pathway from an EDF file until the data it conta
 
 This pathway can be summarized as follows:
 
-1. A new **.EDF file** is stored on the files service (1a). As the file token is received with the response from the files service, this token is stored in a collection on the data service in the form of a JSON document (1b).
-2. When a new document is uploaded to the data service, it automatically triggers a task in the task service.
-3. The task service gets the file token as it is triggered by the data service, and the token is used to extract the corresponding file from the files service.
-4. The task, a python script, opens the file and segments all the signals into 1-minute chunks. Each synchronized segment is then uploaded to a second collection on the data service in the form of a JSON document.
+1. A new **.EDF file** is stored on the Files service (1a). As the file token is received with the response from the Files service, this token is stored in a collection on the Data service in the form of a JSON document (1b).
+2. When a new document is uploaded to the Data service, it automatically triggers a task in the Task service.
+3. The Task service gets the file token as it is triggered by the Data service, and the token is used to extract the corresponding file from the Files service.
+4. The task, a python script, opens the file and segments all the signals into 1-minute chunks. Each synchronized segment is then uploaded to a second collection on the Data service in the form of a JSON document.
 5. The JSON documents are ready to be used for further applications. For instance, the signals can be annotated.
 
 ### Storing files <a href="#the-files-service" id="the-files-service"></a>
 
-The file service allows uploading any kind of data, structured or unstructured. After the upload, a token will be returned to access at a later time.
+The [File service](../services/manage-data/file-service.md) allows uploading any kind of data, structured or unstructured. After the upload, a token will be returned to access at a later time.
 
 #### Post a file <a href="#post-a-file" id="post-a-file"></a>
 
-To upload a new file to the files service, a post request is needed:
+To upload a new file to the Files service, a post request is needed:
 
 ```python
 filename = 'example.edf' 
@@ -110,20 +110,20 @@ Example response:
 
 #### Get a file <a href="#get-a-file" id="get-a-file"></a>
 
-To retrieve a file from the files service, a get request is used
+To retrieve a file from the Files service, a get request is used
 
 ```python
 url = 'https://api.sandbox.extrahorizon.io/files/v1/{token}/file/'
 response = requests.get(url=url, auth=auth)
 ```
 
-### The data service <a href="#the-data-service" id="the-data-service"></a>
+### The Data service <a href="#the-data-service" id="the-data-service"></a>
 
-The data service is meant for storing structured data.
+The Data service is meant for storing structured data.
 
 #### Schemas <a href="#schemas" id="schemas"></a>
 
-The data service can contain multiple collections to hold data in different structures. Each collection is characterized by a schema that specifies the data structure it accepts, but also the different statuses data can be into, how data transition between statuses, etc.
+The Data service can contain multiple collections to hold data in different structures. Each collection is characterized by a schema that specifies the data structure it accepts, but also the different statuses data can be into, how data transition between statuses, etc.
 
 **Token schema**
 
@@ -368,6 +368,6 @@ response = requests.get(url=url, auth=auth)
 
 ## Example use case - Annotating
 
-Once an EDF file is stored into the File module and consequently the signals have been uploaded into the Data module, the data is easily accessible for further applications. One example is to annotate the signals. The following figure shows an annotator tool developed by FibriCheck. The data are retrieved from the data service, annotated and annotations are stored back to the data service. A demo is available here
+Once an EDF file is stored into the File service and consequently the signals have been uploaded into the Data service, the data is easily accessible for further applications. One example is to annotate the signals. The following figure shows an annotator tool developed by FibriCheck. The data are retrieved from the data service, annotated and annotations are stored back to the data service. A demo is available here
 
 ![Fibricheck Annotator Tool](<../.gitbook/assets/PSG FibriCheck.png>)
