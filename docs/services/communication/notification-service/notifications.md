@@ -121,11 +121,11 @@ Note: Currently, the title of Notifications of the message and link Types is fix
 ![](<../../../.gitbook/assets/Screenshot\_20211018\_154407 (1).png>)
 
 {% hint style="info" %}
-Note: The JSON syntax in the Type objects is different from other services. The double brackets do not refer to a localization key (as used in the [Template Service](broken-reference)) but to the values provided in the [Create a Notification](notifications.md#create-a-notification) request. To include text snippets stored in the [Localization Service](broken-reference), the client application must first retrieve the snippets in the required language and subsequently include them as plain text in the request `title` or `body` parameter.
+Note: The JSON syntax in the Type objects is different from other services. The double brackets do not refer to a localization key (as used in the [Template Service](../../other/template-service/)) but to the values provided in the [Create a Notification](notifications.md#create-a-notification) request. To include text snippets stored in the [Localization Service](../../other/localizations-service/), the client application must first retrieve the snippets in the required language and subsequently include them as plain text in the request `title` or `body` parameter.
 {% endhint %}
 
 {% hint style="info" %}
-Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the [Data Service ](broken-reference)(e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
+Note for internal developers: Originally, the purpose of the message Type was to enable a functionality in which a User (`sender_id`), e.g. a physician, could send a user-written message to another User. However, this functionality was never applied, and the message Type is currently used to automatically create messages with the [Data Service ](../../manage-data/data-service/)(e.g. measurement rapports). The `sender_id` attribute has been recycled to store the system User that is responsible for creating the Notifications.
 {% endhint %}
 
 ### Application Specific Types
@@ -134,7 +134,7 @@ Note for internal developers: Originally, the purpose of the message Type was to
 
 For the above non-specific Types, the `title` and `body` text fields must be completely provided during the [Create a Notification ](notifications.md#create-a-notification)request. For more specific Types, these text fields are usually predefined and only some variables are required.
 
-Two notification Types are used to create Notifications in response to successful actions at the [User Service](broken-reference): `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.
+Two notification Types are used to create Notifications in response to successful actions at the [User Service](../../access-management/user-service/): `email address activation` (activated) and `password_change`. By default, only the first type of notification will result in a push notification.
 
 {% hint style="info" %}
 For internal developers: The User Service-specific Types will not be included in V2.
@@ -160,33 +160,25 @@ This section gives an overview of the available Notification Service endpoints. 
 
 All available notification Types can be viewed by any User.
 
-{% swagger method="get" path="/types" baseUrl=" " summary="List all Types" %}
-{% swagger-description %}
+## List all Types
 
-{% endswagger-description %}
-{% endswagger %}
+<mark style="color:blue;">`GET`</mark> `/types`
 
 ### Managing Notifications
 
 In general, Notifications are managed by (a) system User(s) with the required permissions. Once created, Notifications cannot be updated. However, they can be deleted. The latter action will not affect any sent-out push notifications since there is no direct link with the Notification object.
 
-{% swagger method="post" path="/" baseUrl=" " summary="Create a Notification" %}
-{% swagger-description %}
+## Create a Notification
 
-{% endswagger-description %}
-{% endswagger %}
+<mark style="color:green;">`POST`</mark> `/`
 
-{% swagger method="delete" path="/notifications" baseUrl=" " summary="Delete a notification" %}
-{% swagger-description %}
+## Delete a notification
 
-{% endswagger-description %}
-{% endswagger %}
+<mark style="color:red;">`DELETE`</mark> `/notifications`
 
-{% swagger method="get" path="/notifications" baseUrl=" " summary="List all Notifications" %}
-{% swagger-description %}
+## List all Notifications
 
-{% endswagger-description %}
-{% endswagger %}
+<mark style="color:blue;">`GET`</mark> `/notifications`
 
 {% hint style="info" %}
 Info: Users can retrieve their Notifications via two endpoints. The more recent [List all Notifications](notifications.md#list-all-notifications) endpoint also enables administrators to access another User’s Notifications. However, it makes the original List your own Notifications endpoint redundant. The latter will be excluded in V2.
@@ -204,8 +196,6 @@ For internal developers: The variables in the title and body template of the spe
 
 When the user interacts with a notification in the UI (e.g. by clicking it), the customer’s application can set the viewed attribute in the associated Notification object to true. This information enables the application to stylize previously viewed notifications differently in the UI or to omit them from the displayed list.
 
-{% swagger method="post" path="/viewed" baseUrl=" " summary="Mark your Notification(s) as viewed" %}
-{% swagger-description %}
+## Mark your Notification(s) as viewed
 
-{% endswagger-description %}
-{% endswagger %}
+<mark style="color:green;">`POST`</mark> `/viewed`
