@@ -12,7 +12,7 @@ The main services that assist in communicating with your users are the Mail, Not
 
 [Notifications](./#markdown-header-notifications) can be used to quickly inform users with short, simple messages such as single sentences.
 
-Conversely, [_E-mails_](https://bitbucket.org/extrahorizon/exhz-user-guide/src/master/communicate.md#e-mails) are typically used to send longer messages, or messages set in a more formal context. Mails sent with ExH services can be built from of an e-mail template, created with the [template service](broken-reference).
+Conversely, [_E-mails_](https://bitbucket.org/extrahorizon/exhz-user-guide/src/master/communicate.md#e-mails) are typically used to send longer messages, or messages set in a more formal context. Mails sent with ExH services can be built from of an e-mail template, created with the [template service](../other/template-service/).
 
 Finally, Localizations allow the storage and retrieval of short text snippets in multiple languages. These snippets can be used by other services, such as the Mail service to build messages in multiple languages based using a single template.
 
