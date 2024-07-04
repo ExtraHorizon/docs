@@ -66,6 +66,8 @@ The following definitions (and additional definitions provided below) will apply
 
 “Licensed Products” means the Extra Horizon Software and the relevant Documentation;
 
+"Major/Minor/Patch Updates" means the impact of the release changes in function of dependencies. Extra Horizon follows the Semantic Versioning 2.0.0 specification that can be consulted on [https://semver.org/](https://semver.org/) &#x20;
+
 “Notified Body” means an entity, established in the European Union and authorized under applicable law to assess and certify the conformity of a medical device with the requirements of the Council Directive 93/42/EEC concerning medical devices, as amended from time to time, or any subsequent or superseding law, statute or regulation, including Regulation (EU) 2017/745 on medical devices;
 
 “Object Code” (or Bytecode) means software assembled or compiled in magnetic or electronic binary form on software media that is readable and usable by machines but not generally readable by humans without reverse assembly, reverse compiling or reverse engineering;
