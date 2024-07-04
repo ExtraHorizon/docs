@@ -4,7 +4,7 @@ description: Extra Horizon platform terms and conditions
 
 # 📜 Terms and Conditions
 
-Version: June 1st, 2024
+Version: July 4th, 2024
 
 ## EXTRA HORIZON TERMS AND CONDITIONS
 
@@ -784,51 +784,61 @@ This Annex 2 forms an integral part of the Data Processing Agreement and has bee
 
 This Annex 2 has been created to incorporate specific requirements pursuant to the following regional-specific Data Protection Legislation:
 
-·                Canada:
-
-o   Personal Information Protection and Electronic Documents Act (“PIPEDA”) and Provincial privacy and data protection laws and regulations, including all public and private sector and health sector laws and regulations, such as Quebec’s Act respecting the protection of personal information in the private sector, CQLR c P-39.1, British Columbia’s Personal Information Protection Act, SBC 2003, c 63, Alberta’s Personal Information Protection Act, SA 2003, c P-6.5, Ontario’s Personal Health Information Protection Act, 2004, SO 2004, c 3, Sch A and Alberta’s Health Information Act, RSA 2000, c H-5
+* Canada:&#x20;
+  * Personal Information Protection and Electronic Documents Act (PIPEDA) and Provincial privacy and data protection laws and regulations, including all public and private sector and health sector laws and regulations, such as Quebec’s Act respecting the protection of personal information in the private sector, CQLR c P-39.1, British Columbia’s Personal Information Protection Act, SBC 2003, c 63, Alberta’s Personal Information Protection Act, SA 2003, c P-6.5, Ontario’s Personal Health Information Protection Act, 2004, SO 2004, c 3, Sch A and Alberta’s Health Information Act, RSA 2000, c H-5 (hereinafter “Canadian Data Protection Legislation”);&#x20;
+* France:&#x20;
+  * Article L.1111-8 of the French Public Health Code, Décret n° 2018-137 du 26 février 2018 relatif à l'hébergement de données de santé à caractère personnel (hereinafter “French Data Protection Legislation”).
 
 #### 3.              Specific Definitions
 
 For the purpose of this Annex 2, the following specific terms shall have the following meaning:
 
-·                “Canadian Client Personal Data” means the Client Personal Data of Data Subjects whose Personal Data is collected in Canada or in connection with a service received in Canada.
+“Canadian Client Personal Data” means the Client Personal Data of Data Subjects whose Personal Data is collected in Canada or in connection with a service received in Canada.&#x20;
+
+“Client Personal Health Data” means Client Personal Data which constitutes health-related Personal Data, as set out in Article 9.1 of the GDPR.
 
 #### 4.              Specific Provisions
 
-4.1      Except as set out under clause 4.2 below or as otherwise agreed to in writing by the Controller, the Processor shall only transfer, access, store or otherwise Process Canadian Client Personal Data in Canada.
+**4.1  Canadian Data Protection Legislation**&#x20;
 
-4.2        The Processor will process the following information on behalf of the Controller:
+4.1.1 Except as set out under clause  4.2 below or as otherwise agreed to in writing by the Controller, the Processor shall only transfer, access, store or otherwise Process Canadian Client Personal Data in Canada.
 
-(i)              Personally identifiable information, including the name, gender, birthdate, email, phone number, demographic information, location and government-issued ID numbers of users.
+4.1.2 The Processor will process the following information on behalf of the Controller:&#x20;
 
-(ii)             Protected health information, including medical records, user health insurance information and protected communication between patients and healthcare professionals.
+* i. Personally identifiable information, including the name, gender, birthdate, email, phone number, demographic information, location and government-issued ID numbers of users.&#x20;
+* ii. Protected health information, including medical records, user health insurance information and protected communication between patients and healthcare professionals.&#x20;
+* iii. User-generated content, including text, photos and videos&#x20;
+* iv. Authentication information&#x20;
+* v. Access logs&#x20;
 
-(iii)           User-generated content, including text, photos and videos
+4.1.3 The Subprocessors that may be used under the Agreement to Process Canadian Client Personal Data and the jurisdictions in which such Subprocessors are permitted to Process Canadian Client Personal Data are listed here:&#x20;
 
-(iv)           Authentication information
+* i. Database as a service providers – Mongo DB, Inc., 1633 Broadway, 38th Floor, New York, New York 10019, United States;&#x20;
+* ii. Cloud Providers: Amazon Web Services, Inc., 410 Terry Ave. North. Seattle, WA 98109-5210.&#x20;
 
-(v)             Access logs
+4.1.4 If the Processor wishes to replace or modify one of the above-listed Subprocessors (including, without limitation, changing the jurisdiction where an existing Subprocessor Processes Canadian Client Personal Data) or introduce a new Subprocessor, it shall first notify the Controller in writing thereof and not proceed with any such replacement, modification or addition until the notice period set out in article 10.4 to the Data Processing Agreement has passed (assuming no objection has been made).&#x20;
 
-4.3       The Subprocessors that may be used under the Agreement to Process Canadian Client Personal Data and the jurisdictions in which such Subprocessors are permitted to Process Canadian Client Personal Data are listed here:
+4.1.5 The Processor shall keep and make available to the Controller an electronic record of:&#x20;
 
-(i)              Database as a service providers – Mongo DB, Inc., 1633 Broadway, 38th Floor, New York, New York 10019, United States;
+* i. all accesses to Client Personal Data, which must identify the person who accessed the Client Personal Data, the Data Subject whose Client Personal Data was accessed, the Client Personal Data that was accessed, whether Client Personal Data was added, modified, deleted, transferred or otherwise Processed by the person who accessed it, and the date and time of the access, and&#x20;
+* ii. all transfers of (which, for the avoidance of doubt, includes all provision of access to) Client Personal Data, which must identify the person who transferred the Client Personal Data and the person or address to whom it was transferred, and the date and time it was transferred.&#x20;
 
-(ii)             Cloud Providers: Amazon Web Services, Inc., 410 Terry Ave. North. Seattle, WA 98109-5210.
+4.1.6 The Processor shall ensure that all Client Personal Data is securely and logically segregated from any other information owned or managed by the Processor or other third parties, including implementing any necessary access barriers, password authorization procedures and other access controls and monitoring in connection therewith.&#x20;
 
-4.4       If the Processor wishes to replace or modify one of the above-listed Subprocessors (including, without limitation, changing the jurisdiction where an existing Subprocessor Processes Canadian Client Personal Data) or introduce a new Subprocessor, it shall first notify the Controller in writing thereof and not proceed with any such replacement, modification or addition until the notice period set out in article 10.4 to the Data Processing Agreement has passed (assuming no objection has been made).
+4.1.7 The Processor shall not (i) use Personal Data Processing technologies that enable the identification, location or profiling of individuals, (ii) Process any biometric data, or (iii) use Client Personal Data to render a decision based exclusively on an automated Processing of such Client Personal Data.&#x20;
 
-4.5        The Processor shall keep and make available to the Controller an electronic record of:
+4.1.8 The Processor shall not (i) send or cause or permit to be sent any commercial electronic messages (“CEMs”), as such term is defined under Canada’s Anti-Spam Legislation (Statutes of Canada 2010, c 23) and its associated regulations (collectively, “CASL”), or (ii) install or cause to be installed a computer program, as defined under CASL, on another person’s computer system (including any updates or upgrades to computer programs), on behalf of the Controller or otherwise in connection with this Data Processing Agreement without the prior written consent of the Controller. The Controller will only provide such consent after the Processor and the Controller mutually agree on written protocols governing the sending of CEMs. If the Controller provides such consent, the Processor will fully comply, and will cause its Subprocessors to fully comply, with all applicable consent, notice, unsubscribe and other requirements under CASL.&#x20;
 
-(i)              all accesses to Client Personal Data, which must identify the person who accessed the Client Personal Data, the Data Subject whose Client Personal Data was accessed, the Client Personal Data that was accessed, whether Client Personal Data was added, modified, deleted, transferred or otherwise Processed by the person who accessed it, and the date and time of the access, and
+**4.2 French Data Protection Legislation**&#x20;
 
-(ii)             all transfers of (which, for the avoidance of doubt, includes all provision of access to) Client Personal Data, which must identify the person who transferred the Client Personal Data and the person or address to whom it was transferred, and the date and time it was transferred.
+4.2.1 The Controller shall provide the Processor with the contact details of a single point of contact within the Controller's organization, upon the Processor's initial request. This contact information shall, at least, include the following details:&#x20;
 
-4.6       The Processor shall ensure that all Client Personal Data is securely and logically segregated from any other information owned or managed by the Processor or other third parties, including implementing any necessary access barriers, password authorization procedures and other access controls and monitoring in connection therewith.
+* i. The Controller’s corporate name;&#x20;
+* ii. The contact’s first and last name;&#x20;
+* iii. The contact’s e-mail address; iv.&#x20;
+* The contact’s telephone number.&#x20;
 
-4.7       The Processor shall not (i) use Personal Data Processing technologies that enable the identification, location or profiling of individuals, (ii) Process any biometric data, or (iii) use Client Personal Data to render a decision based exclusively on an automated Processing of such Client Personal Data.
-
-4.8       The Processor shall not (i) send or cause or permit to be sent any commercial electronic messages (“CEMs”), as such term is defined under Canada’s Anti-Spam Legislation (Statutes of Canada 2010, c 23) and its associated regulations (collectively, “CASL”), or (ii) install or cause to be installed a computer program, as defined under CASL, on another person’s computer system (including any updates or upgrades to computer programs), on behalf of the Controller or otherwise in connection with this Data Processing Agreement without the prior written consent of the Controller. The Controller will only provide such consent after the Processor and the Controller mutually agree on written protocols governing the sending of CEMs. If the Controller provides such consent, the Processor will fully comply, and will cause its Subprocessors to fully comply, with all applicable consent, notice, unsubscribe and other requirements under CASL
+This single point of contact must be able to designate to the Processor a healthcare professional authorised to access Client Personal Health Data whenever necessary.
 
 
 
@@ -1008,11 +1018,19 @@ The costs for Remedial Maintenance are included in the License Fees, except as s
 
 ### 5.         Minor Updates and Major Updates.
 
+5.1.          Minor Updates
+
 Extra Horizon will upon release of a Minor Update notify Client of its availability. Minor Updates will be provided to Client by Extra Horizon at no additional cost over and above the applicable fees. Minor Updates are licensed to Client under the same terms and conditions as the Extra Horizon Software to Client in accordance with the Agreement.
+
+Minor Updates will be scheduled for deployment automatically one week after notification.
+
+5.2.          Major Updates
 
 Upon release of a Major Update, Extra Horizon will notify Client of its availability. Major Updates will be provided to Client by Extra Horizon at no additional cost over and not above the applicable fees. Extra Horizon will only be obligated to provide the Support Services in respect of the Current Major Version. At the request of the Client, Extra Horizon may provide Support Services in respect of older versions of the Extra Horizon Software, which shall be charged at the daily rates set forth in Exhibit 1.
 
 In the event Extra Horizon notifies the Client that it will no longer support a major version of the Extra Horizon Software, the Client shall have the opportunity during a period of four (4) months to upgrade to the Current Major Version. After such four (4) month period, Extra Horizon shall no longer be obliged to host the relevant older version of the Extra Horizon Software.
+
+Major Updates will be scheduled for deployment in mutual agreement with the client's engineering department.
 
 ### 6.         General Support
 
