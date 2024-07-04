@@ -14,6 +14,8 @@ These Terms and Conditions apply to all contracts and Work Orders (as defined he
 
 The designated person, officer, director, employee, or any other person who represents or acts on behalf of the Client, is deemed to have the necessary mandate to legally bind the Client.
 
+By agreeing to an Order Form that references this Cloud Subscription Agreement (this “Agreement”), you agree to this Agreement. If you represent an organization, you represent and warrant that you are authorized to agree to this Agreement on behalf of your organization.
+
 ### 1.              DEFINITIONS
 
 The following definitions (and additional definitions provided below) will apply to these Terms and Conditions:
