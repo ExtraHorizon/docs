@@ -105,4 +105,4 @@
 * [⏱️ Usage and Performance](exh-platform/usage-and-performance.md)
 * [🔓 Security](exh-platform/security.md)
 * [🗺️ Regions](exh-platform/regions.md)
-* [📜 Terms and Conditions](exh-platform/terms-and-conditions.md)
+* [Cloud Subscription Agreement](https://docs.extrahorizon.com/data-processing-agreement)
