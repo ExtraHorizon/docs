@@ -469,15 +469,18 @@ await exh.data.transitions.create(newSchema.id, {
 
 #### **initiatorHasRelationToUserInData** Condition
 
-The initiator of the Transition has a specified relation (as determined in `relation`) to a user (as determined in `userIdField`) mentioned in the transition data.&#x20;
+The initiator of the Transition has a specified relation (as determined in `relation`) to a user (as determined in `userIdField`) mentioned in the transition data.
+
+The only valid value of the `relation` field is `isStaffOfTargetPatient`. The initiator must have at least one staff enlistment for the same group the targeted user has a patient enlistment.
 
 This Condition only applies to the `creationTransition` and Transitions with type `manual`.
 
 **Example**
 
-The following code creates a manual transition requiring:
+The following code creates a manual transition for which:
 
-* The initiator of the transition to be staff of the user with id `5e9fff9d90135a2a9a718e2f`.
+* The targeted user is determined by the `myPatientId` data field.
+* The initiator of the transition must be a staff member from the same group to which the targeted user is a patient.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -490,7 +493,7 @@ await exh.data.transitions.create(newSchema.id, {
     conditions: [
       {
         type: 'initiatorHasRelationToUserInData',
-        userIdField: '5e9fff9d90135a2a9a718e2f',
+        userIdField: 'myPatientId',
         relation: 'isStaffOfTargetPatient'
       },
     ],
@@ -503,14 +506,22 @@ await exh.data.transitions.create(newSchema.id, {
 
 The initiator of the Transition has a specified relation (as determined in `relation`) to a group (as determined in `groupIdField`) mentioned in the transition data.&#x20;
 
-This Condition only applies to the `creationTransition` and Transitions with type `manual`.
+The value for the `relation` field can either be:
+
+* &#x20;`staff`: The initiator must have a staff enlistment for the target group
+* `patient`: The initiator must have a patient enlistment for the target group
+
+The optional field `requiredPermission` is only used when the `relation` is set to `staff`. When supplied the initiator must not only have a staff enlistment with the targeted group, but also a role assigned within that group with the specified permission.&#x20;
+
+&#x20;This Condition only applies to the `creationTransition` and Transitions with type `manual`.
 
 **Example**
 
-The following code creates a manual transition requiring:
+The following code creates a manual transition for which:
 
-* The initiator of the transition to be a staff member of the group with id `5e9fff9d90135a2a9a718e2f`.
-* The initiator of the transition to have the `MY_OWN_PERMISSION` group permission.&#x20;
+* The targeted group is determined by the `myGroupId` data field.
+* The initiator of the transition must be a staff member of the targeted group.
+* The initiator of the transition must have the `MY_OWN_PERMISSION` group permission.&#x20;
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -523,7 +534,7 @@ await exh.data.transitions.create(newSchema.id, {
     conditions: [
       {
         type: 'initiatorHasRelationToGroupInData',
-        groupIdField: '5e9fff9d90135a2a9a718e2f',
+        groupIdField: 'myGroupId',
         relation: 'staff',
         requiredPermission: 'MY_OWN_PERMISSION'
       },
