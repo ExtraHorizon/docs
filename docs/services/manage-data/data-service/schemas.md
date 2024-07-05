@@ -241,11 +241,12 @@ References:
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.properties.create(newSchema.id, { name: 'myFirstProperty',
-    configuration: {
-      type: 'string',
-      enum: ['firstValue', 'secondValue'],
-    }
+await exh.data.properties.create(newSchema.id, {
+  name: 'myFirstProperty',
+  configuration: {
+    type: 'string',
+    enum: ['firstValue', 'secondValue'],
+  }
 });
 ```
 {% endtab %}
@@ -258,9 +259,11 @@ You can update a specific property of a schema by providing the schema Id, the p
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.properties.update(mySchema.id,'myObjectField.myStringField',{
-    type:"string"
-});
+await exh.data.properties.update(
+  mySchema.id,
+  'myObjectField.myStringField',
+  { type: 'string' }
+);
 ```
 {% endtab %}
 {% endtabs %}
@@ -272,9 +275,11 @@ You can remove a specific property of a schema by providing the schema Id, the p
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.properties.remove(mySchema.id,'myObjectField.myStringField',{
-    type:"string"
-});
+await exh.data.properties.remove(
+  mySchema.id,
+  'myObjectField.myStringField',
+  { type: 'string' }
+);
 ```
 {% endtab %}
 {% endtabs %}
@@ -286,16 +291,30 @@ you can also make more complex objects and array's of objects.
 {% tabs %}
 {% tab title="Object example" %}
 ```javascript
-await exh.data.properties.create(newSchema.id, 
-  {
-    name: 'address',
-    configuration: {
-      type: 'object',
-      properties: {
-        street: {type: 'string', minLength: 1, pattern: '^[a-z]+$'},
-        number: {type: 'number', minimum: 1, maximum: 300},
-        inhabited: {type: 'boolean', enum: [true, false]},
-        residents: {type: 'array', items: {type: 'string'}, minItems: 1, maxItems: 10}
+await exh.data.properties.create(schema.id, {
+  name: 'address',
+  configuration: {
+    type: 'object',
+    properties: {
+      street: {
+        type: 'string',
+        minLength: 1,
+        pattern: '^[a-z]+$'
+      },
+      number: {
+        type: 'number',
+        minimum: 1,
+        maximum: 300
+      },
+      inhabited: {
+        type: 'boolean',
+        enum: [true, false]
+      },
+      residents: {
+        type: 'array',
+        items: { type: 'string' },
+        minItems: 1,
+        maxItems: 10
       }
     }
   }
@@ -305,18 +324,15 @@ await exh.data.properties.create(newSchema.id,
 
 {% tab title="Array example" %}
 ```javascript
-await exh.data.properties.create(newSchema.id, 
-  {
-    name: 'relatives',
-    configuration: {
+await exh.data.properties.create(schema.id, {
+  name: 'address.residents',
+  configuration: {
+    type: 'array',
+    items: {
       type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          name: {type: 'string', minLength: 1, maxLength: 50},
-          relation: {type: 'string', enum:['relative','family','friend']}
-        }
-      }
+      items: { type: 'string' },
+      minItems: 1,
+      maxItems: 10
     }
   }
 });
@@ -325,18 +341,16 @@ await exh.data.properties.create(newSchema.id,
 
 {% tab title="Date-time" %}
 ```javascript
-await exh.data.properties.create(newSchema.id, 
-  {
-    name: 'birthdate',
-    configuration: {
-      type: 'string',
-      format: 'date-time'
-    }
+await exh.data.properties.create(schema.id, {
+  name: 'birthdate',
+  configuration: {
+    type: 'string',
+    format: 'date-time'
   }
 });
 ```
 
-this allows you to create a ISO formatted date-time field wich accepts RQL to query on using gt,gte, lt and lte ,...
+this allows you to create a ISO formatted date-time field which accepts RQL to query on using gt,gte, lt and lte ,...
 {% endtab %}
 {% endtabs %}
 
@@ -349,7 +363,7 @@ A document can be perceived as a finite-state machine, which remains in a state/
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.statuses.create(newSchema.id, {
+await exh.data.statuses.create(schema.id, {
     name: 'initialStatus',
 });
 ```
