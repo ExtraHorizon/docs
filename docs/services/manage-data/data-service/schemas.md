@@ -61,7 +61,7 @@ updateMode defines the permissions needed to update a document in a schema colle
 | `linkedGroupsStaffOnly` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
 
 {% hint style="info" %}
-Users that have the UPDATE`_DOCUMENTS` or UPDATE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to update any document regardless of the setting above.
+Users that have the `UPDATE_DOCUMENTS` or `UPDATE_DOCUMENTS:{schemaName}`permission attached to a global role will be able to update any document regardless of the setting above.
 {% endhint %}
 
 #### deleteMode
@@ -74,7 +74,7 @@ deleteMode defines the permissions needed to remove a document permanently from 
 | `linkedUsersOnly`    | All users where their userId is in the list of userIds attached to the document.                                                 |
 
 {% hint style="info" %}
-Users that have the DELETE`_DOCUMENTS` or DELETE`_DOCUMENTS:{schemaName}`permission attached to a global role will be able to delete any document regardless of the setting above.
+Users that have the `DELETE_DOCUMENTS` or `DELETE_DOCUMENTS:{schemaName}`permission attached to a global role will be able to delete any document regardless of the setting above.
 {% endhint %}
 
 ### Access to documents through role permissions
@@ -688,7 +688,7 @@ Using actions you can modify these fields and therefore the access of the docume
 | `linkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                            |
 
 {% hint style="info" %}
-If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [#updating-access](schemas.md#updating-access "mention")
+If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [Data Access Management](schemas.md#data-access-management)
 {% endhint %}
 
 **code examples**
@@ -764,8 +764,9 @@ await sdk.data.transitions.create(newSchema.id, {
 
 {% tabs %}
 {% tab title="Task" %}
-<pre class="language-typescript"><code class="lang-typescript"><strong>await exh.data.transitions.create(newSchema.id, {
-</strong>  ...,
+```typescript
+await exh.data.transitions.create(newSchema.id, {
+  ...,
   actions: [
     {
       type: 'task',
@@ -774,7 +775,7 @@ await sdk.data.transitions.create(newSchema.id, {
   ],
   ...
 })
-</code></pre>
+```
 {% endtab %}
 {% endtabs %}
 
