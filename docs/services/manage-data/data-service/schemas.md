@@ -12,7 +12,7 @@ A schema defines both the data contained and the behavior (in the form of a stat
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-const myNewSchema = await exh.data.schemas.create({
+const mySchema = await exh.data.schemas.create({
     name: 'myNewSchema',
     description: 'This is my new schema',
 });
@@ -46,7 +46,7 @@ readMode defines the permissions needed to read a document in a schema collectio
 | `enlistedInLinkedGroups` | All users that have a staff enlistment or a patient enlistment in a group that is in the list of groupIds of the document.                                                     |
 
 {% hint style="info" %}
-Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}`permission attached to a global role will be able to read any document regardless of the setting above.
+Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}` permission attached to a global role will be able to read any document regardless of the setting above.
 {% endhint %}
 
 #### updateMode
@@ -61,7 +61,7 @@ updateMode defines the permissions needed to update a document in a schema colle
 | `linkedGroupsStaffOnly` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
 
 {% hint style="info" %}
-Users that have the `UPDATE_DOCUMENTS` or `UPDATE_DOCUMENTS:{schemaName}`permission attached to a global role will be able to update any document regardless of the setting above.
+Users that have the `UPDATE_DOCUMENTS` or `UPDATE_DOCUMENTS:{schemaName}` permission attached to a global role will be able to update any document regardless of the setting above.
 {% endhint %}
 
 #### deleteMode
@@ -111,8 +111,8 @@ For more information how to add permissions to roles and roles to users, take a 
 You can provide the permissions parameters upon creation of you new schema:
 
 ```javascript
-const myNewSchema = await exh.data.schemas.create({
-    name: 'myNewSchema',
+const mySchema = await exh.data.schemas.create({
+    name: 'mySchema',
     description: 'This is my new schema',
     createMode: 'default',
     readMode: 'allUsers',
@@ -241,7 +241,7 @@ References:
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.properties.create(newSchema.id, {
+await exh.data.properties.create(mySchema.id, {
   name: 'myFirstProperty',
   configuration: {
     type: 'string',
@@ -291,7 +291,7 @@ you can also make more complex objects and array's of objects.
 {% tabs %}
 {% tab title="Object example" %}
 ```javascript
-await exh.data.properties.create(schema.id, {
+await exh.data.properties.create(mySchema.id, {
   name: 'address',
   configuration: {
     type: 'object',
@@ -324,7 +324,7 @@ await exh.data.properties.create(schema.id, {
 
 {% tab title="Array example" %}
 ```javascript
-await exh.data.properties.create(schema.id, {
+await exh.data.properties.create(mySchema.id, {
   name: 'address.residents',
   configuration: {
     type: 'array',
@@ -341,7 +341,7 @@ await exh.data.properties.create(schema.id, {
 
 {% tab title="Date-time" %}
 ```javascript
-await exh.data.properties.create(schema.id, {
+await exh.data.properties.create(mySchema.id, {
   name: 'birthdate',
   configuration: {
     type: 'string',
@@ -363,7 +363,7 @@ A document can be perceived as a finite-state machine, which remains in a state/
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-await exh.data.statuses.create(schema.id, {
+await exh.data.statuses.create(mySchema.id, {
     name: 'initialStatus',
 });
 ```
@@ -381,12 +381,12 @@ When you create new schema, by default the data service will include a **NEW** s
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-exh.data.transitions.updateCreation(newSchema.id,{
-    type: 'manual',
-    toStatus: 'initialStatus',
-    conditions: {...},
-    actions: {...},
-    afterActions: {...}
+exh.data.transitions.updateCreation(mySchema.id, {
+  type: 'manual',
+  toStatus: 'initialStatus',
+  conditions: {...},
+  actions: {...},
+  afterActions: {...}
 });
 ```
 {% endtab %}
@@ -405,14 +405,14 @@ A Transition occurs from one Status to another. The Statuses a Transition starts
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-exh.data.transitions.updateCreation(newSchema.id,{
-    name: 'firsTransition'
-    type: 'manual',
-    fromStatuses: ['initialStatus'],
-    toStatus: 'secondStatus',
-    conditions: {...},
-    actions: {...},
-    afterActions: {...}
+exh.data.transitions.updateCreation(mySchema.id, {
+  name: 'firsTransition'
+  type: 'manual',
+  fromStatuses: ['initialStatus'],
+  toStatus: 'secondStatus',
+  conditions: {...},
+  actions: {...},
+  afterActions: {...}
 });
 ```
 {% endtab %}
@@ -457,26 +457,24 @@ The following code creates a manual transition requiring:
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
-    type: 'manual',
-    name: 'firstTransition',
-    fromStatuses: ['initialStatus'],
-    toStatus: 'secondStatus',
-    conditions: [
-      {
-        type: 'input',
-        configuration: {
-          type: 'object',
-          properties: {
-            name: {
-              type: 'string',
-            },
+await exh.data.transitions.create(mySchema.id, {
+  ...,
+  conditions: [
+    {
+      type: 'input',
+      configuration: {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
           },
-          required: ['name'],
         },
+        required: ['name'],
       },
-    ],
-  });
+    },
+  ],
+  ...
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -499,19 +497,17 @@ The following code creates a manual transition for which:
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
-    type: 'manual',
-    name: 'firstTransition',
-    fromStatuses: ['initialStatus'],
-    toStatus: 'secondStatus',
-    conditions: [
-      {
-        type: 'initiatorHasRelationToUserInData',
-        userIdField: 'myPatientId',
-        relation: 'isStaffOfTargetPatient'
-      },
-    ],
-  });
+await exh.data.transitions.create(mySchema.id, {
+  ...,
+  conditions: [
+    {
+      type: 'initiatorHasRelationToUserInData',
+      userIdField: 'myPatientId',
+      relation: 'isStaffOfTargetPatient',
+    },
+  ],
+  ...
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -540,20 +536,18 @@ The following code creates a manual transition for which:
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
-    type: 'manual',
-    name: 'firstTransition',
-    fromStatuses: ['initialStatus'],
-    toStatus: 'secondStatus',
-    conditions: [
-      {
-        type: 'initiatorHasRelationToGroupInData',
-        groupIdField: 'myGroupId',
-        relation: 'staff',
-        requiredPermission: 'MY_OWN_PERMISSION'
-      },
-    ],
-  });
+await exh.data.transitions.create(mySchema.id, {
+  ...,
+  conditions: [
+    {
+      type: 'initiatorHasRelationToGroupInData',
+      groupIdField: 'myGroupId',
+      relation: 'staff',
+      requiredPermission: 'MY_OWN_PERMISSION',
+    },
+  ],
+  ...
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -574,11 +568,8 @@ The following code creates a manual transition requiring:
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
-    type: 'manual',
-    name: 'firstTransition',
-    fromStatuses: ['initialStatus'],
-    toStatus: 'secondStatus',
+await exh.data.transitions.create(mySchema.id, {
+    ...,
     conditions: [
       {
         type: 'document',
@@ -626,7 +617,7 @@ To access an element in an array or embedded documents, use the dot notation.
 {% tabs %}
 {% tab title="set" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -636,13 +627,13 @@ await exh.data.transitions.create(newSchema.id, {
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 
 {% tab title="unset" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -651,13 +642,13 @@ await exh.data.transitions.create(newSchema.id, {
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 
 {% tab title="addItems" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -667,13 +658,13 @@ await exh.data.transitions.create(newSchema.id, {
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 
 {% tab title="removeItems" %}
 ```javascript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -683,7 +674,7 @@ await exh.data.transitions.create(newSchema.id, {
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -710,11 +701,11 @@ If you like to modify the access to documents from outside the data service you 
 {% tabs %}
 {% tab title="linkCreator" %}
 ```typescript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
-      type: 'linkCreator'
+      type: 'linkCreator',
     }
   ],
   ...
@@ -724,7 +715,7 @@ await exh.data.transitions.create(newSchema.id, {
 
 {% tab title="linkUserFromData" %}
 ```typescript
-await sdk.data.transitions.create(newSchema.id, {
+await sdk.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -733,13 +724,13 @@ await sdk.data.transitions.create(newSchema.id, {
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 
 {% tab title="linkEnlistedGroups" %}
 ```typescript
-await sdk.data.transitions.create(newSchema.id, {
+await sdk.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -754,7 +745,7 @@ await sdk.data.transitions.create(newSchema.id, {
 
 {% tab title="LinkGroupFromData" %}
 ```typescript
-await sdk.data.transitions.create(newSchema.id, {
+await sdk.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
@@ -779,16 +770,16 @@ await sdk.data.transitions.create(newSchema.id, {
 {% tabs %}
 {% tab title="Task" %}
 ```typescript
-await exh.data.transitions.create(newSchema.id, {
+await exh.data.transitions.create(mySchema.id, {
   ...,
   actions: [
     {
       type: 'task',
-      functionName: 'myTaskServiceFunctionName'
+      functionName: 'myTaskServiceFunctionName',
     }
   ],
   ...
-})
+});
 ```
 {% endtab %}
 {% endtabs %}
@@ -839,10 +830,8 @@ To give doctors access to the results, set the `groupSyncMode` to `linkedUsersPa
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-const myNewSchema = await exh.data.schemas.create({
-    ...
-    groupSyncMode:'creatorPatientEnlistments'
-    ...
+await exh.data.schemas.update(mySchema.id, {
+    groupSyncMode: 'creatorPatientEnlistments',
 });
 ```
 {% endtab %}
@@ -860,11 +849,9 @@ The defaultLimit and maximumLimit refer to the number of documents that are retu
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-const myNewSchema = await exh.data.schemas.update(mySchema.id,{
-    ...
-    defaultLimit:20,
-    maximumLimit:200,
-    ...
+await exh.data.schemas.update(mySchema.id, {
+  defaultLimit: 20,
+  maximumLimit: 200,
 });
 ```
 {% endtab %}
@@ -875,7 +862,7 @@ const myNewSchema = await exh.data.schemas.update(mySchema.id,{
 You can only remove disabled schema's. Removing a schema removes all documents in that schema collection. Removed documents are non retrievable.
 
 ```javascript
-await exh.data.schemas.enable('{yourSchemaId}');
+await exh.data.schemas.remove(mySchema.id);
 ```
 
 ### **Enabling/disabling a schema**
@@ -883,13 +870,13 @@ await exh.data.schemas.enable('{yourSchemaId}');
 As the removal of a schema is something that you want to handle with great care the service first requires you to disable a schema. When a schema is disabled creation of new documents is disabled and no changes are allowed to existing documents.
 
 ```javascript
-await exh.data.schemas.disable('{yourSchemaId}');
+await exh.data.schemas.disable(mySchema.id);
 ```
 
 You can enable a disabled schema the same way:
 
 ```javascript
-await exh.data.schemas.enable('{yourSchemaId}');
+await exh.data.schemas.enable(mySchema.id);
 ```
 
 ##
