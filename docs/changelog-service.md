@@ -120,6 +120,19 @@
 
 ## Data Service
 
+### 1.3.1 (2024-07-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.3.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Bugs Fixed**
+
+* Deleted users no longer cause issues when being linked or unlinked from a document
+* General stability issues with background processes resolved
+
+</details>
+
+
 ### 1.3.0 (2023-10-27)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.3.0/openapi.yaml)
 <details>
