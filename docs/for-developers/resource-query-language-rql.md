@@ -109,13 +109,13 @@ You'll have to tell RQL you're searching for a string by "casting" your value wi
 GET /users/v1/?eq(phone_number,string:12345678)
 ```
 
-The same happens for values which look like dates. For instance, querying like this for the birthday in the profile service like this **won't work**:
+The same happens for values which look like dates. For instance, querying like this for a birthday in the profile service like this **won't work**:
 
 ```
 GET /profiles/v1/?eq(birthday,1970-01-01)
 ```
 
-The value also needs to be prefixed by the \`string:\` casting mechanism:
+The value also needs to be prefixed by the `string:` casting mechanism:
 
 ```
 GET /profiles/v1/?eq(birthday,string:1970-01-01)
