@@ -99,25 +99,25 @@ RQL automatically tries to guess the type of the values you provide. Most of the
 
 For example, the user service can store phone numbers and these are stored as strings. When searching for a specific phone number you'll have to tell RQL your looking for a string value. The following query **won't work**:
 
-```
+```http
 GET /users/v1/?eq(phone_number,12345678)
 ```
 
 You'll have to tell RQL you're searching for a string by "casting" your value with a `string:` prefix:
 
-```
+```http
 GET /users/v1/?eq(phone_number,string:12345678)
 ```
 
 The same happens for values which look like dates. For instance, querying like this for a birthday in the profile service like this **won't work**:
 
-```
+```http
 GET /profiles/v1/?eq(birthday,1970-01-01)
 ```
 
 The value also needs to be prefixed by the `string:` casting mechanism:
 
-```
+```http
 GET /profiles/v1/?eq(birthday,string:1970-01-01)
 ```
 
