@@ -93,6 +93,34 @@ GET /users/v1/?excludes(roles.5)
 
 Every tool has its constraints, and RQL is no exception. Understanding these limitations helps you use RQL more effectively.
 
+### Casting values
+
+RQL automatically tries to guess the type of the values you provide. Most of the time this works well, but not always. For instance, searching for a number which is stored as a string can cause issues.&#x20;
+
+For example, the user service can store phone numbers and these are stored as strings. When searching for a specific phone number you'll have to tell RQL your looking for a string value. The following query **won't work**:
+
+```
+GET /users/v1/?eq(phone_number,12345678)
+```
+
+You'll have to tell RQL you're searching for a string by "casting" your value with a `string:` prefix:
+
+```
+GET /users/v1/?eq(phone_number,string:12345678)
+```
+
+The same happens for values which look like dates. For instance, querying like this for the birthday in the profile service like this **won't work**:
+
+```
+GET /profiles/v1/?eq(birthday,1970-01-01)
+```
+
+The value also needs to be prefixed by the \`string:\` casting mechanism:
+
+```
+GET /profiles/v1/?eq(birthday,string:1970-01-01)
+```
+
 ### Double Encoding of Special Characters
 
 Imagine a scenario where you need to filter records based on a description that includes the string `a)a`:
