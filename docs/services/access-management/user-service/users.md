@@ -199,6 +199,19 @@ await exh.users.validateEmailActivation({
 {% endtab %}
 {% endtabs %}
 
+### Clearing user activation attempts
+
+Users have [a limited number of attempts to initiate and complete their activation](../../../exh-platform/usage-and-performance.md#restrictions-for-account-activation-requests). Once they reach the maximum allowed attempts, they are blocked from further attempts until their activation request is cleared. Finding and clearing an activation request can be done like this:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const request = await exh.users.activationRequests.findByUserId(userId);
+await exh.users.activationRequests.remove(request.id)
+```
+{% endtab %}
+{% endtabs %}
+
 ## Change email address
 
 When a user is logged in, he can change the email of his or another user's account, depending on the set permissions. Changing an email requires re-activating the associated account.
@@ -251,6 +264,19 @@ await exh.users.validatePasswordReset({
 {% hint style="warning" %}
 Completing a password reset will log out the target user. This action will terminate all active sessions by invalidating all authentication tokens, including OAuth1, OAuth2, and Multi-Factor Authentication (MFA) tokens for the user.
 {% endhint %}
+
+### Clearing password reset attempts
+
+Users have [a limited number of attempts to initiate and complete a password reset](../../../exh-platform/usage-and-performance.md#restrictions-for-forgot-password-requests). Once they reach the maximum allowed attempts, they are blocked from further attempts until their password reset request is cleared. Finding and clearing a password reset request can be done like this:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const request = await exh.users.forgotPasswordRequests.findByUserId(userId);
+await exh.users.forgotPasswordRequests.remove(request.id)
+```
+{% endtab %}
+{% endtabs %}
 
 ## Password Change
 
