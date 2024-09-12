@@ -24,7 +24,6 @@ You can create two types of applications: [OAuth 1](https://www.rfc-editor.org/r
 
 {% tabs %}
 {% tab title="OAuth 1" %}
-{% code lineNumbers="true" %}
 ```typescript
 await exh.auth.applications.create({
   type: 'oauth1',
@@ -32,11 +31,9 @@ await exh.auth.applications.create({
   description: 'myAppDescription'
 });
 ```
-{% endcode %}
 {% endtab %}
 
 {% tab title="OAuth 2" %}
-{% code lineNumbers="true" %}
 ```typescript
 await exh.auth.applications.create({
   type: 'oauth2',
@@ -46,6 +43,5 @@ await exh.auth.applications.create({
   confidential: false
 });
 ```
-{% endcode %}
 {% endtab %}
 {% endtabs %}
