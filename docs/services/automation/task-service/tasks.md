@@ -12,7 +12,7 @@ When configuring your application's data model, it's possible to attach an [acti
 
 #### Scheduling via the SDK
 
-In JavaScript/TypeScript environments, our open source [Extra Horizon SDK ](https://docs.extrahorizon.com/javascript-sdk)offers a convenient wrapper around the API.
+In JavaScript/TypeScript environments, our [Extra Horizon SDK ](https://docs.extrahorizon.com/javascript-sdk)can be used to schedule a task:
 
 ```typescript
 await exh.tasks.create({
@@ -85,7 +85,7 @@ However, if tasks are queued, the `priority` attribute can be used to control th
 
 To ensure critical tasks are executed first when queuing occurs, assign them a higher priority value.
 
-The `priority` attribute can range from `-9007199254740991` to `9007199254740991`.
+The `priority` attribute can range from `-9007199254740991` to `9007199254740991`. When not specified, the default value `0` is used.
 
 ### Execution status
 
