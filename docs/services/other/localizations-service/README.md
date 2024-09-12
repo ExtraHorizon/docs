@@ -1,114 +1,81 @@
-# Localizations Service
+# Localization Service
 
-The `localization service` is a simple service that features storage and retrieval of text snippets, translated into multiple languages. A snippet is identified by a key, for example 'mail\_greeting', and has associated values in all translated languages.
+The Localization Service is a simple service that features storage and retrieval of **text snippets, translated into multiple languages**. A snippet is identified by a key, for example `mail_closing`, and has associated values in all translated languages.
 
-The `notification service` as well as the `template service` are aware of the `localization service`, and have built-in support for localizations. They both use the `localization service` in order to generate notifications and emails in appropriate languages based on a pre-defined template, which in turn are filled with localization keys that can be retrieved by the `localization service`.
+The [Notification Service](../../communication/notification-service/) as well as the [Template Service](../template-service/) are aware of the Localization Service, and have [built-in support for localizations](../template-service/localizations.md). They both use the Localization Service in order to generate **notifications, emails and PDFs in appropriate languages** based on a pre-defined template, which in turn are filled with localization keys that can be managed by the Localization Service.
 
+## Localizations
 
+Translated text snippets can be stored in Localization objects, which are uniquely identified by the `key` attribute. The translations and their respective language codes ([ISO 639-1](https://en.wikipedia.org/wiki/List\_of\_ISO\_639\_language\_codes)) are stored as key-value pairs in the `text` attribute.
 
-## Intro
-
-The Localization Service provides a database to store text snippets in multiple languages that can be retrieved on demand by using a `localization key`. These keys can be included in the Template Service to automatically provide the text messages in the preferred language.
-
-## Objects and attributes
-
-### LocalizationSets
-
-Text snippets are stored in a `LocalizationSet` object, which is uniquely identified by its key attribute. The translations and their respective language codes (`ISO 639-1`) are stored as key-value pairs in the text attribute.
+```json
+{
+  "key": "mail_closing",
+  "text": {
+    "EN": "Kind regards,",
+    "NL": "Met vriendelijke groeten,"
+  }
+}
+```
 
 {% hint style="info" %}
 **Tip:** It is recommended to compose text snippets with complete sentences because the order of words in a sentence can differ between languages due to their unique set of grammar rules.
 {% endhint %}
 
-### Common timestamp attributes
+## Managing localizations
 
-All Extra Horizon Services keep track of the time of creation (creation\_Timestamp) and of the most recent update (update\_Timestamp) of their stored objects.
+The easiest way to manage your localizations is by using the [ExH CLI](https://docs.extrahorizon.com/cli).
 
-{% hint style="info" %}
-**Note:** The timestamp attributes in the Localization Service have a number format, whereas other Services use a string($date-time) format.
-{% endhint %}
+The ExH CLI allows you to simply define your localizations as a list of key/value pairs per language. When instructed, the CLI will combine these into localization objects and sync them with the Localization Service.
 
-## Using Variables in a LocalizationSet
+Example file structure:
 
-Generic text snippets are often combined with user-specific data, such as the user’s name or medical records. These variables can be added to the text strings of the `LocalizationSet` as `$1`, `$2`, etc.
-
-#### Example LocalizationSet
-
+{% code title="localizations/EN.json" %}
 ```json
 {
-  "key": " heart_rate",
-  "text": {
-    "EN": "On $1 at $2, your heart rate was $3 bpm.",
-    "ES": "El $1 a la(s) $2, su frecuencia cardíaca era de $3 lpm.",
-    "NL": "Uw hartslag was $3 hsm op $1 om $2."
-  }
+  "mail_closing": "Kind regards,"
 }
 ```
+{% endcode %}
 
-When requesting text snippets, a value for each variable should be added in numeric order. This means that the first additional argument in the request corresponds to $1.
-
-#### Example List LocalizationSet text(s) in specific language(s) request
-
-Request body:
-
+{% code title="localizations/NL.json" %}
 ```json
 {
-  "localization_codes": ["NL"],
-  "localizations": ["heart_rate, 06/10/2021, 21:00, 63"]
+  "mail_closing": "Met vriendelijke groeten,"
 }
 ```
+{% endcode %}
 
-Request Response:
+Syncing the localizations with the CLI will result in a localization matching the example mentioned in the [Localizations section](./#localizations) above:
 
-```json
-{
-  "heart_rate": {
-        "NL": "Uw hartslag was 63 hsm op 06/10/2021 om 21:00."
-        "EN": "On 06/10/2021 at 21:00, your heart rate was 63 bpm.",
-  }
-}
+```bash
+exh localizations sync
 ```
 
-## Actions
+See the [ExH CLI documentation regarding localizations](https://docs.extrahorizon.com/cli/commands/localizations) for more information.
 
-This section gives an overview of the available Localization Service endpoints. The full descriptions, including the required permissions and/or scopes, can be found in the API reference documentation.
+## Using localizations
 
-### Managing LocalizationSets
+Once you have configured your localizations, you can use them in your application or within ExH services which have localization support.
 
-The four CRUD actions are available to set up LocalizationSets. The `{languageCode: string}` pairs in a set can be updated but cannot be removed individually.
+### Support in Extra Horizon services
 
-{% swagger method="post" path="/" baseUrl="" summary="Create LocalizationSet(s)" %}
-{% swagger-description %}
+As mentioned before, the [Template Service](../template-service/) has built-in support for localizations. This also affects the [Mail Service](../../communication/mail-service.md), which uses the Template Service to generate emails. Allowing you to create fully localized emails.
 
-{% endswagger-description %}
-{% endswagger %}
+[See the Template Service documentation on how to use localizations in your templates.](../template-service/localizations.md)\
+[See the Mail Service on how to send emails based on templates.](../../communication/mail-service.md#send-an-email)
 
-{% swagger method="get" path="/" baseUrl="" summary="List all LocalizationSets" %}
-{% swagger-description %}
+### In your application(s)
 
-{% endswagger-description %}
-{% endswagger %}
+You can also use the Localization Service directly in your application(s) by using the [ExH SDK](https://docs.extrahorizon.com/javascript-sdk/).
 
-{% swagger method="put" path="/" baseUrl="" summary="Update LocalizationSet(s)" %}
-{% swagger-description %}
+For example, to retrieve translated texts form the `mail_closing` localization in Dutch and English:
 
-{% endswagger-description %}
-{% endswagger %}
+```typescript
+const texts = await sdk.localizations.getByKeys({
+  localizations: ['mail_closing'],
+  localizationCodes: ['NL', 'EN'],
+});
 
-{% swagger method="delete" path="/" baseUrl="" summary="Delete LocalizationSet(s)" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
-### Using LocalizationSets
-
-Text snippets in one or more languages can also be requested directly from the Localization Service with the following endpoint. The response will include the snippet in the requested language(s), if available, and in English.
-
-{% swagger method="post" path="/request" baseUrl="" summary="List LocalizationSet text(s) in specific language(s)" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-{% endswagger %}
-
-In addition, LocalizationSets can be implemented in the Template Service by using double curly brackets: `{{key}}` in the text fields. The Services will then communicate with each other to provide the text snippets in the user’s preferred language, if available. If not, the default text is returned, i.e. the English version of the snippet.
+console.log(texts['mail_closing'].NL);
+```
