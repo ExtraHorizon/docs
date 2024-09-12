@@ -79,7 +79,13 @@ If you define a function schedule, you will only see the next scheduled task exe
 
 ### Queuing
 
-When many tasks need to be executed within a short timeframe, the Tasks are queued chronologically by the value of their `startTimestamp` attribute. However, in a queue, the `priority` attribute takes precedence over the `startTimestamp` attribute. Tasks with a higher `priority` value will be executed first.
+When multiple tasks need to be executed in a short period, they may be placed in a queue. Tasks are initially ordered by their `startTimestamp` attribute, meaning the earliest scheduled task will be executed first.
+
+However, if tasks are queued, the `priority` attribute can be used to control the execution order. The `priority` attribute overrides the `startTimestamp`, so tasks with a higher priority value will be executed before those with a lower priority.
+
+To ensure critical tasks are executed first when queuing occurs, assign them a higher priority value.
+
+The `priority` attribute can range from `-9007199254740991` to `9007199254740991`.
 
 ### Execution status
 
