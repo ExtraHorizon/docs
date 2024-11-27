@@ -109,4 +109,7 @@ try {
 MFA login attempts are rate limited. After each attempt the wait period increases exponentially (e.g. first attempt 1 second delay, 5th attempt 5 seconds, 10th attempt 30 seconds and so on).
 
 When an attempt is performed during the wait period the `MFA_REATTEMPT_DELAY_EXCEPTION` is returned, stating the `remainingDelay` in the body.
+
+The failed login count as well as the wait period will reset after a successful login.
 {% endhint %}
+
