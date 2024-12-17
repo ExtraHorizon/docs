@@ -491,7 +491,11 @@ The request and response sizes are both limited to `6 Megabytes`, after conversi
 
 #### Function configuration
 
-Unlike normal Functions API functions are limited to a `timeLimit` of 30 seconds.
+Unlike normal Functions API Functions are limited to a `timeLimit` of 30 seconds.
+
+{% hint style="info" %}
+Triggering an API Function when the `timeLimit` of the Function is greater than 30 seconds will result in a `TIME_LIMIT_EXCEEDS_API_FUNCTION_MAXIMUM_EXCEPTION`
+{% endhint %}
 
 #### HTTP Methods
 
