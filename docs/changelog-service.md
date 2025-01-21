@@ -120,6 +120,53 @@
 
 ## Data Service
 
+### 1.4.0 (2025-01-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.4.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+- **The Schema access control options are now more granular**
+  - Schema `createMode`, `readMode`, `updateMode` and `deleteMode` have been improved to be more consistent and accept multiple granular options.
+  - For further information please refer to the data access management documentation. 
+
+
+- **Executing a Transition by name**
+  - When executing a Transition, instead of having to find and provide the `id`, you can now choose to provide the `name` of a Transition. This improvement will make code clearer and easier to re-use across your different clusters.
+
+
+- **New Transition permissions**  
+  The following permissions have been added to allow the execution of Transitions:
+
+  - Execute any Transition in any Schema:  
+    `TRANSITION_DOCUMENTS`
+
+  - Execute any Transition in a specific Schema:  
+    `TRANSITION_DOCUMENTS:{SCHEMA_NAME}`
+
+  - Execute a specific Transition for a specific Schema:  
+  `TRANSITION_DOCUMENTS:{SCHEMA_NAME}:{TRANSITION_NAME}`
+
+
+- **Group permissions**
+  - Staff members can now be assigned permission to perform operations on a Document that is linked to their Groups. The permissions `VIEW_DOCUMENTS`, `UPDATE_DOCUMENTS`, `DELETE_DOCUMENTS` and `TRANSITION_DOCUMENTS` are now supported. (Including their sub-permissions e.g. `VIEW_DOCUMENTS:{SCHEMA_NAME}`)
+
+
+
+- **Task Action quality of life improvements**
+  - The Task Action now supports the `priority` field
+  - The Task Action is now supported for Transition `afterActions`.
+
+
+**🚨 Deprecation Warnings**
+
+- **Legacy schema access control options**
+  - Most of the existing createMode, readMode, updateMode and deleteMode values have been deprecated in favor of the revamped access control options.
+
+</details>
+
+
 ### 1.3.1 (2024-07-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.3.1/openapi.yaml)
 <details>
