@@ -48,8 +48,8 @@ Schema transition actions to the rescue!
 </strong><strong>    },
 </strong><strong>  ],
 </strong>  "properties": {
-<strong>    ...
-</strong>  }
+    ...
+  }
 }
 </code></pre>
 
@@ -91,8 +91,8 @@ To do this we'll modify `blood-pressure-measurement` schema a bit further:
         }
       ]
     },
-    {
-<strong>      "name": "mark-as-analyzed",
+<strong>    {
+</strong><strong>      "name": "mark-as-analyzed",
 </strong><strong>      "type": "manual",
 </strong><strong>      "toStatus": "analyzed",
 </strong><strong>      "fromStatuses": [ "analyzing" ],

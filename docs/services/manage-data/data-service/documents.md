@@ -90,17 +90,19 @@ The schema configuration will determine who can execute a permanent delete of a 
 
 ## Triggering transitions
 
-Transitions allow you to move documents from one state to another. While automatic transitions will be triggered when the documents ends up in transitions `fromState`, manual transitions will need to be triggered by an API call.
+Transitions allow you to move documents from one state to another. While automatic transitions will be triggered when the documents ends up in one of the transition's `fromStatuses`, manual transitions will need to be triggered by an API call.
 
 ```javascript
-const transitionId = schema.findTransitionIdByName('myTransition');
 await exh.data.documents.transition(schema.id, document.id, {
-  id: transitionId,
+  name: 'myTransition',
   data: {...},
 });
 ```
 
-When executing a transition you will need to provide the id of the transition that you want to execute.
+When executing a transition you can either provide the `id` or the `name` of the transition that you want to execute. If there are multiple transitions with the same `name`, the following will be used to evaluate which transition will be executed:
+
+* The document's `status` is present in the transition's `fromStatuses`
+* The transition's `conditions` are satisfied
 
 {% hint style="danger" %}
 **Important!** If you set properties in `data` that correspond to properties in the document, the transition will update the record with the values from the `data` property.

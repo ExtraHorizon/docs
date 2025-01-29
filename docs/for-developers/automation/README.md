@@ -16,7 +16,7 @@ As previously mentioned, ExH services allow the execution of code on demand. Thi
 
 Tasks consist of three core elements: a **function name**, execution **data** and an optional **start time**.\
 The _function name_ contains a reference to the code to be executed; For example, the name of an AWS Lambda function.\
-_Execution data_ is used as input for the execution of the aforementioned code.\
+&#xNAN;_&#x45;xecution data_ is used as input for the execution of the aforementioned code.\
 The _start time_, when provided, specifies the time at which the task should be scheduled for execution.
 
 #### Scheduling tasks <a href="#markdown-header-scheduling-tasks" id="markdown-header-scheduling-tasks"></a>

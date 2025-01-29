@@ -72,14 +72,14 @@ Next to this, it's important to know that **every** document in the Extra Horizo
 Combined with the schema access modes, the contents of these arrays in a document unambiguously determine if a user has the permission to perform a create, read, update or delete operation.
 
 {% hint style="info" %}
-Lets take `readMode` as an example. The different possible settings for `readMode` are:
+Lets take `readMode` as an example. The some of the possible settings for `readMode` are:
 
-* `default`: who can read?&#x20;
+* `"default"`: who can read?&#x20;
   * users whose userId is in the `userIds` array of a document.&#x20;
   * users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
-* `allUsers`: All users in the system will have the permission to read the documents of the schema.
-* `enlistedInLinkedGroups`: who can read?&#x20;
-  * all users in the `default` case.
+* `"allUsers"`: All users in the system will have the permission to read the documents of the schema.
+* `"enlistedInLinkedGroups"`: who can read?&#x20;
+  * users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
   * users that have a **patient membership** in a group whose group ID is in the `groupIds` array of a document.
 
 You see how the group membership introduced in 2 becomes important in determining whether a user has access or not.
@@ -88,7 +88,7 @@ You see how the group membership introduced in 2 becomes important in determinin
 {% hint style="danger" %}
 Important to note here is that **global permissions take precedence over everything**. &#x20;
 
-* Example: a user who has the `READ_DOCUMENTS:my-schema` permission, will be able to read **all** documents of schema `my-schema`, even if the `readMode` of that schema is set to `default` and his user ID is not present in `userIds` and his group ID's aren't present in `groupIds`.
+* Example: a user who has the `VIEW_DOCUMENTS:my-schema` permission, will be able to read **all** documents of schema `my-schema`, even if the `readMode` of that schema is set to `default` and his user ID is not present in `userIds` and his group ID's aren't present in `groupIds`.
 
 For an explanation of all modes, please see [here](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas#data-access-management).
 {% endhint %}

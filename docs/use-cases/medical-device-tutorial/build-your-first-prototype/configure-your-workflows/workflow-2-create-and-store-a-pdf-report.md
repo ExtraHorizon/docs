@@ -138,8 +138,8 @@ As mentioned in the introduction, a _file token_ is something you get back when 
 </strong><strong>          }
 </strong><strong>        ]
 </strong><strong>    }
-</strong><strong>  ],
-</strong>  "properties": {
+</strong>  ],
+  "properties": {
     ...
 <strong>    "report": {
 </strong><strong>      "type": "string",
@@ -172,8 +172,8 @@ exports.doTask = async ({sdk, task}) => {
 
 <strong>  //Fetch the info of the user who created this document
 </strong><strong>  const user = await sdk.users.findById(retrievedDocument.creatorId);
-</strong>
-<strong>  //Create the PDF
+</strong><strong>
+</strong><strong>  //Create the PDF
 </strong><strong>  await createPDF({sdk, user, document: retrievedDocument, diagnosis });
 </strong>}
 

@@ -24,99 +24,96 @@ const mySchema = await exh.data.schemas.create({
 
 In this section we discuss how you can configure access to documents. A schema contains specific attributes that define the conditions which must be met to create, view, update or delete documents.
 
-### Access Modes
+### Access via permissions
+
+Regardless of how the [access modes](schemas.md#access-modes) (described below) are set, a user is always able to perform an operation on a document if they are assigned a specific permission.  This permission can come from a global role of the user or a staff enlistment role the user has in the group of the document.
+
+<table data-full-width="false"><thead><tr><th width="329">Action</th><th>Permission</th></tr></thead><tbody><tr><td>Create a document</td><td><p><code>CREATE_DOCUMENTS</code> </p><p><code>CREATE_DOCUMENTS:{schemaName}</code></p></td></tr><tr><td>View a document</td><td><p><code>VIEW_DOCUMENTS</code></p><p><code>VIEW_DOCUMENTS:{schemaName}</code></p></td></tr><tr><td>Update a document<br><em>(Includes transitioning a document)</em></td><td><p><code>UPDATE_DOCUMENTS</code></p><p><code>UPDATE_DOCUMENTS:{schemaName}</code></p></td></tr><tr><td>Transition a document</td><td><p><code>TRANSITION_DOCUMENTS</code> </p><p><code>TRANSITION_DOCUMENTS:{schemaName}</code></p><p><code>TRANSITION_DOCUMENTS:{schemaName}:{transitionName}</code></p></td></tr><tr><td>Delete a document</td><td><p><code>DELETE_DOCUMENTS</code></p><p><code>DELETE_DOCUMENTS:{schemaName}</code></p></td></tr><tr><td>Update linked users and groups<br><em>(Only as a global permission)</em></td><td><p><code>UPDATE_ACCESS_TO_DOCUMENT</code></p><p><code>UPDATE_ACCESS_TO_DOCUMENT:{schemaName}</code></p></td></tr></tbody></table>
+
+### Access via schema access modes
+
+#### Access Mode Properties
+
+Schemas allow you to set any of the following properties to control who has access to perform certain actions on the documents for the schema.
+
+| Mode         | Action                                                                                    |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| `createMode` | Defines who has access to create documents for the schema                                 |
+| `readMode`   | Defines who has access to view documents for the schema                                   |
+| `updateMode` | Defines who has access to update documents for the schema _(this includes transitioning)_ |
+| `deleteMode` | Defines who has access to delete documents permanently from the schema                    |
+
+#### Access Mode Values
+
+Access mode values can either be a general access mode or a combination of relational access mode values as shown in the code snipped below.
+
+```json
+{
+    "name": "myNewSchema",
+    "description": "This is my new schema",
+    "createMode": "allUsers",
+    "readMode": ["linkedGroupPatients", "linkedGroupStaff"],
+    "updateMode": ["creator", "linkedUsers"],
+    "deleteMode": "permissionRequired"
+}
+```
+
+#### General access mode values
+
+The general access mode values determine if a user requires permission to perform the action for the Schema. A general access mode value is provided as one of the following strings.&#x20;
+
+<table><thead><tr><th width="358">General Access Mode Value</th><th>Description</th></tr></thead><tbody><tr><td><code>"permissionRequired"</code></td><td>Only users with the correct permission have the ability to perform the action. </td></tr><tr><td><code>"allUsers"</code></td><td>All users will have the permission to perform the action on the documents in the schema collection. Regardless of their role or their permissions.</td></tr></tbody></table>
+
+#### Relational access mode values
+
+The relational access mode values determine if a user has the correct relation to the document to perform the action.&#x20;
+
+Relational access mode values are supplied as an array. When multiple relational access mode values are supplied, a user adhering to any relation in this array is allowed to perform the action on the document.
+
+<table data-full-width="false"><thead><tr><th width="358">Relational Access Mode Value</th><th>Description</th></tr></thead><tbody><tr><td><code>["creator"]</code></td><td>The user that created the document can perform the action. </td></tr><tr><td><code>["linkedUsers"]</code></td><td>All users where their user id is in the list of <code>userIds</code> of the document can perform the action.</td></tr><tr><td><code>["linkedGroupStaff"]</code></td><td>All users that have a staff enlistment in a group that is in the list of <code>groupIds</code> of the document can perform the action.</td></tr><tr><td><code>["linkedGroupPatients"]</code></td><td>All users that have a patient enlistment in a group that is in the list of <code>groupIds</code> of the document can perform the action.</td></tr></tbody></table>
+
+#### Access Mode Compatibility Matrix
+
+The following table shows the supported access mode values per each access mode.\
+
+
+<table data-full-width="true"><thead><tr><th width="301"> </th><th>createMode</th><th>readMode</th><th>updateMode</th><th>deleteMode</th></tr></thead><tbody><tr><td><code>"permissionRequired"</code></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><code>"allUsers"</code></td><td>✅</td><td>✅</td><td></td><td></td></tr><tr><td><code>["creator"]</code></td><td></td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><code>["linkedUsers"]</code></td><td></td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><code>["linkedGroupPatients"]</code></td><td></td><td>✅</td><td>✅</td><td>✅</td></tr><tr><td><code>["linkedGroupStaff"]</code></td><td></td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table>
+
+#### Legacy Access Modes
+
+{% hint style="warning" %}
+**The following access modes are deprecated**&#x20;
+
+Listed below are the deprecated values with their current equivalent
+{% endhint %}
 
 #### createMode
 
-createMode defines the permissions needed to create a document in a schema collection.
-
-| Mode                 | Description                                                                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `default`            | The default mode allows every logged-in user to create a new document in the collection. When no `createMode` is set, this mode will be used. |
-| `permissionRequired` | Only users with `CREATE_DOCUMENTS` or `CREATE_DOCUMENTS:{schemaName}`permission have the ability to create a document.                        |
+<table><thead><tr><th width="298">Legacy Access Mode</th><th>Access Mode</th></tr></thead><tbody><tr><td><code>"default"</code></td><td><code>"allUsers"</code></td></tr></tbody></table>
 
 #### readMode
 
-readMode defines the permissions needed to read a document in a schema collection
-
-| Mode                     | Description                                                                                                                                                                    |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `default`                | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document. |
-| `allUsers`               | All users will have the permission to read the documents in the schema collection.                                                                                             |
-| `enlistedInLinkedGroups` | All users that have a staff enlistment or a patient enlistment in a group that is in the list of groupIds of the document.                                                     |
-
-{% hint style="info" %}
-Users that have the `VIEW_DOCUMENTS` or `VIEW_DOCUMENTS:{schemaName}` permission attached to a global role will be able to read any document regardless of the setting above.
-{% endhint %}
+<table><thead><tr><th width="294">Legacy Access Mode</th><th>Access Mode</th></tr></thead><tbody><tr><td><code>"default"</code> </td><td><code>["linkedUsers","linkedGroupStaff"]</code></td></tr><tr><td><code>"enlistedInLinkedGroups"</code></td><td><code>["linkedGroupPatients","linkedGroupStaff"]</code></td></tr></tbody></table>
 
 #### updateMode
 
-updateMode defines the permissions needed to update a document in a schema collection
-
-| Mode                    | Description                                                                                                                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `default`               | All users where their userId is in the list of userIds attached to the document or if they have a staff enlistment in a group that is in the list of groupIds of the document |
-| `creatorOnly`           | Only the user that created the document is able to update a document                                                                                                          |
-| `disabled`              | Nobody can update a document                                                                                                                                                  |
-| `linkedGroupsStaffOnly` | All users that have a staff enlistment in a group that is in the list of groupIds of the document.                                                                            |
-
-{% hint style="info" %}
-Users that have the `UPDATE_DOCUMENTS` or `UPDATE_DOCUMENTS:{schemaName}` permission attached to a global role will be able to update any document regardless of the setting above.
-{% endhint %}
+<table><thead><tr><th width="303">Legacy Access Mode</th><th>Access Mode</th></tr></thead><tbody><tr><td><code>"default"</code></td><td><code>["linkedUsers","linkedGroupStaff"]</code></td></tr><tr><td><code>"creatorOnly"</code></td><td><code>["creator"]</code></td></tr><tr><td><code>"disabled"</code></td><td><code>"permissionRequired"</code></td></tr><tr><td><code>"linkedGroupsStaffOnly"</code></td><td><code>["linkedGroupStaff"]</code></td></tr></tbody></table>
 
 #### deleteMode
 
-deleteMode defines the permissions needed to remove a document permanently from a schema collection.
+<table><thead><tr><th width="306">Legacy Access Mode</th><th>Access Mode</th></tr></thead><tbody><tr><td><code>"linkedUsersOnly"</code></td><td><code>["linkedUsers","linkedGroupStaff"]</code></td></tr></tbody></table>
 
-| Mode                 | Description                                                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `permissionRequired` | Only users with the`DELETE_DOCUMENTS` or `DELETE_DOCUMENTS:{schemaName}`permission will be able to remove a document. \[default] |
-| `linkedUsersOnly`    | All users where their userId is in the list of userIds attached to the document.                                                 |
+## Creating a schema
 
-{% hint style="info" %}
-Users that have the `DELETE_DOCUMENTS` or `DELETE_DOCUMENTS:{schemaName}`permission attached to a global role will be able to delete any document regardless of the setting above.
-{% endhint %}
-
-### Access to documents through role permissions
-
-Every permission has a global and a schema-specific variant. This allows you to define access to documents in a very granular way.
-
-The following table lists the relevant permissions for the data service:
-
-| Permission                                                                                                                                                                   | Description                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `VIEW_DOCUMENTS`                                                                                                                                                             | A user with this permission can view all documents in **any schema**                     |
-| <p><code>VIEW_DOCUMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark></p>                                                                 | A user with this permission can view all documents in a specific schema `schemaName`     |
-| `CREATE_DOCUMENTS`                                                                                                                                                           | A user with this permission can create documents **in any schema**                       |
-| <p><code>CREATE_DOCUMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark></p>                                                               | A user with this permission can create documents in a specific schema `schemaName`       |
-| `UPDATE_DOCUMENTS`                                                                                                                                                           | A user with this permission can update all documents **in any schema**                   |
-| <p><code>UPDATE_DOCUMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark></p>                                                               | A user with this permission can update all documents in a specific schema `schemaName`   |
-| `DELETE_DOCUMENTS`                                                                                                                                                           | A user with this permission can delete any document **in any schema**                    |
-| <p><code>DELETE_DOCUMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark></p>                                                               | A user with this permission can delete any document in schema `schemaName`               |
-| <p><code>CREATE_DOCUMENT_COMMENTS</code><br><mark style="background-color:red;">deprecated</mark></p>                                                                        | A user with this permission can create comments in any document **in any schema**        |
-| <p><code>CREATE_DOCUMENT_COMMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark></p> | A user with this permission can create comments in any document in schema `schemaName`   |
-| <p><code>VIEW_DOCUMENT_COMMENTS</code><br><mark style="background-color:red;">deprecated</mark></p>                                                                          | A user with this permission can view comments in any document **in any schema**          |
-| <p><code>VIEW_DOCUMENT_COMMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark></p>   | A user with this permission can view comments in any document in schema `schemaName`     |
-| <p><code>UPDATE_DOCUMENT_COMMENTS</code><br><mark style="background-color:red;">deprecated</mark></p>                                                                        | A user with this permission can update any document comments **in any schema**           |
-| <p><code>UPDATE_DOCUMENT_COMMENTS:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark> <mark style="background-color:red;">deprecated</mark></p> | A user with this permission can update any document comments in schema `schemaName`      |
-| `UPDATE_ACCESS_TO_DOCUMENT`                                                                                                                                                  | A user with this permission can update the access to any document **in any schema**      |
-| <p><code>UPDATE_ACCESS_TO_DOCUMENT:{schemaName}</code><br><mark style="background-color:yellow;">since 1.1.0</mark></p>                                                      | A user with this permission can update the access to any document in schema `schemaName` |
-
-The above mentioned permissions can be granted to users through global roles or group roles.
-
-For more information how to add permissions to roles and roles to users, take a look at the [user service documentation](https://docs.extrahorizon.com/user-service/features/global-roles)
-
-### Creating a schema with permissions
-
-You can provide the permissions parameters upon creation of you new schema:
+You can provide a name, description and the access modes upon creation of a schema:
 
 ```javascript
-const mySchema = await exh.data.schemas.create({
-    name: 'mySchema',
-    description: 'This is my new schema',
-    createMode: 'default',
-    readMode: 'allUsers',
-    updateMode: 'disabled',
+await exh.data.schemas.create({
+    name: 'Example Schema',
+    description: 'The first schema I created',
+    createMode: 'allUsers',
+    readMode: ['linkedGroupPatients', 'linkedGroupStaff'],
+    updateMode: ['creator', 'linkedUsers'],
     deleteMode: 'permissionRequired'
 });
 ```
@@ -125,7 +122,7 @@ const mySchema = await exh.data.schemas.create({
 
 A Schema defines the structure of a document through properties. The Properties object contains type configurations, which represent the fields that should be accepted while creating or updating a document. The structure of the type configurations themselves is inspired by [JSON Schema](https://json-schema.org).
 
-![](https://lh3.googleusercontent.com/FqZ0yp8aT6rAhz5rP69T6qCmNwwr3eE4EZoCDQQr4bEc1Poh8zrxg\_WiBjiuzqgpFDjYJL1ker6l4fM\_qVSIzBoSlyPrk60Mnte-ITj9PY583rMbQZVYCCJEe-QlyexcROsLmMY=s0)
+
 
 The Data Service supports five kinds of configurations (type attribute):
 
@@ -189,7 +186,7 @@ References:
 ```
 
 {% hint style="warning" %}
-When the format is set to `date-time`, input is expected to be [valid ISO 8601](https://en.wikipedia.org/wiki/ISO\_8601) string (e.g.`2012 or 2012‐08‐22T14:16:05.677+02:00`).
+When the format is set to `date-time`, input is expected to be [valid ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string (e.g.`2012 or 2012‐08‐22T14:16:05.677+02:00`).
 
 This value is stored as an UTC Date Time String (e.g. `2012‐08‐22T12:16:05.677Z`).&#x20;
 
@@ -372,21 +369,21 @@ await exh.data.statuses.create(mySchema.id, {
 
 ## CreationTransition
 
-The creation transition is the transition that is executed when you create a document. It is the only type of transition that doesn't have a `fromStatus` as there is no status to start from.
+The creation transition is the transition that is executed when you create a document. It is the only type of transition that doesn't have a `fromStatuses` field as there is no status to start from.
 
-{% hint style="warning" %}
-When you create new schema, by default the data service will include a **NEW** status and a creation transition towards that status. This is the reason why you wont find a create creationTransition or delete creationTransition function and only an updateCreationTransition function.
+{% hint style="info" %}
+When you create a new schema, by default the Data Service will include a status named `"new"` and a creation transition towards that status.
 {% endhint %}
 
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-exh.data.transitions.updateCreation(mySchema.id, {
+await exh.data.transitions.updateCreation(mySchema.id, {
   type: 'manual',
   toStatus: 'initialStatus',
-  conditions: {...},
-  actions: {...},
-  afterActions: {...}
+  conditions: [...],
+  actions: [...],
+  afterActions: [...]
 });
 ```
 {% endtab %}
@@ -400,19 +397,19 @@ Currently the only supported transition type is `manual`. Other types may be add
 
 When you want to add more statuses to your document you will need to define transitions that allow you to move your document from one status to another. Normal transitions look the same as a creationTransition but these do include two additional parameters `fromStatuses`and `name`.
 
-A Transition occurs from one Status to another. The Statuses a Transition starts from are determined in the `fromStatuses` object, and the Status the Transition leads to is determined in the `toStatus` attribute.
+A Transition occurs from one Status to another. The Statuses a Transition is able to starts from are determined in the `fromStatuses` array, and the Status the Transition leads to is determined in the `toStatus` attribute.
 
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript
-exh.data.transitions.updateCreation(mySchema.id, {
+await exh.data.transitions.updateCreation(mySchema.id, {
   name: 'firsTransition'
   type: 'manual',
   fromStatuses: ['initialStatus'],
   toStatus: 'secondStatus',
-  conditions: {...},
-  actions: {...},
-  afterActions: {...}
+  conditions: [...],
+  actions: [...],
+  afterActions: [...]
 });
 ```
 {% endtab %}
@@ -422,10 +419,10 @@ A Transition object is identified by its name (name) and has a specific type ass
 
 ### Types
 
-| Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Manual**    | A manual transition will be triggered when the [transition execution endpoint](schemas.md#triggering-transitions) is called on the document.                                                                                                                                                                                                                                                                                                                                                       |
-| **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A</strong> mentioned as a fromStatus. If the conditions of that transition are met it will execute. If not the data service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
+| Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Manual**    | A manual transition will be triggered when the [transition execution endpoint](schemas.md#triggering-transitions) is called on the document.                                                                                                                                                                                                                                                                                                                                                                     |
+| **Automatic** | <p>An automatic transition will trigger when its conditions are met. E.g. when a document is transitioned to status <strong>A</strong> the data service will look for any automatic transitions that have status <strong>A</strong> mentioned in <code>fromStatuses</code>. If the conditions of that transition are met it will execute. If not, the Data Service will go to the next automatic transition in line.</p><p><br>The sequence of the transitions will depend on the sequence of configuration.</p> |
 
 ### Transition conditions
 
@@ -622,7 +619,7 @@ await exh.data.transitions.create(mySchema.id, {
   actions: [
     {
       type: 'set',
-      field: 'data.myField',
+      field: 'myField',
       value: 'myValue'
     }
   ],
@@ -638,7 +635,7 @@ await exh.data.transitions.create(mySchema.id, {
   actions: [
     {
       type: 'unset',
-      fields: ['data.myField', 'otherField']
+      fields: ['myField', 'otherField']
     }
   ],
   ...
@@ -653,7 +650,7 @@ await exh.data.transitions.create(mySchema.id, {
   actions: [
     {
       type: 'addItems',
-      field: 'data.myField',
+      field: 'myField',
       values: ['item1', 'item2']
     }
   ],
@@ -669,7 +666,7 @@ await exh.data.transitions.create(mySchema.id, {
   actions: [
     {
       type: 'removeItems',
-      field: 'data.myField',
+      field: 'myField',
       values: ['item1', 'item2']
     }
   ],
@@ -685,12 +682,12 @@ Each document has a `userIds` and `groupIds` field. These field are part of dete
 
 Using actions you can modify these fields and therefore the access of the document.
 
-| Action Type          | Description                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `linkCreator`        | Add the creatorId to the userIds of the document                                                              |
-| `linkUserFromData`   | Add a user id found in data of the document to the userIds of the document                                    |
-| `linkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the groupIds of the document |
-| `linkGroupFromData`  | Add a group id found in data of the document to the groupIds field of the document                            |
+| Action Type          | Description                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `linkCreator`        | Add the `creatorId` to the `userIds` of the document                                                            |
+| `linkUserFromData`   | Add a user id found in data of the document to the `userIds` of the document                                    |
+| `linkEnlistedGroups` | Add all groups where the creator of the document has a patient enlistment for to the `groupIds` of the document |
+| `linkGroupFromData`  | Add a group id found in data of the document to the `groupIds` field of the document                            |
 
 {% hint style="info" %}
 If you like to modify the access to documents from outside the data service you can perform access modification functions on the documents itself. Read the documentation here: [Data Access Management](schemas.md#data-access-management)
@@ -761,9 +758,9 @@ await sdk.data.transitions.create(mySchema.id, {
 
 #### Other actions
 
-| **Action Type** | Description                                                                                                                                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Task`          | trigger the creation of a Task in the Task Service by using the task action. Specify the functionName (which references the AWS Lambda function) and optionally extra data as key-value pairs in the data variable. |
+| **Action Type** | Description                                                                                                                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `task`          | trigger the creation of a Task in the Task Service. Specify the `functionName`, the `priority` (optional: setting the `priority` of the Task in the Task Service) and optionally extra data as key-value pairs in the `data` variable. |
 
 **code examples**
 
@@ -776,6 +773,10 @@ await exh.data.transitions.create(mySchema.id, {
     {
       type: 'task',
       functionName: 'myTaskServiceFunctionName',
+      priority: 1,
+      data: {
+        ...inputFields,
+      }
     }
   ],
   ...
@@ -784,7 +785,32 @@ await exh.data.transitions.create(mySchema.id, {
 {% endtab %}
 {% endtabs %}
 
+#### After actions
 
+Next to the list of `actions` you can also choose to define an action in the `afterActions` field.
+
+Actions in the `actions` list are executed during the transition process. An after action however, only starts once a transition is fully completed (including potential automatic follow-up transitions). Since modifying a document during the transition process is not permitted, `afterActions` might be useful for triggering a `task` action that needs to perform additional modification to the document.
+
+Currently only the `task` action is supported as an after action.
+
+**code examples**
+
+{% tabs %}
+{% tab title="Task" %}
+```typescript
+await exh.data.transitions.create(mySchema.id, {
+  ...,
+  afterActions: [
+    {
+      type: 'task',
+      functionName: 'myTaskServiceFunctionName',
+    }
+  ],
+  ...
+});
+```
+{% endtab %}
+{% endtabs %}
 
 ## Indexes
 
