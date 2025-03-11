@@ -758,9 +758,9 @@ await sdk.data.transitions.create(mySchema.id, {
 
 #### Other actions
 
-| **Action Type** | Description                                                                                                                                                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `task`          | trigger the creation of a Task in the Task Service. Specify the `functionName`, the `priority` (optional: setting the `priority` of the Task in the Task Service) and optionally extra data as key-value pairs in the `data` variable. |
+| **Action Type** | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `task`          | <p>Trigger the creation of a Task in the Task Service. Specify the <code>functionName</code>, and optionally the <code>priority</code> (the priority assigned to the Task in the Task Service) or extra data as key-value pairs in the <code>data</code> variable.<br><br>When the Task is created, the system will add a <code>schemaId</code> and <code>documentId</code> to the <code>data</code> object, so the Function will be able to identify for which Schema / Document the task was created.</p> |
 
 **code examples**
 
@@ -775,7 +775,7 @@ await exh.data.transitions.create(mySchema.id, {
       functionName: 'myTaskServiceFunctionName',
       priority: 1,
       data: {
-        ...inputFields,
+        "myExtraKey": "My Extra Value",
       }
     }
   ],
