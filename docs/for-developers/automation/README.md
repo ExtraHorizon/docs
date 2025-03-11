@@ -57,8 +57,8 @@ Similar to event-receiving services ,_dispatchers_ wait and listen for an event 
 
 ### Related Documents <a href="#markdown-header-related-documents" id="markdown-header-related-documents"></a>
 
-* [Handling data](https://bitbucket.org/extrahorizon/exhz-user-guide/src/5c89db24939dfd20e92c10df46a532724ff545af/handleData.md)
-* [Tasks Service guide](https://developers.extrahorizon.io/services/?service=tasks-service\&redirectToVersion=1)
+* [Data Management](../manage-data/)
+* [Tasks Service guide](../../services/automation/task-service/)
 * [Data Service guide](https://developers.extrahorizon.io/services/?service=data-service\&redirectToVersion=1)
-* [Events Service guide](https://developers.extrahorizon.io/services/?service=events-service\&redirectToVersion=1)
-* [Dispatchers Service guide](https://developers.extrahorizon.io/services/?service=dispatchers-service\&redirectToVersion=1)
+* [Events Service guide](../../services/automation/event-service/)
+* [Dispatchers Service guide](../../services/automation/dispatchers-service.md)
