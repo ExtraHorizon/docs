@@ -59,6 +59,6 @@ Similar to event-receiving services ,_dispatchers_ wait and listen for an event 
 
 * [Data Management](../manage-data/)
 * [Tasks Service guide](../../services/automation/task-service/)
-* [Data Service guide](https://developers.extrahorizon.io/services/?service=data-service\&redirectToVersion=1)
+* [Data Service guide](../../services/manage-data/data-service/)
 * [Events Service guide](../../services/automation/event-service/)
 * [Dispatchers Service guide](../../services/automation/dispatchers-service.md)
