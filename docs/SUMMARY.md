@@ -105,3 +105,4 @@
 * [🔓 Security](exh-platform/security.md)
 * [🗺️ Regions](exh-platform/regions.md)
 * [⚖️ Cloud Subscription Agreement](https://docs.extrahorizon.com/cloud-subscription-agreement)
+* [Compliance](exh-platform/compliance.md)
