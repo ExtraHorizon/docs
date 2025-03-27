@@ -163,8 +163,9 @@ Services currently supporting the skip count operator:
 
 * Data Service
 * Events Service
+* Notification Service
+* Prescriptions Service
 * Profiles Service
 * Tasks Service
 * Users Service
-* Notification Service
 
