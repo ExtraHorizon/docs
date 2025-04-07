@@ -1,21 +1,13 @@
 
-## Profiles Service 1.2.1 (2025-03-27)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.1/openapi.yaml)
+## Events Service 1.2.1 (2025-04-07)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
-- **RQL improvements**
-  - Sorting on `id` fields is now more consistent
-  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
-
-
-**🐞 Bugs Fixed**
-
-- Querying on fields ending with `_id` in custom data is fixed
 
 </details>
 
@@ -40,6 +32,27 @@
 
 - The race conditions in prescription scanning and activating are solved
 - The `free`/`not_free`/`paid_by_group`/`not_paid` update queries are fixed
+- Querying on fields ending with `_id` in custom data is fixed
+
+</details>
+
+
+## Profiles Service 1.2.1 (2025-03-27)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+
+**🐞 Bugs Fixed**
+
 - Querying on fields ending with `_id` in custom data is fixed
 
 </details>
@@ -107,23 +120,6 @@
 </details>
 
 
-## Users Service 1.5.0 (2024-06-13)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* An event is triggered when a password reset is completed
-  * The `password_reset_completed` event is triggered when a user completes a password reset.
-
-* Clean up on user deletion
-  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
-
-</details>
-
-
 ## Authentication Service 2.2.0 (2024-06-13)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
 
@@ -155,6 +151,23 @@
 * Event subscriptions can be marked as retriable
   * When services subscribe to events, they now can indicate the subscription is retriable.
   * When sending an event to a retriable subscription fails, it will be retried up to 3 times.
+
+</details>
+
+
+## Users Service 1.5.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* An event is triggered when a password reset is completed
+  * The `password_reset_completed` event is triggered when a user completes a password reset.
+
+* Clean up on user deletion
+  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
 
 </details>
 

@@ -294,6 +294,18 @@
 
 ## Events Service
 
+### 1.2.1 (2025-04-07)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Improved support for future database security mechanisms**
+
+</details>
+
+
 ### 1.2.0 (2024-06-13)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.0/openapi.yaml)
 <details>
