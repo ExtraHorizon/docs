@@ -30,17 +30,13 @@ The password policy enforces new passwords to adhere to its requirements. The po
 * `symbol_required`: if set to true, the password must contain a special character: ``~@#$%^&*(){}[]_<>-+=|\/:;"'`,.?!``
 * `number_required`: if set to true, the password must contain a digit: `0-9`.
 
-## Logins <a href="#logins" id="logins"></a>
+### Login attempts <a href="#logins" id="logins"></a>
 
-Users can log in with an e-mail/password combination.
+Next to the password policy, there are also restrictions with regard to login attempts.
 
 After each failed login attempt for an email address that is assigned to a user in the system. The failed login attempts counter for that user is incremented by 1. When a user has a successful login the counter of that user is reset to 0.
 
-| Failed login attempts               | Restrictions                                              |
-| ----------------------------------- | --------------------------------------------------------- |
-| 0 - 49                              | User can attempt one login every second                   |
-| Every 10th request (10, 20, 30, 40) | User has to wait 60 seconds before attempting a new login |
-| 50                                  | User can't do any login login attempts anymore            |
+See also the [Login timeout restrictions section on the Usage and Performance page](../../../exh-platform/usage-and-performance.md#logins).
 
 When a user has 50 failed login attempts this can be reset to 0 by any user with the global `RESET_FAILED_LOGIN_ATTEMPTS` permission by performing following call:
 

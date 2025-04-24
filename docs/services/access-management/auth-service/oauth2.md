@@ -24,6 +24,8 @@ The Extra Horizon sdk solves the problem of making authenticated requests for yo
 
 The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests. These Access Tokens are short lived (A lifetime of 5 minutes for the flow described in the example below).
 
+See also the [Password Policy User Service setting ](../user-service/configuration.md#password-policy)for more information about the password format and login attempts.
+
 {% tabs %}
 {% tab title="Javascript" %}
 ```javascript

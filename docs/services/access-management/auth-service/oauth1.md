@@ -1,10 +1,12 @@
-# oAuth1
+# OAuth1
 
 ## Grants
 
 ### Password grant
 
 The Password Grant accepts your username and password, then returns an Access Token and a Refresh token. As mentioned before the Access Token can be used to authenticate API requests.
+
+See also the [Password Policy User Service setting ](../user-service/configuration.md#password-policy)for more information about the password format and login attempts.
 
 {% tabs %}
 {% tab title="Javascript" %}
