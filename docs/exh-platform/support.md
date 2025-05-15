@@ -1,6 +1,6 @@
 ---
 description: >-
-  As a customer of Extra Horiozn, you can get access to the personalized support
+  As a customer of Extra Horizon, you can get access to the personalized support
   portal of your company.
 ---
 
@@ -48,15 +48,7 @@ In the top right corner of the homepage of the support portal, you can find a bu
 
 For each ticket, you access all past communication for that ticket. If you need to add comments or additional information to an existing ticket, our support team will be notified from the moment you do so.
 
-<div>
-
-<figure><img src="../.gitbook/assets/Scherm­afbeelding 2023-01-23 om 15.35.44.png" alt=""><figcaption><p>Open tickets</p></figcaption></figure>
-
- 
-
-<figure><img src="../.gitbook/assets/Scherm­afbeelding 2023-01-23 om 15.35.57.png" alt=""><figcaption><p>Ticket information</p></figcaption></figure>
-
-</div>
+<div><figure><img src="../.gitbook/assets/Scherm­afbeelding 2023-01-23 om 15.35.44.png" alt=""><figcaption><p>Open tickets</p></figcaption></figure> <figure><img src="../.gitbook/assets/Scherm­afbeelding 2023-01-23 om 15.35.57.png" alt=""><figcaption><p>Ticket information</p></figcaption></figure></div>
 
 #### Email notifications
 
