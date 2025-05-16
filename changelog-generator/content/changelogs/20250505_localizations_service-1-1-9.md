@@ -1,7 +1,7 @@
 ---
 service: localizations-service
 version: 1.1.9
-date: 2025-05-05
+date: 2025-05-19
 ---
 
 **⚒️ Improvements**
