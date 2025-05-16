@@ -10,7 +10,7 @@ date: 2025-05-19
   - The `skip_count` operator is now also available for this service 
   - Sorting on `id` fields is now more consistent 
   - Requesting a limit greater than the maximum now sets the maximum 
-- Improved support for future database security mechanisms
+- **Improved support for future database security mechanisms**
 
 **🐞 Bugs Fixed**
 - The `ne` RQL operator now works correctly as a “not equals”
