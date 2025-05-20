@@ -294,6 +294,20 @@
 
 ## Events Service
 
+### 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Improved support for future database security mechanisms**
+
+
+
+</details>
+
+
 ### 1.2.1 (2025-04-07)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.1/openapi.yaml)
 <details>
@@ -398,6 +412,31 @@
 
 ## Groups Service
 
+### 1.1.7 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.7/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+- **The visibility of custom fields for patients can now be toggled by us**
+
+
+**🐞 Bugs Fixed**
+- The bulk `approve` / `update` / `add_tags` / `remove_tags` group-request actions are fixed
+- Tags will no longer be added multiple times to a group
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on custom_fields keys ending with `_id` now works
+
+</details>
+
+
 ### 1.1.6 (2022-09-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.6/openapi.yaml)
 <details>
@@ -429,6 +468,27 @@
 
 
 ## Localizations Service
+
+### 1.1.9 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service 
+  - Sorting on `id` fields is now more consistent 
+  - Requesting a limit greater than the maximum now sets the maximum 
+- **Improved support for future database security mechanisms**
+
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on custom_fields keys ending with `_id` now works
+- `POST` and `PUT` requests with an empty request body return the correct error
+
+</details>
+
 
 ### 1.1.8 (2022-09-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.8/openapi.yaml)
@@ -518,6 +578,30 @@
 
 
 ## Notifications Service
+
+### 1.1.3 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Retries for additional Firebase error types**
+  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
+- **RQL improvement**
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+
+**🐞 Bugs Fixed**
+
+- Querying on field names ending with `_id` in the `fields` object is fixed
+- Now correctly erroring when no RQL is supplied while deleting notifications
+
+
+
+</details>
+
 
 ### 1.1.2 (2024-04-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.2/openapi.yaml)
@@ -642,6 +726,20 @@
 
 ## Prescriptions Service
 
+### 1.1.21 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Improved support for future database security mechanisms**
+
+
+
+</details>
+
+
 ### 1.1.20 (2025-03-27)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.20/openapi.yaml)
 <details>
@@ -702,6 +800,20 @@
 
 ## Profiles Service
 
+### 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Improved support for future database security mechanisms**
+
+
+
+</details>
+
+
 ### 1.2.1 (2025-03-27)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.1/openapi.yaml)
 <details>
@@ -759,6 +871,27 @@
 
 
 ## Reports Service
+
+### 1.0.14 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.14/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Reports are still generated for deleted users when the prescription ends
+
+</details>
+
 
 ### 1.0.13 (2022-09-22)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.13/openapi.yaml)
@@ -927,6 +1060,28 @@
 
 ## Template Service
 
+### 1.0.16 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.16/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on field or `schema.field` keys ending with `_id` now works
+- `POST` and `PUT` requests with an empty request body return the correct error
+
+</details>
+
+
 ### 1.0.15 (2022-09-23)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.15/openapi.yaml)
 <details>
@@ -939,6 +1094,42 @@
 
 
 ## Users Service
+
+### 1.5.1 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Improved support for future database security mechanisms**
+- **No longer subscribing to the unused `hour_passed` event**
+
+**🐞 Bugs Fixed**
+
+- Adding/Removing staff roles now correctly check the matching group id
+- Multiple endpoints now return the correct `MISSING_REQUIRED_FIELDS_EXCEPTION` when not providing any fields
+  - `POST /add_to_staff`
+  - `POST /remove_from_staff`
+  - `POST /add_roles`
+  - `POST /remove_roles`
+  - `POST /groups/{groupId}/staff/add_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
+- Multiple endpoints now return the correct `EMPTY_BODY_EXCEPTION` when no body is provided
+  - `POST /groups/{groupId}/staff/add_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
+  - `POST /add_roles`
+  - `POST /remove_roles`
+- Adding and removing roles now ignore not-existing roles
+- `POST /add_to_staff` and `POST /remove_from_staff` now return the amount of affected records correctly
+- Following endpoints now remove all the selected roles from the users or staff, not just the last one in the list.
+  - `DELETE /roles`
+  - `POST /remove_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
+
+
+</details>
+
 
 ### 1.5.0 (2024-06-13)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
