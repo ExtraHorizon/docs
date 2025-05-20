@@ -1,7 +1,7 @@
 ---
 service: notifications-service
 version: 1.1.3
-date: 2025-05-19
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**

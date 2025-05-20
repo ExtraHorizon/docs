@@ -1,7 +1,7 @@
 ---
 service: profiles-service
 version: 1.2.2
-date: 2025-05-19
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**

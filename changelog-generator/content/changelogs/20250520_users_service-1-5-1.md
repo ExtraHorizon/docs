@@ -1,7 +1,7 @@
 ---
 service: users-service
 version: 1.5.1
-date: 2025-05-19
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**
@@ -19,7 +19,7 @@ date: 2025-05-19
   - `POST /remove_roles`
   - `POST /groups/{groupId}/staff/add_roles`
   - `POST /groups/{groupId}/staff/remove_roles`
-- Multiple endpoints now return the correct EMPTY_BODY_EXCEPTION when no body is provided
+- Multiple endpoints now return the correct `EMPTY_BODY_EXCEPTION` when no body is provided
   - `POST /groups/{groupId}/staff/add_roles`
   - `POST /groups/{groupId}/staff/remove_roles`
   - `POST /add_roles`

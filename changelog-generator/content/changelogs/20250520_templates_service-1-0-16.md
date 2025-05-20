@@ -1,7 +1,7 @@
 ---
 service: templates-service
 version: 1.0.16
-date: 2025-05-19
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**

@@ -1,7 +1,7 @@
 ---
 service: groups-service
 version: 1.1.7
-date: 2025-05-19
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**

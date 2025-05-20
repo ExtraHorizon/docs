@@ -1,7 +1,7 @@
 ---
-service: events-service
-version: 1.2.2
-date: 2025-05-19
+service: prescriptions-service
+version: 1.1.21
+date: 2025-05-20
 ---
 
 **⚒️ Improvements**
