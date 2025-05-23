@@ -7,22 +7,22 @@ In the repository, you'll find sample project for a simple login page. The purpo
 Begin by navigating to the `4-oauth-frontend/front-end` folder. Within that folder, you will find the code for the login page. Proceed by installing the necessary dependencies by running:
 
 ```
-npm init
+npm install
 ```
 
-The login page utilizes the `javascript-sdk`, which is not natively available in web browsers. If we would load the source code directly in the HTML page, the browser will show errors indicating that `javascript-sdk` doesn't exist. To rectify this problem, we can bundle the source code with the sdk. For the purpose of this tutorial, we have chosen [esbuild](https://esbuild.github.io) for bundling.&#x20;
+The login page utilizes the `javascript-sdk`, which is not natively available in web browsers. If we would load the source code directly in the HTML page, the browser will show errors indicating that `javascript-sdk` doesn't exist. To rectify this problem, we can bundle the source code with the sdk. For the purpose of this tutorial, we have chosen [Vite](https://vite.dev/) for bundling.&#x20;
 
 After installing the dependencies, create a `.env` file and add two variables;
 
-* **BACKEND\_URL**: The URI of your Extra Horizon cluster;
-* **CLIENT\_ID**: The client ID generated in the previous section `Set up oAuth in your back-end`.
+* **VITE\_BACKEND\_URL**: The URI of your Extra Horizon cluster;
+* **VITE\_CLIENT\_ID**: The client ID generated in the previous step, `Set up oAuth in your back-end`.
 
 ### Launch the Login Page
 
 With the dependencies installed and the environment variables set, you are now ready to launch the login page. This can be done by running the following command:
 
 ```
-npm run watch
+npm start
 ```
 
 After running the command, you should have a functional login page. By default, the page can be accessed by navigating to `http://localhost:3000` in your browser. The resulting page should match the image below:
