@@ -105,4 +105,5 @@
 * [🔓 Security](exh-platform/security.md)
 * [🗺️ Regions](exh-platform/regions.md)
 * [⚖️ Cloud Subscription Agreement](https://docs.extrahorizon.com/cloud-subscription-agreement)
-* [🇺🇸 CFR 21 Part 11](exh-platform/cfr-21-part-11.md)
+* [Security, Privacy & Quality](exh-platform/security-privacy-and-quality/README.md)
+  * [🇺🇸 CFR 21 Part 11](exh-platform/security-privacy-and-quality/cfr-21-part-11.md)
