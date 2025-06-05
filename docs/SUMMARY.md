@@ -102,8 +102,10 @@
 
 * [🙋 Support](exh-platform/support.md)
 * [⏱️ Usage and Performance](exh-platform/usage-and-performance.md)
-* [🔓 Security](exh-platform/security.md)
 * [🗺️ Regions](exh-platform/regions.md)
 * [⚖️ Cloud Subscription Agreement](https://docs.extrahorizon.com/cloud-subscription-agreement)
 * [Security, Privacy & Quality](exh-platform/security-privacy-and-quality/README.md)
+  * [🔓 Security](exh-platform/security-privacy-and-quality/security.md)
   * [🇺🇸 CFR 21 Part 11](exh-platform/security-privacy-and-quality/cfr-21-part-11.md)
+  * [ExH as OTS Software](exh-platform/security-privacy-and-quality/exh-as-ots-software/README.md)
+    * [OTS Software Description](exh-platform/security-privacy-and-quality/exh-as-ots-software/ots-software-description.md)
