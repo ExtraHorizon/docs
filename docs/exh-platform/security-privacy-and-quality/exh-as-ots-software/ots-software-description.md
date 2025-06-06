@@ -18,8 +18,24 @@ hidden: true
 
 | Web Service            | Version |
 | ---------------------- | ------- |
-| User Service           | v1.x.x  |
-| Authentication Service | V2.x.x  |
+| Authentication Service | v2.x.x  |
+| Configurations Service | v2.x.x  |
+| Data Service           | v1.x.x  |
+| Dispatchers Service    | v1.x.x  |
+| Events Service         | v1.x.x  |
+| Files Service          | v1.x.x  |
+| Groups Service         | v1.x.x  |
+| Localizations Service  | v1.x.x  |
+| Logs Service           | v1.x.x  |
+| Mail Service           | v1.x.x  |
+| Notifications Service  | v1.x.x  |
+| Payment Service        | v1.x.x  |
+| Prescriptions Service  | v1.x.x  |
+| Profiles Service       | v1.x.x  |
+| Report Service         | v1.x.x  |
+| Tasks Service          | v1.x.x  |
+| Template Service       | v1.x.x  |
+| Users Service          | v1.x.x  |
 
 ### Rationale for Selecting OTS Software
 
