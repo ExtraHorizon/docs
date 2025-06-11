@@ -16,82 +16,105 @@ hidden: true
 
 **Version Level:**
 
-| Web Service            | Version |
-| ---------------------- | ------- |
-| Authentication Service | v2.x.x  |
-| Configurations Service | v2.x.x  |
-| Data Service           | v1.x.x  |
-| Dispatchers Service    | v1.x.x  |
-| Events Service         | v1.x.x  |
-| Files Service          | v1.x.x  |
-| Groups Service         | v1.x.x  |
-| Localizations Service  | v1.x.x  |
-| Logs Service           | v1.x.x  |
-| Mail Service           | v1.x.x  |
-| Notifications Service  | v1.x.x  |
-| Payment Service        | v1.x.x  |
-| Prescriptions Service  | v1.x.x  |
-| Profiles Service       | v1.x.x  |
-| Report Service         | v1.x.x  |
-| Tasks Service          | v1.x.x  |
-| Template Service       | v1.x.x  |
-| Users Service          | v1.x.x  |
+| Web Service            | Version                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| Authentication Service | [v2.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Users Service          | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Files Service          | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Data Service           | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Events Service         | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Dispatchers Service    | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Tasks Service          | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Logs Service           | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Template Service       | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Configurations Service | [v2.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Localizations Service  | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Mail Service           | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Notifications Service  | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
+| Payment Service        | [v1.x.x](https://docs.extrahorizon.com/extrahorizon/api-reference/api-specs) |
 
 ### Rationale for Selecting OTS Software
 
 _<mark style="color:blue;">Why is this OTS software appropriate for this medical device?</mark>_
 
+Extra Horizon provides an Off The Shelf (OTS) cloud solution that is an ideal fit for us in integrating with \[our product]. It allows us to concentrate on the critical aspects of clinical safety and the implementation of our medical product, leveraging Extra Horizon's robust security and comprehensive cloud expertise. This ensures that we can deliver a highly secure and efficient system while minimizing the complexity and resources usually required to manage cloud infrastructure. By trusting Extra Horizon's well-established platform, we can enhance our operational focus and innovation in ensuring optimal patient outcomes.
+
+Our choice of Extra Horizon as a partner is not only driven by their technical capabilities but also by their compliance with international standards like ISO 13485 and ISO 27001. This certification ensures that Extra Horizon adheres to stringent quality management systems applicable in the medical device sector and maintains robust information security protocols. Such compliance is critical for us, as it aligns with our commitment to maintaining the highest standards of reliability, safety, and performance across all services, from Authentication to Users Service, assuring both our business and regulatory compliance needs are met effectively.
+
 ### Expected Limitations
 
 _<mark style="color:blue;">What are the expected design limitations of the OTS software?</mark>_
 
+Although Extra Horizon's platform offers remarkable flexibility due to its generic nature and comprehensive functionalities, the expected limitations include the necessity for technical knowhow to configure and optimize the system effectively. However, this requirement can also be viewed as an advantage, as it provides us with the ability to adjust the platform in accordance with our unique operational needs and strategic goals. This balance of complexity and adaptability empowers us to implement tailored solutions, fostering innovation while meeting the specific demands of our medical device applications.
+
 ## Computer System Specifications
+
+Extra Horizon delivers a managed backend as a service, which means they take full responsibility for maintaining and operating the platform. This managed approach ensures that the service functions properly and efficiently, relieving customers of the need to manage hardware specifications themselves.
 
 ### Hardware Specifications
 
 _<mark style="color:blue;">Processor (manufacturer, speed, and features), RAM (memory size), hard disk size, other storage, communications, display, etc.</mark>_
 
+&#x20;Not Applicable, managed Saas
+
 ### Software Specifications
 
 _<mark style="color:blue;">Operating system, drivers, utilities, etc. The software requirements specification (SRS) listing for each item should contain the name (such as Microsoft Windows Operating System, Microsoft Windows Drivers, etc.), specific version levels (such as 4.1, 5.0, etc.) and a complete list of any patches that have been provided by the OTS software manufacturer.</mark>_
 
+Not Applicable, managed Saas
+
 ## Ensuring End User Compliance and Correct Use
 
-_<mark style="color:blue;">How will you assure appropriate actions are taken by the End User?</mark>_
-
-_<mark style="color:blue;">The following should be specified:</mark>_
-
-* _<mark style="color:blue;">What aspects of the OTS software and system can (and/or must) be installed/configured?</mark>_
-* _<mark style="color:blue;">What steps are permitted (or must be taken) to install and/or configure the product?</mark>_
-* _<mark style="color:blue;">How often will the configuration need to be changed? · What education and training are suggested or required for the user of the OTS software? · What measures have been designed into the medical device to prevent the operation of any non-specified OTS software (e.g., word processors, games)? Operation of non-specified OTS software may be prevented by system design, preventive measures, or labeling. Introduction may be prevented by disabling input (USB, CD, modems).</mark>_
+* _<mark style="color:blue;">How will you assure appropriate actions are taken by the End User?</mark>_\
+  Extra Horizon is en embedded OTS Cloud platform. This means the user will not have any interactions with the OTS and doesn't have any control over it's use.
+* _<mark style="color:blue;">What aspects of the OTS software and system can (and/or must) be installed/configured?</mark>_\
+  Extra Horizon is integrated into the medical Device by the legal manufacturer. The end-user will have no control over how it's used and does not require to install or make any configurations.
 
 ## Functionality of the OTS Software
 
 _<mark style="color:blue;">What does the OTS do?</mark>_
 
-_<mark style="color:blue;">What function does the OTS Software provide in this device? The following should be specified:</mark>_
+Extra Horizon is a comprehensive managed cloud platform designed specifically for cloud-connected medical devices. It provides a suite of compliant web services that facilitate the seamless operation and management of medical devices. By utilizing these services, manufacturers can fully outsource their backend infrastructure needs, ensuring a reliable and efficient backbone for their devices.
 
-* _<mark style="color:blue;">What is the OTS software intended to do? The sponsor’s design documentation should specify exactly which OTS components will be included in the design of the medical device and to what extent OTS software is involved in error control and messaging in device error control.</mark>_
-* _<mark style="color:blue;">What are the links with other software including software outside the medical device (not reviewed as part of this or another application)? The links to outside software should be completely defined for each medical device/module. The design documentation should include a complete description of the linkage between the medical device software and any outside software (e.g., networks).</mark>_
-
-## Verification & Validation
+## Verification
 
 _<mark style="color:blue;">How do you know it works?</mark>_
 
-* <mark style="color:blue;">Based on documentation Level (i.e., Basic or Enhanced) determined for the device software as discussed in the guidance titled “Content of Premarket Submissions for Device Software Functions,” sponsors should: Describe testing, verification, and validation of the OTS Software and ensure it is appropriate for the device hazards 8 13 See footnote 5.Contains Nonbinding Recommendations associated with the OTS Software.</mark>
-* <mark style="color:blue;">Provide the results of the testing. · Is there a current list of OTS Software problems (bugs) and access to updates?</mark>&#x20;
+Extra Horizon's platform is certified under ISO13485, ISO27001 & ISO27701 and has a frequently audited management system in place that mandates the precise and correct use of software development procedures, risk management & testing. As a result Extra Horizon produces a set of documents compliant to IEC62304 that customers can use to showcase the system is verrified.
 
-<mark style="color:blue;">For more information on software testing, verification, and validation, please see section III.C.</mark>
+* SRS (Software Requirement and design Specification)
+* Verification report
+* Product Anomaly list
+
+{% hint style="info" %}
+The identified documentation Level (i.e. Basic or Enhanced) will determine what documentation you will need to include in your MD submission. The Software Requirements, Design specifications & verification evidence can be used by the customer and provided to the regulatory bodies when requested.
+{% endhint %}
 
 ## Lifecycle Management and Control of OTS Components
 
 _<mark style="color:blue;">How will you keep track of (control) the OTS Software?</mark>_
 
-<mark style="color:blue;">An appropriate plan should answer the following questions:</mark>
+Extra Horizon provides a [Service Level Agreement (SLA)](https://docs.extrahorizon.com/service-level-agreement) as part of it's [cloud subscription agreement](https://docs.extrahorizon.com/cloud-subscription-agreement) that include specific controls that are in place to ensure the legal manufacturer is in full control of the OTS Software.
 
-* <mark style="color:blue;">What measures have been designed into the medical device to prevent the introduction of incorrect versions? On startup, ideally, the medical device should check to verify that all software is the correct title, version level, and configuration. If the correct software is not loaded, the medical device should warn the operator and shut down to a safe state.</mark>
-* <mark style="color:blue;">How will you maintain the OTS software configuration?</mark>
-* <mark style="color:blue;">Where and how will you store the OTS software?</mark>
-* <mark style="color:blue;">How will you ensure proper installation of the OTS software?</mark>
-* <mark style="color:blue;">How will you ensure proper maintenance and life cycle support for the OTS software?</mark>
+<mark style="color:blue;">Measures to prevent the introduction of incorrect versions / changes?</mark>&#x20;
+
+Extra Horizon make use of semantic versioning and guarantees the correct operation and backwards compatibility of it's MINOR and PATCH Releases. Only MAJOR Release will include non-backwards compatible changes. As the medical device software targets Extra Horizon services on major version the legal manufacturer will have to make a change to it's endpoints before it will be targeted. More information can be found in our [SLA - Updates to the platform](https://docs.extrahorizon.com/service-level-agreement#id-5.-updates-to-the-platform).
+
+<mark style="color:blue;">How to maintain Extra Horizon platform configurations</mark>
+
+Extra Horizon configurations are managed within a git repository and can be synchronized to dedicated clusters using the Extra Horizon CLI.
+
+<mark style="color:blue;">Where and how will you store the OTS software?</mark>
+
+&#x20;Extra Horizon is a managed cloud platform and will operate and manage the storage and archiving of the OTS Software and it's current and previous versions
+
+<mark style="color:blue;">How will you ensure proper installation of the OTS software?</mark>
+
+Extra Horizon has a procedure in place for the correct deployment and retraction of webservices in customers environments. The procedure includes pre deployment and post deployment checks as well as correct verification of the deployment.
+
+<mark style="color:blue;">How will you ensure proper maintenance and life cycle support for the OTS software?</mark>
+
+Extra Horizon's platform is certified under ISO13485, ISO27001 & ISO27701 and has a frequently audited and certified management system in place. As a supplier we can request evidence of proper management (i.e. audit reports, Penetration testing results, ...).
+
+The [Service Level Agreement (SLA)](https://docs.extrahorizon.com/service-level-agreement) provided with Extra Horizon also provides the necessary contractual arrangements for Extra Horizon with regard to the general support and maintenance of the web services provided.
 
