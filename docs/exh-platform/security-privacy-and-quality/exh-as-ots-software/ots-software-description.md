@@ -83,7 +83,7 @@ _<mark style="color:blue;">How do you know it works?</mark>_
 Extra Horizon's platform is certified under ISO13485, ISO27001 & ISO27701 and has a frequently audited management system in place that mandates the precise and correct use of software development procedures, risk management & testing. As a result Extra Horizon produces a set of documents compliant to IEC62304 that customers can use to showcase the system is verrified.
 
 * SRS (Software Requirement and design Specification)
-* Verification report
+* Verification plan & report
 * Product Anomaly list
 
 {% hint style="info" %}
