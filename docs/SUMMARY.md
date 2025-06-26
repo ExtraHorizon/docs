@@ -96,7 +96,12 @@
 * [Handling Errors](for-developers/handling-errors.md)
 * [GitHub](https://github.com/ExtraHorizon)
 * [API interaction (Python)](additional-resources/api-interaction-python.md)
-* [Migration guide: Enabling verification request limiting](additional-resources/migration-guide-enabling-verification-request-limiting.md)
+
+***
+
+* [Migration Guides](migration-guides/README.md)
+  * [Enabling verification request limiting](migration-guides/migration-guide-enabling-verification-request-limiting.md)
+  * [Execution credentials for Tasks](migration-guides/execution-credentials-for-tasks.md)
 
 ## ExH Platform
 
