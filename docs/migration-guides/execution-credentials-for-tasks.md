@@ -78,7 +78,7 @@ To migrate a Task and reuse the existing user credentials, refer to the first pa
   "entryPoint": "index.handler",
   "runtime": "nodejs22.x",
   "executionCredentials": {
-    "email": "my.current.task.user.email@example.com"
+    "email": "my.current.task.user.email@example.com",
     "permissions": [
       "UPDATE_DOCUMENTS:my_first_schema",
       "VIEW_DOCUMENTS:my_second_schema"
