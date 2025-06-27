@@ -89,7 +89,11 @@ To migrate a Task and reuse the existing user credentials, refer to the first pa
 
 Run the CLI task sync using either `exh sync` or `exh tasks sync --path <your-task-path>`. The CLI will detect that an existing user has been provided, then confirms that the current function credentials belong to the provided email.&#x20;
 
-After syncing, the existing credentials will stay linked to the Task, but the Global Role and its permissions linked to the User will be managed by the CLI
+After syncing, the existing credentials will stay linked to the Task, but the Global Role and its permissions linked to the User will be managed by the CLI.
+
+{% hint style="warning" %}
+The CLI will add a new Global Role to the user. Existing Global Roles will remain unchanged and will **not** be deleted. If any previously assigned Global Role is no longer needed, please remove it manually from your environment.
+{% endhint %}
 
 ## Conclusion
 
