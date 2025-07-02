@@ -115,3 +115,4 @@
   * [ExH as OTS Software](exh-platform/security-privacy-and-quality/exh-as-ots-software/README.md)
     * [OTS Software Description](exh-platform/security-privacy-and-quality/exh-as-ots-software/ots-software-description.md)
     * [OTS Cloud Risks](exh-platform/security-privacy-and-quality/exh-as-ots-software/ots-cloud-risks.md)
+  * [🇫🇷 HDS/HDH Certification](exh-platform/security-privacy-and-quality/hds-hdh-certification.md)
