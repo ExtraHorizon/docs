@@ -1,4 +1,4 @@
-# Security, Privacy & Quality
+# ✅ Compliance
 
 Extra Horizon operates a Integrated Management system (IMS) in order to comply with the strictest security, privacy & quality requirements needed in order for our customers to thrive and run compliant, safe and secure Medical Device applications.
 

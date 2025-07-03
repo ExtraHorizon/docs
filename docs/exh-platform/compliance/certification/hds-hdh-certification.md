@@ -10,11 +10,45 @@ The certification is issued by an accredited body under the supervision of the *
 
 HDS certification is **mandatory** for all cloud providers and IT services managing health data in France and is essential to operate legally in the French healthcare sector.
 
-### :white\_check\_mark: Extra Horizon is HDS Certified
+## :bookmark: **Certificate of Conformity**
 
 Extra Horizon has been certified since 30 October 2023 for HDS and can be used by companies that need to prove compliance to HDS for the hosting of their personal health data.
 
-### :flag\_eu: No transfer of health data
+**Certified Entity**:\
+&#xNAN;_&#x45;xtra Horizon_\
+_Kempischesteenweg 303/27_\
+_3500 Hasselt, Belgium_
+
+**Certificate Number**:\
+&#xNAN;_&#x48;DS 789841_
+
+**Issuing Body**:\
+&#xNAN;_&#x42;SI (EMEA)_\
+_389 Chiswick High road, London, W4 4AL, United Kingdom_
+
+**Date of Initial Issue**:\
+&#xNAN;_&#x4F;ctober 30, 2023_
+
+**Date of Most Recent Renewal**:\
+&#xNAN;_&#x4F;ctober 30, 2023_
+
+**Certificate Valid Until**:\
+&#xNAN;_&#x4F;ctober 29, 2026_
+
+**Current Status**:\
+✅ _Valid_
+
+### 📎 Documents
+
+{% file src="../../../.gitbook/assets/HDS Extra Horizon 789841.pdf" %}
+
+### 🔁 Certification Updates
+
+**Extra Horizon** commits to maintaining the accuracy and relevance of the information presented on this page. In particular, the page will be promptly updated in the event of any renewal of the certificate of conformity, any modification to the scope of the certification, or any suspension or withdrawal of the certificate by the issuing authority. This ensures that Clients and partners always have access to up-to-date and reliable information regarding the certification status of Extra Horizon’s health data hosting services.
+
+***
+
+## :flag\_eu: No transfer of health data
 
 **Extra Horizon** is committed to offering secure, flexible, and compliant health data management through our HDS-certified capabilities. While we provide infrastructure that meets the highest standards of data protection, our platform also gives customers the freedom to choose the region in which their cluster is deployed.
 
