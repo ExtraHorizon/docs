@@ -117,4 +117,4 @@
   * [ExH as OTS Software](exh-platform/compliance/exh-as-ots-software/README.md)
     * [OTS Software Description](exh-platform/compliance/exh-as-ots-software/ots-software-description.md)
     * [OTS Cloud Risks](exh-platform/compliance/exh-as-ots-software/ots-cloud-risks.md)
-  * [Shared Responsibility Model](exh-platform/compliance/shared-responsibility-model.md)
+  * [🤝 Shared Responsibility Model](exh-platform/compliance/shared-responsibility-model.md)
