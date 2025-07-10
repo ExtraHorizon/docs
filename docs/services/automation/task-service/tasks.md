@@ -75,6 +75,20 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 If you define a function schedule, you will only see the next scheduled task execution at the moment when it starts.
 {% endhint %}
 
+## Direct execution
+
+If you want to execute a function and immediately receive its result, you can use the direct execution feature. This approach creates a Task in the background and waits for it to finish, returning the completed Task object once execution is complete.
+
+You can also have your function code return a JSON serialisable value, which will be available in the `result` field of the returned Task object. The `result`  value is not stored in the task object, it's only returned in the response for this mode of execution.
+
+```typescript
+const task = await exh.tasks.functions.execute('yourFunctionName', {
+  ...yourData
+});
+
+console.log(task.result); // Value returned by your function code
+```
+
 ## Task Lifecycle
 
 ### Queuing
