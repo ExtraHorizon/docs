@@ -89,6 +89,8 @@ const task = await exh.tasks.functions.execute('yourFunctionName', {
 console.log(task.result); // Value returned by your function code
 ```
 
+The function you're targeting with direct execution cannot have a `timeout`  value larger than 30 seconds.
+
 ## Task Lifecycle
 
 ### Queuing
