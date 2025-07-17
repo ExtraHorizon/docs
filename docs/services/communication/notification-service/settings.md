@@ -1,27 +1,94 @@
-# Settings
+# User Settings
 
-## User Settings <a href="#docs-internal-guid-75d9a081-7fff-1efb-95c3-dc400f2518d4" id="docs-internal-guid-75d9a081-7fff-1efb-95c3-dc400f2518d4"></a>
+General steps to get an FCM registration token:
 
-When a new User object is created in the User Service, a Settings object with the same identifier is created automatically. Each User can subsequently update their own preferences but only an administrator can reset them via a DELETE request.
+* Integrate the FCM SDK into your app
+  * [https://firebase.google.com/docs/cloud-messaging/android/client](https://firebase.google.com/docs/cloud-messaging/android/client)
+  * [https://firebase.google.com/docs/cloud-messaging/ios/client](https://firebase.google.com/docs/cloud-messaging/ios/client)
+* Fetch the current registration token using the FCM SDK when the user is logged in to you application
+* And/or monitor for changes to the FCM registration token
 
-{% swagger method="put" path="/settings/{userId}" baseUrl=" " summary="Create/Update the Settings for a used" %}
-{% swagger-description %}
+When you have the FCM registration token, you can assign them to a device in the user's notification settings.
 
-{% endswagger-description %}
-{% endswagger %}
+## Token Management
 
-{% swagger method="delete" path="/settings/{userId}" baseUrl=" " summary="Delete the Settings for a user" %}
-{% swagger-description %}
+Each user can have one or more devices, each with its own FCM token. When a Notification is created it is sent to **all registered devices with an FCM token** for the targeted user.
 
-{% endswagger-description %}
-{% endswagger %}
+### Add or update a device
 
-{% swagger method="get" path="/settings" baseUrl=" " summary="List all Settings" %}
-{% swagger-description %}
+The following code snippet will create a new device or updates the token if the device already exists:
 
-{% endswagger-description %}
-{% endswagger %}
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const deviceName = "mobile"
+const deviceData = {
+  fcmToken: "zc8HuXBRjeSPaYnKkL7vyU6FDG2MAQVT9d5w3ft4NEZgprbmh1"
+};
 
-{% hint style="info" %}
-Info: Requesting the removal of a User’s Settings will, in practice, reset the preferences to the default values. In addition, the key value will be null.
-{% endhint %}
+await exh.notificationsV2.userSettings.addOrUpdateDevice(userId, deviceName, deviceData);
+```
+{% endtab %}
+{% endtabs %}
+
+#### Device Properties
+
+* **`name`** – Unique name and identifier for the device.
+* **`description`** – Description of the device.
+* **`fcmToken`** – FCM token for the device.
+
+### Remove a device&#x20;
+
+This stops notifications from being sent to the specified device:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.notificationsV2.userSettings.removeDevice(userId, deviceName);
+```
+{% endtab %}
+{% endtabs %}
+
+### Remove the user settings
+
+Completely remove the user settings for a user and all associated devices and tokens from the system. This stops notifications from being sent to the user.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.notificationsV2.userSettings.remove(userId);
+```
+{% endtab %}
+{% endtabs %}
+
+## List user settings
+
+There are multiple methods in the SDK at `exh.notificationsV2.userSettings` to fetch the notification settings of users.
+
+For example, getting the notification settings for a specific user:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const userSettings = await exh.notificationsV2.userSettings.getById(userId);
+```
+{% endtab %}
+{% endtabs %}
+
+Or, listing the latest users who updated their settings:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const response = await exh.notificationsV2.userSettings.find({
+  rql: rqlBuilder()
+    .sort('-updateTimestamp')
+    .limit(5)
+    .build(),
+});
+
+console.log('Total number of user notification settings', response.page.total);
+console.log('Last 5 updated user notification settings', resonse.data);
+```
+{% endtab %}
+{% endtabs %}
