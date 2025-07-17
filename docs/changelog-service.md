@@ -579,6 +579,38 @@
 
 ## Notifications Service
 
+### 2.0.0 (2025-07-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/2.0.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+- **User Settings**
+
+  - **Register devices for push notifications**
+    - Users can register one or more devices by providing an FCM token to receive push notifications at.
+
+  - **View notification settings for a specific user**
+    - Always returns a settings object. If none exists, an empty one is automatically created.
+
+  - **List all notification settings**
+    - Admins can retrieve a list of all user notification settings.
+
+  - **Remove devices or user settings**
+    - A specific device or the user settings as a whole can be removed.
+
+- **Notifications**
+
+  - **Create notifications**
+    - Creating a notification automatically sends it to all registered devices of the targeted user.
+
+  - **View notifications**
+    - Users can view their own notification history. Admins can view all notifications.
+
+</details>
+
+
 ### 1.1.3 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
 <details>
