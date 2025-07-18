@@ -124,6 +124,59 @@ await exh.data.documents.linkUsers('{yourSchemaId}', '{yourDocumentId}', {
 {% endtab %}
 {% endtabs %}
 
+## Updating arrays of objects in documents
+
+When you have an arrays of objects in your documents, we provide a set of functions to manipulate these arrays.
+
+For example, if you have a schema `daily-summary`, with a document that has an array of objects called `hourlySummaries`:
+
+```json
+{
+  "id": "5f7b1b3b1f7b4b0001f7b4b2",
+  "data": {
+   "date": "2025-03-28",
+   "hourlySummaries": [
+     { "id": "6568d05351c0f5307421e196", "avg": 5, "max": 10, "min": 2 },
+     { "id": "67e66793ae59de5bba4b262f", "avg": 7, "max": 15, "min": 3 }
+   ]
+  }
+}
+```
+
+To add a new object to the `hourlySummaries` array, you can use the following function:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.data.documents.appendObjectToArray('daily-summary', documentId, 'hourlySummaries', {
+  avg: 10, max: 20, min: 5,
+});
+```
+{% endtab %}
+{% endtabs %}
+
+To update the existing object `67e66793ae59de5bba4b262f` in the `hourlySummaries` array, you can use:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.data.documents.updateObjectInArray('daily-summary', documentId, 'hourlySummaries', '67e66793ae59de5bba4b262f', {
+  avg: 8, max: 18, min: 4,
+});
+```
+{% endtab %}
+{% endtabs %}
+
+To remove the object `67e66793ae59de5bba4b262f` from the `hourlySummaries` array, you can use:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.data.documents.removeObjectFromArray('daily-summary', documentId, 'hourlySummaries', '67e66793ae59de5bba4b262f');
+```
+{% endtab %}
+{% endtabs %}
+
 ## Updating a locked document
 
 When an update is complex it might take some time to execute. Whilst a document is updating, the document is in a locked state and no other updates are permitted. &#x20;
