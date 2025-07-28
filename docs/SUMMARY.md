@@ -111,7 +111,7 @@
 * [⚖️ Cloud Subscription Agreement](https://docs.extrahorizon.com/cloud-subscription-agreement)
 * [✅ Compliance](exh-platform/compliance/README.md)
   * [🔖 Certification](exh-platform/compliance/certification/README.md)
-    * [🇫🇷 Hébergeur de Données de Santé (HDS)](exh-platform/compliance/certification/hebergeur-de-donnees-de-sante-hds/README.md)
+    * [🇫🇷 Hébergeur de Données de Santé (HDS)](exh-platform/compliance/certification/hebergeur-de-donnees-de-sante-hds.md)
       * [HDH Representation of Guarantees](exh-platform/compliance/certification/hebergeur-de-donnees-de-sante-hds/hdh-representation-of-guarantees.md)
   * [🔓 Security](exh-platform/compliance/security.md)
   * [🇺🇸 CFR 21 Part 11](exh-platform/compliance/cfr-21-part-11.md)

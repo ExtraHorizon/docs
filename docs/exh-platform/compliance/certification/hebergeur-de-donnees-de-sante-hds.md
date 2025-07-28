@@ -2,7 +2,7 @@
 description: Hébergeur de Données de Santé
 ---
 
-# 🇫🇷 HDS/HDH Certification
+# 🇫🇷 Hébergeur de Données de Santé (HDS)
 
 The **HDS (Hébergeur de Données de Santé)** certification is a legal requirement in France for any organization that **hosts, processes, or stores personal health data** on behalf of third parties, such as healthcare providers or patients. Established under Articles **L.1111-8** and **R.1111-9** of the **French Public Health Code**, this certification ensures the **security, confidentiality, and integrity** of sensitive health data.
 
@@ -54,6 +54,6 @@ _389 Chiswick High road, London, W4 4AL, United Kingdom_
 
 It is the responsibility of each customer to select a deployment region that meets the specific compliance requirements of their solution—including HDS certification, where applicable.
 
-When clusters are deployed within the European Economic Area (EEA), Extra Horizon guarantees that all data will be stored and processed entirely within the EEA. **No transfer of personal health data to a country outside the European Economic Area** will take place, ensuring full alignment with the General Data Protection Regulation (GDPR) and European health data regulations.
+When clusters are deployed within the European Economic Area (EEA), Extra Horizon guarantees that all data will be stored and processed entirely within the EEA. **No transfer of personal health data to a country outside the European Economic Area** will take place, ensuring full alignment with the General Data Protection Regulation (GDPR) and European health data regulations. ([Representation of Guarantees](hebergeur-de-donnees-de-sante-hds/hdh-representation-of-guarantees.md))
 
 Our infrastructure in the EEA is built to meet stringent security and confidentiality standards, and we apply robust protection measures to safeguard the integrity and availability of all healthcare data hosted within our services.
