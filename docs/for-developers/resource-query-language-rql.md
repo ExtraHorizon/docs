@@ -121,6 +121,13 @@ The value also needs to be prefixed by the `string:` casting mechanism:
 GET /profiles/v1/?eq(birthday,string:1970-01-01)
 ```
 
+### Projecting values
+
+The `select` operator cannot include both a **subkey** of a field and the **field itself** at the same time.
+
+<pre><code><strong>GET /data/v1/${id}/documents?select(data.field.subkey,data.field)
+</strong></code></pre>
+
 ### Double Encoding of Special Characters
 
 Imagine a scenario where you need to filter records based on a description that includes the string `a)a`:
