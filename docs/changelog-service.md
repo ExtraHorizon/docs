@@ -294,6 +294,31 @@
 
 ## Events Service
 
+### 1.2.3 (2025-10-07)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.3/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL pagination**
+  - Requesting a limit greater than the maximum now sets the maximum
+
+- **Hour passed event triggering removed**
+  - The hour passed event hasn’t been used for quite a while.
+  - Now we’ve actually removed the triggering of the event as well.
+
+
+**🐞 Bugs Fixed**
+
+- **Multi-field sorting now works correctly**
+  - Instead of only applying the last field, results are sorted by each field in order.
+- Empty objects and arrays in the event `content` field are now correctly stored rather than replaced by `null`
+- `event_types` is handled as required field, is shows up as missing in the missing required fields error and omitting it results in a missing required fields error instead of a field format error
+
+</details>
+
+
 ### 1.2.2 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 <details>
