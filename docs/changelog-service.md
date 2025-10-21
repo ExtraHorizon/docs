@@ -494,6 +494,27 @@
 
 ## Localizations Service
 
+### 1.1.10 (2025-10-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.10/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL pagination pagination improved**
+  - The maximum page size is increased to 100.
+
+**🐞 Bugs Fixed**
+
+- Sending localizations with the same key multiple times in a `POST` or `PUT` request results in a `DUPLICATE_LOCALIZATION_INPUT_KEYS` error instead of `SERVICE_EXCEPTION`
+- The localization fields `text` and `key` are now marked as required. Omitting them resulted in a `SERVICE_EXCEPTION` before.
+- A localization with a null value for a `key` is no longer accepted. Before, if created, it broke a few internals and was not able to be requested again.
+- Multi-field sorting now works correctly. Instead of only applying the last field, results are sorted by each field in order.
+- The page its `limit` field for the languages and countries endpoint now show the number of entries rather than 0
+
+</details>
+
+
 ### 1.1.9 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
 <details>
