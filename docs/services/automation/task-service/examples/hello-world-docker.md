@@ -6,7 +6,7 @@ description: Hello world docker tutorial for Extra Horizon task functions
 
 In this simple tutorial we will show you how you can build task functions using docker. First we need to create a folder with the following files:
 
-* A **app.py** file that will contain our hello-world code
+* An **app.py** file that will contain our hello-world code, you can later replace this with your algorithm or custom code.
 * A **Dockerfile** to build our container
 
 {% code title="app.py" lineNumbers="true" %}
