@@ -36,12 +36,7 @@ Regardless of how the [access modes](schemas.md#access-via-schema-access-modes) 
 
 Schemas allow you to set any of the following properties to control who has access to perform certain actions on the documents for the schema.
 
-| Mode         | Action                                                                                    |
-| ------------ | ----------------------------------------------------------------------------------------- |
-| `createMode` | Defines who has access to create documents for the schema                                 |
-| `readMode`   | Defines who has access to view documents for the schema                                   |
-| `updateMode` | Defines who has access to update documents for the schema _(this includes transitioning)_ |
-| `deleteMode` | Defines who has access to delete documents permanently from the schema                    |
+<table><thead><tr><th width="190.5546875">Mode</th><th>Action</th></tr></thead><tbody><tr><td><code>createMode</code></td><td>Defines who has access to create documents for the schema<br><br><em>(Default: <code>"allUsers"</code>)</em></td></tr><tr><td><code>readMode</code></td><td>Defines who has access to view documents for the schema <br><br><em>(Default: <code>["linkedUsers","linkedGroupStaff"]</code>)</em></td></tr><tr><td><code>updateMode</code></td><td>Defines who has access to update documents for the schema <em>(this includes transitioning)</em><br><br><em>(Default:</em> <code>["linkedUsers","linkedGroupStaff"]</code><em>)</em></td></tr><tr><td><code>deleteMode</code></td><td>Defines who has access to delete documents permanently from the schema<br><br><em>(Default: <code>"permissionRequired"</code>)</em></td></tr></tbody></table>
 
 #### Access Mode Values
 
