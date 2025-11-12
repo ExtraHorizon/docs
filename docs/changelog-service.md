@@ -590,6 +590,23 @@
 
 ## Mail Service
 
+### 1.2.2 (2025-11-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- Loosened the restrictions for email validation
+
+**🐞 Bugs Fixed**
+
+- Updated dependencies
+- Resolved non-impactful vulnerability warnings
+
+</details>
+
+
 ### 1.2.1 (2024-06-04)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.1/openapi.yaml)
 <details>
