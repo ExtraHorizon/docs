@@ -13,6 +13,25 @@
 </details>
 
 
+## Users Service 1.5.2 (2025-12-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.2/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- Email validation is now in line with the Mail Service
+
+**🐞 Bugs Fixed**
+
+- All updates to global/group roles are now properly reflected in users already having those roles assigned to them
+- More consistent errors and record counts are returned when updating global/group roles
+- Fixed the behavior of the RQL operators `gt`, `lt`, `ge` and `le` when working with ids
+- Multi-field sorting now works correctly. Instead of only applying the last field, results are sorted by each field in order.
+</details>
+
+
 ## Mail Service 1.2.2 (2025-11-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.2/openapi.yaml)
 
@@ -112,38 +131,26 @@
 </details>
 
 
-## Users Service 1.5.1 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.1/openapi.yaml)
+## Notifications Service 1.1.3 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
+- **Retries for additional Firebase error types**
+  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
+- **RQL improvement**
+  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
-- **No longer subscribing to the unused `hour_passed` event**
+
 
 **🐞 Bugs Fixed**
 
-- Adding/Removing staff roles now correctly check the matching group id
-- Multiple endpoints now return the correct `MISSING_REQUIRED_FIELDS_EXCEPTION` when not providing any fields
-  - `POST /add_to_staff`
-  - `POST /remove_from_staff`
-  - `POST /add_roles`
-  - `POST /remove_roles`
-  - `POST /groups/{groupId}/staff/add_roles`
-  - `POST /groups/{groupId}/staff/remove_roles`
-- Multiple endpoints now return the correct `EMPTY_BODY_EXCEPTION` when no body is provided
-  - `POST /groups/{groupId}/staff/add_roles`
-  - `POST /groups/{groupId}/staff/remove_roles`
-  - `POST /add_roles`
-  - `POST /remove_roles`
-- Adding and removing roles now ignore not-existing roles
-- `POST /add_to_staff` and `POST /remove_from_staff` now return the amount of affected records correctly
-- Following endpoints now remove all the selected roles from the users or staff, not just the last one in the list.
-  - `DELETE /roles`
-  - `POST /remove_roles`
-  - `POST /groups/{groupId}/staff/remove_roles`
+- Querying on field names ending with `_id` in the `fields` object is fixed
+- Now correctly erroring when no RQL is supplied while deleting notifications
+
 
 
 </details>
@@ -197,33 +204,23 @@
 </details>
 
 
-## Notifications Service 1.1.3 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
+## Events Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
-- **Retries for additional Firebase error types**
-  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
-- **RQL improvement**
-  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
-
-
-**🐞 Bugs Fixed**
-
-- Querying on field names ending with `_id` in the `fields` object is fixed
-- Now correctly erroring when no RQL is supplied while deleting notifications
 
 
 
 </details>
 
 
-## Events Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+## Prescriptions Service 1.1.21 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -297,8 +294,8 @@
 </details>
 
 
-## Prescriptions Service 1.1.21 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
+## Users Service 1.5.1 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -306,7 +303,29 @@
 **⚒️ Improvements**
 
 - **Improved support for future database security mechanisms**
+- **No longer subscribing to the unused `hour_passed` event**
 
+**🐞 Bugs Fixed**
+
+- Adding/Removing staff roles now correctly check the matching group id
+- Multiple endpoints now return the correct `MISSING_REQUIRED_FIELDS_EXCEPTION` when not providing any fields
+  - `POST /add_to_staff`
+  - `POST /remove_from_staff`
+  - `POST /add_roles`
+  - `POST /remove_roles`
+  - `POST /groups/{groupId}/staff/add_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
+- Multiple endpoints now return the correct `EMPTY_BODY_EXCEPTION` when no body is provided
+  - `POST /groups/{groupId}/staff/add_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
+  - `POST /add_roles`
+  - `POST /remove_roles`
+- Adding and removing roles now ignore not-existing roles
+- `POST /add_to_staff` and `POST /remove_from_staff` now return the amount of affected records correctly
+- Following endpoints now remove all the selected roles from the users or staff, not just the last one in the list.
+  - `DELETE /roles`
+  - `POST /remove_roles`
+  - `POST /groups/{groupId}/staff/remove_roles`
 
 
 </details>
@@ -433,19 +452,22 @@
 </details>
 
 
-## Users Service 1.5.0 (2024-06-13)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
+## Authentication Service 2.2.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **🎁 Features**
 
-* An event is triggered when a password reset is completed
-  * The `password_reset_completed` event is triggered when a user completes a password reset.
+* Logout the user on password reset completion or user deletion
+  * When a user completes a password reset or a user is deleted, the tokens belonging to the user are removed.
+  * The tokens which are removed include all tokens related to oAuth1, oAuth2, MFA and SSO.
 
-* Clean up on user deletion
-  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
+
+**⚒️ Improvements**
+
+* Dependencies updated
 
 </details>
 
@@ -465,22 +487,19 @@
 </details>
 
 
-## Authentication Service 2.2.0 (2024-06-13)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
+## Users Service 1.5.0 (2024-06-13)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.0/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **🎁 Features**
 
-* Logout the user on password reset completion or user deletion
-  * When a user completes a password reset or a user is deleted, the tokens belonging to the user are removed.
-  * The tokens which are removed include all tokens related to oAuth1, oAuth2, MFA and SSO.
+* An event is triggered when a password reset is completed
+  * The `password_reset_completed` event is triggered when a user completes a password reset.
 
-
-**⚒️ Improvements**
-
-* Dependencies updated
+* Clean up on user deletion
+  * When a user is deleted the password reset and account activation requests belonging to that user are removed as well.
 
 </details>
 

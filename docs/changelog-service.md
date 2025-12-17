@@ -1203,6 +1203,24 @@
 
 ## Users Service
 
+### 1.5.2 (2025-12-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- Email validation is now in line with the Mail Service
+
+**🐞 Bugs Fixed**
+
+- All updates to global/group roles are now properly reflected in users already having those roles assigned to them
+- More consistent errors and record counts are returned when updating global/group roles
+- Fixed the behavior of the RQL operators `gt`, `lt`, `ge` and `le` when working with ids
+- Multi-field sorting now works correctly. Instead of only applying the last field, results are sorted by each field in order.
+</details>
+
+
 ### 1.5.1 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.1/openapi.yaml)
 <details>
