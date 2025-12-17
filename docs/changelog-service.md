@@ -1001,6 +1001,19 @@
 
 ## Tasks Service
 
+### 1.7.0 (2025-12-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+	
+**🎁 Features**
+- **Default function priority**  
+  Functions can now be assigned a default priority. All tasks started without an explicit priority will be assigned the targeted function its default priority (or the default value 0)
+
+</details>
+
+
 ### 1.6.0 (2024-01-02)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
 <details>
