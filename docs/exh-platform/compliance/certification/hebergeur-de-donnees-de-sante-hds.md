@@ -15,32 +15,32 @@ HDS certification is **mandatory** for all cloud providers and IT services manag
 Extra Horizon has been certified since 30 October 2023 for HDS and can be used by companies that need to prove compliance to HDS for the hosting of their personal health data.
 
 **Certified Entity**:\
-&#xNAN;_&#x45;xtra Horizon_\
-_Kempischesteenweg 303/27_\
-_3500 Hasselt, Belgium_
+\&#xNAN;_Extra Horizon_\
+&#xNAN;_&#x4B;empischesteenweg 303/27_\
+&#xNAN;_&#x33;500 Hasselt, Belgium_
 
 **Certificate Number**:\
-&#xNAN;_&#x48;DS 789841_
+\&#xNAN;_HDS 789841_
 
 **Issuing Body**:\
-&#xNAN;_&#x42;SI (EMEA)_\
-_389 Chiswick High road, London, W4 4AL, United Kingdom_
+\&#xNAN;_BSI (EMEA)_\
+&#xNAN;_&#x33;89 Chiswick High road, London, W4 4AL, United Kingdom_
 
 **Date of Initial Issue**:\
-&#xNAN;_&#x4F;ctober 30, 2023_
+\&#xNAN;_October 30, 2023_
 
 **Date of Most Recent Renewal**:\
-&#xNAN;_&#x4F;ctober 30, 2023_
+\&#xNAN;_October 30, 2023_
 
 **Certificate Valid Until**:\
-&#xNAN;_&#x4F;ctober 29, 2026_
+\&#xNAN;_October 29, 2026_
 
 **Current Status**:\
 ✅ _Valid_
 
 ### 📎 Documents
 
-{% file src="../../../.gitbook/assets/HDS Extra Horizon 789841.pdf" %}
+{% file src="../../../.gitbook/assets/HDS 789841 - 001 (1).pdf" %}
 
 ### 🔁 Certification Updates
 

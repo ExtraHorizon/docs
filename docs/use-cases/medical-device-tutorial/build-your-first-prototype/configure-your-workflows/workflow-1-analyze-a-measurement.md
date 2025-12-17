@@ -1,8 +1,8 @@
 # Workflow 1: Analyze a measurement
 
-In the previous section we created a schema to store our data and we managed to store & retrieve measurement documents. What we want to accomplish in this section, is to perform an _analysis_ on the measurements that are uploaded. &#x20;
+In the previous section we created a schema to store our data and we managed to store & retrieve measurement documents. What we want to accomplish in this section, is to perform an _analysis_ on the measurements that are uploaded.
 
-Such an analysis implies that we have some code running in our backend which checks the documents, performs a calculation and then stores the result. In Extra Horizon parlance, this piece of code is called a _task_.&#x20;
+Such an analysis implies that we have some code running in our backend which checks the documents, performs a calculation and then stores the result. In Extra Horizon parlance, this piece of code is called a _task_.
 
 For this section, we'll be using the `2-workflows` directory in the tutorial repository. The task we're creating is located in `2-workflows/tasks/analyze-blood-pressure`
 
@@ -20,7 +20,7 @@ It only requires a single function which is exported. You can choose the name of
 
 ## Transitions & task triggers
 
-Given our data schema and a task, you feel that there is a connection missing here. When we upload a measurement, how will the task know that there is a new measurement and it needs to run?&#x20;
+Given our data schema and a task, you feel that there is a connection missing here. When we upload a measurement, how will the task know that there is a new measurement and it needs to run?
 
 Schema transition actions to the rescue!
 
@@ -60,7 +60,7 @@ In our `blood-pressure.json` schema, we've added a couple of things:
    * We've added a transition from the `created` state to the `analyzing` state. The action attached to it is a _task action_. This means that whenever this transition is invoked, the task specified by `functionName` will be called.
    * The transition is an `automatic` transition, which means that the transition will occur automatically when the document is in the `created` state.
 
-This makes sure that whenever a new measurement is uploaded, a task is notified so it can perform its analysis.&#x20;
+This makes sure that whenever a new measurement is uploaded, a task is notified so it can perform its analysis.
 
 But what happens when the analysis is done? A task would need to:
 
@@ -128,8 +128,8 @@ We added
 
 1. A `mark-as-analyzed` transition which will transition a document from the `analyzing` state to the `analyzed` state. Note that
    1. It's a `manual` transition, which means you need to manually trigger it from your code. Which makes sense in our case, since we want our task to call this transition when the analysis is done.
-   2. You cannot trigger this transition from any state other than `analyzing`.&#x20;
-   3. The transition has an _input condition_ attached to it. An input condition basically says "if you want to use this transition, you need to supply it with this structure of data". Coming back to our analysis, we want to be sure that when the document is in the analyzed state, that the `category` is guaranteed to be filled in. Therefore we have the input condition which requires the presence of our diagnosis which is stored in the `category`  property.
+   2. You cannot trigger this transition from any state other than `analyzing`.
+   3. The transition has an _input condition_ attached to it. An input condition basically says "if you want to use this transition, you need to supply it with this structure of data". Coming back to our analysis, we want to be sure that when the document is in the analyzed state, that the `category` is guaranteed to be filled in. Therefore we have the input condition which requires the presence of our diagnosis which is stored in the `category` property.
 2. We also add the `category` property to our list of properties. Keep in mind that _any_ piece of data that you want to store in a document, needs to be listed in the `properties` section.
 
 Let's summarize what we've done here:
@@ -139,11 +139,9 @@ Let's summarize what we've done here:
 
 See a visual representation below:
 
-<figure><img src="../../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
-
-
-All that is left now, is actually creating the task :)&#x20;
+All that is left now, is actually creating the task :)
 
 ## Constructing the analyze-blood-pressure task
 
@@ -216,14 +214,12 @@ exports.handler = async (task) => {
 
 Please examine the code above to familiarize yourself with how we do this using the SDK.
 
-The `getDiagnosis` function will take the blood pressure measurements and return a diagnosis. The actual code for this is not that important, you can look it up in the tutorial repo.&#x20;
+The `getDiagnosis` function will take the blood pressure measurements and return a diagnosis. The actual code for this is not that important, you can look it up in the tutorial repo.
 
 Important to note:
 
-* When a task is triggered by an action in a document, it receives both the `schemaId` and the `documentId` of that document in a `data` object (see `handler` function in `index-flow-1.js`).  Using this document ID we can uniquely identify the document that needs to be processed
+* When a task is triggered by an action in a document, it receives both the `schemaId` and the `documentId` of that document in a `data` object (see `handler` function in `index-flow-1.js`). Using this document ID we can uniquely identify the document that needs to be processed
 * To call the transition of a document, you need to look up the transition ID that you need to call first.
-
-
 
 ## Upload (sync) your schema & task
 
@@ -269,7 +265,7 @@ module.exports = {
 
 That still begs the question: how do we get those credentials **in** the environment variables in the first place?
 
-Under `2-workflows/tasks/analyze-blood-pressure`  you'll find a file called `task-config.json` , which is also listed here:
+Under `2-workflows/tasks/analyze-blood-pressure` you'll find a file called `task-config.json` , which is also listed here:
 
 {% tabs %}
 {% tab title="JSON (tasks/analyze-blood-pressure/task-config.json)" %}
@@ -346,9 +342,7 @@ Retrieved document 656742535a8b65e54ae3de65
 
 ## Test your task locally
 
-
-
-Feel free to make some changes to the task.  During development, it's important to be able to test your task locally.
+Feel free to make some changes to the task. During development, it's important to be able to test your task locally.
 
 {% hint style="warning" %}
 Important: when testing locally, make sure that the `analyze-blood-pressure` task is not running in the Extra Horizon backend. Otherwise any created measurement will automatically be process by that task. You can easily remove the task using the CLI:

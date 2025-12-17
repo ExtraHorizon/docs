@@ -12,7 +12,7 @@ Customers should carefully consider the ExH services they choose and the locatio
 
 {% columns %}
 {% column %}
-### **ExH responsibility of “Security of ExH”**  <a href="#exh-responsibility-of-security-of-exh" id="exh-responsibility-of-security-of-exh"></a>
+#### **ExH responsibility of “Security of ExH”** <a href="#exh-responsibility-of-security-of-exh" id="exh-responsibility-of-security-of-exh"></a>
 
 ExtraHorizon is responsible for protecting the infrastructure and systems that runs all of the services offered in the ExH Cluster as well as the services themselves. This infrastructure is composed of the hardware, software, networking, and facilities that run ExH Clusters.
 
@@ -20,17 +20,13 @@ ExH will be responsible for the management of software systems (e.g. software up
 {% endcolumn %}
 
 {% column %}
-### **Customer responsibility “Security in ExH”** <a href="#customer-responsibility-security-in-exh" id="customer-responsibility-security-in-exh"></a>
+#### **Customer responsibility “Security in ExH”** <a href="#customer-responsibility-security-in-exh" id="customer-responsibility-security-in-exh"></a>
 
 For all ExtraHorizon services, ExH operates the infrastructure layer, the operating system, and platforms, and customers access the endpoints to store and retrieve data.
 
 Customers are responsible for managing their data, classifying their assets, and using IAM tools to apply the appropriate permissions.
-
-
 {% endcolumn %}
 {% endcolumns %}
-
-
 
 This customer/ExH shared responsibility model also extends to IT controls. Customers can then use the ExH control and compliance documentation available to them to perform their control evaluation and verification procedures as required. Below are examples of controls that are managed by AWS, AWS Customers and/or both.
 

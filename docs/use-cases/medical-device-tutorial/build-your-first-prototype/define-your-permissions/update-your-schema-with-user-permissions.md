@@ -1,12 +1,12 @@
 # Update your schema with user permissions
 
-As mentioned in the previous section, we've assumed so far that every user has access to all the documents. Of course, this is not how medical applications are supposed to work.&#x20;
+As mentioned in the previous section, we've assumed so far that every user has access to all the documents. Of course, this is not how medical applications are supposed to work.
 
 We want our patients to have access to their own information only. They should not be able to see information about other patients. So let's change this!
 
 ## Create a patient
 
-Head to your Control Center and press the `NEW` button under Users -> Users.&#x20;
+Head to your Control Center and press the `NEW` button under Users -> Users.
 
 <figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 15.15.22.png" alt=""><figcaption></figcaption></figure>
 
@@ -16,11 +16,11 @@ Fill in the details, note down the password you've used and click `CREATE` to th
 
 So now we've created a new user. Note that user doesn't have **any** permissions because we didn't assign a global role. And that's fine, because a patient doesn't need any global permission. We just want our patients to see their own data.
 
-## Update your schema&#x20;
+## Update your schema
 
-This brings us to the following problem: if our new patient would create a measurement, they would not be able to retrieve it. Why not? Since we did not specify a `readMode` in our schema, it's set to `default` .  As also mentioned in the permissions introduction, this means the following users can read:
+This brings us to the following problem: if our new patient would create a measurement, they would not be able to retrieve it. Why not? Since we did not specify a `readMode` in our schema, it's set to `default` . As also mentioned in the permissions introduction, this means the following users can read:
 
-* users whose userId is in the `userIds` array of a document.&#x20;
+* users whose userId is in the `userIds` array of a document.
 * users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
 
 Neither of these conditions apply to our newly-created patient. But, as you know by now, there's a solution for this: `linkCreator`
@@ -59,10 +59,8 @@ In the `examples` directory of the repository, you'll find a `patient-measuremen
 
 Feel free to play around with it further. For example: create another measurement using another patient you created. Then you can verify that they are not able to see each other document.
 
-
-
 Head over to the control center, log in with your own user and go to Data -> Documents. Select the `blood-pressure-measurement` schema from the table and you'll see all blood pressure measurement documents that have been created, including the ones from your patients
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 15.39.28 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 15.39.28 (1).png" alt=""><figcaption></figcaption></figure>
 
 Alternatively, you can always use the `get-measurement.js` script to fetch a particular measurement.

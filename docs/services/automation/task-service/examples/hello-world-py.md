@@ -13,7 +13,7 @@ def handler(event, context):
 
 If you are using visual studio code, this should look something like this:
 
-<figure><img src="../../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### task-config.json
 
@@ -43,7 +43,7 @@ For our function it looks something like this:
 
 In visual studio code your project should something like this:
 
-<figure><img src="../../../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Deploying with the ExH CLI
 
@@ -67,7 +67,7 @@ Using postman we can create a new task execution for our hello-world function. C
 
 You can log into the Extra Horizon control center to verify the execution of your function.
 
-<figure><img src="../../../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
 
 Go to tasks>hello-world-python>executions.
 

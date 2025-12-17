@@ -2,7 +2,7 @@
 
 * Go to Azure Active Directory
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-03-29 at 16.53.20 (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Screenshot 2023-03-29 at 16.53.20 (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Press App registrations in the side bar
 * Press `new registration`

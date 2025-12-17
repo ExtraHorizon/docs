@@ -83,7 +83,8 @@ If a function is removed from the task service its executions (tasks) and the lo
     ]
   },
   "executionOptions": {
-    "permissionMode": "permissionRequired"
+    "permissionMode": "permissionRequired",
+    "defaultPriority": 10
   },
 }
 ```
@@ -180,7 +181,8 @@ The following code snippet shows an example how to configure the execution optio
 {
   ...
   "executionOptions": {
-    "permissionMode": "permissionRequired"
+    "permissionMode": "permissionRequired",
+    "defaultPriority": 10
   },
 }
 ```
@@ -189,16 +191,24 @@ The following code snippet shows an example how to configure the execution optio
 
 `permissionMode`
 
-This property determines execution restrictions based on its assigned value. One of the following values may be assigned to the `permissionMode` property to enforce execution restrictions.&#x20;
+This property determines execution restrictions based on its assigned value. One of the following values may be assigned to the `permissionMode` property to enforce execution restrictions.
 
 {% hint style="info" %}
 The permissionMode is only considered for direct execution of a Function or [API Functions](api-functions.md).
 {% endhint %}
 
-| permissionMode       | Description                                                                                                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `permissionRequired` | <p>A user requires a permission as stated for the <a href="functions.md#user-permissions">API Function permissions</a> section. <br><br>This is the default permission mode.</p> |
-| `allUsers`           | A user must be logged in, but no permission is required.                                                                                                                         |
-| `public`             | Any party may execute this function without any restrictions.                                                                                                                    |
+| permissionMode       | Description                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `permissionRequired` | <p>A user requires a permission as stated for the <a href="functions.md#user-permissions">API Function permissions</a> section.<br><br>This is the default permission mode.</p> |
+| `allUsers`           | A user must be logged in, but no permission is required.                                                                                                                        |
+| `public`             | Any party may execute this function without any restrictions.                                                                                                                   |
 
 For information regarding the application of permissions to users please refer to [global roles](../../access-management/user-service/global-roles.md).
+
+`defaultPriority`
+
+This property determines the priority assigned to all tasks created for this function, unless a priority is specified for a task explicitly.
+
+{% hint style="info" %}
+The defaultPriority is not considered for direct execution of a Function or [API Functions](api-functions.md). Since those execute directly and don't take a priority into account.
+{% endhint %}
