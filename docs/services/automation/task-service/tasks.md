@@ -68,7 +68,7 @@ A Task object is uniquely identified within the Task Service by its id. It conta
 * `tags` - \[optional] Descriptive keywords that improve the search experience. For example, they can be used to trace automated Tasks by adding the Task id’s to the tags list.
 * `startTimestamp` - set when the task should start
 * `priority` - define which tasks should get precedence in a queue
-* `createdByApplicationId` - The application which created the task&#x20;
+* `createdByApplicationId` - The application which created the task
 * `createdByUserId` - The user who created the task
 
 {% hint style="info" %}
@@ -79,7 +79,7 @@ If you define a function schedule, you will only see the next scheduled task exe
 
 If you want to execute a function and immediately receive its result, you can use the direct execution feature. This approach creates a Task in the background and waits for it to finish, returning the completed Task object once execution is complete.
 
-You can also have your function code return a JSON serialisable value, which will be available in the `result` field of the returned Task object. The `result`  value is not stored in the task object, it's only returned in the response for this mode of execution.
+You can also have your function code return a JSON serialisable value, which will be available in the `result` field of the returned Task object. The `result` value is not stored in the task object, it's only returned in the response for this mode of execution.
 
 ```typescript
 const task = await exh.tasks.functions.execute('yourFunctionName', {
@@ -89,7 +89,7 @@ const task = await exh.tasks.functions.execute('yourFunctionName', {
 console.log(task.result); // Value returned by your function code
 ```
 
-The function you're targeting with direct execution cannot have a `timeout`  value larger than 30 seconds.
+The function you're targeting with direct execution cannot have a `timeout` value larger than 30 seconds.
 
 ## Task Lifecycle
 
@@ -101,7 +101,7 @@ However, if tasks are queued, the `priority` attribute can be used to control th
 
 To ensure critical tasks are executed first when queuing occurs, assign them a higher priority value.
 
-The `priority` attribute can range from `-9007199254740991` to `9007199254740991`. When not specified, the default value `0` is used.
+The `priority` attribute can range from `-9007199254740991` to `9007199254740991`. If it is not specified, the function’s `defaultPriority` is used. If that is also not defined, the value defaults to `0`.
 
 ### Execution status
 
