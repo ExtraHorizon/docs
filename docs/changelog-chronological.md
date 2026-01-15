@@ -1,4 +1,17 @@
 
+## Reports Service 1.0.15 (2026-01-15)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.15/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+
+- The Content-Encoding header is no longer added twice to the response of the `GET /:reportId/pdf` endpoint
+
+</details>
+
+
 ## API Gateway 1.7.0 (2026-01-09)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.7.0/openapi.yaml)
 
@@ -153,27 +166,24 @@
 </details>
 
 
-## Notifications Service 1.1.3 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
+## Localizations Service 1.1.9 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
-
-- **Retries for additional Firebase error types**
-  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
-- **RQL improvement**
-  - Requesting a limit greater than the maximum now sets the maximum
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service 
+  - Sorting on `id` fields is now more consistent 
+  - Requesting a limit greater than the maximum now sets the maximum 
 - **Improved support for future database security mechanisms**
 
-
 **🐞 Bugs Fixed**
-
-- Querying on field names ending with `_id` in the `fields` object is fixed
-- Now correctly erroring when no RQL is supplied while deleting notifications
-
-
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on custom_fields keys ending with `_id` now works
+- `POST` and `PUT` requests with an empty request body return the correct error
 
 </details>
 
@@ -204,28 +214,6 @@
 </details>
 
 
-## Localizations Service 1.1.9 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-- **RQL improvements**
-  - Less 5xx errors returned where an invalid RQL error was expected
-  - The `skip_count` operator is now also available for this service 
-  - Sorting on `id` fields is now more consistent 
-  - Requesting a limit greater than the maximum now sets the maximum 
-- **Improved support for future database security mechanisms**
-
-**🐞 Bugs Fixed**
-- The `ne` RQL operator now works correctly as a “not equals”
-- Querying on custom_fields keys ending with `_id` now works
-- `POST` and `PUT` requests with an empty request body return the correct error
-
-</details>
-
-
 ## Events Service 1.2.2 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
@@ -235,6 +223,31 @@
 **⚒️ Improvements**
 
 - **Improved support for future database security mechanisms**
+
+
+
+</details>
+
+
+## Notifications Service 1.1.3 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Retries for additional Firebase error types**
+  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
+- **RQL improvement**
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+
+**🐞 Bugs Fixed**
+
+- Querying on field names ending with `_id` in the `fields` object is fixed
+- Now correctly erroring when no RQL is supplied while deleting notifications
 
 
 
@@ -642,6 +655,26 @@
 </details>
 
 
+## Tasks Service 1.6.0 (2024-01-02)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Double encoding the `<` and `>` characters when searching for them now works.
+
+</details>
+
+
 ## Profiles Service 1.2.0 (2024-01-02)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.0/openapi.yaml)
 
@@ -664,26 +697,6 @@
   * `patient_id` can now be removed from profile groups
   * An empty list of fields to remove is now correctly handled
   * Attempts to remove an id or timestamp field are now correctly handled
-
-</details>
-
-
-## Tasks Service 1.6.0 (2024-01-02)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
-
-
-**🐞 Bugs Fixed**
-
-* RQL
-  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
-  * Double encoding the `<` and `>` characters when searching for them now works.
 
 </details>
 

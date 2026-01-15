@@ -988,6 +988,18 @@
 
 ## Reports Service
 
+### 1.0.15 (2026-01-15)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.15/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+
+- The Content-Encoding header is no longer added twice to the response of the `GET /:reportId/pdf` endpoint
+
+</details>
+
+
 ### 1.0.14 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.14/openapi.yaml)
 <details>
