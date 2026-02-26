@@ -611,6 +611,21 @@
 
 ## Mail Service
 
+### 1.3.0 (2026-02-26)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+- **Added support for the template service V2**  
+  Emails can now be sent using templates from Template Service V2. The Template Service automatically resolves either to a V1 template of V2 template.
+
+- **Send emails by template name rather than id**  
+  The POST / endpoint now also accepts a template_name property to target a V2 template by name rather than having to supply templates by their id.
+</details>
+
+
 ### 1.2.2 (2025-11-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.2.2/openapi.yaml)
 <details>
@@ -987,6 +1002,18 @@
 
 
 ## Reports Service
+
+### 1.0.16 (2026-01-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.16/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+
+- The reports service no longer throws an error when requesting to prerender a report
+
+</details>
+
 
 ### 1.0.15 (2026-01-15)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.15/openapi.yaml)

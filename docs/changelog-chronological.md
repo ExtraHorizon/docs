@@ -1,4 +1,33 @@
 
+## Mail Service 1.3.0 (2026-02-26)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+- **Added support for the template service V2**  
+  Emails can now be sent using templates from Template Service V2. The Template Service automatically resolves either to a V1 template of V2 template.
+
+- **Send emails by template name rather than id**  
+  The POST / endpoint now also accepts a template_name property to target a V2 template by name rather than having to supply templates by their id.
+</details>
+
+
+## Reports Service 1.0.16 (2026-01-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.16/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+
+- The reports service no longer throws an error when requesting to prerender a report
+
+</details>
+
+
 ## Reports Service 1.0.15 (2026-01-15)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.15/openapi.yaml)
 
@@ -34,20 +63,6 @@
 </details>
 
 
-## Tasks Service 1.7.0 (2025-12-17)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-	
-**🎁 Features**
-- **Default function priority**  
-  Functions can now be assigned a default priority. All tasks started without an explicit priority will be assigned the targeted function its default priority (or the default value 0)
-
-</details>
-
-
 ## Users Service 1.5.2 (2025-12-17)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.2/openapi.yaml)
 
@@ -64,6 +79,20 @@
 - More consistent errors and record counts are returned when updating global/group roles
 - Fixed the behavior of the RQL operators `gt`, `lt`, `ge` and `le` when working with ids
 - Multi-field sorting now works correctly. Instead of only applying the last field, results are sorted by each field in order.
+</details>
+
+
+## Tasks Service 1.7.0 (2025-12-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+	
+**🎁 Features**
+- **Default function priority**  
+  Functions can now be assigned a default priority. All tasks started without an explicit priority will be assigned the targeted function its default priority (or the default value 0)
+
 </details>
 
 
@@ -166,24 +195,17 @@
 </details>
 
 
-## Localizations Service 1.1.9 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
+## Events Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
-- **RQL improvements**
-  - Less 5xx errors returned where an invalid RQL error was expected
-  - The `skip_count` operator is now also available for this service 
-  - Sorting on `id` fields is now more consistent 
-  - Requesting a limit greater than the maximum now sets the maximum 
+
 - **Improved support for future database security mechanisms**
 
-**🐞 Bugs Fixed**
-- The `ne` RQL operator now works correctly as a “not equals”
-- Querying on custom_fields keys ending with `_id` now works
-- `POST` and `PUT` requests with an empty request body return the correct error
+
 
 </details>
 
@@ -214,17 +236,24 @@
 </details>
 
 
-## Events Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+## Localizations Service 1.1.9 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
-
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service 
+  - Sorting on `id` fields is now more consistent 
+  - Requesting a limit greater than the maximum now sets the maximum 
 - **Improved support for future database security mechanisms**
 
-
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on custom_fields keys ending with `_id` now works
+- `POST` and `PUT` requests with an empty request body return the correct error
 
 </details>
 
@@ -379,6 +408,27 @@
 </details>
 
 
+## Profiles Service 1.2.1 (2025-03-27)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+
+**🐞 Bugs Fixed**
+
+- Querying on fields ending with `_id` in custom data is fixed
+
+</details>
+
+
 ## Prescriptions Service 1.1.20 (2025-03-27)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.20/openapi.yaml)
 
@@ -399,27 +449,6 @@
 
 - The race conditions in prescription scanning and activating are solved
 - The `free`/`not_free`/`paid_by_group`/`not_paid` update queries are fixed
-- Querying on fields ending with `_id` in custom data is fixed
-
-</details>
-
-
-## Profiles Service 1.2.1 (2025-03-27)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.1/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-
-- **RQL improvements**
-  - Sorting on `id` fields is now more consistent
-  - Requesting a limit greater than the maximum now sets the maximum
-- **Improved support for future database security mechanisms**
-
-
-**🐞 Bugs Fixed**
-
 - Querying on fields ending with `_id` in custom data is fixed
 
 </details>
@@ -655,26 +684,6 @@
 </details>
 
 
-## Tasks Service 1.6.0 (2024-01-02)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
-
-
-**🐞 Bugs Fixed**
-
-* RQL
-  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
-  * Double encoding the `<` and `>` characters when searching for them now works.
-
-</details>
-
-
 ## Profiles Service 1.2.0 (2024-01-02)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.0/openapi.yaml)
 
@@ -697,6 +706,26 @@
   * `patient_id` can now be removed from profile groups
   * An empty list of fields to remove is now correctly handled
   * Attempts to remove an id or timestamp field are now correctly handled
+
+</details>
+
+
+## Tasks Service 1.6.0 (2024-01-02)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Double encoding the `<` and `>` characters when searching for them now works.
 
 </details>
 
@@ -1001,18 +1030,6 @@
 </details>
 
 
-## Logs Service 1.0.0 (2022-11-18)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-* View the API access logs
-  * View and query the API access logs from the comfort of your ExH cluster.
-</details>
-
-
 ## Users Service 1.1.12 (2022-11-18)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.1.12/openapi.yaml)
 
@@ -1026,6 +1043,18 @@
 **🐞 Bugs Fixed**
 * Trying to add a non existing role to a user no longer affects the user
 * (Regression) The RQL select operation no longer affects updates
+</details>
+
+
+## Logs Service 1.0.0 (2022-11-18)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+* View the API access logs
+  * View and query the API access logs from the comfort of your ExH cluster.
 </details>
 
 
@@ -1142,8 +1171,8 @@
 </details>
 
 
-## Notifications Service 1.0.9 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+## Profiles Service 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1154,8 +1183,8 @@
 </details>
 
 
-## Profiles Service 1.1.4 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+## Notifications Service 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1217,8 +1246,8 @@
 </details>
 
 
-## Data Service 1.1.1 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.1/openapi.yaml)
+## Payments Service 1.3.2 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1241,8 +1270,8 @@
 </details>
 
 
-## Payments Service 1.3.2 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
+## Data Service 1.1.1 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
