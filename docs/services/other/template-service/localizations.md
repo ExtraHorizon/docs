@@ -1,34 +1,33 @@
-# Localizations
+# Localizations in Templates
 
-Localizations are short text-snippets identified by a unique key, which have multiple translations into different languages. We can manage localizations through the Localizations Service. In the context of templates, we can use localizations to create localize-able templates. In templates, we represent localizations in curly brackets. Take the following template for example, where we use a localization with key `greeting`:
+Localizations are short text-snippets identified by a unique key, which have multiple translations into different languages. We can manage Localizations through the [Localizations Service](../localizations-service/). In the context of Templates, we can use Localizations to create localize-able templates. In templates, we represent localizations with the helper function `t`. Take the following Template for example, where we use a Localization with key `greeting`:
 
 ```json
 {
-    "id": "5cff960c46e0fb0007b45cc4",
-    "schema": {
-        "type": "object",
-        "fields": {
-            "first_name": { "type": "string" }
-        }
+    "name": "myTemplateName",
+    "inputs": {
+        "first_name": { "type": "string" }
     },
-    "fields": {
-        "message": "{{greeting}} $content.first_name,"
+    "outputs": {
+        "message": "{{t 'greeting'}} {{@inputs.first_name}},"
     }
 }
 ```
 
-In comparison to our previous email template, we have now changed our greeting `Dear` with the key to a greeting localization. This means we can now fill the greeting localization with whatever translation of a greeting we want. Imagine we ask the template service to resolve our template in Dutch (`NL`) by using the following snippet:
+In the original Template example, the greeting “Dear” was hardcoded. We have now replaced it with a `greeting` Localization.
+
+This allows the Template Service to resolve the appropriate translated greeting dynamically. For example, if we resolve the Template in Dutch (`NL`), using the following snippet:
 
 ```typescript
-const result = await exh.templates.resolveAsJson('5cff960c46e0fb0007b45cc4', {
+const result = await exh.templatesV2.resolve('myTemplateName', {
     language: 'NL',
-    content: {
+    inputs: {
         first_name: 'John'
     }
 });
 ```
 
-The template service will lookup the `greeting` localization in the localization service, which will in turn respond with the following localization:
+The Template Service will lookup the `greeting` Localization in the Localization Service, which could contain something like:
 
 ```json
 {
@@ -40,7 +39,7 @@ The template service will lookup the `greeting` localization in the localization
 }
 ```
 
-Eventually, the resolver will put everything together correctly and respond with the following resolved template:
+Eventually, the resolver will put everything together correctly and respond with the following resolved Template:
 
 ```json
 {
@@ -48,12 +47,12 @@ Eventually, the resolver will put everything together correctly and respond with
 }
 ```
 
-Or, if we asked the resolver to resolve the template in English:
+Or, if we asked the resolver to resolve the Template in English:
 
 ```typescript
-const result = await exh.templates.resolveAsJson('5cff960c46e0fb0007b45cc4', {
+const result = await exh.templatesV2.resolve('myTemplateName', {
     language: 'EN',
-    content: {
+    inputs: {
         first_name: 'John'
     }
 });
@@ -69,37 +68,34 @@ The response would be:
 
 ### Localizations with arguments <a href="#localizations-with-arguments" id="localizations-with-arguments"></a>
 
-Because of grammar rules in certain languages, the order of words in a sentence can differ. Of course, this poses a problem if we use localizations like in the example mentioned above. Sometimes a localization will need to determine the exact placement of variable content in a string. Therefore localizations can accept arguments.
+Because of grammar rules in certain languages, the order of words in a sentence can differ. Of course, this poses a problem if we use Localizations like in the example mentioned above. Sometimes a Localization will need to determine the exact placement of variable content in a string. Therefore Localizations can accept arguments.
 
-Arguments can be used in localization by using the placeholders `$1`, `$2`, etc...
+Arguments can be used in Localization by using the placeholders `{{place_holder_name}}` .
 
 ```json
 {
   "key": "heart_rate_msg",
   "text": {
-    "EN": "On $1 at $2, your heart rate was $3 bpm.",
-    "ES": "El $1 a la(s) $2, su frecuencia cardíaca era de $3 lpm.",
-    "NL": "Uw hartslag was $3 spm op $1 om $2."
+    "EN": "On {{date}} at {{time}}, your heart rate was {{rate}} bpm.",
+    "ES": "El {{date}} a la(s) {{time}}, su frecuencia cardíaca era de {{rate}} lpm.",
+    "NL": "Uw hartslag was {{rate}} spm op {{date}} om {{time}}."
   }
 }
 ```
 
-With a template:
+With a Template:
 
 ```json
 {
-    "id": "5d00e7da46e0fb0007b45cc8",
-    "schema": {
-        "type": "object",
-        "fields": {
-            "date": { "type": "string" },
-            "time": { "type": "string" },
-            "rate": { "type": "number" }
-        }
+    "name": "myTemplateName",
+    "inputs": {
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "rate": { "type": "number" }
     },
-    "fields": {
-        // This example is just the localization with arguments
-        "message": "{{heart_rate_msg,$content.date,$content.time,$content.rate}}"
+    "outputs": {
+        // This example is just supplying the Localization with its arguments
+        "message": "{{t 'heart_rate_msg' date=@inputs.date time=@inputs.time rate=@inputs.rate }}"
     }
 }
 ```
@@ -107,9 +103,9 @@ With a template:
 Resolving for English:
 
 ```typescript
-const result = await exh.templates.resolveAsJson('5d00e7da46e0fb0007b45cc8', {
+const result = await exh.templatesV2.resolve('myTemplateName', {
     language: 'EN',
-    content: {
+    inputs: {
         date: '06/10/2021',
         time: '21:00',
         rate: 63
