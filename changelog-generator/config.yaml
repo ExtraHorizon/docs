@@ -42,8 +42,8 @@ params:
     templates-service:
       name: Template Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/template-service
-      basePath: "/templates/v1"
-      defaultVersion: 1.0.14
+      basePath: "/templates/v2"
+      defaultVersion: 2.0.0
     payments-service:
       name: Payments Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/payments-service
