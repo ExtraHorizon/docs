@@ -16,7 +16,7 @@ The following JSON example shows the definition of a Template:
 ```json
 {
     "name": "myTemplateName",
-    "description" : "Example Template Definition",
+    "description": "Example Template Definition",
     "inputs": {
         "first_name": { "type": "string" }
     },
@@ -45,7 +45,7 @@ Create a `myTemplateName.json` file with the same structure as the example Templ
 {% code title="myTemplateName.json" %}
 ```json
 {
-    "description" : "Example Template Definition",
+    "description": "Example Template Definition",
     "inputs": {
         "first_name": { "type": "string" }
     },
