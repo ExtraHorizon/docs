@@ -4,7 +4,7 @@ Now that the measurement is analyzed, let's create a simple PDF report which is 
 
 ## Basic concepts
 
-In the previous workflow, we've used the data service to save measurement data to Extra Horizon. The data service is designed for storing structured data. However, not all data can be written in a structured manner.&#x20;
+In the previous workflow, we've used the data service to save measurement data to Extra Horizon. The data service is designed for storing structured data. However, not all data can be written in a structured manner.
 
 In this section, we'll leverage the file service to handle unstructured data. While the data-service is designed for storing structured data, the file service is ideal for managing unstructured data. In this section, you'll learn how to create a PDF document from a template and seamlessly interact with the file service using the SDK. You can learn more about the file service [here](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service).
 
@@ -79,18 +79,16 @@ Under `2-workflows/templates/pdf-analysis` you'll find the template that we're g
     </tr>
 </table>
 ```
-
-
 {% endtab %}
 {% endtabs %}
 
-This template consists of 2 files: an HTML file and a JSON file.&#x20;
+This template consists of 2 files: an HTML file and a JSON file.
 
 The JSON file defines the structure of the template variables, while the HTML file is the template where those variables are used.
 
 The reason why it is split in 2 files, is because mixing HTML and JSON in 1 file doesn't make for a pleasant developer experience.
 
-When uploading the template, the CLI will read the HTML file, add it as a `body` property in the `fields` object in the JSON file and upload the result.&#x20;
+When uploading the template, the CLI will read the HTML file, add it as a `body` property in the `fields` object in the JSON file and upload the result.
 
 ## Update schema
 
@@ -122,7 +120,7 @@ As mentioned in the introduction, a _file token_ is something you get back when 
 </strong><strong>      "name": "add-report",
 </strong><strong>      "type": "manual",
 </strong><strong>      "toStatus": "report-available",
-</strong><strong>      "fromStatuses": [ "analyzed" ],
+</strong><strong>      "fromStatuses": ["analyzed"],
 </strong><strong>        "conditions": [
 </strong><strong>          {
 </strong><strong>            "type": "input",
@@ -151,36 +149,34 @@ As mentioned in the introduction, a _file token_ is something you get back when 
 {% endtab %}
 {% endtabs %}
 
-
-
 ## Update your task to create a PDF
 
-Next we need to update the task to create the PDF, upload it to the file service and store the file token in the document.&#x20;
+Next we need to update the task to create the PDF, upload it to the file service and store the file token in the document.
 
 {% tabs %}
 {% tab title="2-workflows/tasks/analyze-blood-pressure/src/index-flow-2.js" %}
 <pre class="language-javascript"><code class="lang-javascript">const { getSDK } = require("./sdk");
 const { analyzeDocument } = require("./diagnose");
-const { createPDF } = require("./create-pdf");
+<strong>const { createPDF } = require("./create-pdf");
+</strong>
+exports.doTask = async ({ sdk, task }) => {
+  // Read the blood pressure document
+  const retrievedDocument = await sdk.data.documents.findById("blood-pressure-measurement", task.data.documentId);
 
-exports.doTask = async ({sdk, task}) => {
-  //Read the blood pressure document
-  const retrievedDocument= await sdk.data.documents.findById('blood-pressure-measurement', task.data.documentId);
+  // Analyze the document
+  const diagnosis = await analyzeDocument({ sdk, document: retrievedDocument });
 
-  /* Analyze the document */
-  const diagnosis = await analyzeDocument({ sdk, document: retrievedDocument});
-
-<strong>  //Fetch the info of the user who created this document
+<strong>  // Fetch the info of the user who created this document
 </strong><strong>  const user = await sdk.users.findById(retrievedDocument.creatorId);
 </strong><strong>
-</strong><strong>  //Create the PDF
-</strong><strong>  await createPDF({sdk, user, document: retrievedDocument, diagnosis });
+</strong><strong>  // Create the PDF
+</strong><strong>  await createPDF({ sdk, user, document: retrievedDocument, diagnosis });
 </strong>}
 
 exports.handler = async (task) => {
   const sdk = await getSDK();
 
-  await exports.doTask({sdk, task});
+  await exports.doTask({ sdk, task });
 };
 </code></pre>
 {% endtab %}
@@ -188,44 +184,40 @@ exports.handler = async (task) => {
 {% tab title="2-workflows/tasks/analyze-blood-pressure/src/create-pdf.js" %}
 {% code overflow="wrap" %}
 ```javascript
+async function createPDF({ sdk, user, document, diagnosis }) {
+  // Find the pdf template
+  const pdfTemplate = await sdk.templates.findByName("pdf-analysis");
 
-async function createPDF({sdk, user, document, diagnosis}) {
-     // Find the pdf template
-    const pdfTemplate = await sdk.templates.findByName("pdf-analysis");
+  // Generate the PDF with the template
+  const pdf = await sdk.templates.resolveAsPdf(pdfTemplate.id, {
+      "language": "NL",
+      "time_zone": "Europe/Brussels",
+      "content": {
+          "first_name": user.firstName,
+          "category": diagnosis,
+          "diastolic": document.data.diastolic,
+          "systolic": document.data.systolic,
+          "date": new Date(document.data.timestamp).toDateString(),
+      }
+  });
 
-    // Generate the PDF with the template
-    const pdf = await sdk.templates.resolveAsPdf(pdfTemplate.id, {
-        "language": "NL",
-        "time_zone": "Europe/Brussels",
-        "content": {
-            "first_name": user.first_name,
-            "category": diagnosis,
-            "diastolic": document.data.diastolic,
-            "systolic": document.data.systolic,
-            "date": new Date(document.data.timestamp).toDateString(),
-        }
-    });
+  // Upload the pdf to the file service
+  const fileResult = await sdk.files.create(`measurement-${document.id}`, pdf);
 
+  // Transition the document to report-available
+  await sdk.data.documents.transition("blood-pressure-measurement", document.id, {
+    // Report property is added to the data to store the file service token
+    name: 'add-report',
+    data: { report: fileResult.tokens[0].token }
+  });
 
-    // Find the id of the transition, needed for transitioning the document
-    const schema = await sdk.data.schemas.findByName('blood-pressure-measurement');
-    const transition = schema.transitions.find(transition => transition.name === "add-report");
-
-    // Upload the pdf to the file service
-    const fileResult= await sdk.files.create(`measurement-${document.id}`, pdf);
-
-    // Transition the document to analyzed
-    await sdk.data.documents.transition(
-        'blood-pressure-measurement',
-        document.id,
-        // Report property is added to the data to store the file service token
-        { id: transition.id, data: { report: fileResult.tokens[0].token }}
-    );
+  return pdf;
 }
 
 module.exports = {
   createPDF
 }
+
 ```
 {% endcode %}
 {% endtab %}
@@ -243,18 +235,19 @@ npm run build-flow-2
 
 And then to sync everything:
 
-<pre><code><strong>npx exh sync
-</strong></code></pre>
+```
+npx exh sync
+```
 
 ## Test the updated task
 
-Use the scripts in  `examples` to test your task  as follows:
+Use the scripts in `examples` to test your task as follows:
 
 {% code overflow="wrap" %}
 ```bash
 ➞  node create-measurement.js                                                                                                    
-Enter systolic value: 10
-Enter diastolic value: 20
+Enter systolic value: 108
+Enter diastolic value: 83
 🎉 Created a new measurement document with id 6568537e5a8b65a7c7e3de77
 
 ➞  node get-measurement.js                                                                                                       
@@ -298,6 +291,3 @@ npx exh tasks delete --name=analyze-blood-pressure
 {% endhint %}
 
 In `examples` there's a `test-local-task-flow-2.js` script to run the task locally.
-
-
-

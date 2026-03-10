@@ -12,17 +12,15 @@ An important aspect of developing a medical application, is making sure that you
 
 The Extra Horizon backend has a couple of mechanisms to enable these roles & restrict permissions to certain users, classes of users or groups of users. Depending on the specific use-case of your medical device, you'll most likely need a combination of these.
 
-
-
 ## 1/ Global permissions & roles
 
-These permissions are called as such because they are not restricted to a specific instance of a resource like a specific document or a specific group. They apply to the whole 'environment' and are the most extensive set of permissions.&#x20;
+These permissions are called as such because they are not restricted to a specific instance of a resource like a specific document or a specific group. They apply to the whole 'environment' and are the most extensive set of permissions.
 
-**Examples**: `VIEW_TEMPLATES, DELETE_REPORTS, CREATE_PROFILES,...` &#x20;
+**Examples**: `VIEW_TEMPLATES, DELETE_REPORTS, CREATE_PROFILES,...`
 
 These global permissions are assigned to users through a **role**, which is a container for a set of permissions. Once you've created a role with a set of permissions, you can assign that role to the users that need to perform them.
 
-To get an overview of the current roles & possible permissions in your environment, open your Control Center at [https://app.extrahorizon.com/users/roles/](https://app.extrahorizon.com/users/roles/) . There you'll see a list of global roles and their associated permissions. The `admin` role typically has the most permissions associated with it. This part of the UI also allows you to create new roles and manage existing roles.&#x20;
+To get an overview of the current roles & possible permissions in your environment, open your Control Center at [https://app.extrahorizon.com/users/roles/](https://app.extrahorizon.com/users/roles/) . There you'll see a list of global roles and their associated permissions. The `admin` role typically has the most permissions associated with it. This part of the UI also allows you to create new roles and manage existing roles.
 
 <figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 09.31.47.png" alt=""><figcaption></figcaption></figure>
 
@@ -72,44 +70,49 @@ Next to this, it's important to know that **every** document in the Extra Horizo
 Combined with the schema access modes, the contents of these arrays in a document unambiguously determine if a user has the permission to perform a create, read, update or delete operation.
 
 {% hint style="info" %}
-Lets take `readMode` as an example. The some of the possible settings for `readMode` are:
+The defaults for a schema are:
 
-* `"default"`: who can read?&#x20;
-  * users whose userId is in the `userIds` array of a document.&#x20;
-  * users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
-* `"allUsers"`: All users in the system will have the permission to read the documents of the schema.
-* `"enlistedInLinkedGroups"`: who can read?&#x20;
-  * users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
-  * users that have a **patient membership** in a group whose group ID is in the `groupIds` array of a document.
+`"createMode": "allUsers"`: who can create?
 
-You see how the group membership introduced in 2 becomes important in determining whether a user has access or not.
+* any logged in user.
+
+`"readMode": ["linkedUsers", "linkedGroupStaff"]` : who can read?
+
+* users whose id is in the `userIds` array of a document.
+* users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
+
+`"updateMode": ["linkedUsers", "linkedGroupStaff"]`: who can update?
+
+* users whose id is in the `userIds` array of a document.
+* users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document.
+
+`"deleteMode": "permissionRequired"`: who can read?
+
+* users with explicit global `DELETE_DOCUMENTS` permission
+* users that have a **staff membership** in a group whose group ID is in the `groupIds` array of a document **with a group role** containing the `DELETE_DOCUMENTS` group permission.
 {% endhint %}
 
 {% hint style="danger" %}
-Important to note here is that **global permissions take precedence over everything**. &#x20;
+Important to note here is that **global permissions take precedence over everything**.
 
-* Example: a user who has the `VIEW_DOCUMENTS:my-schema` permission, will be able to read **all** documents of schema `my-schema`, even if the `readMode` of that schema is set to `default` and his user ID is not present in `userIds` and his group ID's aren't present in `groupIds`.
+* Example: a user who has the `VIEW_DOCUMENTS:my-schema` permission, will be able to read **all** documents of schema `my-schema`, even if the `readMode` of that schema is set to `["linkedUsers"]` and his user ID is not present in `userIds`.
 
 For an explanation of all modes, please see [here](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas#data-access-management).
 {% endhint %}
 
 ### **Actions**
 
-Imagine the following problem: a patient member in a group creates a document. Unless the `readMode` is set to `allUsers`, nobody can see the document.  But we don't want to set it to `allUsers` because that means that everybody will be able to see the document. Likewise we don't want to give people global permissions either because that means they can see all documents. So how do we make this document available to the right people?
+Imagine the following problem: a patient member in a group creates a document. Unless the `readMode` is set to `allUsers`, nobody can see the document. But we don't want to set it to `allUsers` because that means that everybody will be able to see the document. Likewise we don't want to give people global permissions either because that means they can see all documents. So how do we make this document available to the right people?
 
 This is where [transition](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas#transitions) actions come in handy. A particular set of these actions, described [here](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas#modifying-document-access), are used to modify document access.
 
 {% hint style="info" %}
 For example, in order to solve the above problem we can use the `linkCreator` and `linkEnlistedGroups` action:
 
-* `linkCreator` will add the user ID of the user who created the document, to the `userIds` array of the document. This makes the document accessible to the patient who created the document in all possible settings of `readMode`.
-* Secondly, the `linkEnlistedGroups` action will take the ID's of all groups where this patient is a member of and add these to the `groupIds` array of the document. This ensures that when `readMode` is set to `default`, all staff members in those groups will be able to read the document.
-
-
+* `linkCreator` will add the user ID of the user who created the document, to the `userIds` array of the document. This makes the document accessible to the patient who created the document when `readMode` contains `"linkedUsers"`&#x20;
+* Secondly, the `linkEnlistedGroups` action will take the ID's of all groups where this patient is a member of and add these to the `groupIds` array of the document. This ensures that when `readMode` contains `"linkedGroupStaff"`, all staff members in those groups will be able to read the document.
 
 So when we configure these actions to be used in the `creationTransition` of a schema, every time a new document is created, the backend will execute these actions on the document and ensure that the right users have access to it.
 {% endhint %}
-
-
 
 ###

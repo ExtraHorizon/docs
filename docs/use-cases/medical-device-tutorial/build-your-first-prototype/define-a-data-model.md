@@ -1,14 +1,14 @@
 # Define a data model
 
-Data modelling is the process of defining how data is used and stored within the system.&#x20;
+Data modelling is the process of defining how data is used and stored within the system.
 
-When configuring your data model on Extra Horizon, you will start by creating [data schemas](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas). In these schemas you describe how your data is structured.&#x20;
+When configuring your data model on Extra Horizon, you will start by creating [data schemas](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service/schemas). In these schemas you describe how your data is structured.
 
 When you've created a schema, you can add one or multiple **documents** to it. Each one of those documents need to conform to the schema you've defined. In developer terms, if you squint a little, you can look at schemas as being a class, and documents being the class instances of that class.
 
 Depending on your data model, a single schema might not be enough. That's okay since you can create as many schema's as you want. Think in advance about how the documents of these schemas will be used & queried most efficiently in your application and design them accordingly.\
 \
-For the purpose of the tutorial,  we keep it simple. So we will create a schema called `blood-pressure-measurement` where each document represents a measurement.
+For the purpose of the tutorial, we keep it simple. So we will create a schema called `blood-pressure-measurement` where each document represents a measurement.
 
 In the tutorial repository, we'll be using the `1-data-model` directory if you want to try this out.
 
@@ -36,9 +36,7 @@ In the example below you see how we defined the properties for our blood pressur
   },
   "creationTransition": {
     "type": "manual",
-    "toStatus": "created",
-    "conditions": [],
-    "actions": []
+    "toStatus": "created"
   },
   "properties": {
     "systolic": {
@@ -68,7 +66,7 @@ Please refer to the documentation [here](https://docs.extrahorizon.com/extrahori
 
 ### Synchronize the Schema
 
-&#x20;We must now synchronize this schema to the ExH data service. This can be achieved by using the [ExH CLI](https://docs.extrahorizon.com/cli/). In the `1-data-model` directory, do:
+We must now synchronize this schema to the ExH data service. This can be achieved by using the [ExH CLI](https://docs.extrahorizon.com/cli/). In the `1-data-model` directory, do:
 
 ```
 npx exh sync
@@ -91,14 +89,14 @@ In the `examples` directory in the root of the repository, you can find the foll
 * `get-measurement.js`: retrieves a created measurement
 * `delete-measurement.js`: deletes an existing measurement
 
-Please familiarize yourself with the contents of these script. They will show you how to use the SDK to create, read & delete blood pressure measurements.&#x20;
+Please familiarize yourself with the contents of these script. They will show you how to use the SDK to create, read & delete blood pressure measurements.
 
 Example: create a new measurement. The script will prompt to enter a blood pressure measurement.
 
 ```bash
 ➞  node create-measurement.js                                                                                                     [git:remove-step-folders] ✔
-Enter systolic value: 10
-Enter diastolic value: 12
+Enter systolic value: 120
+Enter diastolic value: 80
 🎉 Created a new measurement document with id 6566153f5a8b656f2ae3de4c
 ➞
 ```
@@ -119,8 +117,8 @@ Retrieved document 6566153f5a8b656f2ae3de4c
     "status": "created",
     "statusChangedTimestamp": "2023-11-28T16:28:47.199Z",
     "data": {
-        "systolic": 10,
-        "diastolic": 12,
+        "systolic": 120,
+        "diastolic": 80,
         "timestamp": "2023-11-28T16:28:46.843Z"
     },
     "updateTimestamp": "2023-11-28T16:28:47.206Z",

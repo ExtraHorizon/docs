@@ -8,7 +8,7 @@ Let's see how we can make that happen.
 
 ## Create a group
 
-As mentioned in the introduction of _Define your permission_, a group is just a 24-character identifier. For our purpose, let's create a schema which represents our group concept. Then we will use the identifiers of the documents of that schema as our group ID's.
+As mentioned in the introduction of _Define your permissions_, a group is just a 24-character identifier. For our purpose, let's create a schema which represents our group concept. Then we will use the identifiers of the documents of that schema as our group ID's.
 
 {% tabs %}
 {% tab title="JSON" %}
@@ -17,17 +17,15 @@ As mentioned in the introduction of _Define your permission_, a group is just a 
   "name": "blood-pressure-group",
   "description": "Blood pressure group",
   "createMode": "permissionRequired",
-  "readMode": "enlistedInLinkedGroups",
-  "updateMode": "linkedGroupsStaffOnly",
+  "readMode": ["linkedGroupPatients", "linkedGroupStaff"],
+  "updateMode": ["linkedGroupStaff"],
   "deleteMode": "permissionRequired",
   "statuses": {
     "created": {}
   },
   "creationTransition": {
     "type": "manual",
-    "toStatus": "created",
-    "conditions": [],
-    "actions": []
+    "toStatus": "created"
   },
   "properties": {
     "name": {
@@ -69,7 +67,7 @@ Now that we've created our new group, we can add patients and staff members to i
 1. `add-patient.js`: This script will add a user to a group as a _patient._
 2. `add-staff.js`: this script will add a user to a group as a _staff member_.
 
-Both scripts will prompt you for a  `user ID` and a `group ID`.  Eg.
+Both scripts will prompt you for a `user ID` and a `group ID`. Eg.
 
 {% code overflow="wrap" %}
 ```bash
@@ -88,7 +86,7 @@ Note that you can always look up the group ID again in Control Center by going t
 
 ## Update schema
 
-Okay! We have our patients, we have our staff members and we have them set up in groups. There's just one thing we need to take care of.&#x20;
+Okay! We have our patients, we have our staff members and we have them set up in groups. There's just one thing we need to take care of.
 
 Remember that we set up our `blood-pressure-measurement` schema in such a way that only admins or patients can read documents? In our new group setup, we would also like staff members of a group to see all data of patients in that group. Otherwise a doctor (staff member) would not be able to see any patient data. A little tweak to the `blood-pressure-measurement` schema is all we need:
 
@@ -98,7 +96,6 @@ Remember that we set up our `blood-pressure-measurement` schema in such a way th
   "creationTransition": {
     "type": "manual",
     "toStatus": "created",
-    "conditions": [],
     "actions": [
       {
         "type": "linkCreator"
@@ -118,5 +115,4 @@ Mission accomplished! :tada:
 
 ## Try it
 
-Using the existing scripts in the `examples` directory, feel free to create different documents as different users and verify that each user can only see what they are entitled to.&#x20;
-
+Using the existing scripts in the `examples` directory, feel free to create different documents as different users and verify that each user can only see what they are entitled to.

@@ -38,13 +38,12 @@ Neither of these conditions apply to our newly-created patient. But, as you know
   "creationTransition": {
     "type": "manual",
     "toStatus": "created",
-    "conditions": [],
-    "actions": [
-<strong>      {
+<strong>    "actions": [
+</strong><strong>      {
 </strong><strong>        "type": "linkCreator"
 </strong><strong>      }
-</strong>    ]
-  },
+</strong><strong>    ]
+</strong>  },
   ...
 }
 </code></pre>

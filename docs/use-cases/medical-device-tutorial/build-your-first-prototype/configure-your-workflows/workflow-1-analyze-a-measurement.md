@@ -11,7 +11,7 @@ For this section, we'll be using the `2-workflows` directory in the tutorial rep
 The basic structure of a javascript task is fairly simple. A very, very basic task can just be
 
 ```javascript
-exports.handler = async ({data}) => {
+exports.handler = async ({ data }) => {
     console.log("Hello there!");
 };
 ```
@@ -38,7 +38,7 @@ Schema transition actions to the rescue!
 </strong><strong>      "name": "start-analysis",
 </strong><strong>      "type": "automatic",
 </strong><strong>      "toStatus": "analyzing",
-</strong><strong>      "fromStatuses": [ "created" ],
+</strong><strong>      "fromStatuses": ["created"],
 </strong><strong>      "actions": [
 </strong><strong>        {
 </strong><strong>          "type": "task",
@@ -83,7 +83,7 @@ To do this we'll modify `blood-pressure-measurement` schema a bit further:
       "name": "start-analysis",
       "type": "automatic",
       "toStatus": "analyzing",
-      "fromStatuses": [ "created" ],
+      "fromStatuses": ["created"],
       "actions": [
         {
           "type": "task",
@@ -95,7 +95,7 @@ To do this we'll modify `blood-pressure-measurement` schema a bit further:
 </strong><strong>      "name": "mark-as-analyzed",
 </strong><strong>      "type": "manual",
 </strong><strong>      "toStatus": "analyzed",
-</strong><strong>      "fromStatuses": [ "analyzing" ],
+</strong><strong>      "fromStatuses": ["analyzing"],
 </strong><strong>        "conditions": [
 </strong><strong>          {
 </strong><strong>            "type": "input",
@@ -161,22 +161,17 @@ In the repo, we've split this out into 2 files (in `2-workflows/tasks/analyze-bl
 // https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings
 function getDiagnosis(systolic, diastolic) { ... }
 
-async function analyzeDocument({sdk, document}) {
+async function analyzeDocument({ sdk, document }) {
 
   // Analyze the measurement and assign a category to it
   const diagnosis = getDiagnosis(document.data.systolic, document.data.diastolic);
 
-  // Find the id of the transition, needed for transitioning the document
-  const schema = await sdk.data.schemas.findByName('blood-pressure-measurement');
-  const transition = schema.transitions.find(transition => transition.name === "mark-as-analyzed");
-
   // Transition the document to analyzed
-  await sdk.data.documents.transition(
-      'blood-pressure-measurement',
-      document.id,
-      // Report property is added to the data to store the file service token
-      { id: transition.id, data: { category: diagnosis }}
-  );
+  await sdk.data.documents.transition('blood-pressure-measurement', document.id, {
+    // Report property is added to the data to store the file service token
+    name: 'mark-as-analyzed',
+    data: { category: diagnosis }
+  });
 
   return diagnosis;
 }
@@ -194,18 +189,18 @@ module.exports = {
 const { getSDK } = require("./sdk");
 const { analyzeDocument } = require("./diagnose");
 
-exports.doTask =  async ({sdk, task}) => {
-  //Read the blood pressure document
-  const retrievedDocument= await sdk.data.documents.findById('blood-pressure-measurement', task.data.documentId);
+exports.doTask = async ({ sdk, task }) => {
+  // Read the blood pressure document
+  const retrievedDocument = await sdk.data.documents.findById("blood-pressure-measurement", task.data.documentId);
 
-  /* Analyze the document */
-  await analyzeDocument({ sdk, document: retrievedDocument});
+  // Analyze the document
+  await analyzeDocument({ sdk, document: retrievedDocument });
 }
 
 exports.handler = async (task) => {
-  /* Get an authenticated SDK */
+  // Get an authenticated SDK
   const sdk = await getSDK();
-  await exports.doTask({sdk, task});
+  await exports.doTask({ sdk, task });
 };
 ```
 {% endcode %}
@@ -219,7 +214,6 @@ The `getDiagnosis` function will take the blood pressure measurements and return
 Important to note:
 
 * When a task is triggered by an action in a document, it receives both the `schemaId` and the `documentId` of that document in a `data` object (see `handler` function in `index-flow-1.js`). Using this document ID we can uniquely identify the document that needs to be processed
-* To call the transition of a document, you need to look up the transition ID that you need to call first.
 
 ## Upload (sync) your schema & task
 
@@ -276,16 +270,19 @@ Under `2-workflows/tasks/analyze-blood-pressure` you'll find a file called `task
   "description": "Function to categorize blood pressure measurements",
   "path": "./build",
   "entryPoint": "index.handler",
-  "runtime": "nodejs16.x",
+  "runtime": "nodejs24.x",
   "timeLimit": 60,
   "memoryLimit": 128,
-  "environment": {
-    "API_HOST":"FILL_IN",
-    "API_OAUTH_CONSUMER_KEY":"FILL_IN",
-    "API_OAUTH_CONSUMER_SECRET":"FILL_IN",
-    "API_OAUTH_TOKEN":"FILL_IN",
-    "API_OAUTH_TOKEN_SECRET":"FILL_IN"
- }
+  "executionCredentials": {
+    "permissions": [
+      "VIEW_DOCUMENTS:blood-pressure-measurement",
+      "TRANSITION_DOCUMENTS:blood-pressure-measurement",
+      "VIEW_USER",
+      "VIEW_TEMPLATES",
+      "SEND_MAILS"
+    ]
+  },
+}
 ```
 {% endcode %}
 {% endtab %}
@@ -295,7 +292,7 @@ This configuration file tells the CLI where to get the task code and how to conf
 
 1. `entryPoint`: this tells the backend which function to call. Remember in the beginning of this section we said you can name your handler to whatever you want? If you do, you'll need to modify the entry point. The format is `<file-without-extension>.<function>`. As it is configured above, the backend will call a function called `handler` in a file called `index.js`
 2. The `path` should point to the code you've built. esbuild will put the bundled code in `build`
-3. The variables contained in `environment` will be passed as environment variables to the function. Replace the template values with your actual credentials
+3. The settings contained in `executionCredentials` will instruct the CLI to create a user for your task with the specified permissions and expose the credentials for that user to your task as the environment variables mentioned earlier (`API_HOST`, `API_OAUTH_TOKEN`, ...). More information can be found in [the CLI documentation](https://docs.extrahorizon.com/cli/commands/tasks#execution-credentials).
 
 When we've done this, we can just do (in the `2-workflows` directory):
 
@@ -312,8 +309,8 @@ Now that everything is synced to the backend, feel free to play around with the 
 {% code overflow="wrap" %}
 ```bash
 ➞  node create-measurement.js                                                                                                    
-Enter systolic value: 6
-Enter diastolic value: 12
+Enter systolic value: 110
+Enter diastolic value: 60
 🎉 Created a new measurement document with id 656742535a8b65e54ae3de65
 
 ➞  node get-measurement.js                                                                                                       
@@ -329,8 +326,8 @@ Retrieved document 656742535a8b65e54ae3de65
     "status": "analyzed",
     "statusChangedTimestamp": "2023-11-29T13:53:54.635Z",
     "data": {
-        "systolic": 6,
-        "diastolic": 12,
+        "systolic": 110,
+        "diastolic": 60,
         "timestamp": "2023-11-29T13:53:23.039Z",
         "category": "normal"
     },
@@ -353,8 +350,8 @@ npx exh tasks delete --name=analyze-blood-pressure
 {% endhint %}
 
 <pre class="language-bash" data-overflow="wrap"><code class="lang-bash">➞  node create-measurement.js                                                                                                    
-Enter systolic value: 6
-Enter diastolic value: 12
+Enter systolic value: 110
+Enter diastolic value: 60
 🎉 Created a new measurement document with id 656742535a8b65e54ae3de65
 
 <strong>➞  node test-local-task-flow-1.js                                                                                                
@@ -374,8 +371,8 @@ Retrieved document 656742535a8b65e54ae3de65
     "status": "analyzed",
     "statusChangedTimestamp": "2023-11-29T13:53:54.635Z",
     "data": {
-        "systolic": 6,
-        "diastolic": 12,
+        "systolic": 110,
+        "diastolic": 60,
         "timestamp": "2023-11-29T13:53:23.039Z",
         "category": "normal"
     },
