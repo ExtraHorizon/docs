@@ -277,11 +277,11 @@ Under `2-workflows/tasks/analyze-blood-pressure` you'll find a file called `task
     "permissions": [
       "VIEW_DOCUMENTS:blood-pressure-measurement",
       "TRANSITION_DOCUMENTS:blood-pressure-measurement",
+      "EXECUTE_TASK_FUNCTION:html-to-pdf",
       "VIEW_USER",
-      "VIEW_TEMPLATES",
       "SEND_MAILS"
     ]
-  },
+  }
 }
 ```
 {% endcode %}

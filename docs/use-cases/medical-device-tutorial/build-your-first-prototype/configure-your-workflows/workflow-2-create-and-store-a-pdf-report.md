@@ -21,35 +21,29 @@ Under `2-workflows/templates/pdf-analysis` you'll find the template that we're g
 ```json
 {
   "description": "Template used to generate a pdf-analysis",
-  "name": "pdf-analysis",
-    "schema": {
-    "type": "object",
-    "fields": {
-      "first_name": {
-        "type": "string"
-      },
-      "category": {
-        "type": "string"
-      },
-      "diastolic": {
-        "type": "number"
-      },
-      "systolic": {
-        "type": "number"
-      },
-      "date": {
-        "type": "string"
-      }
+  "inputs": {
+    "first_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "diastolic": {
+      "type": "number"
+    },
+    "systolic": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string"
     }
-  },
-  "fields": {
   }
 }
 ```
 {% endtab %}
 
-{% tab title="HTML (templates/pdf-analysis/body.html)" %}
-```html
+{% tab title="HTML (templates/pdf-analysis/body.hbs)" %}
+```hbs
 <!DOCTYPE html>
 <head>
     <style>
@@ -62,20 +56,20 @@ Under `2-workflows/templates/pdf-analysis` you'll find the template that we're g
 <html>
 <body>
 
-<h1>Your reading from $content.date</h1>
+<h1>Your reading from {{@inputs.date}}</h1>
 
 <table style="width:100%">
     <tr>
         <th>Diastolic</th>
-        <td>$content.diastolic</td>
+        <td>{{@inputs.diastolic}}</td>
     </tr>
     <tr>
         <th>Systolic</th>
-        <td>$content.systolic</td>
+        <td>{{@inputs.systolic}}</td>
     </tr>
     <tr>
         <th>Category</th>
-        <td>$content.category</td>
+        <td>{{@inputs.category}}</td>
     </tr>
 </table>
 ```
@@ -88,7 +82,7 @@ The JSON file defines the structure of the template variables, while the HTML fi
 
 The reason why it is split in 2 files, is because mixing HTML and JSON in 1 file doesn't make for a pleasant developer experience.
 
-When uploading the template, the CLI will read the HTML file, add it as a `body` property in the `fields` object in the JSON file and upload the result.
+When uploading the template, the CLI will read the HTML file, add it as a `body` property in an `outputs` object in the JSON file and upload the result.
 
 ## Update schema
 
@@ -153,6 +147,8 @@ As mentioned in the introduction, a _file token_ is something you get back when 
 
 Next we need to update the task to create the PDF, upload it to the file service and store the file token in the document.
 
+The PDF is created by a task of its own, the `html-to-pdf` task. This is a special task provided by Extra Horizon which can generate a PDF from a template containing HTML.
+
 {% tabs %}
 {% tab title="2-workflows/tasks/analyze-blood-pressure/src/index-flow-2.js" %}
 <pre class="language-javascript"><code class="lang-javascript">const { getSDK } = require("./sdk");
@@ -185,14 +181,13 @@ exports.handler = async (task) => {
 {% code overflow="wrap" %}
 ```javascript
 async function createPDF({ sdk, user, document, diagnosis }) {
-  // Find the pdf template
-  const pdfTemplate = await sdk.templates.findByName("pdf-analysis");
 
-  // Generate the PDF with the template
-  const pdf = await sdk.templates.resolveAsPdf(pdfTemplate.id, {
+  // Generate the PDF with the PDF analysis template
+  const task = await exh.tasks.functions.execute('html-to-pdf', {
+      "templateName": "pdf-analysis",
       "language": "NL",
-      "time_zone": "Europe/Brussels",
-      "content": {
+      "timeZone": "Europe/Brussels",
+      "inputs": {
           "first_name": user.firstName,
           "category": diagnosis,
           "diastolic": document.data.diastolic,
@@ -201,23 +196,19 @@ async function createPDF({ sdk, user, document, diagnosis }) {
       }
   });
 
-  // Upload the pdf to the file service
-  const fileResult = await sdk.files.create(`measurement-${document.id}`, pdf);
-
   // Transition the document to report-available
   await sdk.data.documents.transition("blood-pressure-measurement", document.id, {
     // Report property is added to the data to store the file service token
     name: 'add-report',
-    data: { report: fileResult.tokens[0].token }
+    data: { report: task.result.fileToken }
   });
 
-  return pdf;
+  return task.result.fileToken;
 }
 
 module.exports = {
   createPDF
 }
-
 ```
 {% endcode %}
 {% endtab %}

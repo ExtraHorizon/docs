@@ -51,7 +51,7 @@ The team
 
 Next, we need to update the task to send the actual email. The mail service requires the ID of the template, all input fields and the recipients.
 
-The updated task will take the generated PDF & send it as an attachment to a user's email address.
+The updated task will download the generated PDF & send it as an attachment to a user's email address.
 
 {% tabs %}
 {% tab title="2-workflows/tasks/analyze-blood-pressure/src/index-flow-3.js)" %}
@@ -70,9 +70,12 @@ exports.doTask = async ({ sdk, task }) => {
   const user = await sdk.users.findById(retrievedDocument.creatorId);
 
   // Create the PDF
-  const pdf = await createPDF({ sdk, user, document: retrievedDocument, diagnosis });
-
-<strong>  // Sending an email with the result of the analysis
+<strong>  const pdfFileToken = await createPDF({ sdk, user, document: retrievedDocument, diagnosis });
+</strong><strong>
+</strong><strong>  // Download the PDF from the file service using the file token
+</strong><strong>  const pdf = await sdk.files.retrieve(pdfFileToken);
+</strong><strong>
+</strong><strong>  // Sending an email with the result of the analysis
 </strong><strong>  await sdk.mails.send({
 </strong><strong>    recipients: { to: [user.email] },
 </strong><strong>    templateName: 'mail-analysis',
@@ -86,8 +89,8 @@ exports.doTask = async ({ sdk, task }) => {
 </strong><strong>      type: 'application/octet-stream',
 </strong><strong>    }],
 </strong><strong>  });
-</strong><strong>}
-</strong>
+</strong>}
+
 
 exports.handler = async (task) => {
   const sdk = await getSDK();
