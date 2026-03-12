@@ -320,7 +320,7 @@ Simply create a `service-settings.json` file with the settings you want to updat
 ```
 
 And then run `exh settings sync` to update the settings in your cluster.
-At the moment of writing, the CLI does the resolution of the template names to ids, but support for directly using the template names in the settings is being worked on and should be available soon as well.
+At the time of writing, the CLI does the resolution of the template names to ids, but support for directly using the template names in the settings is being worked on and should be available soon as well.
 
 # Update application code
 When you make use of templates in your application code, you will also need to update the code to use the new v2 templates.
