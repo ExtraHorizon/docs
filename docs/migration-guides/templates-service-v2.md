@@ -1,7 +1,7 @@
 # Template Service V2
 
 # Overview
-We've introduced a new version of the Template Service, which includes several structural and syntax changes. The migration to the new version can be done incrementally, allowing you to update your templates one at a time. To support this the Mail Service is able to work with both v1 and v2 templates, when resolving a template it will first look for a v2 template and if that is not found, it will look for a v1 template.
+We've introduced a new version of the Template Service, which includes several structural and syntax changes. The migration to the new version can be done incrementally, allowing you to update your templates one at a time. To support this, the Mail Service is able to work with both v1 and v2 templates. When resolving a template, it will first look for a v2 template and, if that is not found, it will look for a v1 template.
 
 # Recommended Migration Strategy
 We've worked on making this as easy as possible with the most recent changes to the Extra Horizon CLI.
