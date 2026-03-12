@@ -300,7 +300,7 @@ As mentioned before for variables with HTML content, if your localizations inclu
 # Update cluster settings
 After migrating your templates to v2, you will need to update your cluster settings to point to the new template name/id for the default emails the user service sends out (e.g. password reset, email verification, etc.).
 
-The CLI now has support for updating these settings. With the addition benefit of being able to target the templates by their name instead of their id, which should make it easier to update the settings without having to worry about the template ids being different in different environments.
+The CLI now has support for updating these settings. With the additional benefit of being able to target the templates by their name instead of their id, which should make it easier to update the settings without having to worry about the template ids being different in different environments.
 
 Simply create a `service-settings.json` file with the settings you want to update, for example:
 ```json
