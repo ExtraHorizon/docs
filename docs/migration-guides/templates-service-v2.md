@@ -279,7 +279,7 @@ Message for $1 $2
 
 To a localization with named parameters:
 ```txt
-Message for {{first_name}} {{last_name}}"
+Message for {{first_name}} {{last_name}}
 ```
 
 Then, from a v1 template using the old localization:
