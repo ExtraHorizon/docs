@@ -103,6 +103,7 @@
 * [Migration Guides](migration-guides/README.md)
   * [Enabling verification request limiting](migration-guides/migration-guide-enabling-verification-request-limiting.md)
   * [Execution credentials for Tasks](migration-guides/execution-credentials-for-tasks.md)
+  * [Template Service V2](migration-guides/template-service-v2.md)
 
 ## ExH Platform
 
