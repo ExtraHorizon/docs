@@ -7,7 +7,7 @@ date: 2026-04-20
 	
 
 **🎁 Features**
-  * Added support for specifying email templates by name
+  * Added support for specifying email templates by name  
   Email templates can now be configured using either their id or name. 
   id and name fields are mutually exclusive, setting activation_email_template_name will remove activation_email_template_id and vice versa
 
