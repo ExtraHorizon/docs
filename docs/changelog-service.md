@@ -678,6 +678,20 @@
 
 ## Notifications Service
 
+### 1.2.0 (2026-04-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.2.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+  *  New event subscriptions
+      *  Creates an activated notification for a user_activation_completed event
+      *  Creates a password_changed notification for a password_update_completed event
+      *  Creates a password_changed notification for a password_reset_completed event
+</details>
+
+
 ### 2.0.0 (2025-07-17)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/2.0.0/openapi.yaml)
 <details>
