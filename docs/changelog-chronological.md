@@ -14,6 +14,32 @@
 </details>
 
 
+## Users Service 1.6.0 (2026-04-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+	
+
+**🎁 Features**
+  * Added support for specifying email templates by name  
+  Email templates can now be configured using either their id or name. 
+  id and name fields are mutually exclusive, setting activation_email_template_name will remove activation_email_template_id and vice versa
+
+  * Added additional event emissions
+      * password_update_completed 
+        * Emitted when a user updates their password
+      * user_activation_completed 
+        * Emitted when a user is successfully activated
+
+**⚒️ Improvements**
+  * Resets the failed login attempt counter
+    * When a user completes the forgot password flow
+    * When a user updates their password
+</details>
+
+
 ## Mail Service 1.3.0 (2026-02-26)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.0/openapi.yaml)
 
