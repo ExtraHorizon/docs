@@ -55,16 +55,13 @@ The types of emails the User Service send:
 * Password reset email
 * OIDC Unlink email
 
-The content of email templates are configured in the [Template Service](../../other/template-service/#e-mail-templates). The ids of the templates to be used by the User Service can be configured via the SDK:
+The content of email templates are configured in the [Template Service](../../other/template-service/#e-mail-templates). The User Service can be configured to use specific templates by referencing their `name` .
 
-```javascript
-await exh.users.setEmailTemplates({
-  activationEmailTemplateId: '65e8328bdeac6337e1e5f6f7',
-  reactivationEmailTemplateId: '65e8328adeac631d37e5f6f6',
-  passwordResetEmailTemplateId: '65e8328fdeac634842e5f6f9',
-  oidcUnlinkEmailTemplateId: '65e83298deac633d2ae5f6fa',
-});
-```
+{% hint style="warning" %}
+Declaring email templates by id was deprecated in v.1.6.0
+{% endhint %}
+
+We recommend synchronising email templates using the [CLI](https://docs.extrahorizon.com/cli) please refer to the [synchronizing settings documentation](https://docs.extrahorizon.com/cli/commands/settings#synchronize-settings) for further information.
 
 #### OIDC Unlink email
 
@@ -75,7 +72,7 @@ The template will receive a password reset hash with which the user can update i
 Setting the email template:
 
 ```typescript
-await exh.users.setEmailTemplates({ oidcUnlinkEmailTemplateId: 'template-id' })
+await exh.users.setEmailTemplates({ oidcUnlinkEmailTemplateName: 'oidc_unlink_email_template_name' })
 ```
 
 #### Pin code email variants
@@ -84,10 +81,10 @@ The email templates mentioned above are the default emails used. Alternatively p
 
 ```javascript
 await exh.users.setEmailTemplates({
-  activationPinEmailTemplateId: '642ffe4388742725cc5cb1e2',
-  reactivationPinEmailTemplateId: '642b0899443c9874f8c41bc7',
-  passwordResetPinEmailTemplateId: '65325e4a18bf0c1e3b1f5c7e',
-  oidcUnlinkPinEmailTemplateId: '65325d8f18bf0c1e3b1f5c7c',
+  activationPinEmailTemplateName: 'activation_pin_email_template_name',
+  reactivationPinEmailTemplateName: 'reactivation_pin_email_template_name',
+  passwordResetPinEmailTemplateName: 'password_reset_pin_email_template_name',
+  oidcUnlinkPinEmailTemplateName: 'oidc_unlink_pin_email_template_name',
 });
 ```
 
