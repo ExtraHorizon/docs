@@ -5,9 +5,5 @@ date: 2026-04-23
 ---
 
 **🐞 Bugs Fixed**
-* **The following vulnerabilities were resolved, but not applicable:**
-  * Bumped Handlebars version to resolve the following CVE’s:
-    * CVE-2026-33937
-    * CVE-2026-33941
-    * CVE-2026-33938
-    * CVE-2026-33939
+  * Updated dependencies
+  * Resolved non-impactful vulnerability warnings
