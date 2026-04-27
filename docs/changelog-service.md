@@ -1242,6 +1242,18 @@
 
 ## Template Service
 
+### 2.0.1 (2026-04-27)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+  * Updated dependencies
+  * Resolved non-impactful vulnerability warnings
+
+</details>
+
+
 ### 2.0.0 (2026-02-25)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.0/openapi.yaml)
 <details>

@@ -1,16 +1,14 @@
 
-## Notifications Service 1.2.0 (2026-04-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.2.0/openapi.yaml)
+## Template Service 2.0.1 (2026-04-27)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
-**🎁 Features**
+**🐞 Bugs Fixed**
+  * Updated dependencies
+  * Resolved non-impactful vulnerability warnings
 
-  *  New event subscriptions
-      *  Creates an activated notification for a user_activation_completed event
-      *  Creates a password_changed notification for a password_update_completed event
-      *  Creates a password_changed notification for a password_reset_completed event
 </details>
 
 
@@ -37,6 +35,21 @@
   * Resets the failed login attempt counter
     * When a user completes the forgot password flow
     * When a user updates their password
+</details>
+
+
+## Notifications Service 1.2.0 (2026-04-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+  *  New event subscriptions
+      *  Creates an activated notification for a user_activation_completed event
+      *  Creates a password_changed notification for a password_update_completed event
+      *  Creates a password_changed notification for a password_reset_completed event
 </details>
 
 
@@ -420,29 +433,6 @@
 </details>
 
 
-## Template Service 1.0.16 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.16/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-
-- **RQL improvements**
-  - Less 5xx errors returned where an invalid RQL error was expected
-  - The `skip_count` operator is now also available for this service
-  - Sorting on `id` fields is now more consistent
-  - Requesting a limit greater than the maximum now sets the maximum
-- **Improved support for future database security mechanisms**
-
-**🐞 Bugs Fixed**
-- The `ne` RQL operator now works correctly as a “not equals”
-- Querying on field or `schema.field` keys ending with `_id` now works
-- `POST` and `PUT` requests with an empty request body return the correct error
-
-</details>
-
-
 ## Users Service 1.5.1 (2025-05-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.1/openapi.yaml)
 
@@ -476,6 +466,29 @@
   - `POST /remove_roles`
   - `POST /groups/{groupId}/staff/remove_roles`
 
+
+</details>
+
+
+## Template Service 1.0.16 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/1.0.16/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
+- **Improved support for future database security mechanisms**
+
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Querying on field or `schema.field` keys ending with `_id` now works
+- `POST` and `PUT` requests with an empty request body return the correct error
 
 </details>
 
@@ -1034,6 +1047,18 @@
 </details>
 
 
+## Logs Service 1.0.1 (2023-04-19)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Updated how we authenticate with our external services
+
+</details>
+
+
 ## Tasks Service 1.3.2 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.3.2/openapi.yaml)
 
@@ -1048,18 +1073,6 @@
 
 ## Files Service 1.0.3 (2023-04-19)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.0.3/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Updated how we authenticate with our external services
-
-</details>
-
-
-## Logs Service 1.0.1 (2023-04-19)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/logs-service/1.0.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1331,8 +1344,8 @@
 </details>
 
 
-## Payments Service 1.3.2 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
+## Data Service 1.1.1 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.1/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1355,8 +1368,8 @@
 </details>
 
 
-## Data Service 1.1.1 (2022-09-15)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.1.1/openapi.yaml)
+## Payments Service 1.3.2 (2022-09-15)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
