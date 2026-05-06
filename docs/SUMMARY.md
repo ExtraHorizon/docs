@@ -110,7 +110,6 @@
 * [🙋 Support](exh-platform/support.md)
 * [⏱️ Usage and Performance](exh-platform/usage-and-performance.md)
 * [🗺️ Regions](exh-platform/regions.md)
-* [⚖️ Cloud Subscription Agreement](https://docs.extrahorizon.com/cloud-subscription-agreement)
 * [✅ Compliance](exh-platform/compliance/README.md)
   * [🔖 Certification](exh-platform/compliance/certification/README.md)
     * [🇫🇷 Hébergeur de Données de Santé (HDS)](exh-platform/compliance/certification/hebergeur-de-donnees-de-sante-hds.md)
