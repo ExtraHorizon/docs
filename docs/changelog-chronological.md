@@ -1,4 +1,18 @@
 
+## Notifications Service 1.2.1 (2026-05-07)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.2.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🐞 Bugs Fixed**
+
+  * Events `user_activation_completed`, `password_update_completed` and `password_reset_completed` now correctly send notifications
+
+
+</details>
+
+
 ## Template Service 2.0.1 (2026-04-27)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.1/openapi.yaml)
 
