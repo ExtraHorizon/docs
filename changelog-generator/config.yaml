@@ -37,8 +37,8 @@ params:
     notifications-service:
       name: Notifications Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service
-      basePath: "/notifications/v1"
-      defaultVersion: 1.0.8
+      basePath: "/notifications/v2"
+      defaultVersion: 2.0.0
     templates-service:
       name: Template Service
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/other/template-service
@@ -71,6 +71,7 @@ params:
       defaultVersion: 1.0.1
     groups-service:
       name: Groups Service
+      deprecated: true
       docsUrl: https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups
       basePath: "/groups/v1"
       defaultVersion: 1.1.4
@@ -81,11 +82,13 @@ params:
       defaultVersion: 1.1.6
     prescriptions-service:
       name: Prescriptions Service
+      deprecated: true
       docsUrl: https://docs.extrahorizon.com/
       basePath: "/prescriptions/v1"
       defaultVersion: 1.1.16
     profiles-service:
       name: Profiles Service
+      deprecated: true
       docsUrl: https://docs.extrahorizon.com/
       basePath: "/profiles/v1"
       defaultVersion: 1.1.3
