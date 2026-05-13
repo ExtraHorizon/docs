@@ -119,7 +119,7 @@ This event is fired when a user has successfully activates their account.
 
 ### Task failed
 
-This event is fired when a task moves to the `failed` status. This excludes tasks which are retried, as they are moved to the `retried` status.
+This event is fired when a task moves to the `failed` status. This excludes tasks for which a retry policy is defined and are retried, as they are moved to the `retried` status instead. However, this event is still fired for the failure of the **last attempt** of a task with a retry policy.
 
 ```json
 {
