@@ -80,3 +80,37 @@ This event is fired when a user has successfully [reset their password](../../ac
   "creation_timestamp": 1643889512167
 }
 ```
+
+### Password update completed
+
+This event is fired when a user has successfully updated their password.
+
+{% hint style="info" %}
+This event is **not** fired when a user completes a password reset.
+{% endhint %}
+
+```json
+{
+  "id": "61fbc368cff47e000833ac83",
+  "type": "password_update_completed",
+  "content": {
+    "user_id": "630f297acff47e0008346bbe"
+  },
+  "creation_timestamp": 1643889512167
+}
+```
+
+### User activation completed
+
+This event is fired when a user has successfully activates their account.
+
+```json
+{
+  "id": "61fbc368cff47e000833ac83",
+  "type": "user_activation_completed",
+  "content": {
+    "user_id": "630f297acff47e0008346bbe"
+  },
+  "creation_timestamp": 1643889512167
+}
+```
