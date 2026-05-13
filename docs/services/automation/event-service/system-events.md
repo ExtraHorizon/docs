@@ -2,7 +2,7 @@
 
 As described on the previous pages, the [Event Service](./) allows you to view and fire events and the [Dispatcher Service](../dispatchers-service.md) allows you to subscribe to events and execute actions based on them. This page describes the events that are fired by the Extra Horizon platform itself.
 
-## User events
+## User Service events
 
 ### User created
 
@@ -110,6 +110,29 @@ This event is fired when a user has successfully activates their account.
   "type": "user_activation_completed",
   "content": {
     "user_id": "630f297acff47e0008346bbe"
+  },
+  "creation_timestamp": 1643889512167
+}
+```
+
+## Task Service events
+
+### Task failed
+
+This event is fired when a task moves to the `failed` status. This excludes tasks which are retried, as they are moved to the `retried` status.
+
+```json
+{
+  "id": "61fbc368cff47e000833ac83",
+  "type": "task_failed",
+  "content": {
+    "id": "6a047c5c6b52ff0e2ca10157",
+    "functionName": "my-function",
+    "error": {
+      "type": "invocation",
+      "name": "MyError",
+      "message": "My error message!"
+    }
   },
   "creation_timestamp": 1643889512167
 }
