@@ -16,20 +16,20 @@ Using the Extra Horizon SDK or REST API's you can easily retrieve users. The per
 ```javascript
 {
     "id": "abcdef0123456789abcdef01",
-    "first_name": "John",
-    "last_name": "Doe",
+    "firstName": "John",
+    "lastName": "Doe",
     "language": "EN",
     "email": "john.doe@example.com",
     "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
-    "roles":[...],
-    "staffEnlistments":[...],
-    "patientEnlistments":[...]
-    "lastFailedTimestamp": 1632733680,
+    "roles": [...],
+    "staffEnlistments": [...],
+    "patientEnlistments": [...]
+    "lastFailedTimestamp": "2026-05-19T13:19:19.636Z",
     "failedCount": 0,
-    "creationTimestamp": 1632733681,
-    "updateTimestamp": 1632733682
+    "creationTimestamp": "2026-05-19T13:19:19.636Z",
+    "updateTimestamp": "2026-05-19T13:19:19.636Z"
 }
 ```
 {% endtab %}
@@ -45,11 +45,11 @@ Using the Extra Horizon SDK or REST API's you can easily retrieve users. The per
     "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
-    "patientEnlistments": [...] //only the groups where you are staff
+    "patientEnlistments": [...]
   }
 ```
 
-When you receive a **Patient** the patientEnlistments property will only hold the enlistments for groups where you are a Staff member.
+When you receive a **Patient** from this endpoint, the `patientEnlistments` property will only hold the enlistments for groups where you are a Staff member.
 {% endtab %}
 
 {% tab title="Staff" %}
@@ -63,32 +63,33 @@ When you receive a **Patient** the patientEnlistments property will only hold th
     "phoneNumber": "+32012345678",
     "timeZone": "Europe/London",
     "activation": true,
-    "staffEnlistments": [...] //only the groups where you are patient
+    "staffEnlistments": [...]
   }
 ```
 
-When you receive a **Staff** the `staffEnlistments` property will only hold the enlistments for groups where you are a Staff member.
+When you receive a **Staff** member from this endpoint, the `staffEnlistments` property will only hold the enlistments for groups where you are a Staff member.
 {% endtab %}
 {% endtabs %}
 
 **Property overview**
 
-| Attribute               | Description                                                                                                            |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `id`                    | The identifier of the user.                                                                                            |
-| `first_name`            | First name of the user.                                                                                                |
-| `last_name`             | Last name of the user.                                                                                                 |
-| `language`              | A supported language code see [Localization service documentation](../../other/localizations-service/language-code.md) |
-| `email`                 | email address of the user.                                                                                             |
-| `phone_number`          | phone number of the user.                                                                                              |
-| `activation`            | Boolean indicating the email address has been activated true or false.                                                 |
-| `roles`                 | Array containing a description of the roles this user has obtained.                                                    |
-| `staff_enlistments`     | Array containing a description of the staff enlistments this user has within one or more groups.                       |
-| `patient_enlistments`   | Array containing a description of the patient enlistments this user has within one or more groups.                     |
-| `last_failed_timestamp` | Epoch timestamp Information about when the last password login attempt failed.                                         |
-| `failed_count`          | The number of consecutive password login attempts.                                                                     |
-| `creation_timestamp`    | Epoch timestamp when the user was created.                                                                             |
-| `update_timestamp`      | Epoch timestamp when this user object was last updated.                                                                |
+| Attribute             | Description                                                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | The identifier of the user.                                                                                             |
+| `firstName`           | First name of the user.                                                                                                 |
+| `lastName`            | Last name of the user.                                                                                                  |
+| `language`            | A supported language code see [Localization service documentation](../../other/localizations-service/language-code.md). |
+| `email`               | Email address of the user.                                                                                              |
+| `phoneNumber`         | Phone number of the user.                                                                                               |
+| `activation`          | Boolean indicating the email address has been activated true or false.                                                  |
+| `timeZone`            | Time zone of the user.                                                                                                  |
+| `roles`               | Array containing a description of the roles this user has obtained.                                                     |
+| `staffEnlistments`    | Array containing a description of the staff enlistments this user has within one or more groups.                        |
+| `patientEnlistments`  | Array containing a description of the patient enlistments this user has within one or more groups.                      |
+| `lastFailedTimestamp` | Timestamp Information about when the last password login attempt failed.                                                |
+| `failedCount`         | The number of consecutive password login attempts.                                                                      |
+| `creationTimestamp`   | Timestamp when the user was created.                                                                                    |
+| `updateTimestamp`     | Timestamp when this user object was last updated.                                                                       |
 
 {% hint style="info" %}
 When using the Javascript SDK fields are transformed into a **camelCase**. **snake\_case** will be phased out for the user service and all other Extra Horizon Services in the future.
@@ -96,7 +97,7 @@ When using the Javascript SDK fields are transformed into a **camelCase**. **sna
 
 ## **Create** a new user
 
-You can use the Extra Horizon SDK to create new users from your application. This also triggers a UserCreated event.
+You can use the Extra Horizon SDK to create new users from your application. This also triggers an event with the `user_created` type.
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -107,19 +108,12 @@ const user = await exh.users.createAccount({
     email: 'john.doe@example.com',
     password: 'Secret1234',
     phoneNumber: '+32012345678',
-    birthday: '1987-06-05',
-    country: 'UK',
-    gender: 1,
     language: 'EN',
     timeZone: 'Europe/London'
 });
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="warning" %}
-**Notice:** **birthday**, **country** & **gender** are part of the registration fields but are not returned when querying for the user. This is because of the underlying integration with the Extra Horizon Profile Service. During account creation, a user profile is created and these fields are stored there.
-{% endhint %}
 
 ### **Check for email availability**
 
@@ -139,33 +133,30 @@ After registration, the activation attribute defaults to `false`. While email ve
 
 The user service can be configured to hold a reference to an HTML template in the template service. When registration occurs, the user service will try to send an email by using this template.
 
-{% hint style="danger" %}
-To use an email verification template other than the default one, contact [Extra Horizon](mailto:requests@extrahorizon.com)
+{% hint style="info" %}
+To use an email activation template other than the default one, the [Extra Horizon CLI](https://docs.extrahorizon.com/cli/commands/settings) can be used to update the User Service email template setting: `activationEmailTemplateName`&#x20;
 {% endhint %}
 
 The user service will provide the user's `firstname`, `lastname`, and `activation_hash` values to the email service. The email service adds a `tracking_hash` before it reaches the template service. Thus you can use these three fields in your email template. Please review the Template Service documentation to learn how to design email templates.
 
 ```javascript
 {
-    ...,
-    "schema": {
-        "type": "object",
-        "fields": {
-            "firstname": {
-                "type": "string"
-            },
-            "lastname": {
-                "type": "string"
-            },
-            "activation_hash": {
-                "type": "string"
-            },
-            "tracking_hash": {
-                "type": "string"
-            }
-        },
+  ...,
+  "inputs": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "activation_hash": {
+      "type": "string"
+    },
+    "tracking_hash": {
+      "type": "string"
     }
-    ...
+  },
+  ...
 }
 ```
 
@@ -181,8 +172,8 @@ await exh.users.requestEmailActivation('john.doe@example.com');
 {% endtab %}
 {% endtabs %}
 
-{% hint style="danger" %}
-To use an email activation template other than the default one, contact [Extra Horizon Support](mailto:requests@extrahorizon.com)
+{% hint style="info" %}
+To use an email activation template other than the default one, the [Extra Horizon CLI](https://docs.extrahorizon.com/cli/commands/settings) can be used to update the User Service email template setting: `activationEmailTemplateName`
 {% endhint %}
 
 ### **Performing a user activation**
@@ -242,8 +233,8 @@ await exh.users.requestPasswordReset('john.doe@example.com');
 {% endtab %}
 {% endtabs %}
 
-{% hint style="danger" %}
-To use a password reset template other than the default one, contact [Extra Horizon Support](mailto:requests@extrahorizon.com)
+{% hint style="info" %}
+To use a password reset template other than the default one, the [Extra Horizon CLI](https://docs.extrahorizon.com/cli/commands/settings) can be used to update the User Service email template setting: `passwordResetEmailTemplateName`
 {% endhint %}
 
 ### **Resetting a password**
@@ -307,36 +298,48 @@ await exh.users.remove('abcdef0123456789abcdef01');
 
 ## Using pin codes for email verification
 
-The pin code mode is an **alternative mode for the account activation and forgot password flows**. The mode is targeted to use cases where the end user might need to manually input the secret in the application.&#x20;
+The pin code mode is an **alternative mode for the account activation and forgot password flows**. The mode is targeted to use cases where the end user might need to manually input the secret in the application.
 
 By default Extra Horizon uses the hash mode, this sends an email with a hash (a string of 40 hexadecimal characters) to the user. When the pin code mode is enabled and used, **a pin code of 8 digits** is send instead.
 
 ### Setting up pin code mode
 
-By default the pin code mode is disabled, it can be enabled with the Extra Horizon SDK:
+By default the pin code mode is disabled, it can be enabled with the [Extra Horizon CLI](https://docs.extrahorizon.com/cli/commands/settings) User Service verification settings:
 
-```javascript
-await exh.users.settings.updateVerificationSettings({
-  enablePinCodeActivationRequests: true,
-  enablePinCodeForgotPasswordRequests: true,
-});
+{% code title="service-settings.json" %}
+```json
+{
+  "users": {
+    "verification": {
+      "enablePinCodeActivationRequests": true,
+      "enablePinCodeForgotPasswordRequests": true
+    }
+  }
+}
 ```
+{% endcode %}
 
-It is supported that both the hash mode and pin code mode are be used for different parts of your application, so different [email templates](../../other/template-service/#e-mail-templates) are used to send pin codes to end users. Rather then the `content.activation_hash` or `content.reset_hash`, a `content.pin_code` field will be available to the pin code email templates. The templates can be set like this:
+It is supported that both the hash mode and pin code mode are be used for different parts of your application, so different [email templates](../../other/template-service/#e-mail-templates) are used to send pin codes to end users. Rather then the `inputs.activation_hash` or `inputs.reset_hash`, a `inputs.pin_code` field will be available to the pin code email templates. The templates can be set like this with the [Extra Horizon CLI](https://docs.extrahorizon.com/cli/commands/settings) User Service email template settings:
 
-```javascript
-await exh.users.setEmailTemplates({
-  activationPinEmailTemplateId: '642ffe4388742725cc5cb1e2',
-  reactivationPinEmailTemplateId: '642b0899443c9874f8c41bc7',
-  passwordResetPinEmailTemplateId: '65325e4a18bf0c1e3b1f5c7e',
-});
+{% code title="service-settings.json" %}
+```json
+{
+  "users": {
+    "emailTemplates": {
+      "activationPinEmailTemplateName": "my_pin_code_activate_account_mail",
+      "reactivationPinEmailTemplateName": "my_pin_code_reactivate_account_mail",
+      "passwordResetPinEmailTemplateName": "my_pin_code_password_reset_mail"
+    }
+  }
+}
 ```
+{% endcode %}
 
 After enabling the pin code mode and setting the email templates, pin codes can now be used in the activation and forgot password flows.
 
 ### Using the pin code mode in the account activation flow
 
-When enabled the pin code mode can be used when initiating the activation flow, during account creation, changing the email address of a user and when (re-)requesting the account activation email.&#x20;
+When enabled the pin code mode can be used when initiating the activation flow, during account creation, changing the email address of a user and when (re-)requesting the account activation email.
 
 For example, the pin code mode is used by setting `activationMode` when creating an account:
 
