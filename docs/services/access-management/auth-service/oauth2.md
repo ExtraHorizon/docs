@@ -38,10 +38,10 @@ await exh.auth.authenticate({
 {% endtabs %}
 
 {% hint style="warning" %}
-Not that in case this user has MFA enable this function will throw a `MfaRequiredError`. With the information in the error you can follow the [Mfa Grant](oauth2.md#mfa-grant) to complete the authentication.
+Not that in case this user has MFA enable this function will throw a `MfaRequiredError`. With the information in the error you can follow the [MFA Grant](oauth2.md#mfa-grant) to complete the authentication.
 {% endhint %}
 
-### Mfa Grant
+### MFA Grant
 
 When MFA is enabled for a user and you try to authenticate using the password grant you will receive a `MfaRequiredError` . You can catch the error and use the Mfa Grant to complete the authentication.
 
@@ -122,11 +122,11 @@ const exh = createOAuth2Client({
 });
 ```
 
-## Tokens
+## Authorization codes
 
-### Retrieve a list of active tokens
+### Retrieve a list of authorization codes
 
-You can retrieve a list of active tokens and the applications they correspond to.
+You can retrieve a list of active authorization codes and the applications they correspond to.
 
 ```javascript
 await exh.auth.oauth2.getAuthorizations({
@@ -134,12 +134,12 @@ await exh.auth.oauth2.getAuthorizations({
 });
 ```
 
-### Revoking tokens
+### Revoking authorization codes
 
 You can revoke tokens by use the deleteAuthorization function.
 
 ```javascript
-await exh.auth.oauth2.deleteAuthorization('');
+await exh.auth.oauth2.deleteAuthorization(authorizationId);
 ```
 
 ##
