@@ -124,13 +124,47 @@ const exh = createOAuth2Client({
 
 ## Authorization codes
 
+As mentioned before, the authorization code flow works by generating an authorization code, which can then be exchanged for tokens by another application. Below, we show how these codes can be created, listed, or removed.
+
+### Create an authorization code
+
+A minimal example on how to create an authorization code:
+
+```javascript
+await exh.auth.oauth2.createAuthorization({
+  responseType: 'code',
+  clientId: 'your client id here',
+});
+```
+
+We also support the PKCE mechanism, and advise using it alongside the authorization code flow. When `codeChallengeMethod` and `codeChallenge` are supplied here, consuming the authorization code later on requires `code_verifier` to be set to the matching value.
+
+```javascript
+await exh.auth.oauth2.createAuthorization({
+  responseType: 'code',
+  clientId: 'your client id here',
+  codeChallengeMethod: 'S256', // 'plain' is also supported
+  codeChallenge: 'your code challenge here',
+});
+```
+
+A `state` field can be added to the authorization. This field is not processed by the platform, and should simply be returned alongside the authorization code to the application's callback. Supplying it here can be helpful for debugging the flow, as it may give a hint as to which request the authorization was created for.
+
+```javascript
+await exh.auth.oauth2.createAuthorization({
+  responseType: 'code',
+  clientId: 'your client id here',
+  state: 'your state',
+});
+```
+
 ### Retrieve a list of authorization codes
 
 You can retrieve a list of active authorization codes and the applications they correspond to.
 
 ```javascript
 await exh.auth.oauth2.getAuthorizations({
-    rql: //optional rql query
+  rql: //optional rql query
 });
 ```
 
