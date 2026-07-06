@@ -1,7 +1,7 @@
 | Service | Base Path | Version | Older Versions |
 | ----| ---- | ---- | ---- |
 | API Gateway | `/` | [1.7.1](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.7.1/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=api-gateway) |
-| Authentication Service | `/auth/v2` | [2.2.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=auth-service) |
+| Authentication Service | `/auth/v2` | [2.3.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=auth-service) |
 | Configurations Service | `/configurations/v2` | [2.0.4](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=configurations-service) |
 | Data Service | `/data/v1` | [1.4.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.4.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=data-service) |
 | Dispatchers Service | `/dispatchers/v1` | [1.1.0](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.1.0/openapi.yaml) | [older versions](https://swagger.extrahorizon.com/listing/?service=dispatchers-service) |

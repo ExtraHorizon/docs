@@ -76,6 +76,32 @@
 
 ## Authentication Service
 
+### 2.3.0 (2026-07-06)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.0/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* List and revoke oAuth 2 refresh tokens
+    * The oAuth 2 refresh tokens can now be listed and revoked. A user can manage their own tokens without requiring any specific permission. A user with global permissions can list/revoke any user’s tokens.
+
+**⚒️ Improvements**
+
+* A user can now list and revoke their own oAuth 2 authorizations
+    * Before this release only users with global permissions could list/revoke oAuth 2 authorizations.
+* Internal security improvements
+
+**🐞 Bugs Fixed**
+
+* Corrected request header validation for token creation endpoints
+* We’re now correctly setting the Cache-Control and Pragma response headers for token creation endpoints
+* Selecting only specific fields on the OIDC providers listing endpoint no longer causes a server error
+* When an admin erroneously unlinks a user from OIDC who is not linked to any provider, active tokens for that user are no longer incorrectly reset
+
+</details>
+
+
 ### 2.2.0 (2024-06-13)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.2.0/openapi.yaml)
 <details>

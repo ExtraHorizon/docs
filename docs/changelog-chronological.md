@@ -1,4 +1,31 @@
 
+## Authentication Service 2.3.0 (2026-07-06)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* List and revoke oAuth 2 refresh tokens
+    * The oAuth 2 refresh tokens can now be listed and revoked. A user can manage their own tokens without requiring any specific permission. A user with global permissions can list/revoke any user’s tokens.
+
+**⚒️ Improvements**
+
+* A user can now list and revoke their own oAuth 2 authorizations
+    * Before this release only users with global permissions could list/revoke oAuth 2 authorizations.
+* Internal security improvements
+
+**🐞 Bugs Fixed**
+
+* Corrected request header validation for token creation endpoints
+* We’re now correctly setting the Cache-Control and Pragma response headers for token creation endpoints
+* Selecting only specific fields on the OIDC providers listing endpoint no longer causes a server error
+* When an admin erroneously unlinks a user from OIDC who is not linked to any provider, active tokens for that user are no longer incorrectly reset
+
+</details>
+
+
 ## API Gateway 1.7.1 (2026-05-21)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/api-gateway/1.7.1/openapi.yaml)
 
@@ -187,6 +214,20 @@
 </details>
 
 
+## Tasks Service 1.7.0 (2025-12-17)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+	
+**🎁 Features**
+- **Default function priority**  
+  Functions can now be assigned a default priority. All tasks started without an explicit priority will be assigned the targeted function its default priority (or the default value 0)
+
+</details>
+
+
 ## Users Service 1.5.2 (2025-12-17)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.5.2/openapi.yaml)
 
@@ -203,20 +244,6 @@
 - More consistent errors and record counts are returned when updating global/group roles
 - Fixed the behavior of the RQL operators `gt`, `lt`, `ge` and `le` when working with ids
 - Multi-field sorting now works correctly. Instead of only applying the last field, results are sorted by each field in order.
-</details>
-
-
-## Tasks Service 1.7.0 (2025-12-17)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-	
-**🎁 Features**
-- **Default function priority**  
-  Functions can now be assigned a default priority. All tasks started without an explicit priority will be assigned the targeted function its default priority (or the default value 0)
-
 </details>
 
 
@@ -444,8 +471,8 @@
 </details>
 
 
-## Profiles Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.2/openapi.yaml)
+## Events Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -459,17 +486,24 @@
 </details>
 
 
-## Events Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+## Reports Service 1.0.14 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.14/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
+- **RQL improvements**
+  - Less 5xx errors returned where an invalid RQL error was expected
+  - The `skip_count` operator is now also available for this service
+  - Sorting on `id` fields is now more consistent
+  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
 
-
+**🐞 Bugs Fixed**
+- The `ne` RQL operator now works correctly as a “not equals”
+- Reports are still generated for deleted users when the prescription ends
 
 </details>
 
@@ -497,24 +531,17 @@
 </details>
 
 
-## Reports Service 1.0.14 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/reports-service/1.0.14/openapi.yaml)
+## Profiles Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
-- **RQL improvements**
-  - Less 5xx errors returned where an invalid RQL error was expected
-  - The `skip_count` operator is now also available for this service
-  - Sorting on `id` fields is now more consistent
-  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
 
-**🐞 Bugs Fixed**
-- The `ne` RQL operator now works correctly as a “not equals”
-- Reports are still generated for deleted users when the prescription ends
+
 
 </details>
 
