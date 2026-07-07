@@ -176,4 +176,66 @@ You can revoke tokens by use the deleteAuthorization function.
 await exh.auth.oauth2.deleteAuthorization(authorizationId);
 ```
 
-##
+## Tokens
+
+OAuth2 authentication in Extra Horizon uses two token types: **access tokens** and **refresh tokens**.\
+\
+After successful authentication, you will receive an access token and a refresh token.\
+\- Access tokens are short-lived and used to authorize the API requests\
+\- Refresh tokens are longer-lived and are used to obtain a new access token when the current one expires.
+
+### Access Tokens
+
+#### Retrieving a list of access tokens
+
+The following code snippet will return a list of access tokens and the refresh tokens they correspond to, filterable with RQL.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.auth.oauth2.tokens.find({
+  rql: // Optional RQL query
+});
+```
+{% endtab %}
+{% endtabs %}
+
+#### Removing an access token
+
+The following code snippet will remove an access token with the provided id.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.auth.oauth2.tokens.remove(tokenId);
+```
+{% endtab %}
+{% endtabs %}
+
+### Refresh Tokens
+
+#### Retrieving a list of refresh tokens
+
+The following code snippet will return a list of refresh tokens, filterable with RQL.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.auth.oauth2.refreshTokens.find({
+  rql: // Optional RQL query
+});
+```
+{% endtab %}
+{% endtabs %}
+
+#### Removing a refresh token
+
+The following code snippet will remove a refresh token with the provided id.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+await exh.auth.oauth2.refreshTokens.remove(refreshTokenId);
+```
+{% endtab %}
+{% endtabs %}
