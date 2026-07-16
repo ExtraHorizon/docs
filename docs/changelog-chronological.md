@@ -1,4 +1,18 @@
 
+## Mail Service 1.3.1 (2026-07-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Internal security improvements
+
+
+</details>
+
+
 ## Authentication Service 2.3.0 (2026-07-06)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.0/openapi.yaml)
 
@@ -456,8 +470,8 @@
 </details>
 
 
-## Prescriptions Service 1.1.21 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
+## Events Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -471,8 +485,8 @@
 </details>
 
 
-## Events Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+## Profiles Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -531,8 +545,8 @@
 </details>
 
 
-## Profiles Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.2/openapi.yaml)
+## Prescriptions Service 1.1.21 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -835,26 +849,6 @@
 </details>
 
 
-## Tasks Service 1.6.0 (2024-01-02)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
-
-
-**🐞 Bugs Fixed**
-
-* RQL
-  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
-  * Double encoding the `<` and `>` characters when searching for them now works.
-
-</details>
-
-
 ## Profiles Service 1.2.0 (2024-01-02)
 [Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.2.0/openapi.yaml)
 
@@ -877,6 +871,26 @@
   * `patient_id` can now be removed from profile groups
   * An empty list of fields to remove is now correctly handled
   * Attempts to remove an id or timestamp field are now correctly handled
+
+</details>
+
+
+## Tasks Service 1.6.0 (2024-01-02)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.6.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* Added a `skipCount()` RQL operator. Would instruct the listing functions not to execute/return the total count. 
+
+
+**🐞 Bugs Fixed**
+
+* RQL
+  * Known `SERVICE_EXCEPTION`s thrown for RQL errors are now resolved to `INVALID_RQL_EXCEPTION`s
+  * Double encoding the `<` and `>` characters when searching for them now works.
 
 </details>
 
@@ -1322,8 +1336,8 @@
 </details>
 
 
-## Profiles Service 1.1.4 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
+## Notifications Service 1.0.9 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1334,8 +1348,8 @@
 </details>
 
 
-## Notifications Service 1.0.9 (2022-09-21)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.0.9/openapi.yaml)
+## Profiles Service 1.1.4 (2022-09-21)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/profiles-service/1.1.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1373,8 +1387,8 @@
 </details>
 
 
-## Configurations Service 2.0.4 (2022-09-16)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml)
+## Groups Service 1.1.6 (2022-09-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.6/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1385,8 +1399,8 @@
 </details>
 
 
-## Groups Service 1.1.6 (2022-09-16)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service/groups) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/groups-service/1.1.6/openapi.yaml)
+## Configurations Service 2.0.4 (2022-09-16)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -1523,17 +1537,6 @@
 </details>
 
 
-## Configurations Service 2.0.3 (2022-06-28)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**⚒️ Improvements**
-* Internal improvements that make the service less dependent on changes in other services.
-</details>
-
-
 ## Localizations Service 1.1.7 (2022-06-28)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.7/openapi.yaml)
 
@@ -1549,6 +1552,17 @@
 
 **🚨 Deprecation Warnings**
 * `GET /languages` is now deprecated
+</details>
+
+
+## Configurations Service 2.0.3 (2022-06-28)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.3/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+* Internal improvements that make the service less dependent on changes in other services.
 </details>
 
 
