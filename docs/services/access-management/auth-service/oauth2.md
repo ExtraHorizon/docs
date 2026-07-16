@@ -131,7 +131,7 @@ As mentioned before, the authorization code flow works by generating an authoriz
 A minimal example on how to create an authorization code:
 
 ```javascript
-await exh.auth.oauth2.createAuthorization({
+await exh.auth.oauth2.authorizations.create({
   responseType: 'code',
   clientId: 'your client id here',
 });
@@ -140,7 +140,7 @@ await exh.auth.oauth2.createAuthorization({
 We also support the PKCE mechanism, and advise using it alongside the authorization code flow. When `codeChallengeMethod` and `codeChallenge` are supplied here, consuming the authorization code later on requires `code_verifier` to be set to the matching value.
 
 ```javascript
-await exh.auth.oauth2.createAuthorization({
+await exh.auth.oauth2.authorizations.create({
   responseType: 'code',
   clientId: 'your client id here',
   codeChallengeMethod: 'S256', // 'plain' is also supported
@@ -151,7 +151,7 @@ await exh.auth.oauth2.createAuthorization({
 A `state` field can be added to the authorization. This field is not processed by the platform, and should simply be returned alongside the authorization code to the application's callback. Supplying it here can be helpful for debugging the flow, as it may give a hint as to which request the authorization was created for.
 
 ```javascript
-await exh.auth.oauth2.createAuthorization({
+await exh.auth.oauth2.authorizations.create({
   responseType: 'code',
   clientId: 'your client id here',
   state: 'your state',
@@ -163,7 +163,7 @@ await exh.auth.oauth2.createAuthorization({
 You can retrieve a list of active authorization codes and the applications they correspond to.
 
 ```javascript
-await exh.auth.oauth2.getAuthorizations({
+await exh.auth.oauth2.authorizations.find({
   rql: //optional rql query
 });
 ```
@@ -173,7 +173,7 @@ await exh.auth.oauth2.getAuthorizations({
 You can revoke tokens by use the deleteAuthorization function.
 
 ```javascript
-await exh.auth.oauth2.deleteAuthorization(authorizationId);
+await exh.auth.oauth2.authorizations.remove(authorizationId);
 ```
 
 ## Tokens
