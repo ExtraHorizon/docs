@@ -1395,6 +1395,21 @@
 
 ## Users Service
 
+### 1.6.1 (2026-07-27)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Loosened email validation for endpoints where it is not required
+  * Removed email validation from the authenticate, forgot password and account activation endpoints to avoid potential breaking changes if email validation rules become stricter in the future. Also removed email validation from the creation of accounts via OpenID Connect.
+* Internal security improvements
+
+
+</details>
+
+
 ### 1.6.0 (2026-04-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.0/openapi.yaml)
 <details>
