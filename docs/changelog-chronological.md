@@ -1,4 +1,23 @@
 
+## Tasks Service 1.7.1 (2026-08-03)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.1/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Added automatic retries for function executions and updates targeting pending functions
+* Made RQL shorthand operator value encoding consistent with other services
+* Improved error reporting
+  * When trying to set an invalid function configuration
+  * For malformed or incomplete API function requests
+  * Added more detailed for invalid responses from AWS Lambda
+* Internal security improvements
+
+</details>
+
+
 ## Users Service 1.6.1 (2026-07-27)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.1/openapi.yaml)
 
@@ -461,33 +480,23 @@
 </details>
 
 
-## Notifications Service 1.1.3 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
+## Events Service 1.2.2 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
-- **Retries for additional Firebase error types**
-  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
-- **RQL improvement**
-  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
-
-
-**🐞 Bugs Fixed**
-
-- Querying on field names ending with `_id` in the `fields` object is fixed
-- Now correctly erroring when no RQL is supplied while deleting notifications
 
 
 
 </details>
 
 
-## Events Service 1.2.2 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.2/openapi.yaml)
+## Prescriptions Service 1.1.21 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
@@ -561,15 +570,25 @@
 </details>
 
 
-## Prescriptions Service 1.1.21 (2025-05-20)
-[Documentation](https://docs.extrahorizon.com/) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/prescriptions-service/1.1.21/openapi.yaml)
+## Notifications Service 1.1.3 (2025-05-20)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.1.3/openapi.yaml)
 
 <details>
 <summary>Release Notes</summary>
 
 **⚒️ Improvements**
 
+- **Retries for additional Firebase error types**
+  - We now automatically retry additional error types that Firebase may respond with when sending a notification to a user's device.
+- **RQL improvement**
+  - Requesting a limit greater than the maximum now sets the maximum
 - **Improved support for future database security mechanisms**
+
+
+**🐞 Bugs Fixed**
+
+- Querying on field names ending with `_id` in the `fields` object is fixed
+- Now correctly erroring when no RQL is supplied while deleting notifications
 
 
 
@@ -1166,6 +1185,21 @@
 </details>
 
 
+## Users Service 1.2.0 (2023-04-12)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
+
+<details>
+<summary>Release Notes</summary>
+
+**🎁 Features**
+
+* OpenID Connect is added as a authentication method.
+  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
+  * Other endpoints for users with a password are blocked for OpenID Connect users.
+
+</details>
+
+
 ## Authentication Service 2.1.0 (2023-04-12)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.1.0/openapi.yaml)
 
@@ -1182,21 +1216,6 @@
 * Validation from the application logo is removed
   * Users can now add anything they want as the application logo.
   * This used to be only hashes that were used by the image service.
-</details>
-
-
-## Users Service 1.2.0 (2023-04-12)
-[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.2.0/openapi.yaml)
-
-<details>
-<summary>Release Notes</summary>
-
-**🎁 Features**
-
-* OpenID Connect is added as a authentication method.
-  * The end points that return users now also provide `oidc_links` with the `provider_id` and the `subject_id` fields.
-  * Other endpoints for users with a password are blocked for OpenID Connect users.
-
 </details>
 
 

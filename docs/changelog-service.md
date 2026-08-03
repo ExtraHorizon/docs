@@ -1138,6 +1138,24 @@
 
 ## Tasks Service
 
+### 1.7.1 (2026-08-03)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+* Added automatic retries for function executions and updates targeting pending functions
+* Made RQL shorthand operator value encoding consistent with other services
+* Improved error reporting
+  * When trying to set an invalid function configuration
+  * For malformed or incomplete API function requests
+  * Added more detailed for invalid responses from AWS Lambda
+* Internal security improvements
+
+</details>
+
+
 ### 1.7.0 (2025-12-17)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.0/openapi.yaml)
 <details>
