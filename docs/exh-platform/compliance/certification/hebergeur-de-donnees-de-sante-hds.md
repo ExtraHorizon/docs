@@ -1,5 +1,6 @@
 ---
 description: Hébergeur de Données de Santé
+hidden: true
 ---
 
 # 🇫🇷 Hébergeur de Données de Santé (HDS)
@@ -15,25 +16,25 @@ HDS certification is **mandatory** for all cloud providers and IT services manag
 Extra Horizon has been certified since 30 October 2023 for HDS and can be used by companies that need to prove compliance to HDS for the hosting of their personal health data.
 
 **Certified Entity**:\
-&#xNAN;_&#x45;xtra Horizon_\
-&#xNAN;_&#x4B;empischesteenweg 303/27_\
+_&#x45;xtra Horizon_\
+_&#x4B;empischesteenweg 303/27_\
 &#x33;_&#x35;00 Hasselt, Belgium_
 
 **Certificate Number**:\
-&#xNAN;_&#x48;DS 789841_
+_&#x48;DS 789841_
 
 **Issuing Body**:\
-&#xNAN;_&#x42;SI (EMEA)_\
-&#xNAN;_&#x33;89 Chiswick High road, London, W4 4AL, United Kingdom_
+_&#x42;SI (EMEA)_\
+_&#x33;89 Chiswick High road, London, W4 4AL, United Kingdom_
 
 **Date of Initial Issue**:\
-&#xNAN;_&#x4F;ctober 30, 2023_
+_&#x4F;ctober 30, 2023_
 
 **Date of Most Recent Renewal**:\
-&#xNAN;_&#x4F;ctober 30, 2023_
+_&#x4F;ctober 30, 2023_
 
 **Certificate Valid Until**:\
-&#xNAN;_&#x4F;ctober 29, 2026_
+_&#x4F;ctober 29, 2026_
 
 **Current Status**:\
 ✅ _Valid_
