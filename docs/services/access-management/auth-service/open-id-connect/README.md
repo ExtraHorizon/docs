@@ -19,7 +19,7 @@ To start making use of the OpenID Connect functionality we need tot take the fol
 
 ### Register with an OpenID Connect provider <a href="#register-with-an-openid-connect-provider" id="register-with-an-openid-connect-provider"></a>
 
-First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID Connect protocol with [client\_secret\_basic client authentication](https://openid.net/specs/openid-connect-core-1\_0.html#ClientAuthentication). We have added a tutorial for registering with some of the most common directory systems:
+First you will need to register with an OpenID Connect provider. The provider can be any kind of external system or platform managing a user directory that supports OpenID Connect protocol with [client\_secret\_basic client authentication](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). We have added a tutorial for registering with some of the most common directory systems:
 
 * [Registering with Google Cloud](google-cloud.md)
 * [Register with Azure ADFS](azure-adfs.md)
@@ -27,7 +27,7 @@ First you will need to register with an OpenID Connect provider. The provider ca
 Registering with other platforms or tools is also possible. After registering you will receive the credentials for your application which consist of a `clientId` and `clientSecret`. You will need them later to add the provider to Extra Horizon.
 
 {% hint style="warning" %}
-Although registering other providers than the ones listed above is definitely possible, be aware that only those in the list above are tested. Other providers might behave differently and therefor not work as expected with ExtraHorizon.  &#x20;
+Although registering other providers than the ones listed above is definitely possible, be aware that only those in the list above are tested. Other providers might behave differently and therefor not work as expected with ExtraHorizon.
 {% endhint %}
 
 In the OpenID Connect provider documentation you should be able to find the following URLs:
@@ -58,7 +58,7 @@ Navigate to [SSO Providers](https://app.extrahorizon.com/users/sso/) that is loc
 
 Here you can find a list of currently registered SSO Providers.
 
-<figure><img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 14.04.33 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Scherm­afbeelding 2023-04-03 om 14.04.33.png" alt=""><figcaption></figcaption></figure>
 
 Go to **"Add new"** to register a new provider and fill in the required information. It should look something like this:
 
@@ -236,4 +236,3 @@ Once the unlinking process is successfully completed, the user will be logged ou
 
 If the user's email address is correctly set, they can request a new activation email themselves. However, if their email address is not correctly set, an admin will need to intervene to correct the issue.
 {% endhint %}
-

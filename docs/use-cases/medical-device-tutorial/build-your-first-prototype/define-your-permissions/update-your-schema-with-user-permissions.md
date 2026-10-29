@@ -60,6 +60,6 @@ Feel free to play around with it further. For example: create another measuremen
 
 Head over to the control center, log in with your own user and go to Data -> Documents. Select the `blood-pressure-measurement` schema from the table and you'll see all blood pressure measurement documents that have been created, including the ones from your patients
 
-<figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 15.39.28 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Screenshot 2023-11-23 at 15.39.28.png" alt=""><figcaption></figcaption></figure>
 
 Alternatively, you can always use the `get-measurement.js` script to fetch a particular measurement.

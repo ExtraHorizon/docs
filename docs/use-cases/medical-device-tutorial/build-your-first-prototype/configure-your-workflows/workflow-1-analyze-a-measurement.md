@@ -139,7 +139,7 @@ Let's summarize what we've done here:
 
 See a visual representation below:
 
-<figure><img src="../../../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 All that is left now, is actually creating the task :)
 
