@@ -76,6 +76,18 @@
 
 ## Authentication Service
 
+### 2.3.1 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 2.3.0 (2026-07-06)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/auth-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/auth-service/2.3.0/openapi.yaml)
 <details>
@@ -155,6 +167,18 @@
 
 ## Configurations Service
 
+### 2.0.5 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.5/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 2.0.4 (2022-09-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/configurations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/configurations-service/2.0.4/openapi.yaml)
 <details>
@@ -177,6 +201,18 @@
 
 
 ## Data Service
+
+### 1.4.1 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.4.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.4.0 (2025-01-21)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/data-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/data-service/1.4.0/openapi.yaml)
@@ -321,6 +357,18 @@
 
 ## Dispatchers Service
 
+### 1.1.1 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.1.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 1.1.0 (2023-09-20)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/dispatchers-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/dispatchers-service/1.1.0/openapi.yaml)
 <details>
@@ -351,6 +399,18 @@
 
 
 ## Events Service
+
+### 1.2.4 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.4/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.2.3 (2025-10-07)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/event-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/events-service/1.2.3/openapi.yaml)
@@ -449,6 +509,18 @@
 
 
 ## Files Service
+
+### 1.1.1 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.1.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.1.0 (2023-08-09)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/manage-data/file-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/files-service/1.1.0/openapi.yaml)
@@ -552,6 +624,18 @@
 
 ## Localizations Service
 
+### 1.1.11 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.11/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 1.1.10 (2025-10-21)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/localizations-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/localizations-service/1.1.10/openapi.yaml)
 <details>
@@ -648,6 +732,18 @@
 
 ## Mail Service
 
+### 1.3.2 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 1.3.1 (2026-07-16)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/mail-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/mail-service/1.3.1/openapi.yaml)
 <details>
@@ -727,6 +823,18 @@
 
 
 ## Notifications Service
+
+### 2.0.1 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/2.0.1/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.2.1 (2026-05-07)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/communication/notification-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/notifications-service/1.2.1/openapi.yaml)
@@ -879,6 +987,18 @@
 
 
 ## Payments Service
+
+### 1.3.3 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.3/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.3.2 (2022-09-15)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/payments-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/payments-service/1.3.2/openapi.yaml)
@@ -1138,6 +1258,18 @@
 
 ## Tasks Service
 
+### 1.7.2 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 1.7.1 (2026-08-03)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/automation/task-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/tasks-service/1.7.1/openapi.yaml)
 <details>
@@ -1323,6 +1455,18 @@
 
 ## Template Service
 
+### 2.0.2 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
+
 ### 2.0.1 (2026-04-27)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/other/template-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/templates-service/2.0.1/openapi.yaml)
 <details>
@@ -1412,6 +1556,18 @@
 
 
 ## Users Service
+
+### 1.6.2 (2026-11-05)
+[Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.2/openapi.yaml)
+<details>
+<summary>Release Notes</summary>
+
+**⚒️ Improvements**
+
+- **Internal stability improvements**
+
+</details>
+
 
 ### 1.6.1 (2026-07-27)
 [Documentation](https://docs.extrahorizon.com/extrahorizon/services/access-management/user-service) • [API Reference](https://swagger.extrahorizon.com/swagger-ui/index.html?url=https://swagger.extrahorizon.com/users-service/1.6.1/openapi.yaml)
